@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morocco Made Real: Où la Tradition Rencontre l'Intelligence</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --moroccan-red: #c1272d;
+            --moroccan-green: #006233;
+            --moroccan-gold: #d4af37;
+            --earth-brown: #8b4513;
+            --terracotta: #cd853f;
+            --deep-purple: #663399;
+            --warm-white: #faf8f5;
+            --soft-gray: #f5f5f5;
+            --charcoal: #2c2c2c;
+            --accent-blue: #4a90e2;
+            
+            --gradient-primary: linear-gradient(135deg, var(--moroccan-red), #d63849);
+            --gradient-secondary: linear-gradient(135deg, var(--moroccan-green), #2d8e74);
+            --gradient-accent: linear-gradient(135deg, var(--deep-purple), #8a4db8);
+            --gradient-gold: linear-gradient(135deg, var(--moroccan-gold), #f4d03f);
+            
+            --shadow-soft: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-medium: 0 8px 32px rgba(0,0,0,0.12);
+            --shadow-strong: 0 16px 48px rgba(0,0,0,0.15);
+            
+            --border-radius: 16px;
+            --border-radius-lg: 24px;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #faf8f5 0%, #f0ede8 50%, #e8f4f1 100%);
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(193, 39, 45, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 98, 51, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(212, 175, 55, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .moroccan-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 12px;
+            background: var(--gradient-primary);
+            z-index: 1002; /* Ensure it's above slide content */
+            box-shadow: var(--shadow-soft);
+        }
+
+        .moroccan-pattern::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--gradient-secondary);
+            opacity: 0.8;
+        }
+
+        .presentation-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-top: 50px; /* Increased for top fixed elements */
+            padding-bottom: 70px; /* Increased for bottom navigation */
+            position: relative;
+            z-index: 1;
+            overflow: hidden; /* Prevent container itself from showing scrollbars */
+            box-sizing: border-box;
+        }
+
+        .slide {
+            display: none;
+            padding: 16px 24px; /* Bottom padding removed, handled by presentation-container */
+            height: 100%; /* Fill available space within presentation-container's padding */
+            overflow-y: auto; /* Allow individual slide scrolling */
+            animation: slideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            flex-direction: column;
+            scrollbar-width: thin;
+            scrollbar-color: var(--moroccan-green) transparent;
+            box-sizing: border-box;
+        }
+        
+        .slide::-webkit-scrollbar {
+            width: 6px; /* Thinner scrollbar */
+        }
+        
+        .slide::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        .slide::-webkit-scrollbar-thumb {
+            background: var(--moroccan-green);
+            border-radius: 3px;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes slideIn {
+            from { 
+                opacity: 0; 
+                transform: translateX(40px) scale(0.98);
+                filter: blur(2px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateX(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        .slide h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--charcoal);
+            font-size: 1.6em; /* Further reduced */
+            font-weight: 700;
+            margin-bottom: 6px; /* Further reduced margin */
+            text-align: center;
+            background: var(--gradient-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            line-height: 1.2; /* Tighter line height */
+            padding: 0 12px;
+        }
+
+        .slide h1::after {
+            content: '';
+            position: absolute;
+            bottom: -6px; /* Reduced spacing */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px; /* Smaller underline */
+            height: 3px;
+            background: var(--gradient-gold);
+            border-radius: 2px;
+        }
+
+        .slide h2 {
+            color: var(--moroccan-red);
+            font-size: 1.1em; /* Further reduced size */
+            font-weight: 600;
+            margin: 10px 0 6px 0; /* Further reduced margins */
+            position: relative;
+            padding-left: 12px; /* Reduced padding */
+        }
+
+        .slide h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px; /* Even Thinner */
+            height: 75%; /* Slightly shorter */
+            background: var(--gradient-primary);
+            border-radius: 1.5px;
+        }
+
+        .slide h3 {
+            color: var(--earth-brown);
+            font-size: 0.95em; /* Further reduced size */
+            font-weight: 600;
+            margin: 6px 0 4px 0; /* Further reduced margins */
+        }
+
+        .tagline {
+            text-align: center;
+            font-size: 0.9em; /* Further reduced size */
+            color: #666;
+            margin-bottom: 12px; /* Further reduced margin */
+            font-style: italic;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .ai-highlight {
+            background: linear-gradient(135deg, #f8f4ff, #f0e8ff);
+            border-radius: var(--border-radius);
+            padding: 12px; /* Further reduced padding */
+            margin: 10px 0; /* Further reduced margin */
+            border: 1px solid rgba(102, 51, 153, 0.1);
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-highlight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px; /* Thinner */
+            background: var(--gradient-accent);
+        }
+
+        .ai-highlight h2, .ai-highlight h3 {
+            color: var(--deep-purple);
+            border: none;
+            padding: 0;
+            margin-bottom: 8px; /* Further reduced margin */
+            font-weight: 600;
+            font-size: 1.1em; /* Ensure consistent sizing with slide h2 */
+        }
+
+        .ai-highlight p {
+            font-size: 0.85em; /* Reduce paragraph font size in highlight */
+            line-height: 1.4; /* Adjust line height for readability */
+            margin-bottom: 4px; /* Add small bottom margin to paragraphs */
+        }
+
+        .strategy-card, .feature-card, .impact-card, .timeline-item {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: var(--border-radius);
+            padding: 10px; /* Further reduced padding */
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 6px; /* Further reduced margin */
+        }
+
+        .strategy-card::before, .feature-card::before, .impact-card::before, .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px; /* Thinner */
+            transition: var(--transition);
+        }
+
+        .strategy-card:hover, .feature-card:hover, .impact-card:hover, .timeline-item:hover {
+            transform: translateY(-4px) scale(1.01); /* Reduced transform */
+            box-shadow: var(--shadow-strong);
+        }
+
+        .strategy-card.enjeu1::before { background: var(--gradient-secondary); }
+        .strategy-card.enjeu2::before { background: var(--gradient-gold); }
+        .strategy-card.enjeu3::before { background: var(--gradient-primary); }
+        .strategy-card.enjeu4::before { background: var(--gradient-accent); }
+
+        .feature-card.ai::before { background: var(--gradient-accent); }
+        .feature-card.tourists::before { background: linear-gradient(135deg, #ff6b6b, #ee5a24); }
+        .feature-card.artisans::before { background: var(--gradient-secondary); }
+
+        .timeline-item.phase1::before { background: var(--gradient-accent); }
+        .timeline-item.phase2::before { background: var(--gradient-secondary); }
+        .timeline-item.phase3::before { background: var(--gradient-primary); }
+
+        .impact-card.cultural::before { background: var(--gradient-secondary); }
+        .impact-card.economic::before { background: var(--gradient-gold); }
+        .impact-card.technology::before { background: var(--gradient-accent); }
+
+        .stats-row, .strategic-grid, .solution-features, .timeline, .impact-grid, .two-column {
+            display: grid;
+            gap: 8px; /* Further reduced gap */
+            margin: 10px 0; /* Further reduced margin */
+        }
+
+        .stats-row {
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Smaller min */
+        }
+
+        .strategic-grid, .solution-features, .impact-grid {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Smaller min */
+        }
+
+        .timeline {
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); /* Smaller min */
+        }
+
+        .two-column {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px; /* Further reduced padding */
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-2px); /* Reduced transform */
+            box-shadow: var(--shadow-medium);
+        }
+
+        .stat-number {
+            font-size: 1.4em; /* Further reduced size */
+            font-weight: 700;
+            color: var(--moroccan-red);
+            display: block;
+            margin-bottom: 0px; /* Remove bottom margin */
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat-item span:not(.stat-number) {
+            font-size: 0.75em; /* Reduce label size in stat items */
+            line-height: 1.2;
+        }
+
+        .revenue-breakdown {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.1), rgba(116, 185, 255, 0.1));
+            border-radius: var(--border-radius);
+            padding: 10px; /* Further reduced padding */
+            margin: 10px 0; /* Further reduced margin */
+            border: 1px solid rgba(74, 144, 226, 0.2); /* Thinner border */
+            box-shadow: var(--shadow-soft);
+            flex-wrap: wrap;
+        }
+
+        .revenue-item {
+            text-align: center;
+            padding: 6px; /* Further reduced padding */
+            position: relative;
+            min-width: 90px; /* Smaller min */
+        }
+
+        .revenue-amount {
+            font-size: 1.1em; /* Further reduced size */
+            font-weight: 700;
+            color: var(--accent-blue);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .revenue-item div:not(.revenue-amount) {
+            font-size: 0.7em; /* Reduce label size in revenue items */
+            line-height: 1.1;
+        }
+
+        .bullet-list {
+            margin: 6px 0; /* Further reduced margin */
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .bullet-list li {
+            margin: 4px 0; /* Further reduced margin */
+            padding: 4px 8px; /* Further reduced padding */
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 5px; /* Smaller radius */
+            border-left: 2px solid var(--moroccan-green); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03); /* Lighter shadow */
+            font-size: 0.8em; /* Further reduced size */
+            line-height: 1.25; /* Tighter */
+            transition: var(--transition);
+        }
+
+        .bullet-list li:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateX(2px); /* Reduced transform */
+        }
+
+        .bullet-list li::before {
+            content: '✓';
+            color: var(--moroccan-green);
+            font-weight: bold;
+            margin-right: 5px; /* Further reduced margin */
+            font-size: 0.85em; /* Further reduced size */
+        }
+
+        .cta-section {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 14px; /* Further reduced padding */
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin: 10px 0; /* Further reduced margin */
+            box-shadow: var(--shadow-medium);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
+        }
+
+        .cta-section h2 {
+            color: white;
+            border: none;
+            padding: 0;
+            margin-bottom: 8px; /* Further reduced margin */
+            font-size: 1.1em; /* Further reduced size */
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section p {
+            font-size: 0.9em; /* Reduce paragraph font size in cta */
+            line-height: 1.4;
+            margin: 8px 0; /* Adjust margins */
+        }
+
+        .cta-section strong {
+            font-size: 1em; /* Ensure strong tag is not smaller than surrounding p */
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 10px; /* Slightly less space from bottom */
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px; 
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px 16px; 
+            border-radius: 20px; 
+            box-shadow: var(--shadow-medium);
+            backdrop-filter: blur(20px);
+            z-index: 1010; /* Highest z-index for navigation */
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-btn {
+            background: var(--gradient-accent);
+            color: white;
+            border: none;
+            padding: 8px 14px; /* Reduced padding */
+            border-radius: 16px; /* Smaller radius */
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+            font-size: 0.85em; /* Reduced size */
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            transform: translateY(-1px); /* Reduced transform */
+            box-shadow: var(--shadow-medium);
+        }
+
+        .nav-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .slide-counter {
+            position: fixed;
+            top: 18px; /* Adjusted to be below progress bar */
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 6px 12px; 
+            border-radius: 16px; 
+            font-weight: 600;
+            color: var(--deep-purple);
+            box-shadow: var(--shadow-soft);
+            backdrop-filter: blur(20px);
+            font-size: 0.8em; 
+            z-index: 1005; /* Above slides, below nav if somehow overlapping */
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .help-btn {
+            position: fixed;
+            top: 18px; /* Adjusted to be below progress bar */
+            left: 20px;
+            background: var(--gradient-secondary);
+            color: white;
+            border: none;
+            padding: 6px 10px; 
+            border-radius: 16px; 
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+            font-size: 0.75em; 
+            z-index: 1005; /* Consistent with slide counter */
+        }
+
+        .help-btn:hover {
+            transform: translateY(-1px); /* Reduced transform */
+            box-shadow: var(--shadow-medium);
+        }
+
+        .content-fit {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            min-height: 0;
+        }
+
+        .scrollable-content {
+            flex-grow: 1;
+            flex-shrink: 1;
+            overflow-y: auto; /* Changed from visible to auto */
+            min-height: 0;
+            padding-bottom: 12px; 
+            box-sizing: border-box;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            width: 100%;
+            margin: 10px 0; /* Reduced margin */
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            background: white;
+        }
+
+        .financial-table, .competitive-matrix {
+            width: 100%;
+            min-width: 450px; /* Reduced min width */
+            border-collapse: collapse;
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            font-size: 0.8em; /* Reduced size */
+        }
+
+        .financial-table th, .competitive-matrix th {
+            background: var(--gradient-secondary);
+            color: white;
+            font-weight: 600;
+            padding: 8px 6px; /* Reduced padding */
+            text-align: center;
+            font-size: 0.8em; /* Reduced size */
+        }
+
+        .financial-table td, .competitive-matrix td {
+            padding: 6px 6px; /* Reduced padding */
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            font-size: 0.8em; /* Reduced size */
+        }
+
+        .competitive-matrix .made-slow-row {
+            background: linear-gradient(135deg, rgba(45, 142, 116, 0.1), rgba(194, 230, 222, 0.2));
+            font-weight: 600;
+        }
+
+        .checkmark {
+            color: var(--moroccan-green);
+            font-size: 1.2em; /* Reduced size */
+            font-weight: bold;
+        }
+
+        .partial {
+            color: var(--moroccan-gold);
+            font-size: 1em; /* Reduced size */
+            font-weight: bold;
+        }
+
+        .cross {
+            color: #999;
+            font-size: 1.2em; /* Reduced size */
+            font-weight: bold;
+        }
+
+        .svg-container {
+            width: 100%;
+            flex-grow: 1;
+            overflow: auto; /* Allow scroll if content is truly too big, as last resort */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Aligns SVG to the top if it's shorter */
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: var(--border-radius);
+            padding: 8px; /* Increased padding */
+            max-height: 65vh; /* Significantly increased from 46vh */
+        }
+        
+        .svg-container svg {
+            max-width: 100%;
+            max-height: 100%; /* Ensure SVG does not exceed container height */
+            height: auto; /* Maintain aspect ratio if width is constrained */
+            min-height: 300px; /* Increased from 240px */
+            display: block; /* Helps with some spacing issues */
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 12px; /* Adjusted due to moroccan-pattern */
+            left: 0;
+            height: 2px; /* Thinner */
+            background: var(--gradient-gold);
+            transition: width 0.3s ease;
+            z-index: 1002; /* Ensure it's above slide content */
+        }
+
+        /* Enhanced government stats section */
+        .government-stats {
+            background: rgba(0, 98, 51, 0.1);
+            padding: 12px; /* Further reduced padding */
+            border-radius: 10px; /* Smaller radius */
+            margin-bottom: 12px; /* Further reduced margin */
+            border-left: 3px solid var(--moroccan-green); /* Thinner */
+        }
+
+        .government-stats h2 {
+            font-size: 1.15em !important; /* Ensure consistency, override if needed */
+            margin-bottom: 8px !important;
+        }
+
+        .government-stats p {
+            font-size: 0.9em; /* Reduce paragraph size */
+            margin-bottom: 8px !important;
+        }
+
+        /* Animations for elements */
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px); /* Reduced distance */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .slide {
+                padding: 12px 20px; /* Adjusted for smaller screens */
+                font-size: 0.9em;
+            }
+            
+            .slide h1 {
+                font-size: 1.6em; /* Further reduced */
+            }
+            
+            .strategic-grid, .solution-features, .impact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 10px 16px; /* Adjusted for mobile */
+                font-size: 0.85em;
+            }
+            
+            .slide h1 {
+                font-size: 1.4em;
+            }
+            
+            .slide h2 {
+                font-size: 1.1em;
+            }
+            
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline {
+                grid-template-columns: 1fr;
+            }
+            
+            .navigation {
+                padding: 8px 12px;
+                gap: 8px;
+            }
+            
+            .nav-btn {
+                padding: 6px 12px;
+                font-size: 0.8em;
+            }
+            
+            .slide-counter {
+                top: 16px;
+                right: 16px;
+                padding: 4px 8px;
+                font-size: 0.75em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slide {
+                padding: 8px 12px; /* Minimal padding for very small screens */
+                font-size: 0.8em;
+            }
+            
+            .slide h1 {
+                font-size: 1.2em;
+            }
+            
+            .tagline {
+                font-size: 0.9em;
+            }
+            
+            .stat-number {
+                font-size: 1.4em;
+            }
+            
+            .revenue-breakdown {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+
+        /* Shortcuts help panel */
+        .shortcuts-help {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: white;
+            padding: 20px; 
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-strong);
+            z-index: 2000; /* Highest for modal-like elements */
+            width: 280px; 
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .shortcuts-help.active {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+        
+        .shortcuts-help h3 {
+            margin-bottom: 14px; /* Reduced margin */
+            color: var(--charcoal);
+            text-align: center;
+        }
+        
+        .shortcut-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0; /* Reduced padding */
+            border-bottom: 1px solid #eee;
+        }
+        
+        .shortcut-key {
+            background: var(--soft-gray);
+            padding: 3px 6px; /* Reduced padding */
+            border-radius: 3px; /* Smaller radius */
+            font-family: monospace;
+            font-size: 0.75em; /* Reduced size */
+        }
+    </style>
+</head>
+<body>
+    <div class="moroccan-pattern"></div>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <!-- Help and Navigation Controls -->
+    <button class="help-btn" onclick="toggleHelp()">? Aide</button>
+    
+    <div class="slide-counter">
+        <span id="current-slide">1</span> / <span id="total-slides">10</span>
+    </div>
+    
+    <!-- Keyboard Shortcuts Help -->
+    <div class="shortcuts-help" id="shortcutsHelp">
+        <h3>Raccourcis Clavier</h3>
+        <div class="shortcut-item">
+            <span>Slide suivante</span>
+            <span class="shortcut-key">→ ↓ Space</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Slide précédente</span>
+            <span class="shortcut-key">← ↑</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Première slide</span>
+            <span class="shortcut-key">Home</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Dernière slide</span>
+            <span class="shortcut-key">End</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Fermer aide</span>
+            <span class="shortcut-key">Esc</span>
+        </div>
+        <button onclick="toggleHelp()" style="margin-top: 16px; width: 100%; padding: 8px; background: var(--moroccan-green); color: white; border: none; border-radius: 6px; cursor: pointer;">Fermer</button>
+    </div>
+
+    <div class="presentation-container">
+        <!-- Slide 1: Title -->
+        <div class="slide active">
+            <div class="content-fit">
+                <h1>Morocco Made Real</h1>
+                <p class="tagline">Où la Tradition Rencontre l'Intelligence</p>
+
+                <div class="ai-highlight">
+                    <h2>🤖 Plateforme IA Officielle pour l'Artisanat d'Excellence</h2>
+                    <p style="font-size: 1.1em; line-height: 1.6;">
+                        <strong>"Morocco Made Real"</strong> est la plateforme IA officielle qui connecte intelligemment les <strong>420 000 artisans culturels</strong> du Maroc aux marchés de tourisme. Nous utilisons l'intelligence artificielle pour <strong>vérifier et valoriser</strong> l'authenticité des traditions artisanales marocaines, créant des connexions transparentes et équitables via la blockchain tout en soutenant la <strong>stratégie gouvernementale 2030</strong> d'artisanat moderne et structuré.
+                    </p>
+                </div>
+
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <span class="stat-number">420K</span>
+                        <span>Artisans Culturels</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">2,4 Md€</span>
+                        <span>Secteur Traditionnel</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">350%</span>
+                        <span>Multiplicateur de Valeur</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Vision 2030 -->
+        <div class="slide">
+            <div class="content-fit">
+                <h1>Stratégie Officielle Artisanat 2030 & Notre Mission</h1>
+
+                <div class="scrollable-content">
+                    <div class="government-stats">
+                        <h2 style="color: var(--moroccan-green); text-align: center; border: none; padding: 0; margin-bottom: 16px;">
+                            Vision Gouvernementale 2030 : Artisanat Moderne et Intelligent
+                        </h2>
+                        <p style="text-align: center; font-size: 1.3em; font-style: italic; margin-bottom: 16px; color: var(--charcoal);">
+                            "Un Artisanat modernisé, créateur de valeur, compétitif et structuré"
+                        </p>
+                    </div>
+
+                    <div class="two-column">
+                        <div>
+                            <h3>📊 Données Officielles Clés</h3>
+                            <ul class="bullet-list">
+                                <li><strong>2,4M artisans</strong> - 2ème secteur d'emploi national</li>
+                                <li><strong>420K artisans culturels</strong> - cœur du patrimoine</li>
+                                <li><strong>Secteur €2,4Md</strong> - potentiel de transformation</li>
+                                <li><strong>Priorités nationales :</strong> Poterie, Tapis, Bijouterie</li>
+                                <li><strong>Objectif :</strong> Modernisation et structuration</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>🎯 Mission Morocco Made Real</h3>
+                            <ul class="bullet-list">
+                                <li><strong>Plateforme IA Officielle :</strong> Connexions intelligentes vérifiées</li>
+                                <li><strong>420K Artisans Connectés :</strong> Accès direct aux marchés globaux</li>
+                                <li><strong>Blockchain Transparente :</strong> Authentification</li>
+                                <li><strong>Valorisation 350% :</strong> Multiplication de la valeur artisanale</li>
+                                <li><strong>Héritage Culturel :</strong> Tradition préservée par l'intelligence</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ai-highlight">
+                    <h3>🚀 Notre Réponse : L'Intelligence au Service de la Tradition</h3>
+                    <p style="text-align: center; margin: 16px 0;">
+                        Comment l'intelligence artificielle peut-elle amplifier la valeur de l'artisanat d'exception tout en préservant son authenticité traditionnelle ?
+                    </p>
+                    <p style="font-size: 1.4em; font-weight: 700; text-align: center; color: var(--deep-purple);">
+                        Morocco Made Real : Plateforme IA Officielle pour l'Artisanat Intelligent
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Strategic Alignment -->
+        <div class="slide">
+            <div class="content-fit">
+                <h1>Alignement Stratégique avec la Vision 2030</h1>
+                <h2>Intelligence Artificielle + Traditions Artisanales = Excellence Mondiale</h2>
+
+                <div class="strategic-grid scrollable-content">
+                    <div class="strategy-card enjeu1">
+                        <h3 style="color: var(--moroccan-green); font-size: 1.2em;">STRUCTURATION : Organiser l'Excellence Artisanale</h3>
+                        <p><strong>Défi Gouvernemental :</strong> Structurer et moderniser le secteur artisanal traditionnel.</p>
+                        <p><strong>Solution IA :</strong> Plateforme centralisée connectant 420K artisans avec vérification intelligente des savoir-faire.</p>
+                    </div>
+
+                    <div class="strategy-card enjeu2">
+                        <h3 style="color: var(--moroccan-gold); font-size: 1.2em;">MODERNISATION : Technologies au Service de la Tradition</h3>
+                        <p><strong>Priorité Officielle :</strong> Outils numériques pour valoriser l'artisanat authentique.</p>
+                        <p><strong>Solution IA :</strong> Blockchain + IA pour authentification et narration intelligente du patrimoine.</p>
+                    </div>
+
+                    <div class="strategy-card enjeu3">
+                        <h3 style="color: var(--accent-blue); font-size: 1.2em;">VALORISATION : Marchés Globaux pour Savoir-Faire Local</h3>
+                        <p><strong>Objectif National :</strong> Positionnement international du "Made in Morocco" artisanal.</p>
+                        <p><strong>Solution IA :</strong> Connexions intelligentes artisans-acheteurs avec récits culturels enrichis.</p>
+                    </div>
+
+                    <div class="strategy-card enjeu4">
+                        <h3 style="color: var(--moroccan-red); font-size: 1.2em;">COMPÉTITIVITÉ : Standard d'Excellence Mondiale</h3>
+                        <p><strong>Vision 2030 :</strong> Artisanat marocain compétitif et créateur de valeur.</p>
+                        <p><strong>Solution IA :</strong> Certificats blockchain + analytiques temps réel = avantage concurrentiel durable.</p>
+                    </div>
+                </div>
+
+                <div class="ai-highlight">
+                    <p style="font-size: 1.3em; font-weight: 700; text-align: center;">
+                        Résultat : Premier standard mondial d'artisanat intelligent, propulsé par l'IA et soutenu par l'État.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Market Opportunity -->
+        <div class="slide">
+            <div class="content-fit">
+                <h1>Opportunité : Transformer €2,4Md en Commerce Intelligent</h1>
+
+                <div class="two-column scrollable-content">
+                    <div>
+                        <h2>Défis Actuels du Secteur</h2>
+                        <ul class="bullet-list">
+                            <li><strong>420K Artisans Sous-Valorisés :</strong> Manque d'accès aux marchés globaux.</li>
+                            <li><strong>Authenticité Non-Vérifiée :</strong> Difficulté à prouver la valeur traditionnelle.</li>
+                            <li><strong>Intermédiaires Multiples :</strong> Marges réduites pour les créateurs.</li>
+                            <li><strong>Récits Culturels Perdus :</strong> Histoire et techniques non documentées.</li>
+                            <li><strong>Paiements Inéquitables :</strong> Revenus artisans non optimisés.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h2>Transformation par l'Intelligence</h2>
+                        <ul class="bullet-list">
+                            <li><strong>Connexions Directes :</strong> IA matching artisans-acheteurs qualifiés.</li>
+                            <li><strong>Authentification Blockchain :</strong> Preuves incorruptibles de tradition.</li>
+                            <li><strong>Valorisation 350% :</strong> Multiplicateur de valeur via intelligence.</li>
+                            <li><strong>Récits IA-Enrichis :</strong> Histoires culturelles personnalisées.</li>
+                            <li><strong>Paiements Automatiques :</strong> Smart contracts équitables.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="revenue-breakdown">
+                    <p style="text-align:center; width:100%; margin-bottom:16px; font-size:1.1em; font-weight: 600;">Transformation de Valeur par l'Intelligence :</p>
+                    <div class="revenue-item">
+                        <div class="revenue-amount">€100</div>
+                        <div>Revenu Traditionnel</div>
+                    </div>
+                    <div style="font-size: 2em; color: #666;">→</div>
+                    <div class="revenue-item">
+                        <div class="revenue-amount" style="color: var(--deep-purple);">IA + Blockchain</div>
+                        <div>Authentification</div>
+                    </div>
+                    <div style="font-size: 2em; color: #666;">→</div>
+                    <div class="revenue-item">
+                        <div class="revenue-amount" style="color: var(--moroccan-green);">€350</div>
+                        <div>Valeur Intelligente</div>
+                    </div>
+                    <div style="font-size: 2em; color: #666;">×</div>
+                    <div class="revenue-item">
+                        <div class="revenue-amount" style="color: var(--moroccan-red);">420K</div>
+                        <div>Artisans</div>
+                    </div>
+                </div>
+
+                <div class="ai-highlight">
+                    <h3 style="text-align: center;">🎯 Morocco Made Real : Seule Plateforme IA Officielle pour l'Artisanat</h3>
+                    <p style="text-align: center;">Transformation intelligente du secteur €2,4Md avec soutien gouvernemental et authentification blockchain.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Solution Overview -->
+        <div class="slide">
+            <div class="content-fit">
+                <h1>Solution "Morocco Made Real"</h1>
+                <h2>Plateforme IA Officielle : Tradition + Intelligence + Transparence</h2>
+
+                <div class="solution-features scrollable-content">
+                    <div class="feature-card ai">
+                        <h3 style="color: var(--deep-purple);">🤖 Moteur IA "Authenticity Engine"</h3>
+                        <ul class="bullet-list">
+                            <li><strong>Vision Intelligente :</strong> Analyse IA des techniques traditionnelles et matériaux.</li>
+                            <li><strong>Documentation Automatique :</strong> Capture du processus créatif ancestral.</li>
+                            <li><strong>Narration Culturelle :</strong> Récits IA multilingues enrichis.</li>
+                            <li><strong>Matching Intelligent :</strong> Connexions artisans-acheteurs optimisées.</li>
+                            <li><strong>Certification Temps Réel :</strong> Authentification instantanée blockchain.</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card artisans">
+                        <h3 style="color: var(--moroccan-green);">👨‍🎨 Pour les 420K Artisans Culturels</h3>
+                        <ul class="bullet-list">
+                            <li><strong>Accès Marchés Tourisme :</strong> Connexions directes des touristes.</li>
+                            <li><strong>Valorisation Authentique :</strong> Prix justes reflétant savoir-faire traditionnel.</li>
+                            <li><strong>Identité Numérique :</strong> Portfolio vérifié IA + réputation blockchain.</li>
+                            <li><strong>Revenus Optimisés :</strong> Multiplicateur 350% via intelligence.</li>
+                            <li><strong>Patrimoine Préservé :</strong> Techniques documentées pour l'éternité.</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card tourists">
+                        <h3 style="color: #ee5a24;">🌍 Pour Collectionneurs & Marchés Globaux</h3>
+                        <ul class="bullet-list">
+                            <li><strong>Authenticité Garantie :</strong> Certification blockchain incorruptible.</li>
+                            <li><strong>Histoires Enrichies :</strong> Récits culturels IA personnalisés.</li>
+                            <li><strong>Accès Exclusif :</strong> Accès direct aux maîtres artisans marocains.</li>
+                            <li><strong>Investissement Culturel :</strong> Pièces documentées à valeur croissante.</li>
+                            <li><strong>Impact Social :</strong> Soutien direct aux traditions vivantes.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ai-highlight">
+                    <h3>🏛️ Positionnement Gouvernemental Officiel</h3>
+                    <p style="text-align: center;">
+                        <strong>"Morocco Made Real implémente la stratégie officielle 2030 en rendant le patrimoine culturel marocain intelligemment accessible au monde tout en assurant une compensation équitable pour les artisans."</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Journey Flowchart -->
+        <div class="slide">
+            <div class="content-fit">
+                <h1>Parcours "Morocco Made Real" : Tradition → Intelligence</h1>
+                <p style="text-align: center; font-size: 1em; margin-bottom: 4px; opacity: 0.8;">
+                    De la Création Artisanale Traditionnelle aux Marchés Globaux Intelligents
+                </p>
+                
+                <div class="svg-container">
+                    <svg viewBox="0 0 1200 750" preserveAspectRatio="xMidYMin meet" xmlns="http://www.w3.org/2000/svg">
+                      <rect width="1200" height="750" fill="#f9f7f2" />
+                      <rect x="0" y="0" width="1200" height="8" fill="#c1272d" />
+                      <rect x="0" y="8" width="1200" height="8" fill="#006233" />
+                      <text x="600" y="50" font-family="Arial, sans-serif" font-size="32" font-weight="bold" text-anchor="middle" fill="#333333">Morocco Made Real: Où la Tradition Rencontre l'Intelligence</text>
+                      <text x="600" y="75" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#666">420K Artisans → IA Authentification → Marchés Globaux → Revenus Équitables</text>
+                      <rect x="50" y="90" width="1100" height="65" rx="10" fill="#e8f4f1" stroke="#006233" stroke-width="2" />
+                      <text x="70" y="115" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#006233">Stratégie 2030: Artisanat Modernisé • 420K Artisans Culturels • Secteur €2,4Md • Valorisation 350%</text>
+                      <text x="70" y="140" font-family="Arial, sans-serif" font-size="15" fill="#333">Morocco Made Real: Plateforme IA Officielle pour la Transformation Intelligente du Patrimoine</text>
+                      
+                      <text x="150" y="185" font-family="Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle" fill="#555">CRÉATION TRADITIONNELLE</text>
+                      <text x="350" y="185" font-family="Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle" fill="#555">AUTHENTIFICATION IA</text>
+                      <text x="600" y="185" font-family="Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle" fill="#555">NARRATION INTELLIGENTE</text>
+                      <text x="850" y="185" font-family="Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle" fill="#555">CONNEXION GLOBALE</text>
+                      <text x="1050" y="185" font-family="Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle" fill="#555">VALORISATION 350%</text>
+                      
+                      <!-- Artisan Journey Level -->
+                      <circle cx="150" cy="240" r="40" fill="#2d8e74" />
+                      <text x="150" y="232" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Savoir-Faire</text>
+                      <text x="150" y="248" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Ancestral</text>
+                      <text x="150" y="290" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">420K Artisans Culturels</text>
+                      
+                      <circle cx="350" cy="240" r="40" fill="#663399" />
+                      <text x="350" y="232" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Vérification</text>
+                      <text x="350" y="248" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">IA</text>
+                      <text x="350" y="290" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">Authenticity Engine</text>
+                      
+                      <circle cx="600" cy="240" r="40" fill="#4a90e2" />
+                      <text x="600" y="232" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Récits</text>
+                      <text x="600" y="248" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Culturels</text>
+                      <text x="600" y="290" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">IA Multilingue</text>
+                      
+                      <circle cx="850" cy="240" r="40" fill="#c1272d" />
+                      <text x="850" y="232" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Marchés</text>
+                      <text x="850" y="248" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Globaux</text>
+                      <text x="850" y="290" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">Connexions Directes</text>
+                      
+                      <circle cx="1050" cy="240" r="40" fill="#d4af37" />
+                      <text x="1050" y="232" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Revenus</text>
+                      <text x="1050" y="248" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Équitables</text>
+                      <text x="1050" y="290" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">Smart Contracts</text>
+                      
+                      <!-- Technology Layer -->
+                      <rect x="310" y="340" width="80" height="70" rx="10" fill="#aa8239" />
+                      <text x="350" y="365" font-family="Arial, sans-serif" font-size="13" fill="white" text-anchor="middle">Vision</text>
+                      <text x="350" y="380" font-family="Arial, sans-serif" font-size="13" fill="white" text-anchor="middle">IA</text>
+                      <text x="350" y="395" font-family="Arial, sans-serif" font-size="13" fill="white" text-anchor="middle">Techniques</text>
+                      <text x="350" y="425" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">Analyse Matériaux</text>
+                      
+                      <rect x="560" y="340" width="80" height="70" rx="10" fill="#aa8239" />
+                      <text x="600" y="365" font-family="Arial, sans-serif" font-size="13" fill="white" text-anchor="middle">Blockchain</text>
+                      <text x="600" y="380" font-family="Arial, sans-serif" font-size="13" fill="white" text-anchor="middle">Certificats</text>
+                      <text x="600" y="395" font-family="Arial, sans-serif" font-size="13" fill="white" text-anchor="middle">Authenticité</text>
+                      <text x="600" y="425" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">IPFS + Polygon</text>
+                      
+                      <rect x="810" y="340" width="80" height="70" rx="10" fill="#aa8239" />
+                      <text x="850" y="365" font-family="Arial, sans-serif" font-size="13" fill="white" text-anchor="middle">Matching</text>
+                      <text x="850" y="380" font-family="Arial, sans-serif" font-size="13" fill="white" text-anchor="middle">Intelligent</text>
+                      <text x="850" y="395" font-family="Arial, sans-serif" font-size="13" fill="white" text-anchor="middle">ML</text>
+                      <text x="850" y="425" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">Artisan-Acheteur</text>
+                      
+                      <rect x="1010" y="340" width="80" height="70" rx="10" fill="#aa8239" />
+                      <text x="1050" y="365" font-family="Arial, sans-serif" font-size="13" fill="white" text-anchor="middle">Paiements</text>
+                      <text x="1050" y="380" font-family="Arial, sans-serif" font-size="13" fill="white" text-anchor="middle">Auto</text>
+                      <text x="1050" y="395" font-family="Arial, sans-serif" font-size="13" fill="white" text-anchor="middle">Équitables</text>
+                      <text x="1050" y="425" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">Smart Contracts</text>
+                      
+                      <!-- Arrows -->
+                      <path d="M190 240 H310" stroke="#2d8e74" stroke-width="3" fill="none" />
+                      <polygon points="310,235 320,240 310,245" fill="#2d8e74" />
+                      <path d="M390 240 H560" stroke="#2d8e74" stroke-width="3" fill="none" />
+                      <polygon points="560,235 570,240 560,245" fill="#2d8e74" />
+                      <path d="M640 240 H810" stroke="#2d8e74" stroke-width="3" fill="none" />
+                      <polygon points="810,235 820,240 810,245" fill="#2d8e74" />
+                      <path d="M890 240 H1010" stroke="#2d8e74" stroke-width="3" fill="none" />
+                      <polygon points="1010,235 1020,240 1010,245" fill="#2d8e74" />
+                      
+                      <!-- Results -->
+                      <rect x="70" y="680" width="210" height="40" rx="6" fill="#e0f0e9" />
+                      <text x="175" y="697" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#2d8e74">Patrimoine Préservé</text>
+                      <text x="175" y="712" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">Techniques Documentées IA</text>
+                      
+                      <rect x="300" y="680" width="210" height="40" rx="6" fill="#e6d8c2" />
+                      <text x="405" y="697" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#aa8239">Authenticité 100%</text>
+                      <text x="405" y="712" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">Blockchain Incorruptible</text>
+                      
+                      <rect x="530" y="680" width="210" height="40" rx="6" fill="#c2cfe6" />
+                      <text x="635" y="697" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#3a5da8">Marchés Accessibles</text>
+                      <text x="635" y="712" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">Connexions Intelligentes</text>
+                      
+                      <rect x="760" y="680" width="210" height="40" rx="6" fill="#e6c2c2" />
+                      <text x="865" y="697" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#c1272d">Valorisation 350%</text>
+                      <text x="865" y="712" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">Multiplicateur IA</text>
+                      
+                      <rect x="990" y="680" width="180" height="40" rx="6" fill="#f0d8ff" />
+                      <text x="1080" y="697" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#7a3d8a">Standard Mondial</text>
+                      <text x="1080" y="712" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">Excellence Marocaine</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Tech Stack -->
+        <div class="slide">
+            <div class="content-fit">
+                <h1>Infrastructure Technologique : IA + Blockchain + Tradition</h1>
+                
+                <div class="strategic-grid scrollable-content">
+                    <div class="strategy-card enjeu1">
+                        <h3>🤖 "Authenticity Engine" - IA de Pointe</h3>
+                        <ul class="bullet-list">
+                            <li><strong>Vision par Ordinateur :</strong> Analyse techniques traditionnelles et matériaux.</li>
+                            <li><strong>Traitement Linguistique :</strong> Darija, Arabe, Français, Anglais, langues mondiales.</li>
+                            <li><strong>Machine Learning :</strong> Matching intelligent artisans-acheteurs.</li>
+                            <li><strong>IA Générative :</strong> Récits culturels enrichis et personnalisés.</li>
+                            <li><strong>Reconnaissance Motifs :</strong> Authentification patterns traditionnels.</li>
+                        </ul>
+                    </div>
+
+                    <div class="strategy-card enjeu2">
+                        <h3>🔗 Blockchain & Transparence Absolue</h3>
+                        <ul class="bullet-list">
+                            <li><strong>Smart Contracts Polygon :</strong> Paiements automatiques équitables.</li>
+                            <li><strong>IPFS Décentralisé :</strong> Stockage preuves authentification.</li>
+                            <li><strong>NFT Culturels :</strong> Certificats numériques patrimoine.</li>
+                            <li><strong>Traçabilité Complète :</strong> Processus création → vente finale.</li>
+                            <li><strong>Portefeuilles Sécurisés :</strong> Gestion revenus artisans.</li>
+                        </ul>
+                    </div>
+
+                    <div class="strategy-card enjeu3">
+                        <h3>📱 Interface Accessible & Gouvernance</h3>
+                        <ul class="bullet-list">
+                            <li><strong>PWA Mobile-First :</strong> Accès simplifié pour artisans.</li>
+                            <li><strong>Multilingue Adaptatif :</strong> Interface dans langue locale.</li>
+                            <li><strong>Formation Intégrée :</strong> Outils éducatifs IA.</li>
+                            <li><strong>API Gouvernementale :</strong> Intégration systèmes officiels.</li>
+                            <li><strong>Dashboard Analytics :</strong> Métriques stratégie 2030.</li>
+                        </ul>
+                    </div>
+
+                    <div class="strategy-card enjeu4">
+                        <h3>📊 Impact Mesurable & Gouvernance</h3>
+                        <ul class="bullet-list">
+                            <li><strong>KPIs Officiels :</strong> Progression objectifs 2030 en temps réel.</li>
+                            <li><strong>ROI Artisans :</strong> Multiplicateur revenus 350% documenté.</li>
+                            <li><strong>Patrimoine Sauvegardé :</strong> Techniques préservées numériquement.</li>
+                            <li><strong>Export Intelligence :</strong> Positions marchés globaux.</li>
+                            <li><strong>Conformité Totale :</strong> Standards gouvernementaux respectés.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Timeline -->
+        <div class="slide">
+            <div class="content-fit">
+                <h1>Roadmap : Lancement Plateforme IA Officielle</h1>
+
+                <div class="timeline scrollable-content">
+                    <div class="timeline-item phase1">
+                        <h3>Phase 1: Fondation & Pilote</h3>
+                        <p style="font-weight: 600; color: var(--deep-purple); margin-bottom: 12px;">Mois 1-9 : Infrastructure IA + Artisans Pilotes</p>
+                        <ul style="text-align: left; margin-top: 16px; font-size: 0.9em;" class="bullet-list">
+                            <li><strong>Partenariat Officiel :</strong> Support et Accord gouvernemental stratégie 2030.</li>
+                            <li><strong>50 Maîtres Artisans :</strong> Sélection coopératives d'excellence.</li>
+                            <li><strong>MVP "Authenticity Engine" :</strong> IA vérification + blockchain.</li>
+                            <li><strong>1000 Authentifications :</strong> Preuves concept valorisation.</li>
+                            <li><strong>Multiplicateur 350% :</strong> Validation revenus artisans.</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item phase2">
+                        <h3>Phase 2: Scale National & Financement</h3>
+                        <p style="font-weight: 600; color: var(--moroccan-green); margin-bottom: 12px;">Mois 9-18 : Extension & Investissement</p>
+                        <ul style="text-align: left; margin-top: 16px; font-size: 0.9em;" class="bullet-list">
+                            <li><strong>5000 Artisans Actifs :</strong> Expansion géographique nationale.</li>
+                            <li><strong>Levée €2M :</strong> Financement infrastructure IA avancée.</li>
+                            <li><strong>€500K Transactions :</strong> Volume commerce authentifié.</li>
+                            <li><strong>Reconnaissance Internationale :</strong> Standard "Morocco Made Real".</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item phase3">
+                        <h3>Phase 3: Plateforme Globale de Référence</h3>
+                        <p style="font-weight: 600; color: var(--moroccan-red); margin-bottom: 12px;">Mois 19+ : Standard Mondial</p>
+                        <ul style="text-align: left; margin-top: 16px; font-size: 0.9em;" class="bullet-list">
+                            <li><strong>420K Artisans Connectés :</strong> Couverture complète secteur culturel.</li>
+                            <li><strong>€10M+ Volume Annuel :</strong> Transformation secteur réussie.</li>
+                            <li><strong>Export Leader :</strong> "Made in Morocco" = qualité IA-certifiée.</li>
+                            <li><strong>Modèle Réplicable :</strong> Expansion autres pays africains.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ai-highlight">
+                    <h3>🎯 Avantage Concurrentiel Unique</h3>
+                    <p>Seule plateforme IA gouvernementale officielle • Premier "Authenticity Engine" mondial • 420K artisans partenaires • Soutien stratégique 2030 • Valorisation 350% prouvée.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Competitive Analysis -->
+        <div class="slide">
+            <div class="content-fit">
+                <h1>Avantage Concurrentiel : Plateforme IA Officielle Unique</h1>
+                <h2>Au-delà du E-commerce : L'Intelligence Gouvernementale</h2>
+
+                <div class="table-wrapper">
+                    <table class="competitive-matrix">
+                        <thead>
+                            <tr>
+                                <th>Plateforme</th>
+                                <th>IA Authentification</th>
+                                <th>Soutien Gouvernemental</th>
+                                <th>Blockchain Patrimoine</th>
+                                <th>420K Artisans Culturels</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="made-slow-row">
+                                <td><strong>Morocco Made Real</strong></td>
+                                <td><span class="checkmark">✓</span></td>
+                                <td><span class="checkmark">✓</span></td>
+                                <td><span class="checkmark">✓</span></td>
+                                <td><span class="checkmark">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Etsy</strong></td>
+                                <td><span class="cross">✗</span></td>
+                                <td><span class="cross">✗</span></td>
+                                <td><span class="cross">✗</span></td>
+                                <td><span class="cross">✗</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Amazon Handmade</strong></td>
+                                <td><span class="cross">✗</span></td>
+                                <td><span class="cross">✗</span></td>
+                                <td><span class="cross">✗</span></td>
+                                <td><span class="cross">✗</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Novica</strong></td>
+                                <td><span class="cross">✗</span></td>
+                                <td><span class="cross">✗</span></td>
+                                <td><span class="cross">✗</span></td>
+                                <td><span class="partial">△</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Plateformes Locales</strong></td>
+                                <td><span class="cross">✗</span></td>
+                                <td><span class="partial">△</span></td>
+                                <td><span class="cross">✗</span></td>
+                                <td><span class="partial">△</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="two-column">
+                    <div>
+                        <h3>💼 Limitations Concurrentes</h3>
+                        <ul class="bullet-list">
+                            <li><strong>Aucune IA Authentification :</strong> Impossible vérifier traditions.</li>
+                            <li><strong>Pas de Soutien Officiel :</strong> Initiatives privées isolées.</li>
+                            <li><strong>Marges Réduites :</strong> Intermédiaires multiples.</li>
+                            <li><strong>Pas de Vision Patrimoine :</strong> Commerce sans culture.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>🚀 Notre Avantage Unique</h3>
+                        <ul class="bullet-list">
+                            <li><strong>"Authenticity Engine" :</strong> Première IA mondiale artisanat.</li>
+                            <li><strong>Gouvernement Partenaire :</strong> Stratégie 2030 officielle.</li>
+                            <li><strong>420K Artisans :</strong> Réseau culturel complet.</li>
+                            <li><strong>Valorisation 350% :</strong> Multiplicateur prouvé.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ai-highlight">
+                    <h3 style="text-align: center;">🏆 Position Monopolistique : Impossible à Copier</h3>
+                    <p style="text-align: center; font-size: 1.1em;">
+                        Seule plateforme IA gouvernementale + 420K artisans partenaires + "Authenticity Engine" propriétaire + stratégie 2030 officielle.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Call to Action -->
+        <div class="slide">
+            <div class="content-fit">
+                <h1>Rejoignez la Révolution de l'Artisanat Intelligent</h1>
+                <p class="tagline">Morocco Made Real : Où la Tradition Rencontre l'Intelligence</p>
+
+                <div class="impact-grid scrollable-content">
+                    <div class="impact-card cultural">
+                        <h3 style="color: var(--moroccan-green);">🎨 Impact Patrimonial</h3>
+                        <ul class="bullet-list">
+                            <li><strong>420K Artisans Valorisés :</strong> Savoir-faire traditionnel documenté IA.</li>
+                            <li><strong>Patrimoine Préservé :</strong> Techniques ancestrales sauvegardées numériquement.</li>
+                            <li><strong>Transmission Assurée :</strong> Connaissance disponible futures générations.</li>
+                            <li><strong>Fierté Culturelle :</strong> Excellence marocaine reconnue mondialement.</li>
+                        </ul>
+                    </div>
+
+                    <div class="impact-card economic">
+                        <h3 style="color: var(--moroccan-gold);">💰 Impact Économique Transformateur</h3>
+                        <ul class="bullet-list">
+                            <li><strong>€2,4Md Secteur Modernisé :</strong> Transformation intelligente complète.</li>
+                            <li><strong>Valorisation 350% :</strong> Revenus artisans multipliés par IA.</li>
+                            <li><strong>Export Premium :</strong> "Morocco Made Real" = standard mondial.</li>
+                            <li><strong>Emplois Qualifiés :</strong> Nouvelles opportunités tech-artisanat.</li>
+                        </ul>
+                    </div>
+
+                    <div class="impact-card technology">
+                        <h3 style="color: var(--deep-purple);">🤖 Impact Innovation Mondiale</h3>
+                        <ul class="bullet-list">
+                            <li><strong>Premier "Authenticity Engine" :</strong> IA révolutionnaire patrimoine.</li>
+                            <li><strong>Standard International :</strong> Modèle réplicable autres pays.</li>
+                            <li><strong>Leadership Technologique :</strong> Maroc pionnier IA-Culture.</li>
+                            <li><strong>Innovation Sociale :</strong> Intelligence au service humanité.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cta-section">
+                    <h2>🚀 Partenaires Recherchés pour l'Histoire</h2>
+                    <p style="font-size: 1.2em; margin: 20px 0; position: relative; z-index: 1;">
+                        <strong>Hook Investisseurs :</strong> "Morocco Made Real: Seule plateforme IA gouvernementale transformant un secteur €2,4Md traditionnel en commerce intelligent avec multiplicateurs 350%."
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; position: relative; z-index: 1;">
+                        <div style="background: rgba(255,255,255,0.2); padding: 16px; border-radius: 12px; text-align: center;">
+                            <h4>🎨 420K Artisans</h4>
+                            <p style="font-size: 0.9em; margin: 8px 0;">Revenus équitables + Patrimoine préservé</p>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.2); padding: 16px; border-radius: 12px; text-align: center;">
+                            <h4>💼 Investisseurs</h4>
+                            <p style="font-size: 0.9em; margin: 8px 0;">ROI sur transformation €2,4Md</p>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.2); padding: 16px; border-radius: 12px; text-align: center;">
+                            <h4>🏛️ Gouvernement</h4>
+                            <p style="font-size: 0.9em; margin: 8px 0;">Stratégie 2030 implémentée</p>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.2); padding: 16px; border-radius: 12px; text-align: center;">
+                            <h4>🌍 Collectionneurs</h4>
+                            <p style="font-size: 0.9em; margin: 8px 0;">Authenticité IA-garantie</p>
+                        </div>
+                    </div>
+                    <p style="font-size: 1.4em; font-weight: 700; position: relative; z-index: 1;">
+                        Contact : <strong>morocco.made.real@intelligence.ma</strong>
+                    </p>
+                    <p style="font-size: 1.1em; margin-top: 12px; position: relative; z-index: 1;">
+                        🇲🇦 <strong>"Ensemble, écrivons l'avenir intelligent de l'artisanat marocain"</strong> 🇲🇦
+                    </p>
+                </div>
+
+                <div style="text-align: center; margin-top: 24px; padding: 20px; background: rgba(255,255,255,0.8); border-radius: 16px;">
+                    <p style="font-size: 1.2em; color: var(--charcoal); font-weight: 600;">
+                        "Morocco Made Real: Où la Tradition Rencontre l'Intelligence"
+                    </p>
+                    <p style="font-size: 0.9em; color: var(--earth-brown); margin-top: 8px;">
+                        Plateforme IA Officielle • 420K Artisans • Valorisation 350% • Stratégie 2030
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="navigation">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">← Précédent</button>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Suivant →</button>
+    </div>
+
+    <script>
+        // Presentation state
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        // Update UI elements
+        function updateUI() {
+            // Update slide counter
+            document.getElementById('current-slide').textContent = currentSlide + 1;
+            document.getElementById('total-slides').textContent = totalSlides;
+            
+            // Update progress bar
+            const progress = ((currentSlide + 1) / totalSlides) * 100;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+            
+            // Show/hide slides
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlide);
+            });
+        }
+        
+        // Navigation functions
+        function changeSlide(direction) {
+            const newSlide = currentSlide + direction;
+            if (newSlide >= 0 && newSlide < totalSlides) {
+                currentSlide = newSlide;
+                updateUI();
+            }
+        }
+        
+        function goToSlide(slideNumber) {
+            if (slideNumber >= 0 && slideNumber < totalSlides) {
+                currentSlide = slideNumber;
+                updateUI();
+            }
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            // Close help panel on Escape
+            if (e.key === 'Escape') {
+                document.getElementById('shortcutsHelp').classList.remove('active');
+                return;
+            }
+            
+            switch(e.key) {
+                case 'ArrowRight':
+                case 'ArrowDown':
+                case ' ':
+                    e.preventDefault();
+                    changeSlide(1);
+                    break;
+                case 'ArrowLeft':
+                case 'ArrowUp':
+                    e.preventDefault();
+                    changeSlide(-1);
+                    break;
+                case 'Home':
+                    e.preventDefault();
+                    goToSlide(0);
+                    break;
+                case 'End':
+                    e.preventDefault();
+                    goToSlide(totalSlides - 1);
+                    break;
+                case '?':
+                    e.preventDefault();
+                    toggleHelp();
+                    break;
+            }
+        });
+        
+        // Touch/swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        document.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const swipeDistance = touchEndX - touchStartX;
+            
+            if (Math.abs(swipeDistance) > swipeThreshold) {
+                if (swipeDistance > 0) {
+                    changeSlide(-1); // Swipe right = previous slide
+                } else {
+                    changeSlide(1);  // Swipe left = next slide
+                }
+            }
+        }
+        
+        // Help panel toggle
+        function toggleHelp() {
+            const helpPanel = document.getElementById('shortcutsHelp');
+            helpPanel.classList.toggle('active');
+        }
+        
+        // Initialize presentation
+        document.addEventListener('DOMContentLoaded', function() {
+            updateUI();
+            
+            // Add animation classes to elements for better UX
+            const animatedElements = document.querySelectorAll('.strategy-card, .feature-card, .impact-card, .timeline-item');
+            animatedElements.forEach((element, index) => {
+                element.style.animationDelay = `${index * 0.1}s`;
+                element.classList.add('animate-in');
+            });
+        });
+        
+        // Prevent context menu on touch devices for better UX
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.closest('.presentation-container')) {
+                e.preventDefault();
+            }
+        });
+        
+        // Add click navigation to slide areas (optional)
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.slide')) {
+                const slideRect = e.target.closest('.slide').getBoundingClientRect();
+                const clickX = e.clientX - slideRect.left;
+                const slideWidth = slideRect.width;
+                
+                // Click on left third = previous slide, right third = next slide
+                if (clickX < slideWidth * 0.33) {
+                    changeSlide(-1);
+                } else if (clickX > slideWidth * 0.67) {
+                    changeSlide(1);
+                }
+            }
+        });
+        
+        // Add mouse wheel navigation
+        document.addEventListener('wheel', function(e) {
+            if (Math.abs(e.deltaY) > 50) { // Threshold to prevent accidental navigation
+                if (e.deltaY > 0) {
+                    changeSlide(1);  // Scroll down = next slide
+                } else {
+                    changeSlide(-1); // Scroll up = previous slide
+                }
+                e.preventDefault();
+            }
+        }, { passive: false });
+    </script>
+</body>
+</html>

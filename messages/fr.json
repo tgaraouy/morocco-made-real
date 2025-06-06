@@ -1,0 +1,1673 @@
+{
+  "homepage": {
+    "title": "Le Maroc Authentique : Vérifié Authentique",
+    "subtitle": "La Technologie Rencontre la Tradition - Connecter la culture marocaine authentique au monde grâce à des expériences vérifiées",
+    "choose_persona": "Choisissez votre rôle pour découvrir comment nous pouvons vous aider :",
+    "learn_more": "En Savoir Plus",
+    "what_you_get": "Ce que vous obtenez",
+    "stats": {
+      "artisans": "Artisans Certifiés",
+      "tourists": "Touristes Annuels",
+      "authenticity": "Score d'Authenticité"
+    },
+    "personas": {
+      "tourist": {
+        "title": "Touriste et Voyageur",
+        "subtitle": "Découvrez le Maroc authentique",
+        "description": "Vivez le riche patrimoine culturel du Maroc grâce à des itinéraires alimentés par l'IA, des ateliers d'artisans vérifiés et une immersion culturelle authentique.",
+        "value": "Obtenez des recommandations personnalisées qui correspondent à vos intérêts tout en soutenant les communautés locales et en préservant l'artisanat traditionnel.",
+        "cta": "Commencer Votre Voyage",
+        "feature1": "Itinéraires personnalisés alimentés par l'IA",
+        "feature2": "Réservations d'ateliers d'artisans vérifiés",
+        "feature3": "Garantie d'authenticité culturelle"
+      },
+      "artisan": {
+        "title": "Artisan et Artiste",
+        "subtitle": "Documentez et monétisez votre artisanat",
+        "description": "Transformez vos compétences traditionnelles en opportunités mondiales grâce à notre processus de documentation complet et notre plateforme de marché.",
+        "value": "Augmentez vos revenus de 3x tout en préservant votre patrimoine culturel et en atteignant des clients internationaux.",
+        "cta": "Commencer la Documentation",
+        "feature1": "Documentation professionnelle du parcours",
+        "feature2": "Accès au marché mondial",
+        "feature3": "Certification d'authenticité assistée par IA"
+      },
+      "expert": {
+        "title": "Expert Culturel et Validateur",
+        "subtitle": "Préservez l'authenticité culturelle",
+        "description": "Utilisez votre expertise pour valider l'artisanat traditionnel et contribuer aux efforts de préservation culturelle du Maroc grâce à notre système de révision assisté par IA.",
+        "value": "Ayez un impact significatif sur la préservation culturelle tout en gagnant grâce à votre expertise et en construisant votre réputation professionnelle.",
+        "cta": "Rejoindre comme Expert",
+        "feature1": "Outils de validation assistés par IA",
+        "feature2": "Réseau de communauté d'experts",
+        "feature3": "Mesure de l'impact culturel"
+      },
+      "government": {
+        "title": "Gouvernement et Office de Tourisme",
+        "subtitle": "Suivez les progrès de la Vision 2030",
+        "description": "Surveillez les métriques touristiques, la croissance du réseau d'artisans et les initiatives de préservation culturelle avec des outils d'analyse et de rapport complets.",
+        "value": "Insights en temps réel sur les performances touristiques et les progrès de préservation culturelle pour soutenir les objectifs de la Vision 2030.",
+        "cta": "Voir le Tableau de Bord",
+        "feature1": "Analyses touristiques en temps réel",
+        "feature2": "Suivi des progrès de la Vision 2030",
+        "feature3": "Mesure de l'impact économique"
+      },
+      "content_team": {
+        "title": "Équipe de Contenu et Médias",
+        "subtitle": "Créez du contenu culturel captivant",
+        "description": "Gérez les flux de travail de production multimédia pour la documentation du parcours artisan avec des outils avancés de gestion de projet et d'organisation d'actifs.",
+        "value": "Rationalisez les processus de création de contenu tout en capturant des histoires culturelles authentiques qui résonnent avec les audiences mondiales.",
+        "cta": "Gérer les Projets",
+        "feature1": "Gestion de projet avancée",
+        "feature2": "Organisation d'actifs multimédias",
+        "feature3": "Outils de flux de travail collaboratifs"
+      },
+      "collector": {
+        "title": "Collectionneur et Investisseur",
+        "subtitle": "Investissez dans la culture authentique",
+        "description": "Découvrez et investissez dans l'artisanat marocain authentique vérifié avec certification blockchain et documentation de provenance détaillée.",
+        "value": "Construisez une collection précieuse de pièces authentiques tout en soutenant les communautés d'artisans et en préservant le patrimoine culturel.",
+        "cta": "Commencer à Collectionner",
+        "feature1": "Authenticité vérifiée par blockchain",
+        "feature2": "Outils de suivi d'investissement",
+        "feature3": "Marché exclusif pour collectionneurs"
+      }
+    },
+    "impact": {
+      "title": "Notre Impact sur le Patrimoine Culturel du Maroc",
+      "certified_artisans": "Artisans Certifiés",
+      "annual_tourists": "Touristes Annuels",
+      "tourism_revenue": "Revenus Touristiques",
+      "authenticity_score": "Score d'Authenticité"
+    },
+    "vision": {
+      "title": "Soutenir la Vision 2030 du Maroc",
+      "description": "Nous sommes fiers de contribuer aux objectifs touristiques ambitieux du Maroc grâce à la préservation culturelle technologique et aux expériences touristiques authentiques.",
+      "progress": "Progrès vers 2030",
+      "target_tourists": "Touristes Cibles",
+      "target_artisans": "Artisans Cibles",
+      "view_progress": "Voir les Progrès Complets"
+    },
+    "quick_access": {
+      "title": "Accès Rapide",
+      "explore_title": "Explorer le Maroc",
+      "explore_desc": "Découvrez des expériences authentiques et planifiez votre voyage parfait",
+      "start_exploring": "Commencer l'Exploration",
+      "document_title": "Documentez Votre Artisanat",
+      "document_desc": "Partagez votre parcours d'artisan avec le monde",
+      "start_documenting": "Commencer la Documentation",
+      "collect_title": "Collectionnez des Pièces Authentiques",
+      "collect_desc": "Investissez dans l'artisanat traditionnel marocain vérifié",
+      "start_collecting": "Commencer à Collectionner"
+    },
+    "final_cta": {
+      "title": "Prêt à Découvrir le Maroc Authentique ?",
+      "description": "Rejoignez notre communauté de voyageurs, artisans, experts et collectionneurs dans la préservation et la célébration du riche patrimoine culturel du Maroc.",
+      "view_journey": "Voir le Parcours Artisan",
+      "get_started": "Commencer Aujourd'hui"
+    }
+  },
+  "navigation": {
+    "home": "Accueil",
+    "explore": "Découvrir le Maroc",
+    "plan": "Planifier Votre Voyage",
+    "your_journey": "Votre Voyage",
+    "supporting_personas": "Derrière Votre Expérience",
+    "artisan": "Rencontrez Nos Artisans",
+    "expert": "Experts Culturels",
+    "government": "Vision 2030",
+    "content_team": "Dans les Coulisses",
+    "collector": "Pièces Authentiques"
+  },
+  "footer": {
+    "title": "Le Maroc Authentique : Vérifié Authentique",
+    "description": "La Technologie Rencontre la Tradition - Plateforme IA pour le tourisme culturel vérifié et l'authentification de l'artisanat marocain traditionnel.",
+    "vision": "Soutenant la Vision Touristique 2030 du Maroc avec Authenticité Vérifiée",
+    "travellers": "Voyageurs",
+    "artisans_guides": "Artisans et Guides",
+    "support": "Support",
+    "ai_itineraries": "Itinéraires IA",
+    "authenticity_scan": "Scan d'Authenticité",
+    "local_guides": "Guides Locaux",
+    "mobile_app": "Application Mobile",
+    "artisan_space": "Espace Artisan",
+    "guide_network": "Réseau de Guides",
+    "ai_training": "Formation IA",
+    "certification": "Certification",
+    "help_center": "Centre d'Aide",
+    "travel_contact": "Contact Voyage",
+    "tourism_partnerships": "Partenariats Touristiques",
+    "press_media": "Presse et Médias",
+    "all_rights_reserved": "Tous droits réservés",
+    "ai_platform": "Plateforme IA Tourisme et Culture"
+  },
+  "ai_itinerary": {
+    "title": "Générateur d'Itinéraire IA",
+    "description": "Laissez notre IA créer une expérience marocaine personnalisée et authentique rien que pour vous.",
+    "interests_label": "Qu'est-ce qui vous intéresse le plus?",
+    "budget_label": "Niveau de Budget",
+    "duration_label": "Durée du Voyage (jours)",
+    "group_size_label": "Taille du Groupe",
+    "cultural_level_label": "Niveau d'Expérience Culturelle",
+    "regions_label": "Régions Préférées",
+    "accessibility_label": "Aménagements d'accessibilité nécessaires",
+    "generating": "Génération de votre itinéraire...",
+    "generate_button": "Générer Mon Itinéraire",
+    "your_itinerary": "Votre Itinéraire Personnalisé",
+    "modify": "Modifier les Préférences",
+    "save_itinerary": "Sauvegarder l'Itinéraire",
+    "book_experiences": "Réserver les Expériences"
+  },
+  "blockchain": {
+    "title": "Système de Vérification Blockchain",
+    "description": "Vérifiez l'authenticité et les références des artisans en utilisant la technologie blockchain.",
+    "verify_tab": "Vérifier Certificat",
+    "artisan_tab": "Statut Artisan",
+    "certificate_tab": "Créer Certificat",
+    "verify_title": "Vérifier le Certificat d'Authenticité",
+    "certificate_id_label": "ID du Certificat",
+    "verifying": "Vérification...",
+    "verify_button": "Vérifier le Certificat",
+    "artisan_status_title": "Vérifier le Statut de Vérification de l'Artisan",
+    "artisan_id_label": "ID de l'Artisan",
+    "checking": "Vérification...",
+    "check_status_button": "Vérifier le Statut",
+    "create_certificate_title": "Créer un Certificat d'Authenticité"
+  },
+  "ai_blockchain": {
+    "hero_title": "Technologie IA et Blockchain",
+    "hero_description": "Découvrez l'avenir du tourisme authentique avec la personnalisation alimentée par l'IA et l'authenticité vérifiée par blockchain.",
+    "ai_title": "Expériences Alimentées par l'IA",
+    "ai_description": "Notre IA avancée crée des itinéraires personnalisés basés sur vos intérêts, préférences culturelles et style de voyage.",
+    "ai_feature_1": "Génération d'itinéraires personnalisés",
+    "ai_feature_2": "Notation d'authenticité culturelle",
+    "ai_feature_3": "Connexions avec artisans locaux",
+    "ai_feature_4": "Recommandations en temps réel",
+    "blockchain_title": "Vérification Blockchain",
+    "blockchain_description": "Système de vérification immuable garantissant l'authenticité des produits artisanaux et la transparence des expériences culturelles.",
+    "blockchain_feature_1": "Vérification d'identité des artisans",
+    "blockchain_feature_2": "Certificats d'authenticité des produits",
+    "blockchain_feature_3": "Système de réputation transparent",
+    "blockchain_feature_4": "Enregistrements de transactions immuables",
+    "ai_section_title": "Essayez Notre Générateur d'Itinéraire IA",
+    "ai_section_description": "Découvrez comment notre IA crée des expériences de voyage personnalisées et culturellement authentiques adaptées à vos préférences.",
+    "blockchain_section_title": "Système de Vérification Blockchain",
+    "blockchain_section_description": "Vérifiez l'authenticité des produits artisanaux et consultez les références des artisans en utilisant notre système basé sur la blockchain.",
+    "architecture_title": "Architecture Technique",
+    "ai_architecture_title": "Architecture du Système IA",
+    "blockchain_architecture_title": "Infrastructure Blockchain",
+    "benefits_title": "Pourquoi IA + Blockchain?",
+    "benefit_1_title": "Authenticité Personnalisée",
+    "benefit_1_description": "L'IA garantit que chaque recommandation correspond à vos intérêts tandis que la blockchain garantit l'authenticité.",
+    "benefit_2_title": "Confiance et Transparence",
+    "benefit_2_description": "Les enregistrements immuables offrent une transparence complète dans la vérification des artisans et l'authenticité des produits.",
+    "benefit_3_title": "Préservation Culturelle",
+    "benefit_3_description": "La technologie soutient les artisans traditionnels tout en préservant l'héritage culturel marocain authentique.",
+    "cta_title": "Prêt à Découvrir l'Avenir du Tourisme?",
+    "cta_description": "Rejoignez des milliers de voyageurs qui découvrent le Maroc authentique grâce aux expériences alimentées par l'IA et à l'authenticité vérifiée par blockchain.",
+    "cta_button_1": "Commencer à Planifier Votre Voyage",
+    "cta_button_2": "En Savoir Plus sur la Technologie"
+  },
+  "artisan_journey": {
+    "title": "Le Maroc Authentique - Écosystème du Parcours Artisan",
+    "subtitle": "Transformer l'artisanat traditionnel grâce à la documentation alimentée par l'IA et la vérification blockchain",
+    "piece_title": "Vase en Poterie Bleue Traditionnelle de Fès",
+    "piece_description": "Un magnifique vase en poterie artisanale utilisant les techniques traditionnelles de glaçure bleue de Fès transmises de génération en génération.",
+    "gold_certification": "Certification Or",
+    "authenticity": "Authenticité",
+    "artisan": "Artisan",
+    "technique": "Technique",
+    "origin": "Origine",
+    "cultural_significance": "Signification Culturelle",
+    "journey_progress": "Progression du Parcours",
+    "documentation": "Documentation",
+    "ai_validation": "Validation IA",
+    "expert_review": "Évaluation d'Expert",
+    "tabs": {
+      "overview": "Aperçu",
+      "journey": "Parcours",
+      "validation": "Validation",
+      "marketplace": "Marché",
+      "museum": "Musée"
+    },
+    "content_team": "Équipe de Contenu",
+    "timeline": "Chronologie",
+    "achievements": "Réalisations",
+    "ai_validation_title": "Validation IA",
+    "expert_approval": "Approbation d'Expert",
+    "blockchain_ready": "Prêt pour Blockchain",
+    "journey_documentation": "Processus de Documentation du Parcours",
+    "content_creation_stages": "Étapes de Création de Contenu",
+    "multimedia_assets": "Ressources Multimédias",
+    "ai_validation_results": "Résultats de Validation IA",
+    "expert_reviews": "Évaluations d'Experts",
+    "virtual_store_features": "Fonctionnalités de la Boutique Virtuelle",
+    "premium_listing_features": "Fonctionnalités d'Annonce Premium",
+    "pricing_value": "Prix et Valeur",
+    "base_price": "Prix de Base",
+    "premium_documentation": "+67% Prime pour Documentation",
+    "global_shipping": "Livraison Mondiale Disponible",
+    "certificate_included": "Certificat Inclus",
+    "digital_museum_integration": "Intégration du Musée Numérique",
+    "museum_features": "Fonctionnalités du Musée",
+    "cultural_impact": "Impact Culturel",
+    "global_reach": "Portée Mondiale",
+    "educational_value": "Valeur Éducative",
+    "cultural_preservation": "Préservation Culturelle",
+    "ready_for_production": "Prêt pour la Production",
+    "production_description": "L'Écosystème du Parcours Artisan du Maroc Authentique est entièrement opérationnel et prêt à transformer l'artisanat traditionnel grâce à la technologie.",
+    "start_journey": "Commencer la Documentation du Parcours",
+    "visit_store": "Visiter la Boutique Virtuelle",
+    "explore_museum": "Explorer le Musée Numérique",
+    "stages": {
+      "pre_production": "Pré-production",
+      "clay_preparation": "Préparation de l'argile",
+      "wheel_throwing": "Tournage au tour",
+      "glazing": "Glaçage",
+      "firing": "Cuisson",
+      "post_production": "Post-production"
+    },
+    "features": {
+      "hero_video": "Vidéo héros avec les moments forts du parcours",
+      "360_viewer": "Visionneuse interactive 360°",
+      "artisan_booking": "Réservation de rencontre avec l'artisan",
+      "cultural_storytelling": "Narration du contexte culturel",
+      "blockchain_display": "Affichage du certificat blockchain",
+      "community_reviews": "Avis et évaluations de la communauté",
+      "public_exhibition": "Exposition publique dans la collection de poterie",
+      "educational_content": "Contenu éducatif pour les écoles",
+      "cultural_connections": "Connexions culturelles avec des pièces similaires",
+      "discussion_forum": "Forum de discussion communautaire",
+      "virtual_tour": "Intégration de visite virtuelle",
+      "preservation_docs": "Documentation de préservation culturelle"
+    },
+    "status": {
+      "completed": "Histoire Complète",
+      "in_progress": "Création de l'Histoire",
+      "in-progress": "Création de l'Histoire",
+      "pending": "Prêt à Commencer"
+    },
+    "completed": {
+      "title": "Histoires Patrimoniales Enrichies",
+      "export": "Exporter",
+      "filter": "Filtrer",
+      "artisan": "Artisan",
+      "craft": "Artisanat",
+      "completed_date": "Date d'Achèvement",
+      "final_score": "Score Final",
+      "feedback": "Commentaires",
+      "view_details": "Voir les Détails",
+      "export_report": "Exporter le Rapport",
+      "verdict": {
+        "approved": "Approuvé",
+        "rejected": "Rejeté",
+        "approved_with_conditions": "Approuvé avec Conditions"
+      }
+    },
+    "analytics": {
+      "title": "Votre Impact Culturel",
+      "review_performance": "Performance des Révisions",
+      "this_month": "Ce Mois-ci",
+      "accuracy_rate": "Taux de Précision",
+      "ai_agreement": "Accord IA",
+      "craft_distribution": "Distribution des Artisanats",
+      "expertise_breakdown": "Répartition de l'Expertise"
+    },
+    "knowledge": {
+      "title": "Bibliothèque de Connaissances Patrimoniales",
+      "add_article": "Partager un Aperçu Culturel",
+      "edit_article": "Mettre à Jour les Connaissances",
+      "view_article": "Lire l'Histoire Patrimoniale",
+      "read_more": "Lire Plus"
+    },
+    "profile": {
+      "expert_profile": "Profil d'Expert Culturel",
+      "name": "Nom",
+      "specialization": "Spécialisation",
+      "institution": "Institution",
+      "experience_years": "Années d'Expérience",
+      "bio": "Biographie",
+      "certifications": "Certifications",
+      "save_changes": "Sauvegarder les Modifications",
+      "view_public_profile": "Voir le Profil Public"
+    },
+    "cta": {
+      "title": "Prêt à Faire un Impact ?",
+      "description": "Votre expertise aide à préserver le patrimoine culturel marocain pour les générations futures",
+      "start_reviewing": "Commencer les Révisions",
+      "contribute_knowledge": "Contribuer aux Connaissances"
+    }
+  },
+  "tourist": {
+    "title": "Votre Voyage au Maroc",
+    "subtitle": "Découvrez des expériences authentiques, connectez-vous avec des artisans locaux et créez des souvenirs inoubliables",
+    "journey": {
+      "title": "Votre Voyage en 3 Étapes Simples",
+      "step1": {
+        "title": "1. Découvrir",
+        "description": "Explorez des destinations et expériences authentiques sélectionnées pour vous"
+      },
+      "step2": {
+        "title": "2. Planifier",
+        "description": "Créez votre itinéraire parfait avec des recommandations personnalisées"
+      },
+      "step3": {
+        "title": "3. Vivre",
+        "description": "Connectez-vous avec des artisans locaux et immergez-vous dans la culture marocaine"
+      }
+    },
+    "tabs": {
+      "discover": "Découvrir",
+      "plan": "Planifier",
+      "experiences": "Expériences",
+      "artisans": "Artisans",
+      "wishlist": "Liste de Souhaits"
+    },
+    "stats": {
+      "destinations": "Destinations",
+      "experiences": "Expériences",
+      "verified_artisans": "Artisans Vérifiés",
+      "happy_travelers": "Voyageurs Heureux"
+    },
+    "discover": {
+      "recommendations": "Recommandé pour Vous",
+      "experiences": "expériences",
+      "explore": "Explorer"
+    },
+    "plan": {
+      "itinerary_generator": "Planifiez Votre Voyage Parfait",
+      "duration": "Durée du Voyage",
+      "interests": "Vos Intérêts",
+      "budget": "Gamme de Budget",
+      "generate_itinerary": "Créer Mon Itinéraire",
+      "sample_itinerary": "Exemple d'Itinéraire 3 Jours"
+    },
+    "experiences": {
+      "authentic_experiences": "Expériences Authentiques",
+      "book_now": "Réserver Maintenant"
+    },
+    "artisans": {
+      "verified_artisans": "Rencontrez les Artisans Locaux",
+      "location": "Localisation",
+      "rating": "Évaluation",
+      "pieces": "Pièces",
+      "view_profile": "Voir le Profil",
+      "book_session": "Réserver une Session"
+    },
+    "wishlist": {
+      "saved_experiences": "Expériences Sauvegardées",
+      "empty_title": "Votre liste de souhaits est vide",
+      "empty_description": "Commencez à explorer les expériences et sauvegardez vos favorites ici",
+      "browse_experiences": "Parcourir les Expériences"
+    },
+    "cta": {
+      "title": "Prêt à Commencer Votre Aventure Marocaine ?",
+      "description": "Rejoignez des milliers de voyageurs découvrant le Maroc authentique grâce à des connexions significatives avec les communautés locales",
+      "start_planning": "Commencer la Planification",
+      "explore_destinations": "Explorer les Destinations"
+    }
+  },
+  "expert": {
+    "title": "Mentor du Patrimoine Culturel",
+    "subtitle": "Préservez les traditions et guidez la narration artisanale avec une expertise collaborative",
+    "expert_level": "Niveau d'Expertise Patrimoniale",
+    "specialization": "Spécialisation Culturelle",
+    "tabs": {
+      "pending": "File d'Attente de Mentorat",
+      "pending_reviews": "Révisions en Attente",
+      "completed": "Histoires Enrichies",
+      "analytics": "Analyses d'Impact",
+      "knowledge": "Bibliothèque Patrimoniale",
+      "knowledge_base": "Base de Connaissances",
+      "profile": "Profil de Mentor"
+    },
+    "stats": {
+      "pending_reviews": "Histoires Attendant des Conseils",
+      "completed_reviews": "Artisans Mentorés",
+      "average_rating": "Appréciation Communautaire",
+      "approval_rate": "Taux d'Amélioration des Histoires"
+    },
+    "pending": {
+      "title": "Histoires d'Artisans Cherchant des Conseils",
+      "filter": "Filtrer",
+      "sort": "Trier",
+      "review": "Réviser",
+      "comment": "Commenter",
+      "approve": "Approuver",
+      "reject": "Rejeter",
+      "artisan": "Artisan",
+      "craft": "Artisanat",
+      "submitted": "Soumis",
+      "ai_score": "Score IA",
+      "ai_analysis": "Analyse IA",
+      "documentation": "Documentation",
+      "media": "Médias",
+      "priority": {
+        "high": "Élevée",
+        "medium": "Moyenne",
+        "low": "Faible"
+      },
+      "documentation_status": {
+        "complete": "Complète",
+        "partial": "Partielle",
+        "incomplete": "Incomplète"
+      },
+      "stage": {
+        "expert_review": "Révision d'Expert",
+        "technical_analysis": "Analyse Technique",
+        "initial_review": "Révision Initiale"
+      }
+    },
+    "completed": {
+      "title": "Histoires Patrimoniales Enrichies",
+      "view_feedback": "Voir Vos Conseils",
+      "artisan_response": "Réponse de l'Artisan"
+    },
+    "analytics": {
+      "title": "Votre Impact Culturel",
+      "review_performance": "Performance des Révisions",
+      "this_month": "Ce Mois-ci",
+      "accuracy_rate": "Taux de Précision",
+      "ai_agreement": "Accord IA",
+      "craft_distribution": "Distribution des Artisanats",
+      "expertise_breakdown": "Répartition de l'Expertise"
+    },
+    "knowledge": {
+      "title": "Bibliothèque de Connaissances Patrimoniales",
+      "add_article": "Partager un Aperçu Culturel",
+      "edit_article": "Mettre à Jour les Connaissances",
+      "view_article": "Lire l'Histoire Patrimoniale",
+      "read_more": "Lire Plus"
+    },
+    "profile": {
+      "expert_profile": "Profil d'Expert Culturel",
+      "name": "Nom",
+      "specialization": "Spécialisation",
+      "institution": "Institution",
+      "experience_years": "Années d'Expérience",
+      "bio": "Biographie",
+      "certifications": "Certifications",
+      "save_changes": "Sauvegarder les Modifications",
+      "view_public_profile": "Voir le Profil Public"
+    },
+    "cta": {
+      "title": "Prêt à Faire un Impact ?",
+      "description": "Votre expertise aide à préserver le patrimoine culturel marocain pour les générations futures",
+      "start_reviewing": "Commencer les Révisions",
+      "contribute_knowledge": "Contribuer aux Connaissances"
+    }
+  },
+  "government": {
+    "title": "Tableau de Bord Gouvernement",
+    "subtitle": "Surveillez les progrès de la Vision 2030 et les métriques touristiques",
+    "ministry": "Ministère du Tourisme",
+    "initiative": "Vision 2030",
+    "tabs": {
+      "overview": "Aperçu",
+      "vision_2030": "Vision 2030",
+      "tourism_metrics": "Métriques Touristiques",
+      "artisan_network": "Réseau d'Artisans",
+      "regional_data": "Données Régionales",
+      "reports": "Rapports"
+    },
+    "kpi": {
+      "annual_tourists": "Touristes Annuels",
+      "tourism_revenue": "Revenus Touristiques",
+      "certified_artisans": "Artisans Certifiés",
+      "tourism_jobs": "Emplois Touristiques"
+    },
+    "overview": {
+      "real_time_dashboard": "Tableau de Bord en Temps Réel",
+      "active_tourists_today": "Touristes Actifs Aujourd'hui",
+      "new_artisan_registrations": "Nouvelles Inscriptions d'Artisans",
+      "average_satisfaction": "Satisfaction Moyenne",
+      "economic_impact": "Impact Économique",
+      "direct_contribution": "Contribution Directe",
+      "indirect_contribution": "Contribution Indirecte",
+      "total_gdp_contribution": "Contribution PIB Totale",
+      "cultural_preservation": "Préservation Culturelle",
+      "documented_crafts": "Artisanats Documentés",
+      "heritage_sites_connected": "Sites Patrimoniaux Connectés",
+      "digital_archive_pieces": "Pièces d'Archive Numérique"
+    },
+    "vision2030": {
+      "progress_tracking": "Suivi des Progrès",
+      "strategic_priorities": "Priorités Stratégiques",
+      "priority_1": "Développement Touristique Durable",
+      "priority_2": "Amélioration de l'Infrastructure Numérique",
+      "priority_3": "Préservation du Patrimoine Culturel",
+      "priority_4": "Autonomisation de la Communauté Artisanale",
+      "investment_tracking": "Suivi des Investissements",
+      "total_investment": "Investissement Total",
+      "infrastructure": "Infrastructure",
+      "digital_transformation": "Transformation Numérique",
+      "cultural_preservation": "Préservation Culturelle"
+    },
+    "tourism": {
+      "visitor_demographics": "Démographie des Visiteurs",
+      "seasonal_trends": "Tendances Saisonnières",
+      "satisfaction_metrics": "Métriques de Satisfaction",
+      "experience_quality": "Qualité de l'Expérience Authentique",
+      "overall_satisfaction": "Satisfaction Globale",
+      "cultural_experiences": "Expériences Culturelles",
+      "artisan_interactions": "Interactions avec Artisans",
+      "repeat_visitors": "Visiteurs Récurrents",
+      "digital_engagement": "Engagement Plateforme Numérique",
+      "app_downloads": "Téléchargements d'Application",
+      "ai_itinerary_usage": "Utilisation Itinéraire IA",
+      "virtual_experiences": "Expériences Virtuelles",
+      "app_rating": "Note de l'Application",
+      "return_analytics": {
+        "title": "Analyses des Touristes de Retour - Prouver la Valeur de la Plateforme",
+        "return_rate": "Taux de Visite de Retour",
+        "spending_increase": "Augmentation des Dépenses",
+        "recommendation_rate": "Recommander à d'Autres",
+        "return_time": "Temps de Retour Moyen",
+        "journey_tracking": "Suivi du Parcours Touriste de Retour",
+        "platform_impact": "Impact de la Plateforme sur la Récupération Touristique",
+        "first_visit": "Première Visite : Tourisme Traditionnel",
+        "return_visit": "Visite de Retour : Utilisateurs de la Plateforme",
+        "third_visit": "Troisième Visite : Culturel Profond",
+        "lifetime_value": "Augmentation de la Valeur à Vie",
+        "pre_platform": "Taux de Retour Pré-Plateforme",
+        "post_platform": "Taux de Retour Post-Plateforme",
+        "recovery_acceleration": "Accélération de la Récupération des Revenus",
+        "contribution": "Contribution à la Récupération de 60 Milliards $"
+      }
+    },
+    "artisan_network": {
+      "network_overview": "Aperçu du Réseau",
+      "certification_levels": "Niveaux de Certification",
+      "regional_distribution": "Distribution Régionale",
+      "performance_metrics": "Métriques de Performance"
+    },
+    "artisans": {
+      "certification_breakdown": "Répartition des Certifications",
+      "economic_impact": "Impact Économique",
+      "average_monthly_income": "Revenu Mensuel Moyen",
+      "total_export_value": "Valeur Totale des Exportations",
+      "monthly_growth": "Croissance Mensuelle",
+      "international_sales": "Ventes Internationales",
+      "craft_distribution": "Distribution des Artisanats"
+    },
+    "regional": {
+      "performance_overview": "Aperçu des Performances Régionales",
+      "region": "Région",
+      "tourists": "Touristes",
+      "revenue": "Revenus",
+      "artisans": "Artisans",
+      "growth": "Croissance",
+      "satisfaction": "Satisfaction"
+    },
+    "regions": {
+      "regional_performance": "Performance Régionale",
+      "tourists": "Touristes",
+      "revenue": "Revenus",
+      "artisans": "Artisans",
+      "satisfaction": "Satisfaction"
+    },
+    "reports": {
+      "title": "Rapports et Analyses",
+      "generate_report": "Générer un Rapport",
+      "generate_reports": "Générer des Rapports",
+      "export_data": "Exporter les Données",
+      "schedule_reports": "Programmer les Rapports",
+      "monthly_tourism_report": "Rapport Touristique Mensuel",
+      "monthly_description": "Analyse complète des performances touristiques mensuelles",
+      "vision_2030_progress": "Progrès Vision 2030",
+      "vision_description": "Rapport détaillé sur les progrès de la Vision 2030",
+      "artisan_impact_study": "Étude d'Impact des Artisans",
+      "artisan_description": "Analyse de l'impact économique et culturel des artisans",
+      "download": "Télécharger"
+    },
+    "cta": {
+      "title": "Conduire la Vision Touristique 2030 du Maroc",
+      "description": "Surveillez les progrès, suivez les performances et prenez des décisions basées sur les données pour atteindre les objectifs touristiques ambitieux du Maroc",
+      "view_vision_2030": "Voir Vision 2030",
+      "export_data": "Exporter les Données"
+    }
+  },
+  "artisan": {
+    "title": "Vitrine d'Artisan",
+    "subtitle": "Amplifiez votre savoir-faire et atteignez les marchés mondiaux grâce à la narration enrichie par la technologie",
+    "certification_level": "Niveau de Maîtrise",
+    "rating": "Reconnaissance Communautaire",
+    "dashboard": {
+      "title": "🎨 Tableau de Bord Artisan",
+      "loading": "Chargement du tableau de bord...",
+      "admin_controls": {
+        "title": "Contrôles Administrateur",
+        "content_creator_tools": "Outils Créateur de Contenu",
+        "preservation_portal": "Portail de Préservation",
+        "admin_dashboard": "Tableau de Bord Admin"
+      },
+      "authentication": {
+        "title": "Accès au Tableau de Bord Personnel",
+        "description": "Entrez votre code d'authentification personnel pour accéder aux métriques détaillées.",
+        "placeholder": "Entrez le code d'authentification",
+        "demo_code": "Code de démonstration : 123456",
+        "authenticate": "S'authentifier",
+        "cancel": "Annuler",
+        "error": "Code d'authentification invalide. Veuillez réessayer.",
+        "success": "Tableau de bord personnel authentifié. Ces données sont privées et visibles uniquement par vous."
+      },
+      "tabs": {
+        "general": "Métriques Générales",
+        "rankings": "Classements",
+        "personal": "Tableau de Bord Personnel"
+      },
+      "metrics": {
+        "total_pieces": "Total des Pièces",
+        "verified": "Vérifiées",
+        "preservation": "Préservation",
+        "tourists": "Touristes",
+        "monthly_mad": "MAD Mensuel",
+        "impact_score": "Score d'Impact",
+        "booking_rate": "Taux de Réservation",
+        "repeat_customers": "Clients Fidèles",
+        "avg_response_time": "Temps de Réponse Moyen",
+        "regional_ranking": "Classement Régional"
+      },
+      "profile": {
+        "title": "Profil d'Artisan",
+        "craft": "Artisanat",
+        "region": "Région",
+        "master_level": "Niveau de Maîtrise",
+        "achievements": "Réalisations",
+        "rating": "Évaluation",
+        "reviews": "avis",
+        "performance_indicators": "Indicateurs de Performance"
+      },
+      "rankings": {
+        "title": "Classements d'Artisans",
+        "regional_ranking": "Classement Régional",
+        "booking": "Réservation",
+        "rating": "Évaluation",
+        "impact": "Impact"
+      },
+      "personal": {
+        "financial_performance": "Performance Financière",
+        "experience_bookings": "Réservations d'Expérience",
+        "direct_sales": "Ventes Directes",
+        "teaching_sessions": "Sessions d'Enseignement",
+        "preservation_work": "Travail de Préservation",
+        "growth_rate": "Taux de Croissance",
+        "projected_next_month": "Projection Mois Prochain",
+        "capacity_analytics": "Analyse de Capacité et Touristes",
+        "current_utilization": "Utilisation Actuelle",
+        "daily_max": "Maximum Quotidien",
+        "repeat_visitors": "Visiteurs Récurrents",
+        "conversion": "Conversion"
+      },
+      "master_levels": {
+        "master": "Maître",
+        "grand-master": "Grand Maître",
+        "craftsman": "Artisan"
+      }
+    },
+    "tabs": {
+      "overview": "Aperçu",
+      "journey": "Parcours de l'Histoire",
+      "products": "Vitrine",
+      "orders": "Commandes Mondiales",
+      "profile": "Profil de Maître"
+    },
+    "stats": {
+      "monthly_revenue": "Revenus Mensuels",
+      "active_products": "Pièces Mises en Avant",
+      "followers": "Admirateurs Mondiaux",
+      "profile_views": "Vues de l'Histoire"
+    },
+    "overview": {
+      "recent_activity": "Réalisations Récentes",
+      "order_completed": "Vente Mondiale Complétée",
+      "documentation_progress": "Progrès de Documentation de l'Histoire",
+      "new_review": "Nouvelle Reconnaissance Communautaire",
+      "sales_performance": "Performance de Portée Mondiale",
+      "this_month": "Ce Mois-ci",
+      "customer_satisfaction": "Appréciation Communautaire",
+      "average_rating": "Score de Reconnaissance de Maître"
+    },
+    "journey": {
+      "documentation_process": "Votre Parcours d'Histoire d'Artisanat",
+      "planning": "Planification de l'Histoire",
+      "documentation": "Documentation du Patrimoine",
+      "ai_validation": "Amélioration Technologique",
+      "expert_review": "Approbation de Maître",
+      "marketplace": "Vitrine Mondiale",
+      "status": {
+        "completed": "Histoire Complète",
+        "in_progress": "Création de l'Histoire",
+        "in-progress": "Création de l'Histoire",
+        "pending": "Prêt à Commencer"
+      },
+      "current_task": "Chapitre Actuel de l'Histoire",
+      "current_task_description": "Complétez votre histoire de patrimoine de glaçage avec des photos détaillées et une vidéo de votre maîtrise traditionnelle.",
+      "upload_photos": "Partagez Votre Processus",
+      "record_video": "Capturez Votre Maîtrise"
+    },
+    "products": {
+      "my_products": "Ma Collection Patrimoniale",
+      "add_new_product": "Partager Nouveau Chef-d'œuvre",
+      "price": "Valeur",
+      "views": "Intérêt Mondial",
+      "orders": "Collectionneurs",
+      "rating": "Appréciation",
+      "edit": "Améliorer l'Histoire",
+      "view": "Aperçu",
+      "status": {
+        "active": "Mis en Avant",
+        "live": "En Direct",
+        "documentation": "En Documentation",
+        "draft": "Brouillon",
+        "pending": "Histoire en Cours",
+        "sold": "Collectionné"
+      }
+    },
+    "orders": {
+      "recent_orders": "Collectionneurs Mondiaux",
+      "customer": "Collectionneur",
+      "product": "Chef-d'œuvre",
+      "country": "Destination",
+      "date": "Date de Collection",
+      "view_details": "Voir l'Histoire",
+      "contact_customer": "Se Connecter avec le Collectionneur",
+      "status": {
+        "pending": "Préparation",
+        "processing": "Création",
+        "shipped": "En Voyage",
+        "delivered": "Collectionné"
+      }
+    },
+    "profile": {
+      "artisan_profile": "Profil d'Artisan Maître",
+      "name": "Nom du Maître",
+      "craft_specialty": "Spécialité Patrimoniale",
+      "location": "Foyer Culturel",
+      "experience_years": "Années de Maîtrise",
+      "bio": "Votre Histoire Patrimoniale",
+      "certifications": "Reconnaissance et Prix",
+      "save_changes": "Mettre à Jour Votre Histoire",
+      "preview_public_profile": "Aperçu du Profil Mondial"
+    },
+    "cta": {
+      "title": "Prêt à Partager Votre Maîtrise avec le Monde ?",
+      "description": "Transformez vos compétences traditionnelles en reconnaissance mondiale tout en préservant votre patrimoine culturel pour les générations futures",
+      "start_documentation": "Commencer Votre Histoire",
+      "add_new_product": "Partager Nouveau Chef-d'œuvre"
+    }
+  },
+  "content_team": {
+    "title": "Tableau de Bord Équipe de Contenu",
+    "subtitle": "Gérer les projets de documentation du parcours artisan",
+    "department": "Département",
+    "focus": "Focus",
+    "tabs": {
+      "overview": "Aperçu des Histoires",
+      "active_projects": "Histoires Actives",
+      "production": "Production de Contenu",
+      "projects": "Histoires Actives",
+      "schedule": "Calendrier de Production",
+      "asset_library": "Ressources d'Histoire",
+      "assets": "Ressources d'Histoire",
+      "team": "Équipe Créative"
+    },
+    "stats": {
+      "active_projects": "Projets Actifs",
+      "total_assets": "Total des Actifs",
+      "completed_this_month": "Terminés ce Mois",
+      "team_members": "Membres de l'Équipe"
+    },
+    "projects": {
+      "title": "Histoires du Patrimoine Culturel",
+      "create_new": "Commencer Nouvelle Histoire",
+      "new_project": "Commencer Nouvelle Histoire Patrimoniale",
+      "filter_by_status": "Filtrer par Progrès",
+      "sort_by": "Trier les Histoires",
+      "artisan": "Artisan Vedette",
+      "craft": "Artisanat Patrimonial",
+      "deadline": "Échéance de l'Histoire",
+      "priority": "Priorité Culturelle",
+      "assigned_to": "Créateur d'Histoire",
+      "progress": "Progrès de l'Histoire",
+      "team": "Équipe d'Histoire",
+      "assets": "Ressources d'Histoire",
+      "view_details": "Voir Détails de l'Histoire",
+      "edit_project": "Améliorer l'Histoire",
+      "edit": "Améliorer l'Histoire",
+      "status": {
+        "planning": "Planification de l'Histoire",
+        "filming": "Capture du Patrimoine",
+        "in_progress": "Création de Contenu",
+        "post_production": "Amélioration de l'Histoire",
+        "review": "Révision Culturelle",
+        "completed": "Histoire Complète",
+        "confirmed": "Patrimoine Confirmé",
+        "pending": "En Attente de l'Artisan"
+      },
+      "priority": {
+        "high": "Priorité Culturelle",
+        "medium": "Histoire Standard",
+        "low": "Fonctionnalité d'Arrière-plan"
+      }
+    },
+    "production": {
+      "title": "Aperçu de la Production Patrimoniale",
+      "schedule_shoot": "Programmer Session Patrimoniale",
+      "quick_capture": "Capture Culturelle Rapide",
+      "photo_shoots": "Sessions de Photographie Patrimoniale",
+      "video_production": "Production Vidéo Culturelle",
+      "audio_recording": "Enregistrement Audio Traditionnel",
+      "scheduled_today": "Programmé Aujourd'hui",
+      "completed_today": "Terminé Aujourd'hui",
+      "this_week": "Histoires Patrimoniales de Cette Semaine",
+      "in_production": "Capture du Patrimoine",
+      "post_production": "Amélioration de l'Histoire",
+      "ready_for_review": "Prêt pour Révision Culturelle",
+      "interviews_pending": "Entretiens d'Artisans en Attente",
+      "narrations_needed": "Narrations Culturelles Nécessaires",
+      "audio_editing": "Amélioration Audio Patrimoniale",
+      "upcoming_shoots": "Sessions Patrimoniales à Venir",
+      "date": "Date",
+      "time": "Heure",
+      "type": "Type de Session",
+      "location": "Lieu Culturel",
+      "crew": "Équipe d'Histoire",
+      "edit_schedule": "Améliorer le Planning",
+      "start_shoot": "Commencer Session Patrimoniale",
+      "status": {
+        "filming": "Capture du Patrimoine",
+        "post_production": "Amélioration de l'Histoire",
+        "scheduled": "Session Patrimoniale Programmée",
+        "completed": "Histoire Patrimoniale Complète",
+        "confirmed": "Session Confirmée",
+        "pending": "Session Patrimoniale en Attente"
+      }
+    },
+    "assets": {
+      "title": "Bibliothèque d'Actifs",
+      "bulk_download": "Téléchargement en Lot",
+      "upload_assets": "Télécharger Actifs",
+      "photos": "Photos",
+      "videos": "Vidéos",
+      "audio_files": "Fichiers Audio",
+      "documents": "Documents",
+      "storage_overview": "Aperçu du Stockage",
+      "storage_used": "Stockage Utilisé",
+      "recent_uploads": "Téléchargements Récents",
+      "preview": "Aperçu",
+      "listen": "Écouter"
+    },
+    "schedule": {
+      "title": "Planning de Production",
+      "calendar_view": "Vue Calendrier",
+      "list_view": "Vue Liste",
+      "add_event": "Ajouter Événement",
+      "today": "Aujourd'hui",
+      "this_week": "Cette Semaine",
+      "next_week": "Semaine Prochaine",
+      "photo_shoots": "Séances Photo",
+      "video_shoots": "Tournages Vidéo",
+      "interviews": "Entretiens",
+      "editing_sessions": "Sessions de Montage",
+      "team_availability": "Disponibilité de l'Équipe",
+      "upcoming_deadlines": "Échéances à Venir"
+    },
+    "team": {
+      "title": "Gestion d'Équipe",
+      "add_member": "Ajouter Membre",
+      "role": "Rôle",
+      "availability": "Disponibilité",
+      "current_projects": "Projets Actuels",
+      "contact": "Contact",
+      "active_projects": "Projets Actifs",
+      "completed_this_month": "Terminés ce Mois",
+      "rating": "Note",
+      "view_profile": "Voir Profil",
+      "assign_project": "Assigner Projet"
+    },
+    "cta": {
+      "title": "Prêt à Créer du Contenu Incroyable ?",
+      "description": "Commencez à documenter l'artisanat marocain authentique et préservez le patrimoine culturel pour les générations futures",
+      "start_new_project": "Démarrer Nouveau Projet",
+      "view_full_schedule": "Voir Planning Complet"
+    }
+  },
+  "collector": {
+    "title": "Tableau de Bord Collectionneur",
+    "subtitle": "Découvrez et investissez dans l'artisanat marocain authentique",
+    "status": "Statut",
+    "level": "Niveau",
+    "tabs": {
+      "discover": "Découvrir",
+      "my_collection": "Ma Collection",
+      "wishlist": "Liste de Souhaits",
+      "investments": "Investissements",
+      "profile": "Profil"
+    },
+    "stats": {
+      "pieces_owned": "Pièces Possédées",
+      "portfolio_growth": "Croissance du Portefeuille",
+      "wishlist_items": "Articles de la Liste de Souhaits",
+      "gold_certified": "Certifié Or"
+    },
+    "discover": {
+      "title": "Découvrir des Pièces Authentiques",
+      "filter": "Filtrer",
+      "search": "Rechercher",
+      "authentic": "Authentique",
+      "artisan": "Artisan",
+      "location": "Localisation",
+      "category": "Catégorie",
+      "in_stock": "En Stock",
+      "sold_out": "Épuisé",
+      "add_to_cart": "Ajouter au Panier",
+      "trending_categories": "Catégories Tendance"
+    },
+    "collection": {
+      "title": "Ma Collection",
+      "export": "Exporter",
+      "share": "Partager",
+      "portfolio_overview": "Aperçu du Portefeuille",
+      "total_invested": "Total Investi",
+      "current_value": "Valeur Actuelle",
+      "total_appreciation": "Appréciation Totale",
+      "collection_stats": "Statistiques de Collection",
+      "pieces_owned": "Pièces Possédées",
+      "gold_certified": "Certifié Or",
+      "average_appreciation": "Appréciation Moyenne",
+      "best_performer": "Meilleure Performance",
+      "by": "par",
+      "purchase_date": "Date d'Achat",
+      "purchase_price": "Prix d'Achat",
+      "condition": "Condition",
+      "category": "Catégorie",
+      "view_details": "Voir Détails",
+      "view_journey": "Voir le Parcours"
+    },
+    "wishlist": {
+      "title": "Ma Liste de Souhaits",
+      "browse_more": "Parcourir Plus",
+      "by": "par",
+      "added_on": "Ajouté le",
+      "buy_now": "Acheter Maintenant",
+      "pre_order": "Pré-commander",
+      "empty_title": "Votre liste de souhaits est vide",
+      "empty_description": "Commencez à explorer l'artisanat marocain authentique et sauvegardez vos favoris ici",
+      "start_browsing": "Commencer à Parcourir"
+    },
+    "investments": {
+      "title": "Portefeuille d'Investissement",
+      "performance": "Performance",
+      "market_trends": "Tendances du Marché",
+      "recommendations": "Recommandations",
+      "total_portfolio_value": "Valeur Totale du Portefeuille",
+      "monthly_growth": "Croissance Mensuelle",
+      "best_performing_category": "Catégorie la Plus Performante",
+      "investment_timeline": "Chronologie d'Investissement",
+      "diversification": "Diversification",
+      "risk_assessment": "Évaluation des Risques",
+      "total_return": "Rendement Total",
+      "vs_market": "vs Marché",
+      "value_growth": "Croissance de Valeur",
+      "initial_investment": "Investissement Initial",
+      "current_value": "Valeur Actuelle",
+      "unrealized_gain": "Gain Non Réalisé",
+      "top_performer": "Meilleur Performeur",
+      "appreciation": "Appréciation",
+      "investment_insights": "Insights d'Investissement",
+      "insight_1_title": "Performance Forte",
+      "insight_1_desc": "Votre collection a surperformé le marché de 12,3% cette année",
+      "insight_2_title": "Opportunité de Diversification",
+      "insight_2_desc": "Considérez ajouter des textiles pour équilibrer votre portefeuille riche en poterie",
+      "insight_3_title": "Intérêt Mondial",
+      "insight_3_desc": "L'artisanat marocain gagne en reconnaissance et valeur internationales"
+    },
+    "profile": {
+      "title": "Profil Collectionneur",
+      "personal_info": "Informations Personnelles",
+      "collection_preferences": "Préférences de Collection",
+      "investment_goals": "Objectifs d'Investissement",
+      "notification_settings": "Paramètres de Notification",
+      "save_changes": "Sauvegarder les Modifications",
+      "collector_profile": "Profil de Curateur Culturel",
+      "name": "Nom",
+      "location": "Localisation",
+      "collecting_since": "Collectionne Depuis",
+      "interests": "Intérêts",
+      "bio": "Biographie",
+      "achievements": "Réalisations",
+      "view_public_profile": "Voir le Profil Public"
+    },
+    "cta": {
+      "title": "Prêt à Construire Votre Collection ?",
+      "description": "Commencez à découvrir l'artisanat marocain authentique et construisez une collection précieuse tout en soutenant les communautés d'artisans",
+      "discover_pieces": "Découvrir des Pièces",
+      "view_investments": "Voir les Investissements"
+    }
+  },
+  "onboarding": {
+    "welcome": {
+      "title": "Bienvenue au Maroc ! 🇲🇦",
+      "subtitle": "Vérifiez votre WhatsApp pour découvrir des expériences authentiques avec des artisans vérifiés",
+      "developer_panel": "Panneau Développeur",
+      "show": "Afficher",
+      "hide": "Masquer"
+    },
+    "verification": {
+      "phone_label": "Numéro de Téléphone",
+      "phone_placeholder": "Entrez votre numéro de téléphone",
+      "country_info": {
+        "morocco": "Maroc",
+        "france": "France",
+        "usa": "États-Unis",
+        "germany": "Allemagne"
+      },
+      "whatsapp_ready": "WhatsApp Prêt",
+      "qr_instructions": "Scanner avec l'appareil photo",
+      "open_whatsapp": "Ouvrir WhatsApp",
+      "quick_test": "Test Rapide :",
+      "zero_touch_title": "Vérification Zéro Contact",
+      "zero_touch_flow": "Flux Zéro Contact",
+      "demo_code": "Code Démo",
+      "session": "Session",
+      "expires": "Expire",
+      "step_1": "Scanner le code QR avec WhatsApp",
+      "step_2": "Message s'ouvre avec code pré-rempli",
+      "step_3": "Un tap pour envoyer - vérification terminée !",
+      "generate_qr": "Générer Code QR",
+      "qr_expires": "⏰ Le code QR expire dans 5 minutes",
+      "simulate_scan": "🧪 Simuler Scan Téléphone",
+      "status": {
+        "idle": "Prêt à générer le code QR",
+        "generating": "Génération du code QR...",
+        "pending": "En attente du message WhatsApp...",
+        "verified": "Téléphone vérifié avec succès !",
+        "expired": "Vérification expirée",
+        "error": "Échec de la vérification"
+      }
+    },
+    "preferences": {
+      "title": "Qu'est-ce qui vous intéresse ?",
+      "subtitle": "Aidez-nous à trouver des expériences parfaites pour vous",
+      "mood_question": "Qu'est-ce qui vous attire au Maroc ?",
+      "time_question": "Combien de temps avez-vous ?",
+      "budget_question": "Préférence de budget ?",
+      "moods": {
+        "creative": {
+          "icon": "🎨",
+          "label": "Créatif"
+        },
+        "cultural": {
+          "icon": "🏛️",
+          "label": "Culturel"
+        },
+        "adventure": {
+          "icon": "🏔️",
+          "label": "Aventure"
+        },
+        "relaxing": {
+          "icon": "🧘",
+          "label": "Relaxant"
+        }
+      },
+      "time_options": {
+        "few-hours": "2-3 heures",
+        "half-day": "4-6 heures",
+        "full-day": "6+ heures",
+        "multi-day": "Plusieurs jours"
+      },
+      "price_ranges": {
+        "budget": {
+          "label": "Économique",
+          "range": "< 70€"
+        },
+        "moderate": {
+          "label": "Modéré",
+          "range": "70€-120€"
+        },
+        "premium": {
+          "label": "Premium",
+          "range": "120€-200€"
+        },
+        "luxury": {
+          "label": "Luxe",
+          "range": "200€+"
+        }
+      },
+      "continue": "Continuer vers le Matching"
+    },
+    "matching": {
+      "title": "Trouvez Votre Expérience Parfaite",
+      "complete_title": "Matching Terminé !",
+      "complete_subtitle": "Voici vos recommandations personnalisées",
+      "liked_count": "Expériences que vous avez aimées",
+      "view_matches": "Voir Vos Correspondances"
+    },
+    "morocco_made_real": {
+      "hero": {
+        "scan_code": "Scannez un Code.",
+        "meet_master": "Rencontrez un Maître.",
+        "take_home_story": "Repartez avec une Histoire Certifiée.",
+        "description": "Découvrez d'authentiques maîtres artisans marocains à travers des expériences culturelles certifiées. Connectez-vous directement avec des artisans vérifiés préservant des traditions séculaires.",
+        "platform_name": "Morocco Made Real",
+        "platform_tagline": "La Technologie Rencontre la Maîtrise Ancestrale",
+        "start_journey": "Commencer le Voyage Culturel",
+        "get_explorer_pass": "Obtenir le Pass Explorateur NFT",
+        "view_explorer_pass": "Voir le Pass Explorateur NFT"
+      },
+      "stats": {
+        "master_artisans": "Maîtres Artisans",
+        "certified_craftspeople": "Artisans certifiés",
+        "stories_collected": "Histoires Collectées",
+        "by_travelers": "Par des voyageurs du monde entier",
+        "direct_to_artisans": "Direct aux Artisans",
+        "preserving_crafts": "Préservant les métiers",
+        "endangered_crafts": "Métiers en Danger",
+        "being_preserved": "En cours de préservation"
+      },
+      "cultural_impact": {
+        "title": "Expériences Culturelles Authentiques",
+        "certified_title": "Certifié",
+        "certified_subtitle": "Maîtres Artisans",
+        "certified_description": "Expertise vérifiée",
+        "heritage_title": "Patrimoine",
+        "heritage_subtitle": "Préservation",
+        "heritage_description": "Continuité culturelle",
+        "direct_title": "Direct",
+        "direct_subtitle": "Impact",
+        "direct_description": "Soutien communautaire"
+      },
+      "discover": {
+        "title": "Découvrez les Maîtres Artisans",
+        "description": "Chaque code QR débloque des histoires authentiques d'artisans certifiés à travers le Maroc",
+        "start_journey": "Commencez Votre Voyage Culturel"
+      }
+    },
+    "verification": {
+      "title": "Vérifiez Votre Voyage Culturel",
+      "subtitle": "Connectez-vous via WhatsApp pour suivre vos expériences marocaines authentiques et construire votre profil d'Explorateur Culturel.",
+      "why_verify_title": "Pourquoi vérifier ?",
+      "why_verify_items": {
+        "track_journey": "Suivez votre parcours de collection d'histoires",
+        "earn_pass": "Gagnez des niveaux du Pass Explorateur Culturel NFT",
+        "save_experiences": "Sauvegardez vos expériences d'artisans préférées",
+        "whatsapp_booking": "Recevez des confirmations de réservation via WhatsApp"
+      },
+      "phone_input": {
+        "title": "Entrez Votre Numéro de Téléphone",
+        "step_indicator": "Étape 1/2",
+        "placeholder": "+33 6 98 76 54 32",
+        "country_ready": "WhatsApp Prêt",
+        "verify_button": "Vérifier via WhatsApp",
+        "back_button": "← Retour à l'Accueil"
+      },
+      "qr_section": {
+        "title": "Scannez le Code QR avec WhatsApp",
+        "sent_to": "Code envoyé à",
+        "open_whatsapp": "Ouvrir WhatsApp",
+        "quick_test": "Test Rapide (Dev Seulement)",
+        "demo_code": "Code Démo",
+        "session": "Session",
+        "expires": "Expire"
+      },
+      "success": {
+        "title": "Bienvenue, Explorateur Culturel !",
+        "description": "Votre voyage est maintenant suivi. Commencez à scanner des codes QR pour découvrir des histoires d'artisans authentiques.",
+        "start_scanning": "Commencer à Scanner les Histoires"
+      }
+    },
+    "scanning": {
+      "title": "Scanner le Code QR d'Artisan",
+      "description": "Trouvez des codes QR dans les ateliers, souks et centres culturels à travers le Maroc. Chaque scan débloque une histoire authentique de maître artisan.",
+      "point_camera": "Pointez la caméra vers le code QR",
+      "start_camera": "Démarrer la Caméra",
+      "stop_camera": "Arrêter la Caméra",
+      "coming_soon": "🏗️ Bientôt Disponible",
+      "api_integration": "Les codes QR d'artisans réels seront chargés depuis notre API de collecte de données d'équipe terrain. Chaque artisan vérifié aura des codes uniques dans leurs ateliers.",
+      "tracking_enabled": "Suivi activé pour",
+      "stories_saved": "Les histoires seront sauvegardées dans votre Pass Explorateur Culturel",
+      "home_button": "← Accueil",
+      "view_pass": "Voir le Pass"
+    },
+    "cultural_explorer_pass": {
+      "title": "Pass Explorateur Culturel",
+      "subtitle": "Votre Voyage NFT à Travers le Maroc",
+      "level_explorer": "Explorateur Niveau {level}",
+      "nft_title": "Explorateur Culturel du Maroc",
+      "blockchain_verified": "Pass NFT Vérifié par Blockchain",
+      "stats": {
+        "level": "Niveau",
+        "stories_collected": "Histoires Collectées",
+        "regions_visited": "Régions Visitées",
+        "impact_score": "Score d'Impact",
+        "achievements": "Réalisations"
+      },
+      "nft_hash": "Hash NFT",
+      "achievements_title": "Réalisations Débloquées",
+      "no_achievements": "Commencez à scanner des histoires d'artisans pour débloquer des réalisations !",
+      "regions_title": "Régions Explorées",
+      "no_regions": "Découvrez des artisans dans différentes régions du Maroc !",
+      "next_level": {
+        "title": "Progression Niveau Suivant",
+        "stories_to_level": "Histoires vers le Niveau {level}",
+        "collect_more": "Collectez {count} histoires de plus pour atteindre le Niveau {level}"
+      },
+      "actions": {
+        "scan_more": "Scanner Plus d'Histoires d'Artisans",
+        "share_pass": "Partager le Pass",
+        "home": "← Accueil"
+      }
+    }
+  },
+  "preservation_dashboard": {
+    "title": "Portail de Préservation Culturelle",
+    "subtitle": "Gestion des initiatives de préservation du patrimoine culturel du Maroc",
+    "loading": "Chargement des données de préservation...",
+    "tabs": {
+      "overview": "Aperçu",
+      "artisans": "Dossiers d'Artisans",
+      "stages": "Gestion des Étapes",
+      "analytics": "Analyses Culturelles",
+      "urgent": "Cas Urgents",
+      "settings": "Paramètres Système"
+    },
+    "metrics": {
+      "total_artisans": "Total Artisans",
+      "active_preservations": "Préservations Actives",
+      "completed": "Terminées",
+      "urgent_cases": "Cas Urgents",
+      "completion_rate": "Taux d'Achèvement",
+      "tourist_engagement": "Engagement Touristique",
+      "community_impact_score": "Impact Communautaire",
+      "average_completion_time": "Temps moyen",
+      "cultural_experience_satisfaction": "Satisfaction expérience culturelle",
+      "economic_and_cultural_benefits": "Bénéfices économiques et culturels"
+    },
+    "stages": {
+      "intake": "Prise en Charge Liaison Terrain",
+      "consent": "Collecte de Consentement",
+      "documentation": "Co-Documentation IA",
+      "cultural_dna": "Cadre ADN Culturel",
+      "blockchain": "Ancrage Blockchain",
+      "experience": "Moteur d'Expérience Touristique"
+    },
+    "status": {
+      "active": "Actif",
+      "completed": "Terminé",
+      "paused": "En Pause",
+      "failed": "Échoué"
+    },
+    "endangerment_levels": {
+      "stable": "Stable",
+      "vulnerable": "Vulnérable",
+      "endangered": "En Danger",
+      "critical": "Critique"
+    },
+    "pipeline": {
+      "title": "Distribution du Pipeline de Préservation",
+      "recent_activity": "Activité de Préservation Récente",
+      "completion_time_days": "jours"
+    },
+    "activity": {
+      "completed_preservation": "a terminé le parcours de préservation",
+      "ai_documentation_completed": "Documentation IA terminée pour",
+      "moving_to_cultural_dna": "Passage à l'étape ADN Culturel",
+      "urgent_endangerment": "Urgent : Danger critique détecté",
+      "practitioners_remaining": "praticiens restants",
+      "blockchain_anchored": "Ancré blockchain",
+      "time_ago": {
+        "hours": "h",
+        "minutes": "min",
+        "days": "j"
+      }
+    },
+    "search_and_filters": {
+      "search_placeholder": "Rechercher artisans, métiers, régions...",
+      "filter_stage": "Filtrer par Étape",
+      "filter_status": "Filtrer par Statut",
+      "all_stages": "Toutes les Étapes",
+      "all_statuses": "Tous les Statuts"
+    },
+    "artisan_records": {
+      "title": "Dossiers de Préservation d'Artisans",
+      "artisan_name": "Nom de l'Artisan",
+      "craft": "Métier",
+      "region": "Région",
+      "current_stage": "Étape Actuelle",
+      "progress": "Progrès",
+      "status": "Statut",
+      "last_updated": "Dernière Mise à Jour",
+      "field_liaison": "Liaison Terrain",
+      "endangerment_level": "Niveau de Danger",
+      "actions": "Actions",
+      "view_details": "Voir Détails",
+      "update_stage": "Mettre à Jour l'Étape",
+      "contact_liaison": "Contacter Liaison"
+    },
+    "crafts": {
+      "blue_pottery": "Poterie Bleue",
+      "berber_carpet_weaving": "Tissage de Tapis Berbère",
+      "traditional_metalwork": "Métallurgie Traditionnelle",
+      "amazigh_silver_jewelry": "Bijouterie Argent Amazigh"
+    },
+    "regions": {
+      "draa_valley": "Vallée du Draa",
+      "atlas_mountains": "Montagnes de l'Atlas",
+      "fez_region": "Région de Fès"
+    },
+    "urgent_cases": {
+      "title": "Cas Urgents de Préservation Culturelle",
+      "description": "Cas critiques nécessitant une attention immédiate",
+      "priority_high": "Priorité Élevée",
+      "priority_medium": "Priorité Moyenne",
+      "priority_low": "Priorité Faible",
+      "immediate_action_required": "Action Immédiate Requise",
+      "escalate": "Escalader",
+      "assign_expert": "Assigner Expert"
+    },
+    "analytics": {
+      "title": "Analyses de Préservation Culturelle",
+      "preservation_trends": "Tendances de Préservation",
+      "craft_distribution": "Distribution des Métiers",
+      "regional_performance": "Performance Régionale",
+      "expert_efficiency": "Efficacité des Experts"
+    }
+  },
+  "tourist_onboarding": {
+    "experiences": {
+      "traditional_pottery_workshop": {
+        "title": "Atelier de Poterie Traditionnelle",
+        "artisan": "Hassan Benali",
+        "location": "Médina de Fès",
+        "description": "Apprenez les techniques ancestrales de poterie d'un maître artisan au cœur de Fès.",
+        "features": ["Anglophone", "Matériel inclus", "Création à emporter"]
+      },
+      "berber_carpet_weaving": {
+        "title": "Tissage de Tapis Berbère",
+        "artisan": "Fatima Zahra",
+        "location": "Montagnes de l'Atlas",
+        "description": "Découvrez l'art ancestral du tissage de tapis berbère avec motifs indigènes.",
+        "features": [
+          "Vue sur montagnes",
+          "Déjeuner traditionnel",
+          "Histoires culturelles"
+        ]
+      },
+      "leather_crafting_masterclass": {
+        "title": "Masterclass de Maroquinerie",
+        "artisan": "Ahmed Tazi",
+        "location": "Souk de Marrakech",
+        "description": "Créez de beaux articles en cuir avec les techniques traditionnelles marocaines.",
+        "features": [
+          "Visite du souk incluse",
+          "Cuir premium",
+          "Design personnalisé"
+        ]
+      }
+    },
+    "steps": {
+      "verification": "Vérification Téléphone",
+      "preferences": "Préférences Culturelles",
+      "matching": "Correspondance d'Expériences"
+    },
+    "country_info": {
+      "whatsapp_usage": "Utilisation WhatsApp"
+    },
+    "zero_touch_flow": {
+      "title": "Flux de Vérification Zéro Contact",
+      "step1": {
+        "title": "Scannez QR avec WhatsApp",
+        "description": "Ouvrez votre caméra et scannez le code QR"
+      },
+      "step2": {
+        "title": "Message Pré-rempli",
+        "description": "WhatsApp s'ouvre avec le code de vérification prêt"
+      },
+      "step3": {
+        "title": "Un Tap pour Envoyer",
+        "description": "Tapez juste envoyer - vérification terminée !"
+      }
+    },
+    "preferences": {
+      "time": {
+        "title": "Combien de temps avez-vous ?",
+        "quick": "Rapide (2-3h)",
+        "half_day": "Demi-journée",
+        "full_day": "Journée complète"
+      },
+      "budget": {
+        "title": "Préférence de budget ?",
+        "budget": "Économique",
+        "moderate": "Modéré",
+        "premium": "Premium"
+      }
+    }
+  },
+  "cultural_preservation_portal": {
+    "title": "Moteur de Préservation Culturelle",
+    "subtitle": "Système Complet de Documentation Artisanale et de Protection du Patrimoine",
+    "navigation": {
+      "back_to_dashboard": "Retour au Tableau de Bord",
+      "portal_badge": "Portail de Préservation Culturelle"
+    },
+    "security": {
+      "all_frameworks_applied": "Tous les Cadres de Sécurité Appliqués",
+      "admin_access_required": "Accès administrateur requis pour voir les outils de préservation culturelle",
+      "admin_login": "Connexion Admin (Démo)",
+      "back_to_artisan": "Retour au Tableau de Bord Artisan"
+    },
+    "progress": {
+      "title": "Progrès du Parcours de Préservation"
+    },
+    "stages": {
+      "intake": {
+        "name": "Prise en Charge Liaison Terrain",
+        "description": "Entretien et documentation guidés par l'humain"
+      },
+      "consent": {
+        "name": "Collecte de Consentement", 
+        "description": "Cadres juridiques et protection de l'artisan"
+      },
+      "documentation": {
+        "name": "Co-Documentation IA",
+        "description": "Transcription intelligente et génération de profil"
+      },
+      "cultural_dna": {
+        "name": "Cadre ADN Culturel",
+        "description": "Catégorisation et validation culturelles"
+      },
+      "blockchain": {
+        "name": "Ancrage Blockchain",
+        "description": "Création d'enregistrement culturel immuable"
+      },
+      "experience": {
+        "name": "Moteur d'Expérience Touristique",
+        "description": "Correspondance intelligente et impact communautaire"
+      }
+    },
+    "intake": {
+      "title": "Liaisons Terrain et Communauté",
+      "voice_interview": {
+        "title": "Entretien Vocal",
+        "description": "Enregistrer la narration artisanale en langue native",
+        "button": "Téléverser Audio"
+      },
+      "video_documentation": {
+        "title": "Documentation Vidéo", 
+        "description": "Capturer les techniques artisanales et le contexte culturel",
+        "button": "Téléverser Vidéo"
+      },
+      "visual_portfolio": {
+        "title": "Portfolio Visuel",
+        "description": "Images haute qualité du travail et du processus",
+        "button": "Téléverser Images"
+      },
+      "cultural_context": {
+        "title": "Contexte Culturel",
+        "description": "Traduire et contextualiser pour l'IA",
+        "button": "Ajouter Contexte"
+      }
+    },
+    "consent": {
+      "title": "Protection Artisan et Cadre Juridique",
+      "informed_consent": {
+        "title": "Accord de Consentement Éclairé",
+        "description": "Protections juridiques et droits de l'artisan"
+      },
+      "cultural_sensitivity": {
+        "title": "Protocole de Sensibilité Culturelle",
+        "description": "Pratiques de documentation respectueuses"
+      },
+      "data_sovereignty": {
+        "title": "Droits de Souveraineté des Données", 
+        "description": "Contrôle artisan sur les informations culturelles"
+      },
+      "revenue_sharing": {
+        "title": "Accord de Partage des Revenus",
+        "description": "Cadre de compensation équitable"
+      },
+      "consent_form": {
+        "title": "Formulaire de Consentement Numérique",
+        "privacy_notice": "Votre vie privée et vos droits au patrimoine culturel sont protégés par le droit marocain et international.",
+        "download_agreement": "Télécharger l'Accord Complet",
+        "acknowledge_rights": "Je reconnais mes droits et protections",
+        "grant_permission": "J'accorde la permission pour la documentation",
+        "understand_process": "Je comprends le processus de préservation",
+        "sign_consent": "Signer le Consentement Numérique"
+      }
+    },
+    "ai_documentation": {
+      "title": "Documentation Culturelle Assistée par IA",
+      "intelligent_processing": {
+        "title": "Pipeline de Traitement Intelligent",
+        "voice_transcription": "Transcription vocale multilingue",
+        "cultural_analysis": "Analyse du contexte culturel",
+        "technique_identification": "Identification des techniques traditionnelles",
+        "heritage_categorization": "Catégorisation de la signification patrimoniale"
+      },
+      "ai_profile": {
+        "title": "Profil Culturel Généré par IA",
+        "description": "Documentation artisanale complète créée par des systèmes IA avancés.",
+        "processing_status": "Traitement des données culturelles...",
+        "estimated_completion": "Achèvement estimé : 2 minutes"
+      },
+      "quality_assurance": {
+        "title": "Révision Humaine et Assurance Qualité",
+        "expert_validation": "Validation culturelle d'expert requise",
+        "accuracy_verification": "Vérification de précision en cours",
+        "cultural_authenticity": "Authenticité culturelle confirmée"
+      }
+    },
+    "cultural_dna": {
+      "title": "Cadre ADN Culturel",
+      "heritage_categorization": {
+        "title": "Catégorisation du Patrimoine",
+        "craft_classification": "Classification de l'artisanat traditionnel",
+        "regional_significance": "Signification culturelle régionale",
+        "endangerment_assessment": "Évaluation du niveau de danger",
+        "authenticity_validation": "Validation de l'authenticité culturelle"
+      },
+      "cultural_genome": {
+        "title": "Cartographie du Génome Culturel",
+        "description": "Analyse avancée de la signification culturelle et de la valeur patrimoniale.",
+        "generating_profile": "Génération du profil culturel...",
+        "estimated_completion": "Achèvement estimé : 3 minutes"
+      },
+      "validation_system": {
+        "title": "Système de Validation Multi-Couches",
+        "ai_analysis": "Analyse culturelle IA",
+        "expert_review": "Révision culturelle d'expert", 
+        "community_validation": "Validation communautaire",
+        "academic_verification": "Vérification académique"
+      }
+    },
+    "blockchain": {
+      "title": "Ancrage Culturel Blockchain",
+      "immutable_record": {
+        "title": "Enregistrement Culturel Immuable",
+        "description": "Création de documentation permanente et inviolable du patrimoine culturel."
+      },
+      "certificate_generation": {
+        "title": "Génération de Certificat Numérique",
+        "blockchain_hash": "Hash blockchain : 0x7f9c4a2b8e5d3f1a9c6b...",
+        "certificate_id": "ID Certificat : CULT-2024-001-MAR",
+        "timestamp": "Horodatage : 2024-01-15T14:30:00Z",
+        "validator": "Validateur Culturel : Conseil du Patrimoine UNESCO"
+      },
+      "verification_system": {
+        "title": "Système de Vérification Globale",
+        "instant_verification": "Vérification d'authenticité instantanée",
+        "global_recognition": "Reconnaissance patrimoniale internationale",
+        "tamper_proof": "Enregistrement culturel inviolable",
+        "perpetual_preservation": "Préservation numérique perpétuelle"
+      },
+      "completion_status": {
+        "title": "Ancrage Blockchain Terminé !",
+        "description": "Votre patrimoine culturel est maintenant préservé de façon permanente sur la blockchain avec des garanties d'authenticité complètes.",
+        "view_certificate": "Voir le Certificat Numérique"
+      }
+    },
+    "experience": {
+      "title": "Moteur d'Expérience Touristique",
+      "smart_matching": {
+        "title": "Système de Correspondance Intelligent",
+        "dna_compatibility": "Analyse de compatibilité ADN culturel",
+        "experience_levels": "Niveaux d'expérience dynamiques (Intro/Avancé)",
+        "blockchain_integration": "Intégration pass voyage blockchain"
+      },
+      "community_impact": {
+        "title": "Impact Communautaire",
+        "tip_distribution": "Système de distribution de pourboires artisan",
+        "reinvestment_loop": "Boucle de réinvestissement communautaire", 
+        "preservation_funding": "Financement de préservation culturelle"
+      },
+      "ready_for_matching": {
+        "title": "Prêt pour la Correspondance Touristique !",
+        "description": "Votre profil culturel est maintenant complet et prêt à être associé avec des touristes compatibles qui apprécieront et respecteront votre artisanat traditionnel.",
+        "activate_matching": "Activer la Correspondance d'Expérience"
+      }
+    },
+    "navigation_buttons": {
+      "previous_stage": "Étape Précédente",
+      "next_stage": "Étape Suivante"
+    }
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "save": "Sauvegarder",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "view": "Voir",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "sort": "Trier",
+    "export": "Exporter",
+    "import": "Importer",
+    "download": "Télécharger",
+    "upload": "Téléverser",
+    "refresh": "Actualiser",
+    "close": "Fermer",
+    "open": "Ouvrir",
+    "show_more": "Voir Plus",
+    "show_less": "Voir Moins",
+    "all": "Tous",
+    "none": "Aucun",
+    "yes": "Oui",
+    "no": "Non",
+    "ok": "OK",
+    "continue": "Continuer",
+    "finish": "Terminer",
+    "submit": "Soumettre",
+    "reset": "Réinitialiser",
+    "clear": "Effacer",
+    "select": "Sélectionner",
+    "deselect": "Désélectionner"
+  }
+}

@@ -1,0 +1,853 @@
+// Enhanced Blockchain Service for Morocco Made Real
+// Integrated with comprehensive data models and Supabase
+
+import { SupabaseService } from './supabase';
+import type { 
+  ArtisanPiece, 
+  TraditionalPractice, 
+  ArtisanJourney, 
+  PricingInfo, 
+  BlockchainData 
+} from '@/types/artisan-piece';
+import type { 
+  DigitalCertificate, 
+  CertificateGenerationRequest,
+  CertificateValidation 
+} from '@/types/digital-certificate';
+import type { 
+  MuseumExtract, 
+  ExtractGenerationRequest 
+} from '@/types/museum-extract';
+
+export class EnhancedBlockchainService {
+  private web3Provider: any;
+  private contractAddress: string;
+  private privateKey: string;
+  private networkId: string;
+
+  constructor() {
+    this.contractAddress = process.env.SMART_CONTRACT_ADDRESS || '';
+    this.privateKey = process.env.BLOCKCHAIN_PRIVATE_KEY || '';
+    this.networkId = process.env.BLOCKCHAIN_NETWORK_ID || 'polygon-mumbai';
+    this.initializeWeb3();
+  }
+
+  private async initializeWeb3() {
+    try {
+      const { Web3 } = await import('web3');
+      this.web3Provider = new Web3(process.env.POLYGON_RPC_URL || 'https://rpc-mumbai.maticvigil.com/');
+    } catch (error) {
+      console.error('Failed to initialize Web3:', error);
+    }
+  }
+
+  /**
+   * Register a complete artisan piece with full journey documentation
+   */
+  async registerArtisanPiece(piece: Omit<ArtisanPiece, 'id' | 'createdAt' | 'updatedAt'>): Promise<{
+    success: boolean;
+    pieceId?: string;
+    transactionHash?: string;
+    certificateId?: string;
+    error?: string;
+  }> {
+    try {
+      // Generate unique piece ID
+      const pieceId = this.generatePieceId(piece.title, piece.artisanName);
+      
+      // Create blockchain data
+      const blockchainData: BlockchainData = {
+        certificateId: this.generateCertificateId(),
+        transactionHash: '',
+        contractAddress: this.contractAddress,
+        ipfsHash: await this.storeOnIPFS(piece),
+        timestamp: new Date(),
+        verificationLevel: piece.blockchain?.verificationLevel || 'bronze',
+        verifiedBy: piece.blockchain?.verifiedBy || 'system',
+        verificationDate: new Date(),
+        immutableProof: '',
+        smartContractVersion: '1.0.0'
+      };
+
+      // Create immutable proof
+      const proofData = {
+        pieceId,
+        artisanId: piece.artisanId,
+        title: piece.title,
+        traditionalPractice: piece.traditionalPractice,
+        journey: piece.journey,
+        pricing: piece.pricing,
+        timestamp: blockchainData.timestamp
+      };
+      
+      blockchainData.immutableProof = await this.hashData(JSON.stringify(proofData));
+      
+      // Submit to blockchain
+      blockchainData.transactionHash = await this.submitTransaction('piece_registration', blockchainData.immutableProof);
+      
+      // Create complete piece object
+      const completePiece: ArtisanPiece = {
+        ...piece,
+        id: pieceId,
+        blockchain: blockchainData,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        slug: this.generateSlug(piece.title),
+        viewCount: 0,
+        shareCount: 0
+      };
+
+      // Store in Supabase
+      // await SupabaseService.createArtisanPiece(this.convertToRow(completePiece));
+      
+      return {
+        success: true,
+        pieceId,
+        transactionHash: blockchainData.transactionHash,
+        certificateId: blockchainData.certificateId
+      };
+    } catch (error) {
+      console.error('Error registering artisan piece:', error);
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error'
+      };
+    }
+  }
+
+  /**
+   * Generate comprehensive digital certificate
+   */
+  async generateDigitalCertificate(request: CertificateGenerationRequest): Promise<{
+    success: boolean;
+    certificate?: DigitalCertificate;
+    error?: string;
+  }> {
+    try {
+      // Get the artisan piece
+      // const pieceRow = await SupabaseService.getArtisanPiece(request.pieceId);
+      // if (!pieceRow) {
+      //   throw new Error('Artisan piece not found');
+      // }
+
+      // const piece = this.convertFromRow(pieceRow);
+      
+      // Mock piece data for now
+      const piece = {
+        id: request.pieceId,
+        title: 'Sample Piece',
+        artisanName: 'Sample Artisan',
+        artisanId: 'sample-artisan',
+        traditionalPractice: {
+          technique: 'Traditional Pottery',
+          region: 'Fez',
+          materials: ['Clay', 'Natural Pigments'],
+          culturalSignificance: 'High'
+        },
+        dimensions: { length: 20, width: 15, height: 10, weight: 2, unit: 'cm' as const },
+        pricing: { originalPrice: 500, currency: 'MAD' as const },
+        multimedia: { primaryImage: '/sample-image.jpg' },
+        authenticity: { score: 0.95 },
+        blockchain: {
+          transactionHash: '0x123',
+          blockNumber: 12345,
+          contractAddress: this.contractAddress,
+          ipfsHash: 'QmSample'
+        }
+      };
+      
+      // Create comprehensive certificate
+      const certificate: DigitalCertificate = {
+        id: this.generateUUID(),
+        certificateId: this.generateCertificateId(),
+        pieceId: request.pieceId,
+        title: `Certificate of Authenticity - ${piece.title}`,
+        description: `This certificate verifies the authenticity and cultural heritage of "${piece.title}" created by ${piece.artisanName}.`,
+        type: request.type,
+        
+        pieceDetails: {
+          title: piece.title,
+          artisanName: piece.artisanName,
+          artisanId: piece.artisanId,
+          technique: piece.traditionalPractice.technique,
+          region: piece.traditionalPractice.region,
+          materials: piece.traditionalPractice.materials,
+          dimensions: piece.dimensions,
+          estimatedValue: {
+            amount: piece.pricing.originalPrice,
+            currency: piece.pricing.currency,
+            date: new Date()
+          },
+          photos: [piece.multimedia.primaryImage]
+        },
+        
+        verification: {
+          authenticityScore: piece.authenticity.score,
+          verificationDate: new Date(),
+          verifierSignature: await this.generateSignature(piece.id),
+          verifierPublicKey: process.env.VERIFIER_PUBLIC_KEY || '',
+          blockchainProof: {
+            transactionHash: piece.blockchain.transactionHash,
+            blockNumber: piece.blockchain.blockNumber || 0,
+            contractAddress: piece.blockchain.contractAddress,
+            network: 'polygon'
+          },
+          ipfsProof: {
+            hash: piece.blockchain.ipfsHash,
+            gateway: 'https://ipfs.io/ipfs/',
+            pinned: true
+          },
+          verificationMethods: [
+            {
+              method: 'ai_analysis',
+              result: 'passed',
+              confidence: 0.95,
+              notes: 'AI verification completed successfully'
+            }
+          ]
+        },
+        
+        metadata: {
+          version: '1.0',
+          standard: 'custom',
+          schema: 'https://moroccomadereal.com/schemas/certificate/v1',
+          issuer: {
+            name: 'Morocco Made Real',
+            address: this.contractAddress,
+            publicKey: process.env.ISSUER_PUBLIC_KEY || '',
+            website: 'https://moroccomadereal.com',
+            contact: 'certificates@moroccomadereal.com'
+          },
+          issuanceDate: new Date(),
+          revocable: false,
+          transferable: false
+        },
+        
+        design: {
+          template: request.template,
+          colors: {
+            primary: '#D4AF37',
+            secondary: '#8B4513',
+            accent: '#FF6B35',
+            background: '#FFF8DC'
+          },
+          fonts: {
+            heading: 'Playfair Display',
+            body: 'Source Sans Pro',
+            arabic: 'Amiri'
+          },
+          layout: 'portrait',
+          border: true,
+          logo: '/images/morocco-made-real-logo.png'
+        },
+        
+        qrCode: {
+          url: `https://moroccomadereal.com/verify/${this.generateCertificateId()}`,
+          data: {
+            certificateId: this.generateCertificateId(),
+            verificationUrl: `https://moroccomadereal.com/api/verify/${this.generateCertificateId()}`,
+            blockchainHash: piece.blockchain.transactionHash,
+            quickVerify: await this.generateQuickVerifyCode(this.generateCertificateId())
+          },
+          size: 200,
+          errorCorrection: 'M',
+          format: 'PNG',
+          embedded: true
+        },
+        
+        content: [
+          {
+            language: request.language,
+            title: `Certificate of Authenticity`,
+            description: `This certificate verifies the authenticity of "${piece.title}"`,
+            artisanName: piece.artisanName,
+            technique: piece.traditionalPractice.technique,
+            region: piece.traditionalPractice.region,
+            culturalSignificance: piece.traditionalPractice.culturalSignificance,
+            verificationStatement: 'This piece has been verified through blockchain technology and expert analysis.',
+            legalDisclaimer: 'This certificate is issued based on available information and verification methods.',
+            contactInfo: 'For questions, contact certificates@moroccomadereal.com'
+          }
+        ],
+        defaultLanguage: request.language,
+        
+        legal: {
+          jurisdiction: 'Morocco',
+          applicableLaw: 'Moroccan Law',
+          disputeResolution: 'Arbitration in Casablanca',
+          liability: 'Limited to certificate value',
+          warranty: '1 year from issuance',
+          termsOfUse: 'https://moroccomadereal.com/terms'
+        },
+        
+        status: 'issued',
+        issuedBy: request.requestedBy,
+        
+        outputs: {},
+        
+        analytics: {
+          viewCount: 0,
+          verificationCount: 0,
+          downloadCount: 0,
+          shareCount: 0,
+          verificationHistory: []
+        },
+        
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        issuedAt: new Date(),
+        
+        security: {
+          digitalSignature: await this.generateSignature(this.generateCertificateId()),
+          hashAlgorithm: 'SHA-256',
+          encryptionLevel: 'standard',
+          accessControl: request.publicDisplay ? 'public' : 'restricted',
+          auditTrail: [
+            {
+              action: 'certificate_created',
+              user: request.requestedBy,
+              timestamp: new Date(),
+              details: `Certificate generated for piece ${request.pieceId}`
+            }
+          ]
+        }
+      };
+
+      // Store certificate in Supabase
+      // await SupabaseService.createCertificate(this.convertCertificateToRow(certificate));
+      
+      return {
+        success: true,
+        certificate
+      };
+    } catch (error) {
+      console.error('Error generating digital certificate:', error);
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error'
+      };
+    }
+  }
+
+  /**
+   * Validate certificate authenticity
+   */
+  async validateCertificate(certificateId: string): Promise<CertificateValidation> {
+    try {
+      // const certificateRow = await SupabaseService.getCertificate(certificateId);
+      // if (!certificateRow) {
+      //   return {
+      //     isValid: false,
+      //     error: 'Certificate not found'
+      //   };
+      // }
+
+      // const certificate = this.convertCertificateFromRow(certificateRow);
+      
+      // Mock validation for now
+      return {
+        isValid: true,
+        certificate: null,
+        blockchainVerified: true,
+        ipfsVerified: true,
+        signatureVerified: true,
+        verificationDate: new Date(),
+        verificationDetails: {
+          blockchainHash: 'verified',
+          ipfsHash: 'verified',
+          digitalSignature: 'verified',
+          issuerVerified: true,
+          notTampered: true,
+          validityPeriod: 'active'
+        }
+      };
+    } catch (error) {
+      console.error('Error validating certificate:', error);
+      return {
+        isValid: false,
+        errors: [error instanceof Error ? error.message : 'Unknown error'],
+        warnings: [],
+        score: 0,
+        details: {
+          blockchainVerified: false,
+          signatureValid: false,
+          notExpired: false,
+          issuerTrusted: false,
+          contentIntact: false,
+          qrCodeValid: false
+        },
+        verifiedAt: new Date(),
+        verificationId: this.generateUUID()
+      };
+    }
+  }
+
+  /**
+   * Generate museum extract from artisan piece
+   */
+  async generateMuseumExtract(request: ExtractGenerationRequest): Promise<{
+    success: boolean;
+    extract?: MuseumExtract;
+    error?: string;
+  }> {
+    try {
+      const pieceRow = await SupabaseService.getArtisanPiece(request.pieceId);
+      if (!pieceRow) {
+        throw new Error('Artisan piece not found');
+      }
+
+      const piece = this.convertFromRow(pieceRow);
+      
+      // Create museum extract with public-safe information
+      const extract: MuseumExtract = {
+        id: this.generateUUID(),
+        pieceId: request.pieceId,
+        extractId: this.generateExtractId(piece.title),
+        
+        title: piece.title,
+        description: piece.description,
+        shortDescription: piece.description.substring(0, 200) + '...',
+        
+        artisan: {
+          name: piece.artisanName,
+          region: piece.traditionalPractice.region,
+          biography: piece.artisanBio || 'Master artisan specializing in traditional Moroccan crafts.',
+          specialization: piece.traditionalPractice.technique,
+          yearsOfExperience: piece.journey.timeToCreateHours > 100 ? 10 : 5
+        },
+        
+        cultural: {
+          technique: piece.traditionalPractice.technique,
+          region: piece.traditionalPractice.region,
+          historicalPeriod: piece.traditionalPractice.originEra,
+          culturalSignificance: piece.traditionalPractice.culturalSignificance,
+          traditionalUse: piece.journey.culturalMeaning,
+          relatedTraditions: piece.traditionalPractice.relatedPractices
+        },
+        
+        technical: {
+          materials: piece.traditionalPractice.materials,
+          tools: piece.traditionalPractice.tools,
+          dimensions: piece.dimensions,
+          condition: piece.condition,
+          productionTime: `${piece.journey.timeToCreateHours} hours`
+        },
+        
+        media: {
+          primaryImage: {
+            url: piece.multimedia.primaryImage,
+            alt: `${piece.title} by ${piece.artisanName}`,
+            caption: `Traditional ${piece.traditionalPractice.technique} from ${piece.traditionalPractice.region}`
+          },
+          gallery: piece.multimedia.gallery.map(imageId => ({
+            url: imageId,
+            alt: `Detail of ${piece.title}`,
+            caption: 'Detailed view showing traditional craftsmanship',
+            type: 'detail' as const
+          }))
+        },
+        
+        education: request.languages.map(lang => ({
+          level: 'adult',
+          language: lang,
+          content: {
+            overview: piece.description,
+            historicalContext: piece.traditionalPractice.historicalContext,
+            culturalSignificance: piece.traditionalPractice.culturalSignificance,
+            techniques: piece.traditionalPractice.technique,
+            materials: piece.traditionalPractice.materials.join(', '),
+            modernRelevance: 'This traditional craft continues to be relevant in contemporary Moroccan culture.'
+          },
+          learningObjectives: [
+            'Understand traditional Moroccan craftsmanship',
+            'Appreciate cultural heritage preservation',
+            'Learn about traditional materials and techniques'
+          ],
+          vocabulary: [
+            {
+              term: piece.traditionalPractice.technique,
+              definition: `Traditional Moroccan technique used in ${piece.traditionalPractice.region}`
+            }
+          ]
+        })),
+        
+        curation: {
+          submissionDate: new Date(),
+          submittedBy: request.requestedBy,
+          reviewStages: [
+            {
+              stage: 'initial_review',
+              status: 'pending',
+              reviewer: 'system'
+            }
+          ],
+          revisionRequests: [],
+          publicationStatus: 'draft'
+        },
+        
+        display: {
+          featured: false,
+          category: this.mapToMuseumCategory(piece.categories[0]),
+          visibility: {
+            public: true,
+            searchable: true,
+            shareable: true,
+            downloadable: false,
+            printable: true
+          },
+          displayOrder: 0,
+          relatedPieces: [],
+          collections: [],
+          interactiveFeatures: {
+            zoom: true,
+            rotation: false,
+            comparison: true,
+            augmentedReality: false,
+            virtualTour: false
+          },
+          accessibilityFeatures: {
+            audioDescription: false,
+            textToSpeech: true,
+            highContrast: true,
+            largeText: true,
+            screenReaderOptimized: true
+          }
+        },
+        
+        seo: {
+          title: `${piece.title} - Traditional Moroccan ${piece.traditionalPractice.technique}`,
+          description: piece.description,
+          keywords: [piece.traditionalPractice.technique, piece.traditionalPractice.region, 'Morocco', 'traditional craft'],
+          canonicalUrl: `https://moroccomadereal.com/museum/${this.generateSlug(piece.title)}`,
+          openGraph: {
+            title: piece.title,
+            description: piece.description,
+            image: piece.multimedia.primaryImage,
+            type: 'article',
+            locale: 'en_US'
+          },
+          structuredData: {
+            type: 'CreativeWork',
+            name: piece.title,
+            description: piece.description,
+            creator: piece.artisanName,
+            dateCreated: piece.createdAt.toISOString(),
+            material: piece.traditionalPractice.materials,
+            technique: [piece.traditionalPractice.technique],
+            culturalContext: piece.traditionalPractice.region
+          },
+          alternateLanguages: request.languages.map(lang => ({
+            language: lang,
+            url: `https://moroccomadereal.com/${lang}/museum/${this.generateSlug(piece.title)}`
+          }))
+        },
+        
+        analytics: {
+          views: { total: 0, unique: 0, byCountry: {}, byLanguage: {}, byDevice: {} },
+          engagement: { averageTimeSpent: 0, bounceRate: 0, interactionRate: 0, shareCount: 0, downloadCount: 0, favoriteCount: 0 },
+          educational: { quizCompletions: 0, averageQuizScore: 0, activityEngagement: {} },
+          feedback: { ratings: { average: 0, count: 0, distribution: {} }, comments: { positive: 0, negative: 0, neutral: 0 } },
+          lastUpdated: new Date()
+        },
+        
+        blockchain: {
+          originalCertificateId: piece.blockchain.certificateId,
+          verificationUrl: `https://moroccomadereal.com/verify/${piece.blockchain.certificateId}`,
+          authenticityScore: piece.authenticity.score,
+          lastVerified: piece.blockchain.verificationDate
+        },
+        
+        rights: {
+          copyright: `© ${new Date().getFullYear()} ${piece.artisanName}`,
+          license: 'CC-BY-NC',
+          attribution: `${piece.artisanName} via Morocco Made Real`,
+          commercialUse: false,
+          modifications: false,
+          redistribution: true
+        },
+        
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        version: 1,
+        changeLog: [
+          {
+            version: 1,
+            date: new Date(),
+            changes: ['Initial museum extract created'],
+            changedBy: request.requestedBy
+          }
+        ]
+      };
+
+      // Store in Supabase
+      await SupabaseService.createMuseumExtract(this.convertExtractToRow(extract));
+      
+      return {
+        success: true,
+        extract
+      };
+    } catch (error) {
+      console.error('Error generating museum extract:', error);
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error'
+      };
+    }
+  }
+
+  // Helper methods
+  private generatePieceId(title: string, artisanName: string): string {
+    const timestamp = Date.now();
+    const hash = this.simpleHash(`${title}-${artisanName}-${timestamp}`);
+    return `piece_${hash.substring(0, 8)}`;
+  }
+
+  private generateCertificateId(): string {
+    const timestamp = Date.now();
+    const random = Math.random().toString(36).substring(2, 8);
+    return `cert_${timestamp}_${random}`;
+  }
+
+  private generateExtractId(title: string): string {
+    const timestamp = Date.now();
+    const hash = this.simpleHash(`${title}-${timestamp}`);
+    return `extract_${hash.substring(0, 8)}`;
+  }
+
+  private generateUUID(): string {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      const r = Math.random() * 16 | 0;
+      const v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
+
+  private generateSlug(title: string): string {
+    return title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '');
+  }
+
+  private async hashData(data: string): Promise<string> {
+    return this.simpleHash(data);
+  }
+
+  private simpleHash(str: string): string {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      const char = str.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash;
+    }
+    return Math.abs(hash).toString(16);
+  }
+
+  private async submitTransaction(type: string, data: string): Promise<string> {
+    const transactionHash = `0x${this.simpleHash(`${type}-${data}-${Date.now()}`)}`;
+    console.log(`Simulated blockchain transaction: ${type} - ${transactionHash}`);
+    return transactionHash;
+  }
+
+  private async verifyHashOnBlockchain(hash: string): Promise<boolean> {
+    return hash.startsWith('0x') && hash.length > 10;
+  }
+
+  private async storeOnIPFS(data: any): Promise<string> {
+    const hash = this.simpleHash(JSON.stringify(data));
+    return `Qm${hash}`;
+  }
+
+  private async generateSignature(data: string): Promise<string> {
+    return `sig_${this.simpleHash(data)}`;
+  }
+
+  private async verifySignature(signature: string, data: string): Promise<boolean> {
+    return signature === `sig_${this.simpleHash(data)}`;
+  }
+
+  private async generateQuickVerifyCode(certificateId: string): Promise<string> {
+    return this.simpleHash(certificateId).substring(0, 8).toUpperCase();
+  }
+
+  private mapToMuseumCategory(category: string): 'pottery' | 'textiles' | 'jewelry' | 'woodwork' | 'metalwork' | 'leather' | 'other' {
+    const categoryMap: { [key: string]: any } = {
+      'ceramics': 'pottery',
+      'pottery': 'pottery',
+      'textiles': 'textiles',
+      'fabric': 'textiles',
+      'jewelry': 'jewelry',
+      'wood': 'woodwork',
+      'metal': 'metalwork',
+      'leather': 'leather'
+    };
+    return categoryMap[category.toLowerCase()] || 'other';
+  }
+
+  // Conversion methods for Supabase integration
+  private convertToRow(piece: ArtisanPiece): any {
+    return {
+      id: piece.id,
+      title: piece.title,
+      description: piece.description,
+      artisan_id: piece.artisanId,
+      artisan_name: piece.artisanName,
+      artisan_bio: piece.artisanBio,
+      traditional_practice: piece.traditionalPractice,
+      journey: piece.journey,
+      multimedia: piece.multimedia,
+      pricing: piece.pricing,
+      blockchain: piece.blockchain,
+      status: piece.status,
+      workflow_stage: piece.workflowStage,
+      museum_eligible: piece.museumEligible,
+      museum_submitted: piece.museumSubmitted,
+      museum_approved: piece.museumApproved,
+      curator_notes: piece.curatorNotes,
+      tags: piece.tags,
+      categories: piece.categories,
+      dimensions: piece.dimensions,
+      condition: piece.condition,
+      authenticity: piece.authenticity,
+      created_at: piece.createdAt.toISOString(),
+      updated_at: piece.updatedAt.toISOString(),
+      published_at: piece.publishedAt?.toISOString(),
+      seo_title: piece.seoTitle,
+      seo_description: piece.seoDescription,
+      slug: piece.slug,
+      featured: piece.featured,
+      trending: piece.trending,
+      view_count: piece.viewCount,
+      share_count: piece.shareCount
+    };
+  }
+
+  private convertFromRow(row: any): ArtisanPiece {
+    return {
+      id: row.id,
+      title: row.title,
+      description: row.description,
+      artisanId: row.artisan_id,
+      artisanName: row.artisan_name,
+      artisanBio: row.artisan_bio,
+      traditionalPractice: row.traditional_practice,
+      journey: row.journey,
+      multimedia: row.multimedia,
+      pricing: row.pricing,
+      blockchain: row.blockchain,
+      status: row.status,
+      workflowStage: row.workflow_stage,
+      museumEligible: row.museum_eligible,
+      museumSubmitted: row.museum_submitted,
+      museumApproved: row.museum_approved,
+      curatorNotes: row.curator_notes,
+      tags: row.tags,
+      categories: row.categories,
+      dimensions: row.dimensions,
+      condition: row.condition,
+      authenticity: row.authenticity,
+      createdAt: new Date(row.created_at),
+      updatedAt: new Date(row.updated_at),
+      publishedAt: row.published_at ? new Date(row.published_at) : undefined,
+      seoTitle: row.seo_title,
+      seoDescription: row.seo_description,
+      slug: row.slug,
+      featured: row.featured,
+      trending: row.trending,
+      viewCount: row.view_count,
+      shareCount: row.share_count
+    };
+  }
+
+  private convertCertificateToRow(certificate: DigitalCertificate): any {
+    return {
+      id: certificate.id,
+      certificate_id: certificate.certificateId,
+      piece_id: certificate.pieceId,
+      title: certificate.title,
+      description: certificate.description,
+      type: certificate.type,
+      piece_details: certificate.pieceDetails,
+      verification: certificate.verification,
+      metadata: certificate.metadata,
+      design: certificate.design,
+      qr_code: certificate.qrCode,
+      content: certificate.content,
+      default_language: certificate.defaultLanguage,
+      museum_extract: certificate.museumExtract,
+      legal: certificate.legal,
+      status: certificate.status,
+      issued_by: certificate.issuedBy,
+      issued_to: certificate.issuedTo,
+      outputs: certificate.outputs,
+      analytics: certificate.analytics,
+      created_at: certificate.createdAt.toISOString(),
+      updated_at: certificate.updatedAt.toISOString(),
+      issued_at: certificate.issuedAt?.toISOString(),
+      expires_at: certificate.expiresAt?.toISOString(),
+      security: certificate.security
+    };
+  }
+
+  private convertCertificateFromRow(row: any): DigitalCertificate {
+    return {
+      id: row.id,
+      certificateId: row.certificate_id,
+      pieceId: row.piece_id,
+      title: row.title,
+      description: row.description,
+      type: row.type,
+      pieceDetails: row.piece_details,
+      verification: row.verification,
+      metadata: row.metadata,
+      design: row.design,
+      qrCode: row.qr_code,
+      content: row.content,
+      defaultLanguage: row.default_language,
+      museumExtract: row.museum_extract,
+      legal: row.legal,
+      status: row.status,
+      issuedBy: row.issued_by,
+      issuedTo: row.issued_to,
+      outputs: row.outputs,
+      analytics: row.analytics,
+      createdAt: new Date(row.created_at),
+      updatedAt: new Date(row.updated_at),
+      issuedAt: row.issued_at ? new Date(row.issued_at) : undefined,
+      expiresAt: row.expires_at ? new Date(row.expires_at) : undefined,
+      security: row.security
+    };
+  }
+
+  private convertExtractToRow(extract: MuseumExtract): any {
+    return {
+      id: extract.id,
+      piece_id: extract.pieceId,
+      extract_id: extract.extractId,
+      title: extract.title,
+      subtitle: extract.subtitle,
+      description: extract.description,
+      short_description: extract.shortDescription,
+      artisan: extract.artisan,
+      cultural: extract.cultural,
+      technical: extract.technical,
+      media: extract.media,
+      education: extract.education,
+      curation: extract.curation,
+      display: extract.display,
+      seo: extract.seo,
+      analytics: extract.analytics,
+      blockchain: extract.blockchain,
+      rights: extract.rights,
+      created_at: extract.createdAt.toISOString(),
+      updated_at: extract.updatedAt.toISOString(),
+      published_at: extract.publishedAt?.toISOString(),
+      last_reviewed_at: extract.lastReviewedAt?.toISOString(),
+      version: extract.version,
+      previous_versions: extract.previousVersions,
+      change_log: extract.changeLog
+    };
+  }
+}
+
+export default new EnhancedBlockchainService(); 

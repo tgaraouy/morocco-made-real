@@ -1,0 +1,71 @@
+{
+  "name": "Morocco Made Real: Verified Authentic",
+  "short_name": "Morocco Made Real",
+  "description": "Technology Meets Tradition - Your gateway to authentic Moroccan experiences with AI-powered cultural tourism platform",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5F5DC",
+  "theme_color": "#DC143C",
+  "orientation": "portrait-primary",
+  "categories": ["travel", "culture", "tourism", "lifestyle"],
+  "lang": "en",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/logo-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Morocco Made Real - Cultural Tourism Platform"
+    },
+    {
+      "src": "/screenshot-narrow.png", 
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Morocco Made Real - Mobile Experience"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Plan Your Journey",
+      "short_name": "Plan",
+      "description": "Start planning your authentic Moroccan adventure",
+      "url": "/tourist",
+      "icons": [
+        {
+          "src": "/logo-icon.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Discover Artisans",
+      "short_name": "Artisans",
+      "description": "Meet authentic Moroccan craftspeople",
+      "url": "/artisan",
+      "icons": [
+        {
+          "src": "/logo-icon.svg",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+} 

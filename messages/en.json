@@ -1,0 +1,1502 @@
+{
+  "homepage": {
+    "title": "Morocco Made Real: Verified Authentic",
+    "subtitle": "Technology Meets Tradition - Connecting authentic Moroccan culture with the world through verified experiences",
+    "choose_persona": "Choose your role to discover how we can help you:",
+    "learn_more": "Learn More",
+    "what_you_get": "What you get",
+    "stats": {
+      "artisans": "Certified Artisans",
+      "tourists": "Annual Tourists",
+      "authenticity": "Authenticity Score"
+    },
+    "personas": {
+      "tourist": {
+        "title": "Tourist & Traveler",
+        "subtitle": "Discover authentic Morocco",
+        "description": "Experience Morocco's rich cultural heritage through AI-powered itineraries, verified artisan workshops, and authentic cultural immersion.",
+        "value": "Get personalized recommendations that match your interests while supporting local communities and preserving traditional crafts.",
+        "cta": "Start Your Journey",
+        "feature1": "AI-powered personalized itineraries",
+        "feature2": "Verified artisan workshop bookings",
+        "feature3": "Cultural authenticity guarantee"
+      },
+      "artisan": {
+        "title": "Artisan & Craftsperson",
+        "subtitle": "Document and monetize your craft",
+        "description": "Transform your traditional skills into global opportunities through our comprehensive documentation process and marketplace platform.",
+        "value": "Increase your income by 3x while preserving your cultural heritage and reaching international customers.",
+        "cta": "Start Documentation",
+        "feature1": "Professional journey documentation",
+        "feature2": "Global marketplace access",
+        "feature3": "AI-assisted authenticity certification"
+      },
+      "expert": {
+        "title": "Cultural Expert & Validator",
+        "subtitle": "Preserve cultural authenticity",
+        "description": "Use your expertise to validate traditional crafts and contribute to Morocco's cultural preservation efforts through our AI-assisted review system.",
+        "value": "Make a meaningful impact on cultural preservation while earning from your expertise and building your professional reputation.",
+        "cta": "Join as Expert",
+        "feature1": "AI-assisted validation tools",
+        "feature2": "Expert community network",
+        "feature3": "Cultural impact measurement"
+      },
+      "government": {
+        "title": "Government & Tourism Board",
+        "subtitle": "Track Vision 2030 progress",
+        "description": "Monitor tourism metrics, artisan network growth, and cultural preservation initiatives with comprehensive analytics and reporting tools.",
+        "value": "Real-time insights into tourism performance and cultural preservation progress to support Vision 2030 objectives.",
+        "cta": "View Dashboard",
+        "feature1": "Real-time tourism analytics",
+        "feature2": "Vision 2030 progress tracking",
+        "feature3": "Economic impact measurement"
+      },
+      "content_team": {
+        "title": "Content Team & Media",
+        "subtitle": "Create compelling cultural content",
+        "description": "Manage multimedia production workflows for artisan journey documentation with advanced project management and asset organization tools.",
+        "value": "Streamline content creation processes while capturing authentic cultural stories that resonate with global audiences.",
+        "cta": "Manage Projects",
+        "feature1": "Advanced project management",
+        "feature2": "Multimedia asset organization",
+        "feature3": "Collaborative workflow tools"
+      },
+      "collector": {
+        "title": "Collector & Investor",
+        "subtitle": "Invest in authentic culture",
+        "description": "Discover and invest in verified authentic Moroccan crafts with blockchain certification and detailed provenance documentation.",
+        "value": "Build a valuable collection of authentic pieces while supporting artisan communities and preserving cultural heritage.",
+        "cta": "Start Collecting",
+        "feature1": "Blockchain-verified authenticity",
+        "feature2": "Investment tracking tools",
+        "feature3": "Exclusive collector marketplace"
+      }
+    },
+    "impact": {
+      "title": "Our Impact on Morocco's Cultural Heritage",
+      "certified_artisans": "Certified Artisans",
+      "annual_tourists": "Annual Tourists",
+      "tourism_revenue": "Tourism Revenue",
+      "authenticity_score": "Authenticity Score"
+    },
+    "vision": {
+      "title": "Supporting Morocco's Vision 2030",
+      "description": "We're proud to contribute to Morocco's ambitious tourism goals through technology-enabled cultural preservation and authentic tourism experiences.",
+      "progress": "Progress to 2030",
+      "target_tourists": "Target Tourists",
+      "target_artisans": "Target Artisans",
+      "view_progress": "View Full Progress"
+    },
+    "quick_access": {
+      "title": "Quick Access",
+      "explore_title": "Explore Morocco",
+      "explore_desc": "Discover authentic experiences and plan your perfect journey",
+      "start_exploring": "Start Exploring",
+      "document_title": "Document Your Craft",
+      "document_desc": "Share your artisan journey with the world",
+      "start_documenting": "Start Documenting",
+      "collect_title": "Collect Authentic Pieces",
+      "collect_desc": "Invest in verified traditional Moroccan crafts",
+      "start_collecting": "Start Collecting"
+    },
+    "final_cta": {
+      "title": "Ready to Experience Authentic Morocco?",
+      "description": "Join our community of travelers, artisans, experts, and collectors in preserving and celebrating Morocco's rich cultural heritage.",
+      "view_journey": "View Artisan Journey",
+      "get_started": "Get Started Today"
+    }
+  },
+  "navigation": {
+    "home": "Home",
+    "explore": "Discover Morocco",
+    "plan": "Plan Your Trip",
+    "your_journey": "Your Journey",
+    "supporting_personas": "Behind Your Experience",
+    "artisan": "Meet Our Artisans",
+    "expert": "Cultural Experts",
+    "government": "Vision 2030",
+    "content_team": "Behind the Scenes",
+    "collector": "Authentic Pieces"
+  },
+  "footer": {
+    "title": "Morocco Made Real: Verified Authentic",
+    "description": "Technology Meets Tradition - AI platform for verified cultural tourism and authenticated traditional Moroccan crafts.",
+    "vision": "Supporting Morocco Tourism Vision 2030 with Verified Authenticity",
+    "travellers": "Travellers",
+    "artisans_guides": "Artisans & Guides",
+    "support": "Support",
+    "ai_itineraries": "AI Itineraries",
+    "authenticity_scan": "Authenticity Scan",
+    "local_guides": "Local Guides",
+    "mobile_app": "Mobile App",
+    "artisan_space": "Artisan Space",
+    "guide_network": "Guide Network",
+    "ai_training": "AI Training",
+    "certification": "Certification",
+    "help_center": "Help Center",
+    "travel_contact": "Travel Contact",
+    "tourism_partnerships": "Tourism Partnerships",
+    "press_media": "Press & Media",
+    "all_rights_reserved": "All rights reserved",
+    "ai_platform": "AI Tourism & Culture Platform"
+  },
+  "tourist": {
+    "title": "Cultural Explorer",
+    "subtitle": "Discover authentic Moroccan heritage through verified cultural experiences and meaningful artisan connections",
+    "tabs": {
+      "discover": "Cultural Discovery",
+      "plan": "Plan Journey",
+      "my_journey": "My Heritage Journey",
+      "experiences": "Authentic Experiences",
+      "artisans": "Meet Master Artisans",
+      "wishlist": "Cultural Wishlist",
+      "profile": "Explorer Profile"
+    },
+    "stats": {
+      "experiences": "Cultural Experiences",
+      "experiences_booked": "Cultural Experiences Enjoyed",
+      "verified_artisans": "Verified Artisans",
+      "artisans_met": "Master Artisans Met",
+      "happy_travelers": "Happy Travelers",
+      "regions_explored": "Cultural Regions Explored",
+      "heritage_learned": "Heritage Stories Discovered"
+    },
+    "discover": {
+      "title": "Discover Authentic Cultural Experiences",
+      "recommendations": "AI Recommendations",
+      "experiences": "experiences",
+      "explore": "Explore",
+      "featured_experiences": "Featured Heritage Experiences",
+      "by_region": "Explore by Cultural Region",
+      "by_craft": "Discover Traditional Crafts",
+      "authentic_verified": "Authenticity Verified",
+      "artisan_led": "Artisan-Led Experiences",
+      "cultural_immersion": "Deep Cultural Immersion",
+      "family_friendly": "Family Heritage Experiences",
+      "book_experience": "Join Cultural Experience",
+      "learn_more": "Discover Heritage Story"
+    },
+    "journey": {
+      "title": "My Cultural Heritage Journey",
+      "upcoming_experiences": "Upcoming Cultural Adventures",
+      "past_experiences": "Heritage Memories",
+      "cultural_passport": "Cultural Discovery Passport",
+      "achievements": "Cultural Achievements",
+      "share_journey": "Share Your Heritage Journey",
+      "download_memories": "Download Cultural Memories"
+    },
+    "experiences": {
+      "title": "Authentic Cultural Experiences",
+      "filter_by_type": "Filter by Experience Type",
+      "workshop": "Traditional Craft Workshop",
+      "tour": "Heritage Site Tour",
+      "meal": "Authentic Cultural Meal",
+      "festival": "Cultural Festival",
+      "duration": "Experience Duration",
+      "group_size": "Cultural Group Size",
+      "difficulty": "Cultural Complexity",
+      "includes": "Experience Includes",
+      "book_now": "Reserve Cultural Experience"
+    },
+    "artisans": {
+      "title": "Meet Master Artisans",
+      "featured_masters": "Featured Master Artisans",
+      "by_craft": "Discover by Traditional Craft",
+      "by_region": "Explore by Cultural Region",
+      "master_story": "Master's Heritage Story",
+      "workshop_available": "Workshop Available",
+      "visit_workshop": "Visit Master's Workshop",
+      "learn_craft": "Learn Traditional Craft",
+      "support_artisan": "Support Master Artisan"
+    },
+    "profile": {
+      "title": "Tourist Profile",
+      "personal_info": "Personal Information",
+      "travel_preferences": "Travel Preferences",
+      "save_changes": "Save Changes",
+      "name": "Name",
+      "email": "Email",
+      "location": "Location",
+      "travel_since": "Traveling Since",
+      "interests": "Travel Interests",
+      "bio": "Bio",
+      "achievements": "Travel Achievements",
+      "view_public_profile": "View Public Profile"
+    },
+    "cta": {
+      "title": "Ready to Explore Authentic Morocco?",
+      "description": "Join our community of travelers, artisans, experts and collectors in preserving and celebrating Morocco's rich cultural heritage",
+      "start_planning": "Start Planning",
+      "explore_destinations": "Explore Destinations"
+    }
+  },
+  "artisan": {
+    "title": "Artisan Showcase",
+    "subtitle": "Amplify your craft and reach global markets with technology-enhanced storytelling",
+    "certification_level": "Mastery Level",
+    "rating": "Community Rating",
+    "dashboard": {
+      "title": "🎨 Artisan Dashboard",
+      "loading": "Loading dashboard...",
+      "admin_controls": {
+        "title": "Admin Controls",
+        "content_creator_tools": "Content Creator Tools",
+        "preservation_portal": "Preservation Portal",
+        "admin_dashboard": "Admin Dashboard"
+      },
+      "authentication": {
+        "title": "Personal Dashboard Access",
+        "description": "Enter your personal authentication code to access detailed metrics.",
+        "placeholder": "Enter auth code",
+        "demo_code": "Demo code: 123456",
+        "authenticate": "Authenticate",
+        "cancel": "Cancel",
+        "error": "Invalid authentication code. Please try again.",
+        "success": "Personal dashboard authenticated. This data is private and only visible to you."
+      },
+      "tabs": {
+        "general": "General Metrics",
+        "rankings": "Rankings",
+        "personal": "Personal Dashboard"
+      },
+      "metrics": {
+        "total_pieces": "Total Pieces",
+        "verified": "Verified",
+        "preservation": "Preservation",
+        "tourists": "Tourists",
+        "monthly_mad": "Monthly MAD",
+        "impact_score": "Impact Score",
+        "booking_rate": "Booking Rate",
+        "repeat_customers": "Repeat Customers",
+        "avg_response_time": "Avg Response Time",
+        "regional_ranking": "Regional Ranking"
+      },
+      "profile": {
+        "title": "Artisan Profile",
+        "craft": "Craft",
+        "region": "Region",
+        "master_level": "Master Level",
+        "achievements": "Achievements",
+        "rating": "Rating",
+        "reviews": "reviews",
+        "performance_indicators": "Performance Indicators"
+      },
+      "rankings": {
+        "title": "Artisan Rankings",
+        "regional_ranking": "Regional Ranking",
+        "booking": "Booking",
+        "rating": "Rating",
+        "impact": "Impact"
+      },
+      "personal": {
+        "financial_performance": "Financial Performance",
+        "experience_bookings": "Experience Bookings",
+        "direct_sales": "Direct Sales",
+        "teaching_sessions": "Teaching Sessions",
+        "preservation_work": "Preservation Work",
+        "growth_rate": "Growth Rate",
+        "projected_next_month": "Projected Next Month",
+        "capacity_analytics": "Capacity & Tourist Analytics",
+        "current_utilization": "Current Utilization",
+        "daily_max": "Daily Max",
+        "repeat_visitors": "Repeat Visitors",
+        "conversion": "Conversion"
+      },
+      "master_levels": {
+        "master": "Master",
+        "grand-master": "Grand Master",
+        "craftsman": "Craftsman"
+      }
+    },
+    "tabs": {
+      "overview": "Overview",
+      "journey": "Story Journey",
+      "products": "Showcase",
+      "orders": "Global Orders",
+      "profile": "Master Profile"
+    },
+    "stats": {
+      "monthly_revenue": "Monthly Earnings",
+      "active_products": "Featured Pieces",
+      "followers": "Global Admirers",
+      "profile_views": "Story Views"
+    },
+    "overview": {
+      "recent_activity": "Recent Achievements",
+      "order_completed": "Global Sale Completed",
+      "documentation_progress": "Story Documentation Progress",
+      "new_review": "New Community Recognition",
+      "sales_performance": "Global Reach Performance",
+      "this_month": "This Month",
+      "customer_satisfaction": "Community Appreciation",
+      "average_rating": "Master Recognition Score"
+    },
+    "journey": {
+      "documentation_process": "Your Craft Story Journey",
+      "planning": "Story Planning",
+      "documentation": "Heritage Documentation",
+      "ai_validation": "Technology Enhancement",
+      "expert_review": "Master Endorsement",
+      "marketplace": "Global Showcase",
+      "status": {
+        "completed": "Story Complete",
+        "in_progress": "Crafting Story",
+        "in-progress": "Crafting Story",
+        "pending": "Ready to Begin"
+      },
+      "current_task": "Current Story Chapter",
+      "current_task_description": "Complete your glazing heritage story with detailed photos and video of your traditional mastery.",
+      "upload_photos": "Share Your Process",
+      "record_video": "Capture Your Mastery"
+    },
+    "products": {
+      "my_products": "My Heritage Collection",
+      "add_new_product": "Share New Masterpiece",
+      "price": "Value",
+      "views": "Global Interest",
+      "orders": "Collectors",
+      "rating": "Appreciation",
+      "edit": "Enhance Story",
+      "view": "Preview",
+      "status": {
+        "active": "Featured",
+        "live": "Live",
+        "documentation": "In Documentation",
+        "draft": "Draft",
+        "pending": "Story in Progress",
+        "sold": "Collected"
+      }
+    },
+    "orders": {
+      "recent_orders": "Global Collectors",
+      "customer": "Collector",
+      "product": "Masterpiece",
+      "country": "Destination",
+      "date": "Collection Date",
+      "view_details": "View Story",
+      "contact_customer": "Connect with Collector",
+      "status": {
+        "pending": "Preparing",
+        "processing": "Crafting",
+        "shipped": "Traveling",
+        "delivered": "Collected"
+      }
+    },
+    "profile": {
+      "artisan_profile": "Master Artisan Profile",
+      "name": "Master Name",
+      "craft_specialty": "Heritage Specialty",
+      "location": "Cultural Home",
+      "experience_years": "Years of Mastery",
+      "bio": "Your Heritage Story",
+      "certifications": "Recognition & Awards",
+      "save_changes": "Update Your Story",
+      "preview_public_profile": "Preview Global Profile"
+    },
+    "cta": {
+      "title": "Ready to Share Your Mastery with the World?",
+      "description": "Transform your traditional skills into global recognition while preserving your cultural heritage for future generations",
+      "start_documentation": "Begin Your Story",
+      "add_new_product": "Share New Masterpiece"
+    }
+  },
+  "expert": {
+    "title": "Cultural Heritage Mentor",
+    "subtitle": "Preserve traditions and guide artisan storytelling with collaborative expertise",
+    "expert_level": "Heritage Expertise Level",
+    "specialization": "Cultural Specialization",
+    "tabs": {
+      "pending": "Mentorship Queue",
+      "pending_reviews": "Pending Reviews",
+      "completed": "Stories Enhanced",
+      "analytics": "Impact Analytics",
+      "knowledge": "Heritage Library",
+      "knowledge_base": "Knowledge Base",
+      "profile": "Mentor Profile"
+    },
+    "stats": {
+      "pending_reviews": "Stories Awaiting Guidance",
+      "completed_reviews": "Artisans Mentored",
+      "average_rating": "Community Appreciation",
+      "approval_rate": "Story Enhancement Rate"
+    },
+    "pending": {
+      "title": "Artisan Stories Seeking Guidance",
+      "filter": "Filter",
+      "sort": "Sort",
+      "review": "Review",
+      "comment": "Comment",
+      "approve": "Approve",
+      "reject": "Reject",
+      "artisan": "Artisan",
+      "craft": "Craft",
+      "submitted": "Submitted",
+      "ai_score": "AI Score",
+      "ai_analysis": "AI Analysis",
+      "documentation": "Documentation",
+      "media": "Media",
+      "priority": {
+        "high": "High",
+        "medium": "Medium",
+        "low": "Low"
+      },
+      "documentation_status": {
+        "complete": "Complete",
+        "partial": "Partial",
+        "incomplete": "Incomplete"
+      },
+      "stage": {
+        "expert_review": "Expert Review",
+        "technical_analysis": "Technical Analysis",
+        "initial_review": "Initial Review"
+      }
+    },
+    "completed": {
+      "title": "Enhanced Heritage Stories",
+      "export": "Export",
+      "filter": "Filter",
+      "artisan": "Artisan",
+      "craft": "Craft",
+      "completed_date": "Completion Date",
+      "final_score": "Final Score",
+      "feedback": "Feedback",
+      "view_details": "View Details",
+      "export_report": "Export Report",
+      "verdict": {
+        "approved": "Approved",
+        "rejected": "Rejected",
+        "approved_with_conditions": "Approved with Conditions"
+      }
+    },
+    "analytics": {
+      "title": "Your Cultural Impact",
+      "review_performance": "Review Performance",
+      "this_month": "This Month",
+      "accuracy_rate": "Accuracy Rate",
+      "ai_agreement": "AI Agreement",
+      "craft_distribution": "Craft Distribution",
+      "expertise_breakdown": "Expertise Breakdown"
+    },
+    "knowledge": {
+      "title": "Heritage Knowledge Library",
+      "add_article": "Share Cultural Insight",
+      "edit_article": "Update Knowledge",
+      "view_article": "Read Heritage Story",
+      "read_more": "Read More"
+    },
+    "profile": {
+      "expert_profile": "Cultural Expert Profile",
+      "name": "Name",
+      "specialization": "Specialization",
+      "institution": "Institution",
+      "experience_years": "Years of Experience",
+      "bio": "Biography",
+      "certifications": "Certifications",
+      "save_changes": "Save Changes",
+      "view_public_profile": "View Public Profile"
+    },
+    "cta": {
+      "title": "Ready to Make an Impact?",
+      "description": "Your expertise helps preserve Moroccan cultural heritage for future generations",
+      "start_reviewing": "Start Reviewing",
+      "contribute_knowledge": "Contribute Knowledge"
+    }
+  },
+  "government": {
+    "title": "Vision 2030 Partnership Hub",
+    "subtitle": "Supporting Morocco's cultural tourism ecosystem through collaborative innovation",
+    "ministry": "Ministry of Tourism, Handicrafts and Social Economy",
+    "initiative": "Morocco Vision 2030 Cultural Tourism Initiative",
+    "tabs": {
+      "overview": "Partnership Overview",
+      "vision2030": "Vision 2030 Progress",
+      "tourism": "Tourism Ecosystem",
+      "artisan_network": "Artisan Community",
+      "regional": "Regional Impact",
+      "reports": "Impact Reports"
+    },
+    "kpi": {
+      "annual_tourists": "Annual Cultural Tourists",
+      "tourism_revenue": "Cultural Tourism Revenue",
+      "certified_artisans": "Supported Artisans",
+      "tourism_jobs": "Cultural Tourism Jobs Created"
+    },
+    "overview": {
+      "documented_crafts": "Heritage Crafts Preserved",
+      "heritage_sites_connected": "Heritage Sites Connected",
+      "digital_archive_pieces": "Digital Heritage Archive",
+      "active_partnerships": "Active Community Partnerships",
+      "cultural_events": "Cultural Events Supported"
+    },
+    "vision2030": {
+      "progress_tracking": "Collaborative Progress Tracking",
+      "strategic_priorities": "Partnership Priorities",
+      "investment_tracking": "Community Investment Impact",
+      "milestone_achievements": "Shared Achievements",
+      "sustainability_goals": "Sustainable Tourism Goals"
+    },
+    "tourism": {
+      "visitor_demographics": "Visitor Demographics",
+      "satisfaction_metrics": "Satisfaction Metrics",
+      "seasonal_trends": "Seasonal Trends",
+      "experience_quality": "Authentic Experience Quality",
+      "overall_satisfaction": "Overall Satisfaction",
+      "cultural_experiences": "Cultural Experiences",
+      "artisan_interactions": "Artisan Interactions",
+      "repeat_visitors": "Repeat Visitors",
+      "digital_engagement": "Digital Platform Engagement",
+      "app_downloads": "App Downloads",
+      "ai_itinerary_usage": "AI Itinerary Usage",
+      "virtual_experiences": "Virtual Experiences",
+      "app_rating": "App Rating",
+      "return_analytics": {
+        "title": "Return Tourist Analytics - Proving Platform Value",
+        "return_rate": "Return Visit Rate",
+        "spending_increase": "Spending Increase",
+        "recommendation_rate": "Recommend to Others",
+        "return_time": "Average Return Time",
+        "journey_tracking": "Return Tourist Journey Tracking",
+        "platform_impact": "Platform Impact on Tourism Recovery",
+        "first_visit": "First Visit: Traditional Tourism",
+        "return_visit": "Return Visit: Platform Users",
+        "third_visit": "Third Visit: Deep Cultural",
+        "lifetime_value": "Lifetime Value Increase",
+        "pre_platform": "Pre-Platform Return Rate",
+        "post_platform": "Post-Platform Return Rate",
+        "recovery_acceleration": "Revenue Recovery Acceleration",
+        "contribution": "Contribution to $60B Recovery"
+      }
+    },
+    "artisan_network": {
+      "network_overview": "Artisan Community Network",
+      "certification_levels": "Mastery Recognition Levels",
+      "skill_development": "Skill Enhancement Programs",
+      "market_access": "Global Market Access Support"
+    },
+    "artisans": {
+      "certification_breakdown": "Certification Breakdown",
+      "economic_impact": "Economic Impact",
+      "average_monthly_income": "Average Monthly Income",
+      "total_export_value": "Total Export Value",
+      "monthly_growth": "Monthly Growth",
+      "international_sales": "International Sales",
+      "craft_distribution": "Craft Distribution"
+    },
+    "regional": {
+      "performance_data": "Regional Cultural Impact",
+      "investment_distribution": "Community Investment Distribution",
+      "employment_impact": "Local Employment Impact"
+    },
+    "regions": {
+      "regional_performance": "Regional Performance",
+      "tourists": "Tourists",
+      "revenue": "Revenue",
+      "artisans": "Artisans",
+      "satisfaction": "Satisfaction"
+    },
+    "reports": {
+      "title": "Impact Reports & Analytics",
+      "generate_report": "Generate Report",
+      "generate_reports": "Generate Impact Reports",
+      "export_data": "Export Partnership Data",
+      "schedule_reports": "Schedule Progress Reports",
+      "monthly_tourism_report": "Monthly Tourism Report",
+      "monthly_description": "Comprehensive analysis of monthly tourism performance",
+      "vision_2030_progress": "Vision 2030 Progress",
+      "vision_description": "Detailed report on Vision 2030 progress",
+      "artisan_impact_study": "Artisan Impact Study",
+      "artisan_description": "Analysis of artisan economic and cultural impact",
+      "download": "Download"
+    },
+    "cta": {
+      "title": "Driving Morocco's Tourism Vision 2030 Together",
+      "description": "Partner with us to monitor progress, support communities, and achieve Morocco's ambitious cultural tourism goals through collaborative innovation",
+      "view_vision_2030": "Explore Vision 2030",
+      "support_artisans": "Support Artisan Communities"
+    }
+  },
+  "content_team": {
+    "title": "Cultural Storytelling Studio",
+    "subtitle": "Amplify authentic Moroccan heritage through compelling digital narratives",
+    "department": "Cultural Content & Digital Storytelling",
+    "focus": "Heritage Amplification & Global Reach",
+    "tabs": {
+      "overview": "Story Overview",
+      "active_projects": "Active Stories",
+      "production": "Content Production",
+      "projects": "Active Stories",
+      "schedule": "Production Calendar",
+      "asset_library": "Story Assets",
+      "assets": "Story Assets",
+      "team": "Creative Team"
+    },
+    "stats": {
+      "active_projects": "Stories in Production",
+      "completed_this_month": "Stories Completed This Month",
+      "total_assets": "Cultural Assets Created",
+      "team_members": "Creative Storytellers"
+    },
+    "overview": {
+      "recent_activity": "Recent Story Milestones",
+      "project_completed": "Heritage Story Completed",
+      "new_assignment": "New Cultural Assignment",
+      "asset_uploaded": "New Story Asset",
+      "team_collaboration": "Team Collaboration Update"
+    },
+    "projects": {
+      "title": "Cultural Heritage Stories",
+      "create_new": "Begin New Story",
+      "new_project": "Begin New Heritage Story",
+      "filter_by_status": "Filter by Progress",
+      "sort_by": "Sort Stories",
+      "artisan": "Featured Artisan",
+      "craft": "Heritage Craft",
+      "deadline": "Story Deadline",
+      "priority": "Cultural Priority",
+      "assigned_to": "Story Creator",
+      "progress": "Story Progress",
+      "team": "Story Team",
+      "assets": "Story Assets",
+      "view_details": "View Story Details",
+      "edit_project": "Enhance Story",
+      "edit": "Enhance Story",
+      "status": {
+        "planning": "Story Planning",
+        "filming": "Capturing Heritage",
+        "in_progress": "Creating Content",
+        "post_production": "Story Enhancement",
+        "review": "Cultural Review",
+        "completed": "Story Complete",
+        "confirmed": "Heritage Confirmed",
+        "pending": "Awaiting Artisan"
+      },
+      "priority": {
+        "high": "Cultural Priority",
+        "medium": "Standard Story",
+        "low": "Background Feature"
+      }
+    },
+    "schedule": {
+      "title": "Cultural Production Calendar",
+      "this_week": "This Week's Stories",
+      "upcoming": "Upcoming Heritage Features",
+      "photo_shoot": "Heritage Photo Session",
+      "video_shoot": "Craft Video Documentation",
+      "interview": "Artisan Story Interview",
+      "editing": "Story Enhancement Session",
+      "add_event": "Schedule New Story Session"
+    },
+    "assets": {
+      "title": "Cultural Story Library",
+      "upload_new": "Add New Story Asset",
+      "filter_by_type": "Filter by Asset Type",
+      "search": "Search Heritage Assets",
+      "type": {
+        "photo": "Heritage Photography",
+        "video": "Craft Documentation",
+        "audio": "Cultural Audio",
+        "document": "Story Documents"
+      }
+    },
+    "team": {
+      "title": "Cultural Storytelling Team",
+      "add_member": "Welcome New Storyteller",
+      "role": "Creative Role",
+      "current_projects": "Active Stories",
+      "availability": "Creative Availability"
+    },
+    "cta": {
+      "title": "Ready to Amplify Moroccan Heritage?",
+      "description": "Create compelling stories that celebrate artisan mastery and connect authentic culture with global audiences",
+      "start_new_project": "Begin New Heritage Story",
+      "view_full_schedule": "View Story Calendar"
+    },
+    "production": {
+      "title": "Heritage Production Overview",
+      "schedule_shoot": "Schedule Heritage Session",
+      "quick_capture": "Quick Cultural Capture",
+      "photo_shoots": "Heritage Photography Sessions",
+      "video_production": "Cultural Video Production",
+      "audio_recording": "Traditional Audio Recording",
+      "scheduled_today": "Scheduled Today",
+      "completed_today": "Completed Today",
+      "this_week": "This Week's Heritage Stories",
+      "in_production": "Capturing Heritage",
+      "post_production": "Story Enhancement",
+      "ready_for_review": "Ready for Cultural Review",
+      "interviews_pending": "Artisan Interviews Pending",
+      "narrations_needed": "Cultural Narrations Needed",
+      "audio_editing": "Heritage Audio Enhancement",
+      "upcoming_shoots": "Upcoming Heritage Sessions",
+      "date": "Date",
+      "time": "Time",
+      "type": "Session Type",
+      "location": "Cultural Location",
+      "crew": "Story Team",
+      "edit_schedule": "Enhance Schedule",
+      "start_shoot": "Begin Heritage Session",
+      "status": {
+        "filming": "Capturing Heritage",
+        "post_production": "Story Enhancement",
+        "scheduled": "Heritage Session Scheduled",
+        "completed": "Heritage Story Complete",
+        "confirmed": "Session Confirmed",
+        "pending": "Heritage Session Pending"
+      }
+    }
+  },
+  "collector": {
+    "title": "Cultural Heritage Curator",
+    "subtitle": "Discover, appreciate, and preserve authentic Moroccan crafts while supporting artisan communities",
+    "status": "Curator Status",
+    "level": "Appreciation Level",
+    "tabs": {
+      "discover": "Heritage Discovery",
+      "my_collection": "My Cultural Collection",
+      "wishlist": "Heritage Wishlist",
+      "investments": "Cultural Investments",
+      "profile": "Curator Profile"
+    },
+    "stats": {
+      "pieces_owned": "Heritage Pieces Curated",
+      "portfolio_growth": "Cultural Portfolio Growth",
+      "wishlist_items": "Desired Heritage Items",
+      "gold_certified": "Master-Certified Pieces"
+    },
+    "discover": {
+      "title": "Discover Authentic Heritage Pieces",
+      "filter": "Filter by Heritage",
+      "search": "Search Cultural Treasures",
+      "authentic": "Master-Verified",
+      "featured": "Featured Heritage",
+      "new_arrivals": "New Cultural Discoveries",
+      "trending": "Trending Heritage Crafts",
+      "by_region": "By Cultural Region",
+      "by_craft": "By Traditional Craft",
+      "price_range": "Investment Range",
+      "artisan": "Artisan",
+      "location": "Location",
+      "category": "Category",
+      "artisan_story": "Artisan Heritage Story",
+      "view_details": "Explore Heritage Story",
+      "add_to_wishlist": "Add to Cultural Wishlist",
+      "contact_artisan": "Connect with Master Artisan"
+    },
+    "collection": {
+      "title": "My Cultural Heritage Collection",
+      "sort_by": "Organize Collection",
+      "export": "Export Collection",
+      "share": "Share Collection",
+      "portfolio_overview": "Portfolio Overview",
+      "filter_by": "Filter Heritage",
+      "acquired_date": "Acquisition Date",
+      "cultural_value": "Cultural Significance",
+      "artisan": "Master Artisan",
+      "region": "Cultural Origin",
+      "view_certificate": "View Authenticity Certificate",
+      "share_story": "Share Heritage Story",
+      "track_value": "Track Cultural Value"
+    },
+    "wishlist": {
+      "title": "Heritage Wishlist",
+      "priority": "Cultural Priority",
+      "estimated_value": "Cultural Investment",
+      "availability": "Heritage Availability",
+      "notify_when_available": "Notify When Available",
+      "move_to_collection": "Add to Collection",
+      "remove_from_wishlist": "Remove from Wishlist"
+    },
+    "investments": {
+      "title": "Cultural Investment Portfolio",
+      "total_invested": "Total Cultural Investment",
+      "current_value": "Current Heritage Value",
+      "roi": "Cultural Appreciation",
+      "best_performing": "Most Appreciated Heritage",
+      "recent_acquisitions": "Recent Cultural Acquisitions",
+      "market_trends": "Heritage Market Insights",
+      "investment_timeline": "Cultural Investment Journey",
+      "total_return": "Total Return",
+      "vs_market": "vs Market",
+      "value_growth": "Value Growth",
+      "initial_investment": "Initial Investment",
+      "current_value": "Current Value",
+      "unrealized_gain": "Unrealized Gain",
+      "top_performer": "Top Performer",
+      "appreciation": "Appreciation",
+      "investment_insights": "Investment Insights",
+      "insight_1_title": "Strong Performance",
+      "insight_1_desc": "Your collection has outperformed the market by 12.3% this year",
+      "insight_2_title": "Diversification Opportunity",
+      "insight_2_desc": "Consider adding textiles to balance your pottery-heavy portfolio",
+      "insight_3_title": "Global Interest",
+      "insight_3_desc": "Moroccan crafts are gaining international recognition and value"
+    },
+    "profile": {
+      "title": "Cultural Curator Profile",
+      "personal_info": "Curator Information",
+      "collection_preferences": "Heritage Preferences",
+      "investment_goals": "Cultural Investment Vision",
+      "notification_settings": "Heritage Notifications",
+      "save_changes": "Update Curator Profile",
+      "collector_profile": "Cultural Curator Profile",
+      "name": "Name",
+      "location": "Location",
+      "collecting_since": "Collecting Since",
+      "interests": "Interests",
+      "bio": "Biography",
+      "achievements": "Achievements",
+      "view_public_profile": "View Public Profile"
+    },
+    "cta": {
+      "title": "Ready to Build Your Cultural Legacy?",
+      "description": "Start discovering authentic Moroccan heritage crafts and build a meaningful collection while directly supporting master artisan communities",
+      "discover_pieces": "Discover Heritage Treasures",
+      "view_investments": "View Cultural Portfolio"
+    }
+  },
+  "artisan_journey": {
+    "title": "Morocco Made Real - Artisan Journey Ecosystem",
+    "subtitle": "Transforming traditional craftsmanship through AI-powered documentation and blockchain verification",
+    "piece_title": "Traditional Fez Blue Pottery Vase",
+    "piece_description": "A beautiful hand-crafted pottery vase using traditional Fez blue glazing techniques passed down through generations.",
+    "gold_certification": "Gold Certification",
+    "authenticity": "Authenticity",
+    "artisan": "Artisan",
+    "technique": "Technique",
+    "origin": "Origin",
+    "cultural_significance": "Cultural Significance",
+    "journey_progress": "Journey Progress",
+    "documentation": "Documentation",
+    "ai_validation": "AI Validation",
+    "expert_review": "Expert Review",
+    "tabs": {
+      "overview": "Overview",
+      "journey": "Journey",
+      "validation": "Validation",
+      "marketplace": "Marketplace",
+      "museum": "Museum"
+    }
+  },
+  "onboarding": {
+    "morocco_made_real": {
+      "hero": {
+        "scan_code": "Scan a Code.",
+        "meet_master": "Meet a Master.",
+        "take_home_story": "Take Home a Certified Story.",
+        "description": "Discover authentic Moroccan master artisans through certified cultural experiences. Connect directly with verified craftspeople preserving centuries-old traditions.",
+        "platform_name": "Morocco Made Real",
+        "platform_tagline": "Technology Meets Ancient Mastery",
+        "start_journey": "Start Cultural Journey",
+        "get_explorer_pass": "Get Explorer Pass NFT",
+        "view_explorer_pass": "View Explorer Pass NFT"
+      },
+      "stats": {
+        "master_artisans": "Master Artisans",
+        "certified_craftspeople": "Certified craftspeople",
+        "stories_collected": "Stories Collected",
+        "by_travelers": "By travelers worldwide",
+        "direct_to_artisans": "Direct to Artisans",
+        "preserving_crafts": "Preserving crafts",
+        "endangered_crafts": "Endangered Crafts",
+        "being_preserved": "Being preserved"
+      },
+      "cultural_impact": {
+        "title": "Authentic Cultural Experiences",
+        "certified_title": "Certified",
+        "certified_subtitle": "Master Craftspeople",
+        "certified_description": "Verified expertise",
+        "heritage_title": "Heritage",
+        "heritage_subtitle": "Preservation",
+        "heritage_description": "Cultural continuity",
+        "direct_title": "Direct",
+        "direct_subtitle": "Impact",
+        "direct_description": "Community support"
+      },
+      "discover": {
+        "title": "Discover Master Artisans",
+        "description": "Each QR code unlocks authentic stories from certified craftspeople across Morocco",
+        "start_journey": "Start Your Cultural Journey"
+      }
+    },
+    "verification": {
+      "title": "Verify Your Cultural Journey",
+      "subtitle": "Connect via WhatsApp to track your authentic Moroccan experiences and build your Cultural Explorer profile.",
+      "why_verify_title": "Why verify?",
+      "why_verify_items": {
+        "track_journey": "Track your story collection journey",
+        "earn_pass": "Earn NFT Cultural Explorer Pass levels",
+        "save_experiences": "Save favorite artisan experiences",
+        "whatsapp_booking": "Get booking confirmations via WhatsApp"
+      },
+      "phone_input": {
+        "title": "Enter Your Phone Number",
+        "step_indicator": "Step 1/2",
+        "placeholder": "+1 555 123 4567",
+        "country_ready": "WhatsApp Ready",
+        "verify_button": "Verify via WhatsApp",
+        "back_button": "← Back to Home"
+      },
+      "qr_section": {
+        "title": "Scan QR Code with WhatsApp",
+        "sent_to": "Code sent to",
+        "open_whatsapp": "Open WhatsApp",
+        "quick_test": "Quick Test (Dev Only)",
+        "demo_code": "Demo Code",
+        "session": "Session",
+        "expires": "Expires"
+      },
+      "success": {
+        "title": "Welcome, Cultural Explorer!",
+        "description": "Your journey is now tracked. Start scanning QR codes to discover authentic artisan stories.",
+        "start_scanning": "Start Scanning Stories"
+      }
+    },
+    "scanning": {
+      "title": "Scan Artisan QR Code",
+      "description": "Find QR codes at workshops, souks, and cultural centers across Morocco. Each scan unlocks an authentic master artisan story.",
+      "point_camera": "Point camera at QR code",
+      "start_camera": "Start Camera",
+      "stop_camera": "Stop Camera",
+      "coming_soon": "🏗️ Coming Soon",
+      "api_integration": "Real artisan QR codes will be loaded from our field team data collection API. Each verified craftsperson will have unique codes at their workshops.",
+      "tracking_enabled": "Tracking enabled for",
+      "stories_saved": "Stories will be saved to your Cultural Explorer Pass",
+      "home_button": "← Home",
+      "view_pass": "View Pass"
+    },
+    "cultural_explorer_pass": {
+      "title": "Cultural Explorer Pass",
+      "subtitle": "Your NFT-Powered Journey Through Morocco",
+      "level_explorer": "Level {level} Explorer",
+      "nft_title": "Morocco Cultural Explorer",
+      "blockchain_verified": "Blockchain-Verified NFT Pass",
+      "stats": {
+        "level": "Level",
+        "stories_collected": "Stories Collected",
+        "regions_visited": "Regions Visited",
+        "impact_score": "Impact Score",
+        "achievements": "Achievements"
+      },
+      "nft_hash": "NFT Hash",
+      "achievements_title": "Achievements Unlocked",
+      "no_achievements": "Start scanning artisan stories to unlock achievements!",
+      "regions_title": "Regions Explored",
+      "no_regions": "Discover artisans across different regions of Morocco!",
+      "next_level": {
+        "title": "Next Level Progress",
+        "stories_to_level": "Stories to Level {level}",
+        "collect_more": "Collect {count} more stories to reach Level {level}"
+      },
+      "actions": {
+        "scan_more": "Scan More Artisan Stories",
+        "share_pass": "Share Pass",
+        "home": "← Home"
+      }
+    },
+    "welcome": {
+      "title": "Welcome to Morocco! 🇲🇦",
+      "subtitle": "Verify your WhatsApp to discover authentic experiences with verified artisans",
+      "developer_panel": "Developer Panel",
+      "show": "Show",
+      "hide": "Hide"
+    },
+    "verification": {
+      "phone_label": "Phone Number",
+      "phone_placeholder": "Enter your phone number",
+      "country_info": {
+        "morocco": "Morocco",
+        "france": "France",
+        "usa": "United States",
+        "germany": "Germany",
+        "whatsapp_usage": "WhatsApp Usage"
+      },
+      "whatsapp_ready": "WhatsApp Ready",
+      "qr_instructions": "Scan with your phone camera",
+      "open_whatsapp": "Open WhatsApp",
+      "quick_test": "Quick Test",
+      "zero_touch_flow": "Zero-Touch Flow",
+      "zero_touch_title": "Zero-Touch Verification",
+      "demo_code": "Demo Code",
+      "session": "Session",
+      "expires": "Expires",
+      "step_1": "Scan QR code with WhatsApp",
+      "step_2": "Message opens with code pre-filled",
+      "step_3": "One tap to send - verification complete!",
+      "generate_qr": "Generate QR Code",
+      "qr_expires": "⏰ QR Code expires in 5 minutes",
+      "simulate_scan": "🧪 Simulate Phone Scan",
+      "status": {
+        "idle": "Ready to generate QR code",
+        "generating": "Generating QR code...",
+        "pending": "Waiting for WhatsApp message...",
+        "verified": "Phone verified successfully!",
+        "expired": "Verification expired",
+        "error": "Verification failed"
+      }
+    },
+    "preferences": {
+      "title": "What Interests You?",
+      "subtitle": "Help us find perfect experiences for you",
+      "mood_question": "What draws you to Morocco?",
+      "time_question": "How much time do you have?",
+      "budget_question": "Budget preference?",
+      "moods": {
+        "creative": {
+          "icon": "🎨",
+          "label": "Creative"
+        },
+        "cultural": {
+          "icon": "🏛️",
+          "label": "Cultural"
+        },
+        "adventure": {
+          "icon": "🏔️",
+          "label": "Adventure"
+        },
+        "relaxing": {
+          "icon": "🧘",
+          "label": "Relaxing"
+        }
+      },
+      "time_options": {
+        "few-hours": "2-3 hours",
+        "half-day": "4-6 hours",
+        "full-day": "6+ hours",
+        "multi-day": "Multi-day"
+      },
+      "price_ranges": {
+        "budget": {
+          "label": "Budget Friendly",
+          "range": "< $70"
+        },
+        "moderate": {
+          "label": "Moderate",
+          "range": "$70-120"
+        },
+        "premium": {
+          "label": "Premium",
+          "range": "$120-200"
+        },
+        "luxury": {
+          "label": "Luxury",
+          "range": "$200+"
+        }
+      },
+      "continue": "Continue to Matching"
+    },
+    "matching": {
+      "title": "Find Your Perfect Experience",
+      "complete_title": "Matching Complete!",
+      "complete_subtitle": "Here are your personalized recommendations",
+      "liked_count": "Experiences you loved",
+      "view_matches": "View Your Matches"
+    }
+  },
+  "preservation_dashboard": {
+    "title": "Cultural Preservation Portal",
+    "subtitle": "Managing Morocco's cultural heritage preservation initiatives",
+    "loading": "Loading preservation data...",
+    "tabs": {
+      "overview": "Overview",
+      "artisans": "Artisan Records",
+      "stages": "Stage Management",
+      "analytics": "Cultural Analytics",
+      "urgent": "Urgent Cases",
+      "settings": "System Settings"
+    },
+    "metrics": {
+      "total_artisans": "Total Artisans",
+      "active_preservations": "Active Preservations",
+      "completed": "Completed",
+      "urgent_cases": "Urgent Cases",
+      "completion_rate": "Completion Rate",
+      "tourist_engagement": "Tourist Engagement",
+      "community_impact_score": "Community Impact",
+      "average_completion_time": "Average time",
+      "cultural_experience_satisfaction": "Cultural experience satisfaction",
+      "economic_and_cultural_benefits": "Economic and cultural benefits"
+    },
+    "stages": {
+      "intake": "Field Liaison Intake",
+      "consent": "Consent Collection",
+      "documentation": "AI Co-Documentation",
+      "cultural_dna": "Cultural DNA Framework",
+      "blockchain": "Blockchain Anchoring",
+      "experience": "Tourist Experience Engine"
+    },
+    "status": {
+      "active": "Active",
+      "completed": "Completed",
+      "paused": "Paused",
+      "failed": "Failed"
+    },
+    "endangerment_levels": {
+      "stable": "Stable",
+      "vulnerable": "Vulnerable",
+      "endangered": "Endangered",
+      "critical": "Critical"
+    },
+    "pipeline": {
+      "title": "Preservation Pipeline Distribution",
+      "recent_activity": "Recent Preservation Activity",
+      "completion_time_days": "days"
+    },
+    "activity": {
+      "completed_preservation": "completed preservation journey",
+      "ai_documentation_completed": "AI Documentation completed for",
+      "moving_to_cultural_dna": "Moving to Cultural DNA stage",
+      "urgent_endangerment": "Urgent: Critical endangerment detected",
+      "practitioners_remaining": "practitioners remaining",
+      "blockchain_anchored": "Blockchain anchored",
+      "time_ago": {
+        "hours": "h ago",
+        "minutes": "m ago",
+        "days": "d ago"
+      }
+    },
+    "search_and_filters": {
+      "search_placeholder": "Search artisans, crafts, regions...",
+      "filter_stage": "Filter by Stage",
+      "filter_status": "Filter by Status",
+      "all_stages": "All Stages",
+      "all_statuses": "All Statuses"
+    },
+    "artisan_records": {
+      "title": "Artisan Preservation Records",
+      "artisan_name": "Artisan Name",
+      "craft": "Craft",
+      "region": "Region",
+      "current_stage": "Current Stage",
+      "progress": "Progress",
+      "status": "Status",
+      "last_updated": "Last Updated",
+      "field_liaison": "Field Liaison",
+      "endangerment_level": "Endangerment Level",
+      "actions": "Actions",
+      "view_details": "View Details",
+      "update_stage": "Update Stage",
+      "contact_liaison": "Contact Liaison"
+    },
+    "crafts": {
+      "blue_pottery": "Blue Pottery",
+      "berber_carpet_weaving": "Berber Carpet Weaving",
+      "traditional_metalwork": "Traditional Metalwork",
+      "amazigh_silver_jewelry": "Amazigh Silver Jewelry"
+    },
+    "regions": {
+      "draa_valley": "Draa Valley",
+      "atlas_mountains": "Atlas Mountains",
+      "fez_region": "Fez Region"
+    },
+    "urgent_cases": {
+      "title": "Urgent Cultural Preservation Cases",
+      "description": "Critical cases requiring immediate attention",
+      "priority_high": "High Priority",
+      "priority_medium": "Medium Priority",
+      "priority_low": "Low Priority",
+      "immediate_action_required": "Immediate Action Required",
+      "escalate": "Escalate",
+      "assign_expert": "Assign Expert"
+    },
+    "analytics": {
+      "title": "Cultural Preservation Analytics",
+      "preservation_trends": "Preservation Trends",
+      "craft_distribution": "Craft Distribution",
+      "regional_performance": "Regional Performance",
+      "expert_efficiency": "Expert Efficiency"
+    }
+  },
+  "tourist_onboarding": {
+    "experiences": {
+      "traditional_pottery_workshop": {
+        "title": "Traditional Pottery Workshop",
+        "artisan": "Hassan Benali",
+        "location": "Fez Medina",
+        "description": "Learn ancient pottery techniques from a master craftsman in the heart of Fez.",
+        "features": [
+          "English-speaking",
+          "All materials included",
+          "Take home creation"
+        ]
+      },
+      "berber_carpet_weaving": {
+        "title": "Berber Carpet Weaving",
+        "artisan": "Fatima Zahra",
+        "location": "Atlas Mountains",
+        "description": "Discover the ancient art of Berber carpet weaving with indigenous patterns.",
+        "features": ["Mountain views", "Traditional lunch", "Cultural stories"]
+      },
+      "leather_crafting_masterclass": {
+        "title": "Leather Crafting Masterclass",
+        "artisan": "Ahmed Tazi",
+        "location": "Marrakech Souk",
+        "description": "Create beautiful leather goods using traditional Moroccan techniques.",
+        "features": ["Souk tour included", "Premium leather", "Custom design"]
+      }
+    },
+    "steps": {
+      "verification": "Phone Verification",
+      "preferences": "Cultural Preferences",
+      "matching": "Experience Matching"
+    },
+    "country_info": {
+      "whatsapp_usage": "WhatsApp Usage"
+    },
+    "zero_touch_flow": {
+      "title": "Zero-Touch Verification Flow",
+      "step1": {
+        "title": "Scan QR with WhatsApp",
+        "description": "Open your camera and scan the QR code"
+      },
+      "step2": {
+        "title": "Message Opens Pre-filled",
+        "description": "WhatsApp opens with verification code ready"
+      },
+      "step3": {
+        "title": "One Tap to Send",
+        "description": "Just tap send - verification complete!"
+      }
+    },
+    "preferences": {
+      "time": {
+        "title": "How much time do you have?",
+        "quick": "Quick (2-3h)",
+        "half_day": "Half Day",
+        "full_day": "Full Day"
+      },
+      "budget": {
+        "title": "Budget preference?",
+        "budget": "Budget",
+        "moderate": "Moderate",
+        "premium": "Premium"
+      }
+    }
+  },
+  "cultural_preservation_portal": {
+    "title": "Cultural Preservation Engine",
+    "subtitle": "Comprehensive Artisan Documentation & Heritage Protection System",
+    "navigation": {
+      "back_to_dashboard": "Back to Dashboard",
+      "portal_badge": "Cultural Preservation Portal"
+    },
+    "security": {
+      "all_frameworks_applied": "All Securities Frameworks Applied",
+      "admin_access_required": "Admin access required to view cultural preservation tools",
+      "admin_login": "Admin Login (Demo)",
+      "back_to_artisan": "Back to Artisan Dashboard"
+    },
+    "progress": {
+      "title": "Preservation Journey Progress"
+    },
+    "stages": {
+      "intake": {
+        "name": "Field Liaison Intake",
+        "description": "Human-guided interview and documentation"
+      },
+      "consent": {
+        "name": "Consent Collection", 
+        "description": "Legal frameworks and artisan protection"
+      },
+      "documentation": {
+        "name": "AI Co-Documentation",
+        "description": "Intelligent transcription and profile generation"
+      },
+      "cultural_dna": {
+        "name": "Cultural DNA Framework",
+        "description": "Cultural categorization and validation"
+      },
+      "blockchain": {
+        "name": "Blockchain Anchoring",
+        "description": "Immutable cultural record creation"
+      },
+      "experience": {
+        "name": "Tourist Experience Engine",
+        "description": "Smart matching and community impact"
+      }
+    },
+    "intake": {
+      "title": "Field & Community Liaisons",
+      "voice_interview": {
+        "title": "Voice Interview",
+        "description": "Record artisan storytelling in native language",
+        "button": "Upload Audio"
+      },
+      "video_documentation": {
+        "title": "Video Documentation", 
+        "description": "Capture craft techniques and cultural context",
+        "button": "Upload Video"
+      },
+      "visual_portfolio": {
+        "title": "Visual Portfolio",
+        "description": "High-quality images of work and process",
+        "button": "Upload Images"
+      },
+      "cultural_context": {
+        "title": "Cultural Context",
+        "description": "Translate and contextualize for AI",
+        "button": "Add Context"
+      }
+    },
+    "consent": {
+      "title": "Artisan Protection & Legal Framework",
+      "informed_consent": {
+        "title": "Informed Consent Agreement",
+        "description": "Legal protections and artisan rights"
+      },
+      "cultural_sensitivity": {
+        "title": "Cultural Sensitivity Protocol",
+        "description": "Respectful documentation practices"
+      },
+      "data_sovereignty": {
+        "title": "Data Sovereignty Rights", 
+        "description": "Artisan control over cultural information"
+      },
+      "revenue_sharing": {
+        "title": "Revenue Sharing Agreement",
+        "description": "Fair compensation framework"
+      },
+      "consent_form": {
+        "title": "Digital Consent Form",
+        "privacy_notice": "Your privacy and cultural heritage rights are protected under Moroccan and international law.",
+        "download_agreement": "Download Full Agreement",
+        "acknowledge_rights": "I acknowledge my rights and protections",
+        "grant_permission": "I grant permission for documentation",
+        "understand_process": "I understand the preservation process",
+        "sign_consent": "Sign Digital Consent"
+      }
+    },
+    "ai_documentation": {
+      "title": "AI-Assisted Cultural Documentation",
+      "intelligent_processing": {
+        "title": "Intelligent Processing Pipeline",
+        "voice_transcription": "Multi-language voice transcription",
+        "cultural_analysis": "Cultural context analysis",
+        "technique_identification": "Traditional technique identification",
+        "heritage_categorization": "Heritage significance categorization"
+      },
+      "ai_profile": {
+        "title": "AI-Generated Cultural Profile",
+        "description": "Comprehensive artisan documentation created by advanced AI systems.",
+        "processing_status": "Processing cultural data...",
+        "estimated_completion": "Estimated completion: 2 minutes"
+      },
+      "quality_assurance": {
+        "title": "Human Review & Quality Assurance",
+        "expert_validation": "Expert cultural validation required",
+        "accuracy_verification": "Accuracy verification in progress",
+        "cultural_authenticity": "Cultural authenticity confirmed"
+      }
+    },
+    "cultural_dna": {
+      "title": "Cultural DNA Framework",
+      "heritage_categorization": {
+        "title": "Heritage Categorization",
+        "craft_classification": "Traditional craft classification",
+        "regional_significance": "Regional cultural significance",
+        "endangerment_assessment": "Endangerment level assessment",
+        "authenticity_validation": "Cultural authenticity validation"
+      },
+      "cultural_genome": {
+        "title": "Cultural Genome Mapping",
+        "description": "Advanced analysis of cultural significance and heritage value.",
+        "generating_profile": "Generating cultural profile...",
+        "estimated_completion": "Estimated completion: 3 minutes"
+      },
+      "validation_system": {
+        "title": "Multi-Layer Validation System",
+        "ai_analysis": "AI cultural analysis",
+        "expert_review": "Expert cultural review", 
+        "community_validation": "Community validation",
+        "academic_verification": "Academic verification"
+      }
+    },
+    "blockchain": {
+      "title": "Blockchain Cultural Anchoring",
+      "immutable_record": {
+        "title": "Immutable Cultural Record",
+        "description": "Creating permanent, tamper-proof documentation of cultural heritage."
+      },
+      "certificate_generation": {
+        "title": "Digital Certificate Generation",
+        "blockchain_hash": "Blockchain hash: 0x7f9c4a2b8e5d3f1a9c6b...",
+        "certificate_id": "Certificate ID: CULT-2024-001-MAR",
+        "timestamp": "Timestamp: 2024-01-15T14:30:00Z",
+        "validator": "Cultural Validator: UNESCO Heritage Council"
+      },
+      "verification_system": {
+        "title": "Global Verification System",
+        "instant_verification": "Instant authenticity verification",
+        "global_recognition": "International heritage recognition",
+        "tamper_proof": "Tamper-proof cultural record",
+        "perpetual_preservation": "Perpetual digital preservation"
+      },
+      "completion_status": {
+        "title": "Blockchain Anchoring Complete!",
+        "description": "Your cultural heritage is now permanently preserved on the blockchain with full authenticity guarantees.",
+        "view_certificate": "View Digital Certificate"
+      }
+    },
+    "experience": {
+      "title": "Tourist Experience Engine",
+      "smart_matching": {
+        "title": "Smart Matching System",
+        "dna_compatibility": "Cultural DNA compatibility analysis",
+        "experience_levels": "Dynamic experience levels (Intro/Advanced)",
+        "blockchain_integration": "Blockchain travel pass integration"
+      },
+      "community_impact": {
+        "title": "Community Impact",
+        "tip_distribution": "Artisan tip distribution system",
+        "reinvestment_loop": "Community reinvestment loop", 
+        "preservation_funding": "Cultural preservation funding"
+      },
+      "ready_for_matching": {
+        "title": "Ready for Tourist Matching!",
+        "description": "Your cultural profile is now complete and ready to be matched with compatible tourists who will appreciate and respect your traditional craft.",
+        "activate_matching": "Activate Experience Matching"
+      }
+    },
+    "navigation_buttons": {
+      "previous_stage": "Previous Stage",
+      "next_stage": "Next Stage"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "export": "Export",
+    "import": "Import",
+    "download": "Download",
+    "upload": "Upload",
+    "refresh": "Refresh",
+    "close": "Close",
+    "open": "Open",
+    "show_more": "Show More",
+    "show_less": "Show Less",
+    "all": "All",
+    "none": "None",
+    "yes": "Yes",
+    "no": "No",
+    "ok": "OK",
+    "continue": "Continue",
+    "finish": "Finish",
+    "submit": "Submit",
+    "reset": "Reset",
+    "clear": "Clear",
+    "select": "Select",
+    "deselect": "Deselect"
+  }
+}

@@ -1,0 +1,2633 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morocco Made Real: Où la Tradition Rencontre l'Intelligence</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --moroccan-red: #c1272d;
+            --moroccan-green: #006233;
+            --moroccan-gold: #d4af37;
+            --earth-brown: #8b4513;
+            --terracotta: #cd853f;
+            --deep-purple: #663399;
+            --warm-white: #faf8f5;
+            --soft-gray: #f5f5f5;
+            --charcoal: #2c2c2c;
+            --accent-blue: #4a90e2;
+            
+            --gradient-primary: linear-gradient(135deg, var(--moroccan-red), #d63849);
+            --gradient-secondary: linear-gradient(135deg, var(--moroccan-green), #2d8e74);
+            --gradient-accent: linear-gradient(135deg, var(--deep-purple), #8a4db8);
+            --gradient-gold: linear-gradient(135deg, var(--moroccan-gold), #f4d03f);
+            
+            --shadow-soft: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-medium: 0 8px 32px rgba(0,0,0,0.12);
+            --shadow-strong: 0 16px 48px rgba(0,0,0,0.15);
+            
+            --border-radius: 16px;
+            --border-radius-lg: 24px;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #faf8f5 0%, #f0ede8 50%, #e8f4f1 100%);
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(193, 39, 45, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 98, 51, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(212, 175, 55, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .moroccan-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 12px;
+            background: var(--gradient-primary);
+            z-index: 1002; /* Ensure it's above slide content */
+            box-shadow: var(--shadow-soft);
+        }
+
+        .moroccan-pattern::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--gradient-secondary);
+            opacity: 0.8;
+        }
+
+        .presentation-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-top: 50px; /* Increased for top fixed elements */
+            padding-bottom: 70px; /* Increased for bottom navigation */
+            position: relative;
+            z-index: 1;
+            overflow: hidden; /* Prevent container itself from showing scrollbars */
+            box-sizing: border-box;
+        }
+
+        .slide {
+            display: none;
+            padding: 16px 24px; /* Bottom padding removed, handled by presentation-container */
+            height: 100%; /* Fill available space within presentation-container's padding */
+            overflow-y: auto; /* Allow individual slide scrolling */
+            animation: slideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            flex-direction: column;
+            scrollbar-width: thin;
+            scrollbar-color: var(--moroccan-green) transparent;
+            box-sizing: border-box;
+        }
+        
+        .slide::-webkit-scrollbar {
+            width: 6px; /* Thinner scrollbar */
+        }
+        
+        .slide::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        .slide::-webkit-scrollbar-thumb {
+            background: var(--moroccan-green);
+            border-radius: 3px;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes slideIn {
+            from { 
+                opacity: 0; 
+                transform: translateX(40px) scale(0.98);
+                filter: blur(2px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateX(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        .slide h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--charcoal);
+            font-size: 1.6em; /* Further reduced */
+            font-weight: 700;
+            margin-bottom: 6px; /* Further reduced margin */
+            text-align: center;
+            background: var(--gradient-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            line-height: 1.2; /* Tighter line height */
+            padding: 0 12px;
+        }
+
+        .slide h1::after {
+            content: '';
+            position: absolute;
+            bottom: -6px; /* Reduced spacing */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px; /* Smaller underline */
+            height: 3px;
+            background: var(--gradient-gold);
+            border-radius: 2px;
+        }
+
+        .slide h2 {
+            color: var(--moroccan-red);
+            font-size: 1.1em; /* Further reduced size */
+            font-weight: 600;
+            margin: 10px 0 6px 0; /* Further reduced margins */
+            position: relative;
+            padding-left: 12px; /* Reduced padding */
+        }
+
+        .slide h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px; /* Even Thinner */
+            height: 75%; /* Slightly shorter */
+            background: var(--gradient-primary);
+            border-radius: 1.5px;
+        }
+
+        .slide h3 {
+            color: var(--earth-brown);
+            font-size: 0.95em; /* Further reduced size */
+            font-weight: 600;
+            margin: 6px 0 4px 0; /* Further reduced margins */
+        }
+
+        .tagline {
+            text-align: center;
+            font-size: 0.9em; /* Further reduced size */
+            color: #666;
+            margin-bottom: 12px; /* Further reduced margin */
+            font-style: italic;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .ai-highlight {
+            background: linear-gradient(135deg, #f8f4ff, #f0e8ff);
+            border-radius: var(--border-radius);
+            padding: 12px; /* Further reduced padding */
+            margin: 10px 0; /* Further reduced margin */
+            border: 1px solid rgba(102, 51, 153, 0.1);
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-highlight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px; /* Thinner */
+            background: var(--gradient-accent);
+        }
+
+        .ai-highlight h2, .ai-highlight h3 {
+            color: var(--deep-purple);
+            border: none;
+            padding: 0;
+            margin-bottom: 8px; /* Further reduced margin */
+            font-weight: 600;
+            font-size: 1.1em; /* Ensure consistent sizing with slide h2 */
+        }
+
+        .ai-highlight p {
+            font-size: 0.85em; /* Reduce paragraph font size in highlight */
+            line-height: 1.4; /* Adjust line height for readability */
+            margin-bottom: 4px; /* Add small bottom margin to paragraphs */
+        }
+
+        .strategy-card, .feature-card, .impact-card, .timeline-item {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: var(--border-radius);
+            padding: 10px; /* Further reduced padding */
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 6px; /* Further reduced margin */
+        }
+
+        .strategy-card::before, .feature-card::before, .impact-card::before, .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px; /* Thinner */
+            transition: var(--transition);
+        }
+
+        .strategy-card:hover, .feature-card:hover, .impact-card:hover, .timeline-item:hover {
+            transform: translateY(-4px) scale(1.01); /* Reduced transform */
+            box-shadow: var(--shadow-strong);
+        }
+
+        .strategy-card.enjeu1::before { background: var(--gradient-secondary); }
+        .strategy-card.enjeu2::before { background: var(--gradient-gold); }
+        .strategy-card.enjeu3::before { background: var(--gradient-primary); }
+        .strategy-card.enjeu4::before { background: var(--gradient-accent); }
+
+        .feature-card.ai::before { background: var(--gradient-accent); }
+        .feature-card.tourists::before { background: linear-gradient(135deg, #ff6b6b, #ee5a24); }
+        .feature-card.artisans::before { background: var(--gradient-secondary); }
+
+        .timeline-item.phase1::before { background: var(--gradient-accent); }
+        .timeline-item.phase2::before { background: var(--gradient-secondary); }
+        .timeline-item.phase3::before { background: var(--gradient-primary); }
+
+        .impact-card.cultural::before { background: var(--gradient-secondary); }
+        .impact-card.economic::before { background: var(--gradient-gold); }
+        .impact-card.technology::before { background: var(--gradient-accent); }
+
+        .stats-row, .strategic-grid, .solution-features, .timeline, .impact-grid, .two-column {
+            display: grid;
+            gap: 8px; /* Further reduced gap */
+            margin: 10px 0; /* Further reduced margin */
+        }
+
+        .stats-row {
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Smaller min */
+        }
+
+        .strategic-grid, .solution-features, .impact-grid {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Smaller min */
+        }
+
+        .timeline {
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); /* Smaller min */
+        }
+
+        .two-column {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px; /* Further reduced padding */
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-2px); /* Reduced transform */
+            box-shadow: var(--shadow-medium);
+        }
+
+        .stat-number {
+            font-size: 1.4em; /* Further reduced size */
+            font-weight: 700;
+            color: var(--moroccan-red);
+            display: block;
+            margin-bottom: 0px; /* Remove bottom margin */
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat-item span:not(.stat-number) {
+            font-size: 0.75em; /* Reduce label size in stat items */
+            line-height: 1.2;
+        }
+
+        .revenue-breakdown {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.1), rgba(116, 185, 255, 0.1));
+            border-radius: var(--border-radius);
+            padding: 10px; /* Further reduced padding */
+            margin: 10px 0; /* Further reduced margin */
+            border: 1px solid rgba(74, 144, 226, 0.2); /* Thinner border */
+            box-shadow: var(--shadow-soft);
+            flex-wrap: wrap;
+        }
+
+        .revenue-item {
+            text-align: center;
+            padding: 6px; /* Further reduced padding */
+            position: relative;
+            min-width: 90px; /* Smaller min */
+        }
+
+        .revenue-amount {
+            font-size: 1.1em; /* Further reduced size */
+            font-weight: 700;
+            color: var(--accent-blue);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .revenue-item div:not(.revenue-amount) {
+            font-size: 0.7em; /* Reduce label size in revenue items */
+            line-height: 1.1;
+        }
+
+        .bullet-list {
+            margin: 6px 0; /* Further reduced margin */
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .bullet-list li {
+            margin: 4px 0; /* Further reduced margin */
+            padding: 4px 8px; /* Further reduced padding */
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 5px; /* Smaller radius */
+            border-left: 2px solid var(--moroccan-green); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03); /* Lighter shadow */
+            font-size: 0.8em; /* Further reduced size */
+            line-height: 1.25; /* Tighter */
+            transition: var(--transition);
+        }
+
+        .bullet-list li:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateX(2px); /* Reduced transform */
+        }
+
+        .bullet-list li::before {
+            content: '✓';
+            color: var(--moroccan-green);
+            font-weight: bold;
+            margin-right: 5px; /* Further reduced margin */
+            font-size: 0.85em; /* Further reduced size */
+        }
+
+        .cta-section {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 14px; /* Further reduced padding */
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin: 10px 0; /* Further reduced margin */
+            box-shadow: var(--shadow-medium);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
+        }
+
+        .cta-section h2 {
+            color: white;
+            border: none;
+            padding: 0;
+            margin-bottom: 8px; /* Further reduced margin */
+            font-size: 1.1em; /* Further reduced size */
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section p {
+            font-size: 0.9em; /* Reduce paragraph font size in cta */
+            line-height: 1.4;
+            margin: 8px 0; /* Adjust margins */
+        }
+
+        .cta-section strong {
+            font-size: 1em; /* Ensure strong tag is not smaller than surrounding p */
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 10px; /* Slightly less space from bottom */
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px; 
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px 16px; 
+            border-radius: 20px; 
+            box-shadow: var(--shadow-medium);
+            backdrop-filter: blur(20px);
+            z-index: 1010; /* Highest z-index for navigation */
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-btn {
+            background: var(--gradient-accent);
+            color: white;
+            border: none;
+            padding: 8px 14px; /* Reduced padding */
+            border-radius: 16px; /* Smaller radius */
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+            font-size: 0.85em; /* Reduced size */
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            transform: translateY(-1px); /* Reduced transform */
+            box-shadow: var(--shadow-medium);
+        }
+
+        .nav-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .slide-counter {
+            position: fixed;
+            top: 18px; /* Adjusted to be below progress bar */
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 6px 12px; 
+            border-radius: 16px; 
+            font-weight: 600;
+            color: var(--deep-purple);
+            box-shadow: var(--shadow-soft);
+            backdrop-filter: blur(20px);
+            font-size: 0.8em; 
+            z-index: 1005; /* Above slides, below nav if somehow overlapping */
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .help-btn {
+            position: fixed;
+            top: 18px; /* Adjusted to be below progress bar */
+            left: 20px;
+            background: var(--gradient-secondary);
+            color: white;
+            border: none;
+            padding: 6px 10px; 
+            border-radius: 16px; 
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+            font-size: 0.75em; 
+            z-index: 1005; /* Consistent with slide counter */
+        }
+
+        .help-btn:hover {
+            transform: translateY(-1px); /* Reduced transform */
+            box-shadow: var(--shadow-medium);
+        }
+
+        .content-fit {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            min-height: 0;
+        }
+
+        .scrollable-content {
+            flex-grow: 1;
+            flex-shrink: 1;
+            overflow-y: auto; /* Changed from visible to auto */
+            min-height: 0;
+            padding-bottom: 12px; 
+            box-sizing: border-box;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            width: 100%;
+            margin: 10px 0; /* Reduced margin */
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            background: white;
+        }
+
+        .financial-table, .competitive-matrix {
+            width: 100%;
+            min-width: 450px; /* Reduced min width */
+            border-collapse: collapse;
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            font-size: 0.8em; /* Reduced size */
+        }
+
+        .financial-table th, .competitive-matrix th {
+            background: var(--gradient-secondary);
+            color: white;
+            font-weight: 600;
+            padding: 8px 6px; /* Reduced padding */
+            text-align: center;
+            font-size: 0.8em; /* Reduced size */
+        }
+
+        .financial-table td, .competitive-matrix td {
+            padding: 6px 6px; /* Reduced padding */
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            font-size: 0.8em; /* Reduced size */
+        }
+
+        .competitive-matrix .made-slow-row {
+            background: linear-gradient(135deg, rgba(45, 142, 116, 0.1), rgba(194, 230, 222, 0.2));
+            font-weight: 600;
+        }
+
+        .checkmark {
+            color: var(--moroccan-green);
+            font-size: 1.2em; /* Reduced size */
+            font-weight: bold;
+        }
+
+        .partial {
+            color: var(--moroccan-gold);
+            font-size: 1em; /* Reduced size */
+            font-weight: bold;
+        }
+
+        .cross {
+            color: #999;
+            font-size: 1.2em; /* Reduced size */
+            font-weight: bold;
+        }
+
+        .svg-container {
+            width: 100%;
+            flex-grow: 1;
+            overflow: auto; /* Allow scroll if content is truly too big, as last resort */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Aligns SVG to the top if it's shorter */
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: var(--border-radius);
+            padding: 8px; /* Increased padding */
+            max-height: 65vh; /* Significantly increased from 46vh */
+        }
+        
+        .svg-container svg {
+            max-width: 100%;
+            max-height: 100%; /* Ensure SVG does not exceed container height */
+            height: auto; /* Maintain aspect ratio if width is constrained */
+            min-height: 300px; /* Increased from 240px */
+            display: block; /* Helps with some spacing issues */
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 12px; /* Adjusted due to moroccan-pattern */
+            left: 0;
+            height: 2px; /* Thinner */
+            background: var(--gradient-gold);
+            transition: width 0.3s ease;
+            z-index: 1002; /* Ensure it's above slide content */
+        }
+
+        /* Enhanced government stats section */
+        .government-stats {
+            background: rgba(0, 98, 51, 0.1);
+            padding: 12px; /* Further reduced padding */
+            border-radius: 10px; /* Smaller radius */
+            margin-bottom: 12px; /* Further reduced margin */
+            border-left: 3px solid var(--moroccan-green); /* Thinner */
+        }
+
+        .government-stats h2 {
+            font-size: 1.15em !important; /* Ensure consistency, override if needed */
+            margin-bottom: 8px !important;
+        }
+
+        .government-stats p {
+            font-size: 0.9em; /* Reduce paragraph size */
+            margin-bottom: 8px !important;
+        }
+
+        /* Animations for elements */
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px); /* Reduced distance */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .slide {
+                padding: 12px 20px; /* Adjusted for smaller screens */
+                font-size: 0.9em;
+            }
+            
+            .slide h1 {
+                font-size: 1.6em; /* Further reduced */
+            }
+            
+            .strategic-grid, .solution-features, .impact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 10px 16px; /* Adjusted for mobile */
+                font-size: 0.85em;
+            }
+            
+            .slide h1 {
+                font-size: 1.4em;
+            }
+            
+            .slide h2 {
+                font-size: 1.1em;
+            }
+            
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline {
+                grid-template-columns: 1fr;
+            }
+            
+            .navigation {
+                padding: 8px 12px;
+                gap: 8px;
+            }
+            
+            .nav-btn {
+                padding: 6px 12px;
+                font-size: 0.8em;
+            }
+            
+            .slide-counter {
+                top: 16px;
+                right: 16px;
+                padding: 4px 8px;
+                font-size: 0.75em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slide {
+                padding: 8px 12px; /* Minimal padding for very small screens */
+                font-size: 0.8em;
+            }
+            
+            .slide h1 {
+                font-size: 1.2em;
+            }
+            
+            .tagline {
+                font-size: 0.9em;
+            }
+            
+            .stat-number {
+                font-size: 1.4em;
+            }
+            
+            .revenue-breakdown {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+
+        /* Shortcuts help panel */
+        .shortcuts-help {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: white;
+            padding: 20px; 
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-strong);
+            z-index: 2000; /* Highest for modal-like elements */
+            width: 280px; 
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .shortcuts-help.active {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+        
+        .shortcuts-help h3 {
+            margin-bottom: 14px; /* Reduced margin */
+            color: var(--charcoal);
+            text-align: center;
+        }
+        
+        .shortcut-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0; /* Reduced padding */
+            border-bottom: 1px solid #eee;
+        }
+        
+        .shortcut-key {
+            background: var(--soft-gray);
+            padding: 3px 6px; /* Reduced padding */
+            border-radius: 3px; /* Smaller radius */
+            font-family: monospace;
+            font-size: 0.75em; /* Reduced size */
+        }
+    </style>
+</head>
+<body>
+    <div class="moroccan-pattern"></div>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <!-- Help and Navigation Controls -->
+    <button class="help-btn" onclick="toggleHelp()">? Aide</button>
+    
+    <div class="slide-counter">
+        <span id="current-slide">1</span> / <span id="total-slides">15</span>
+    </div>
+    
+    <!-- Keyboard Shortcuts Help -->
+    <div class="shortcuts-help" id="shortcutsHelp">
+        <h3>Raccourcis Clavier</h3>
+        <div class="shortcut-item">
+            <span>Slide suivante</span>
+            <span class="shortcut-key">→ ↓ Space</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Slide précédente</span>
+            <span class="shortcut-key">← ↑</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Première slide</span>
+            <span class="shortcut-key">Home</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Dernière slide</span>
+            <span class="shortcut-key">End</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Fermer aide</span>
+            <span class="shortcut-key">Esc</span>
+        </div>
+        <button onclick="toggleHelp()" style="margin-top: 16px; width: 100%; padding: 8px; background: var(--moroccan-green); color: white; border: none; border-radius: 6px; cursor: pointer;">Fermer</button>
+    </div>
+
+    <div class="presentation-container">
+        <!-- Slide 1: Title -->
+        <div class="slide active">
+            <div class="content-fit">
+                <h1>Morocco Made Real</h1>
+                <p class="tagline">Où la Tradition Rencontre l'Intelligence</p>
+
+                <div class="ai-highlight">
+                    <h2>🚀 Startup IA pour l'Artisanat d'Excellence</h2>
+                    <p style="font-size: 1.1em; line-height: 1.6;">
+                        <strong>"Morocco Made Real"</strong> est la startup IA qui connecte intelligemment les <strong>420 000 artisans culturels</strong> du Maroc aux marchés de tourisme globaux. Nous utilisons l'intelligence artificielle pour <strong>vérifier et valoriser</strong> l'authenticité des traditions artisanales marocaines, créant des connexions transparentes et équitables via la blockchain tout en <strong>soutenant la stratégie gouvernementale 2030</strong> d'artisanat moderne et structuré.
+                    </p>
+                </div>
+
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <span class="stat-number">420K</span>
+                        <span>Artisans Partenaires</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">2,4 Md€</span>
+                        <span>Marché Adressable</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">350%</span>
+                        <span>ROI Artisans</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Vision 2030 -->
+        <div class="slide">
+            <div class="content-fit">
+                <h1>Stratégie Officielle Artisanat 2030 & Notre Mission</h1>
+
+                <div class="scrollable-content">
+                    <div class="government-stats">
+                        <h2 style="color: var(--moroccan-green); text-align: center; border: none; padding: 0; margin-bottom: 16px;">
+                            Vision Gouvernementale 2030 : Artisanat Moderne et Intelligent
+                        </h2>
+                        <p style="text-align: center; font-size: 1.3em; font-style: italic; margin-bottom: 16px; color: var(--charcoal);">
+                            "Un Artisanat modernisé, créateur de valeur, compétitif et structuré"
+                        </p>
+                    </div>
+
+                    <div class="two-column">
+                        <div>
+                            <h3>📊 Données Officielles Clés</h3>
+                            <ul class="bullet-list">
+                                <li><strong>2,4M artisans</strong> - 2ème secteur d'emploi national</li>
+                                <li><strong>420K artisans culturels</strong> - cœur du patrimoine</li>
+                                <li><strong>Secteur €2,4Md</strong> - potentiel de transformation</li>
+                                <li><strong>Priorités nationales :</strong> Poterie, Tapis, Bijouterie</li>
+                                <li><strong>Objectif :</strong> Modernisation et structuration</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>🎯 Mission Morocco Made Real (Startup)</h3>
+                            <ul class="bullet-list">
+                                <li><strong>Startup IA Spécialisée :</strong> Connexions intelligentes vérifiées</li>
+                                <li><strong>420K Artisans Partenaires :</strong> Accès direct aux marchés globaux</li>
+                                <li><strong>Blockchain Propriétaire :</strong> Authentification incorruptible</li>
+                                <li><strong>ROI 350% Prouvé :</strong> Multiplication de la valeur artisanale</li>
+                                <li><strong>Support Stratégie 2030 :</strong> Partenaire technologique gouvernemental</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ai-highlight">
+                    <h3>🚀 Notre Positionnement : Startup au Service de la Vision Nationale</h3>
+                    <p style="text-align: center; margin: 16px 0;">
+                        Comment une startup IA peut-elle soutenir efficacement la stratégie gouvernementale tout en créant un impact économique durable ?
+                    </p>
+                    <p style="font-size: 1.4em; font-weight: 700; text-align: center; color: var(--deep-purple);">
+                        Morocco Made Real : Startup IA Partenaire de la Transformation Digitale
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Strategic Alignment -->
+        <div class="slide">
+            <div class="content-fit">
+                <h1>Alignement Stratégique avec la Vision 2030</h1>
+                <h2>Intelligence Artificielle + Traditions Artisanales = Excellence Mondiale</h2>
+
+                <div class="strategic-grid scrollable-content">
+                    <div class="strategy-card enjeu1">
+                        <h3 style="color: var(--moroccan-green); font-size: 1.2em;">STRUCTURATION : Organiser l'Excellence Artisanale</h3>
+                        <p><strong>Défi Gouvernemental :</strong> Structurer et moderniser le secteur artisanal traditionnel.</p>
+                        <p><strong>Solution IA :</strong> Plateforme centralisée connectant 420K artisans avec vérification intelligente des savoir-faire.</p>
+                    </div>
+
+                    <div class="strategy-card enjeu2">
+                        <h3 style="color: var(--moroccan-gold); font-size: 1.2em;">MODERNISATION : Technologies au Service de la Tradition</h3>
+                        <p><strong>Priorité Officielle :</strong> Outils numériques pour valoriser l'artisanat authentique.</p>
+                        <p><strong>Solution IA :</strong> Blockchain + IA pour authentification et narration intelligente du patrimoine.</p>
+                    </div>
+
+                    <div class="strategy-card enjeu3">
+                        <h3 style="color: var(--accent-blue); font-size: 1.2em;">VALORISATION : Marchés Globaux pour Savoir-Faire Local</h3>
+                        <p><strong>Objectif National :</strong> Positionnement international du "Made in Morocco" artisanal.</p>
+                        <p><strong>Solution IA :</strong> Connexions intelligentes artisans-acheteurs avec récits culturels enrichis.</p>
+                    </div>
+
+                    <div class="strategy-card enjeu4">
+                        <h3 style="color: var(--moroccan-red); font-size: 1.2em;">COMPÉTITIVITÉ : Standard d'Excellence Mondiale</h3>
+                        <p><strong>Vision 2030 :</strong> Artisanat marocain compétitif et créateur de valeur.</p>
+                        <p><strong>Solution IA :</strong> Certificats blockchain + analytiques temps réel = avantage concurrentiel durable.</p>
+                    </div>
+                </div>
+
+                <div class="ai-highlight">
+                    <p style="font-size: 1.3em; font-weight: 700; text-align: center;">
+                        Résultat : Premier standard mondial d'artisanat intelligent, propulsé par l'IA et soutenu par l'État.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Market Opportunity -->
+        <div class="slide">
+            <div class="content-fit">
+                <h1>Opportunité : Transformer €2,4Md en Commerce Intelligent</h1>
+
+                <div class="two-column scrollable-content">
+                    <div>
+                        <h2>Défis Actuels du Secteur</h2>
+                        <ul class="bullet-list">
+                            <li><strong>420K Artisans Sous-Valorisés :</strong> Manque d'accès aux marchés globaux.</li>
+                            <li><strong>Authenticité Non-Vérifiée :</strong> Difficulté à prouver la valeur traditionnelle.</li>
+                            <li><strong>Intermédiaires Multiples :</strong> Marges réduites pour les créateurs.</li>
+                            <li><strong>Récits Culturels Perdus :</strong> Histoire et techniques non documentées.</li>
+                            <li><strong>Paiements Inéquitables :</strong> Revenus artisans non optimisés.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h2>Transformation par l'Intelligence</h2>
+                        <ul class="bullet-list">
+                            <li><strong>Connexions Directes :</strong> IA matching artisans-acheteurs qualifiés.</li>
+                            <li><strong>Authentification Blockchain :</strong> Preuves incorruptibles de tradition.</li>
+                            <li><strong>Valorisation 350% :</strong> Multiplicateur de valeur via intelligence.</li>
+                            <li><strong>Récits IA-Enrichis :</strong> Histoires culturelles personnalisées.</li>
+                            <li><strong>Paiements Automatiques :</strong> Smart contracts équitables.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="revenue-breakdown">
+                    <p style="text-align:center; width:100%; margin-bottom:16px; font-size:1.1em; font-weight: 600;">Transformation de Valeur par l'Intelligence :</p>
+                    <div class="revenue-item">
+                        <div class="revenue-amount">€100</div>
+                        <div>Revenu Traditionnel</div>
+                    </div>
+                    <div style="font-size: 2em; color: #666;">→</div>
+                    <div class="revenue-item">
+                        <div class="revenue-amount" style="color: var(--deep-purple);">IA + Blockchain</div>
+                        <div>Authentification</div>
+                    </div>
+                    <div style="font-size: 2em; color: #666;">→</div>
+                    <div class="revenue-item">
+                        <div class="revenue-amount" style="color: var(--moroccan-green);">€350</div>
+                        <div>Valeur Intelligente</div>
+                    </div>
+                    <div style="font-size: 2em; color: #666;">×</div>
+                    <div class="revenue-item">
+                        <div class="revenue-amount" style="color: var(--moroccan-red);">420K</div>
+                        <div>Artisans</div>
+                    </div>
+                </div>
+
+                <div class="ai-highlight">
+                    <h3 style="text-align: center;">🎯 Morocco Made Real : Seule Plateforme IA Officielle pour l'Artisanat</h3>
+                    <p style="text-align: center;">Transformation intelligente du secteur €2,4Md avec soutien gouvernemental et authentification blockchain.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Solution Overview -->
+        <div class="slide">
+            <div class="content-fit">
+                <h1>Solution "Morocco Made Real"</h1>
+                <h2>Plateforme IA Officielle : Tradition + Intelligence + Transparence</h2>
+
+                <div class="solution-features scrollable-content">
+                    <div class="feature-card ai">
+                        <h3 style="color: var(--deep-purple);">🤖 Moteur IA "Authenticity Engine"</h3>
+                        <ul class="bullet-list">
+                            <li><strong>Vision Intelligente :</strong> Analyse IA des techniques traditionnelles et matériaux.</li>
+                            <li><strong>Documentation Automatique :</strong> Capture du processus créatif ancestral.</li>
+                            <li><strong>Narration Culturelle :</strong> Récits IA multilingues enrichis.</li>
+                            <li><strong>Matching Intelligent :</strong> Connexions artisans-acheteurs optimisées.</li>
+                            <li><strong>Certification Temps Réel :</strong> Authentification instantanée blockchain.</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card artisans">
+                        <h3 style="color: var(--moroccan-green);">👨‍🎨 Pour les 420K Artisans Culturels</h3>
+                        <ul class="bullet-list">
+                            <li><strong>Accès Marchés Tourisme :</strong> Connexions directes des touristes.</li>
+                            <li><strong>Valorisation Authentique :</strong> Prix justes reflétant savoir-faire traditionnel.</li>
+                            <li><strong>Identité Numérique :</strong> Portfolio vérifié IA + réputation blockchain.</li>
+                            <li><strong>Revenus Optimisés :</strong> Multiplicateur 350% via intelligence.</li>
+                            <li><strong>Patrimoine Préservé :</strong> Techniques documentées pour l'éternité.</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card tourists">
+                        <h3 style="color: #ee5a24;">🌍 Pour Collectionneurs & Marchés Globaux</h3>
+                        <ul class="bullet-list">
+                            <li><strong>Authenticité Garantie :</strong> Certification blockchain incorruptible.</li>
+                            <li><strong>Histoires Enrichies :</strong> Récits culturels IA personnalisés.</li>
+                            <li><strong>Accès Exclusif :</strong> Accès direct aux maîtres artisans marocains.</li>
+                            <li><strong>Investissement Culturel :</strong> Pièces documentées à valeur croissante.</li>
+                            <li><strong>Impact Social :</strong> Soutien direct aux traditions vivantes.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ai-highlight">
+                    <h3>🏢 Positionnement Startup Technologique</h3>
+                    <p style="text-align: center;">
+                        <strong>"Morocco Made Real développe une solution startup innovante qui s'aligne parfaitement avec la stratégie officielle 2030, offrant une infrastructure technologique avancée tout en respectant les objectifs gouvernementaux de modernisation artisanale."</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Journey Flowchart -->
+        <div class="slide">
+            <div class="content-fit">
+                <h1>Parcours "Morocco Made Real" : Tradition → Intelligence</h1>
+                <p style="text-align: center; font-size: 1em; margin-bottom: 4px; opacity: 0.8;">
+                    De la Création Artisanale Traditionnelle aux Marchés Globaux Intelligents
+                </p>
+                
+                <div class="svg-container">
+                    <svg viewBox="0 0 1200 750" preserveAspectRatio="xMidYMin meet" xmlns="http://www.w3.org/2000/svg">
+                      <rect width="1200" height="750" fill="#f9f7f2" />
+                      <rect x="0" y="0" width="1200" height="8" fill="#c1272d" />
+                      <rect x="0" y="8" width="1200" height="8" fill="#006233" />
+                      <text x="600" y="50" font-family="Arial, sans-serif" font-size="32" font-weight="bold" text-anchor="middle" fill="#333333">Morocco Made Real: Où la Tradition Rencontre l'Intelligence</text>
+                      <text x="600" y="75" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#666">420K Artisans → IA Authentification → Marchés Globaux → Revenus Équitables</text>
+                      <rect x="50" y="90" width="1100" height="65" rx="10" fill="#e8f4f1" stroke="#006233" stroke-width="2" />
+                      <text x="70" y="115" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#006233">Stratégie 2030: Artisanat Modernisé • 420K Artisans Culturels • Secteur €2,4Md • Valorisation 350%</text>
+                      <text x="70" y="140" font-family="Arial, sans-serif" font-size="15" fill="#333">Morocco Made Real: Plateforme IA Officielle pour la Transformation Intelligente du Patrimoine</text>
+                      
+                      <text x="150" y="185" font-family="Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle" fill="#555">CRÉATION TRADITIONNELLE</text>
+                      <text x="350" y="185" font-family="Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle" fill="#555">AUTHENTIFICATION IA</text>
+                      <text x="600" y="185" font-family="Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle" fill="#555">NARRATION INTELLIGENTE</text>
+                      <text x="850" y="185" font-family="Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle" fill="#555">CONNEXION GLOBALE</text>
+                      <text x="1050" y="185" font-family="Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle" fill="#555">VALORISATION 350%</text>
+                      
+                      <!-- Artisan Journey Level -->
+                      <circle cx="150" cy="240" r="40" fill="#2d8e74" />
+                      <text x="150" y="232" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Savoir-Faire</text>
+                      <text x="150" y="248" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Ancestral</text>
+                      <text x="150" y="290" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">420K Artisans Culturels</text>
+                      
+                      <circle cx="350" cy="240" r="40" fill="#663399" />
+                      <text x="350" y="232" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Vérification</text>
+                      <text x="350" y="248" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">IA</text>
+                      <text x="350" y="290" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">Authenticity Engine</text>
+                      
+                      <circle cx="600" cy="240" r="40" fill="#4a90e2" />
+                      <text x="600" y="232" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Récits</text>
+                      <text x="600" y="248" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Culturels</text>
+                      <text x="600" y="290" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">IA Multilingue</text>
+                      
+                      <circle cx="850" cy="240" r="40" fill="#c1272d" />
+                      <text x="850" y="232" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Marchés</text>
+                      <text x="850" y="248" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Globaux</text>
+                      <text x="850" y="290" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">Connexions Directes</text>
+                      
+                      <circle cx="1050" cy="240" r="40" fill="#d4af37" />
+                      <text x="1050" y="232" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Revenus</text>
+                      <text x="1050" y="248" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Équitables</text>
+                      <text x="1050" y="290" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">Smart Contracts</text>
+                      
+                      <!-- Technology Layer -->
+                      <rect x="310" y="340" width="80" height="70" rx="10" fill="#aa8239" />
+                      <text x="350" y="365" font-family="Arial, sans-serif" font-size="13" fill="white" text-anchor="middle">Vision</text>
+                      <text x="350" y="380" font-family="Arial, sans-serif" font-size="13" fill="white" text-anchor="middle">IA</text>
+                      <text x="350" y="395" font-family="Arial, sans-serif" font-size="13" fill="white" text-anchor="middle">Techniques</text>
+                      <text x="350" y="425" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">Analyse Matériaux</text>
+                      
+                      <rect x="560" y="340" width="80" height="70" rx="10" fill="#aa8239" />
+                      <text x="600" y="365" font-family="Arial, sans-serif" font-size="13" fill="white" text-anchor="middle">Blockchain</text>
+                      <text x="600" y="380" font-family="Arial, sans-serif" font-size="13" fill="white" text-anchor="middle">Certificats</text>
+                      <text x="600" y="395" font-family="Arial, sans-serif" font-size="13" fill="white" text-anchor="middle">Authenticité</text>
+                      <text x="600" y="425" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">IPFS + Polygon</text>
+                      
+                      <rect x="810" y="340" width="80" height="70" rx="10" fill="#aa8239" />
+                      <text x="850" y="365" font-family="Arial, sans-serif" font-size="13" fill="white" text-anchor="middle">Matching</text>
+                      <text x="850" y="380" font-family="Arial, sans-serif" font-size="13" fill="white" text-anchor="middle">Intelligent</text>
+                      <text x="850" y="395" font-family="Arial, sans-serif" font-size="13" fill="white" text-anchor="middle">ML</text>
+                      <text x="850" y="425" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">Artisan-Acheteur</text>
+                      
+                      <rect x="1010" y="340" width="80" height="70" rx="10" fill="#aa8239" />
+                      <text x="1050" y="365" font-family="Arial, sans-serif" font-size="13" fill="white" text-anchor="middle">Paiements</text>
+                      <text x="1050" y="380" font-family="Arial, sans-serif" font-size="13" fill="white" text-anchor="middle">Auto</text>
+                      <text x="1050" y="395" font-family="Arial, sans-serif" font-size="13" fill="white" text-anchor="middle">Équitables</text>
+                      <text x="1050" y="425" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">Smart Contracts</text>
+                      
+                      <!-- Arrows -->
+                      <path d="M190 240 H310" stroke="#2d8e74" stroke-width="3" fill="none" />
+                      <polygon points="310,235 320,240 310,245" fill="#2d8e74" />
+                      <path d="M390 240 H560" stroke="#2d8e74" stroke-width="3" fill="none" />
+                      <polygon points="560,235 570,240 560,245" fill="#2d8e74" />
+                      <path d="M640 240 H810" stroke="#2d8e74" stroke-width="3" fill="none" />
+                      <polygon points="810,235 820,240 810,245" fill="#2d8e74" />
+                      <path d="M890 240 H1010" stroke="#2d8e74" stroke-width="3" fill="none" />
+                      <polygon points="1010,235 1020,240 1010,245" fill="#2d8e74" />
+                      
+                      <!-- Results -->
+                      <rect x="70" y="680" width="210" height="40" rx="6" fill="#e0f0e9" />
+                      <text x="175" y="697" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#2d8e74">Patrimoine Préservé</text>
+                      <text x="175" y="712" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">Techniques Documentées IA</text>
+                      
+                      <rect x="300" y="680" width="210" height="40" rx="6" fill="#e6d8c2" />
+                      <text x="405" y="697" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#aa8239">Authenticité 100%</text>
+                      <text x="405" y="712" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">Blockchain Incorruptible</text>
+                      
+                      <rect x="530" y="680" width="210" height="40" rx="6" fill="#c2cfe6" />
+                      <text x="635" y="697" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#3a5da8">Marchés Accessibles</text>
+                      <text x="635" y="712" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">Connexions Intelligentes</text>
+                      
+                      <rect x="760" y="680" width="210" height="40" rx="6" fill="#e6c2c2" />
+                      <text x="865" y="697" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#c1272d">Valorisation 350%</text>
+                      <text x="865" y="712" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">Multiplicateur IA</text>
+                      
+                      <rect x="990" y="680" width="180" height="40" rx="6" fill="#f0d8ff" />
+                      <text x="1080" y="697" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#7a3d8a">Standard Mondial</text>
+                      <text x="1080" y="712" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#333">Excellence Marocaine</text>
+                    </svg>
+                </div>
+            </div>
+        </div> 
+        <!-- Slide 7: Complete Implementation Journey -->
+        <div class="slide">
+            <div class="content-fit">
+                <h1>Parcours Complet : Écosystème "Morocco Made Real"</h1>
+                <p style="text-align: center; font-size: 1em; margin-bottom: 4px; opacity: 0.8;">
+                    Infrastructure Technologique Officielle pour la Stratégie Artisanale 2030
+                </p>
+                
+                <div class="svg-container">
+                    <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMin meet" xmlns="http://www.w3.org/2000/svg">
+                      <!-- Background with Moroccan colors -->
+                      <rect width="1200" height="800" fill="#f9f7f2" />
+                      <rect x="0" y="0" width="1200" height="8" fill="#c1272d" />
+                      <rect x="0" y="8" width="1200" height="8" fill="#006233" />
+                      
+                      <!-- Title -->
+                      <text x="600" y="45" font-family="Arial, sans-serif" font-size="28" font-weight="bold" text-anchor="middle" fill="#333333">"Morocco Made Real": Parcours Gouvernemental Complet</text>
+                      <text x="600" y="70" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#666">Infrastructure Technologique Officielle pour la Stratégie Artisanale 2030 du Maroc</text>
+                      
+                      <!-- Government Stats Banner -->
+                      <rect x="50" y="90" width="1100" height="60" rx="10" fill="#e8f4f1" stroke="#006233" stroke-width="2" />
+                      <text x="70" y="115" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#006233">Données Officielles: 2,4M Artisans (2ème Secteur d'Emploi) • 420K Artisans Culturels • Priorités: Poterie, Tapis, Bijouterie</text>
+                      <text x="70" y="135" font-family="Arial, sans-serif" font-size="14" fill="#333">Vision Gouvernementale 2030: "Un Artisanat modernisé, créateur de valeur, compétitif et structuré"</text>
+                      
+                      <!-- Journey Phases Header -->
+                      <text x="150" y="180" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#555">CRÉATION ARTISANALE</text>
+                      <text x="350" y="180" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#555">VÉRIFICATION BLOCKCHAIN</text>
+                      <text x="600" y="180" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#555">DÉCOUVERTE IA</text>
+                      <text x="850" y="180" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#555">CONNEXION GLOBALE</text>
+                      <text x="1050" y="180" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#555">COMMERCE DIRECT</text>
+                      
+                      <!-- Phase dividers -->
+                      <line x1="250" y1="170" x2="250" y2="650" stroke="#999" stroke-width="1" stroke-dasharray="5,5" />
+                      <line x1="475" y1="170" x2="475" y2="650" stroke="#999" stroke-width="1" stroke-dasharray="5,5" />
+                      <line x1="725" y1="170" x2="725" y2="650" stroke="#999" stroke-width="1" stroke-dasharray="5,5" />
+                      <line x1="975" y1="170" x2="975" y2="650" stroke="#999" stroke-width="1" stroke-dasharray="5,5" />
+                      
+                      <!-- Track backgrounds -->
+                      <rect x="50" y="190" width="1100" height="100" rx="10" fill="#e0f0e9" opacity="0.3" />
+                      <rect x="50" y="300" width="1100" height="100" rx="10" fill="#e6d8c2" opacity="0.3" />
+                      <rect x="50" y="410" width="1100" height="100" rx="10" fill="#c2cfe6" opacity="0.3" />
+                      <rect x="50" y="520" width="1100" height="100" rx="10" fill="#e6c2c2" opacity="0.3" />
+                      
+                      <!-- Track labels -->
+                      <text x="40" y="245" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333333" transform="rotate(-90, 40, 245)">ARTISAN</text>
+                      <text x="40" y="355" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333333" transform="rotate(-90, 40, 355)">BLOCKCHAIN</text>
+                      <text x="40" y="465" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333333" transform="rotate(-90, 40, 465)">TOURISME</text>
+                      <text x="40" y="575" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333333" transform="rotate(-90, 40, 575)">GOUVERNEMENT</text>
+                      
+                      <!-- Artisan Track -->
+                      <!-- Creation -->
+                      <circle cx="150" cy="240" r="35" fill="#2d8e74" />
+                      <text x="150" y="235" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">Artisanat</text>
+                      <text x="150" y="250" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">Traditionnel</text>
+                      <text x="150" y="275" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Poterie, Tapis, Bijoux</text>
+                      
+                      <!-- Documentation -->
+                      <circle cx="350" cy="240" r="35" fill="#2d8e74" />
+                      <text x="350" y="235" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">Récits</text>
+                      <text x="350" y="250" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">Culturels</text>
+                      <text x="350" y="275" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Techniques Ancestrales</text>
+                      
+                      <!-- Recognition -->
+                      <circle cx="600" cy="240" r="35" fill="#2d8e74" />
+                      <text x="600" y="235" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">Reconnaissance</text>
+                      <text x="600" y="250" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">Mondiale</text>
+                      <text x="600" y="275" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Acheteurs Internationaux</text>
+                      
+                      <!-- Direct Sales -->
+                      <circle cx="850" cy="240" r="35" fill="#2d8e74" />
+                      <text x="850" y="235" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">Ventes</text>
+                      <text x="850" y="250" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">Directes</text>
+                      <text x="850" y="275" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Prix Premium</text>
+                      
+                      <!-- Long-term relationship -->
+                      <circle cx="1050" cy="240" r="35" fill="#2d8e74" />
+                      <text x="1050" y="235" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">Commandes</text>
+                      <text x="1050" y="250" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">Récurrentes</text>
+                      <text x="1050" y="275" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">+350% Revenus</text>
+                      
+                      <!-- Blockchain Track -->
+                      <!-- Content Capture -->
+                      <rect x="320" y="320" width="60" height="60" rx="10" fill="#aa8239" />
+                      <text x="350" y="340" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Capture</text>
+                      <text x="350" y="355" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Contenu</text>
+                      <text x="350" y="370" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">&amp; Stockage</text>
+                      <text x="350" y="395" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">IPFS + Polygon</text>
+                      
+                      <!-- Smart Contracts -->
+                      <rect x="570" y="320" width="60" height="60" rx="10" fill="#aa8239" />
+                      <text x="600" y="340" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Smart</text>
+                      <text x="600" y="355" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Contracts</text>
+                      <text x="600" y="370" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Déploiement</text>
+                      <text x="600" y="395" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Paiements Auto</text>
+                      
+                      <!-- QR Generation -->
+                      <rect x="820" y="320" width="60" height="60" rx="10" fill="#aa8239" />
+                      <text x="850" y="340" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Code QR</text>
+                      <text x="850" y="355" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Génération</text>
+                      <text x="850" y="370" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">&amp; Lien</text>
+                      <text x="850" y="395" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Physique-Digital</text>
+                      
+                      <!-- Transaction Processing -->
+                      <rect x="1020" y="320" width="60" height="60" rx="10" fill="#aa8239" />
+                      <text x="1050" y="340" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Transaction</text>
+                      <text x="1050" y="355" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Traitement</text>
+                      <text x="1050" y="370" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">&amp; Répartition</text>
+                      <text x="1050" y="395" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Distribution Équitable</text>
+                      
+                      <!-- Tourism Track -->
+                      <!-- Partner Onboarding -->
+                      <rect x="120" y="430" width="60" height="60" rx="10" fill="#3a5da8" />
+                      <text x="150" y="450" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Boutique</text>
+                      <text x="150" y="465" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Partenaire</text>
+                      <text x="150" y="480" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Certifiée</text>
+                      <text x="150" y="505" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Positionnement Premium</text>
+                      
+                      <!-- AI Experience -->
+                      <rect x="570" y="430" width="60" height="60" rx="10" fill="#3a5da8" />
+                      <text x="600" y="450" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Expérience</text>
+                      <text x="600" y="465" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Touriste</text>
+                      <text x="600" y="480" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">IA</text>
+                      <text x="600" y="505" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Traduction + Histoires</text>
+                      
+                      <!-- Purchase Facilitation -->
+                      <rect x="820" y="430" width="60" height="60" rx="10" fill="#3a5da8" />
+                      <text x="850" y="450" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Achat</text>
+                      <text x="850" y="465" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Facilité</text>
+                      <text x="850" y="480" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">&amp; Vérifié</text>
+                      <text x="850" y="505" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Garantie Authentique</text>
+                      
+                      <!-- Follow-up Connection -->
+                      <rect x="1020" y="430" width="60" height="60" rx="10" fill="#3a5da8" />
+                      <text x="1050" y="450" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Suivi</text>
+                      <text x="1050" y="465" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Direct</text>
+                      <text x="1050" y="480" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Activé</text>
+                      <text x="1050" y="505" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Business Récurrent</text>
+                      
+                      <!-- Government Track -->
+                      <!-- Official Partnership -->
+                      <rect x="120" y="540" width="60" height="60" rx="10" fill="#c1272d" />
+                      <text x="150" y="560" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Plateforme</text>
+                      <text x="150" y="575" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Officielle</text>
+                      <text x="150" y="590" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Statut</text>
+                      <text x="150" y="615" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Implémentation Stratégie 2030</text>
+                      
+                      <!-- Data Analytics -->
+                      <rect x="320" y="540" width="60" height="60" rx="10" fill="#c1272d" />
+                      <text x="350" y="560" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Analytics</text>
+                      <text x="350" y="575" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Secteur</text>
+                      <text x="350" y="590" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Temps Réel</text>
+                      <text x="350" y="615" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Support Décision Politique</text>
+                      
+                      <!-- Export Facilitation -->
+                      <rect x="820" y="540" width="60" height="60" rx="10" fill="#c1272d" />
+                      <text x="850" y="560" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Plateforme</text>
+                      <text x="850" y="575" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Export</text>
+                      <text x="850" y="590" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Intégration</text>
+                      <text x="850" y="615" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Commerce International</text>
+                      
+                      <!-- World Cup Showcase -->
+                      <rect x="1020" y="540" width="60" height="60" rx="10" fill="#c1272d" />
+                      <text x="1050" y="560" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Coupe du</text>
+                      <text x="1050" y="575" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Monde</text>
+                      <text x="1050" y="590" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">2030</text>
+                      <text x="1050" y="615" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Leadership Culturel</text>
+                      
+                      <!-- Flow Arrows -->
+                      <!-- Artisan flow -->
+                      <path d="M185 240 H315" stroke="#2d8e74" stroke-width="3" fill="none" />
+                      <polygon points="315,235 325,240 315,245" fill="#2d8e74" />
+                      
+                      <path d="M385 240 H565" stroke="#2d8e74" stroke-width="3" fill="none" />
+                      <polygon points="565,235 575,240 565,245" fill="#2d8e74" />
+                      
+                      <path d="M635 240 H815" stroke="#2d8e74" stroke-width="3" fill="none" />
+                      <polygon points="815,235 825,240 815,245" fill="#2d8e74" />
+                      
+                      <path d="M885 240 H1015" stroke="#2d8e74" stroke-width="3" fill="none" />
+                      <polygon points="1015,235 1025,240 1015,245" fill="#2d8e74" />
+                      
+                      <!-- Blockchain flow -->
+                      <path d="M380 350 H570" stroke="#aa8239" stroke-width="3" fill="none" />
+                      <polygon points="570,345 580,350 570,355" fill="#aa8239" />
+                      
+                      <path d="M630 350 H820" stroke="#aa8239" stroke-width="3" fill="none" />
+                      <polygon points="820,345 830,350 820,355" fill="#aa8239" />
+                      
+                      <path d="M880 350 H1020" stroke="#aa8239" stroke-width="3" fill="none" />
+                      <polygon points="1020,345 1030,350 1020,355" fill="#aa8239" />
+                      
+                      <!-- Tourism flow -->
+                      <path d="M180 460 H570" stroke="#3a5da8" stroke-width="3" fill="none" />
+                      <polygon points="570,455 580,460 570,465" fill="#3a5da8" />
+                      
+                      <path d="M630 460 H820" stroke="#3a5da8" stroke-width="3" fill="none" />
+                      <polygon points="820,455 830,460 820,465" fill="#3a5da8" />
+                      
+                      <path d="M880 460 H1020" stroke="#3a5da8" stroke-width="3" fill="none" />
+                      <polygon points="1020,455 1030,460 1020,465" fill="#3a5da8" />
+                      
+                      <!-- Government flow -->
+                      <path d="M180 570 H320" stroke="#c1272d" stroke-width="3" fill="none" />
+                      <polygon points="320,565 330,570 320,575" fill="#c1272d" />
+                      
+                      <path d="M380 570 H820" stroke="#c1272d" stroke-width="3" fill="none" />
+                      <polygon points="820,565 830,570 820,575" fill="#c1272d" />
+                      
+                      <path d="M880 570 H1020" stroke="#c1272d" stroke-width="3" fill="none" />
+                      <polygon points="1020,565 1030,570 1020,575" fill="#c1272d" />
+                      
+                      <!-- Cross-track connections -->
+                      <path d="M350 275 v35" stroke="#666" stroke-width="2" stroke-dasharray="3,3" fill="none" />
+                      <polygon points="345,310 350,320 355,310" fill="#666" />
+                      
+                      <path d="M600 275 v35" stroke="#666" stroke-width="2" stroke-dasharray="3,3" fill="none" />
+                      <polygon points="595,310 600,320 605,310" fill="#666" />
+                      
+                      <path d="M600 380 v40" stroke="#666" stroke-width="2" stroke-dasharray="3,3" fill="none" />
+                      <polygon points="595,420 600,430 605,420" fill="#666" />
+                      
+                      <path d="M150 505 v25" stroke="#666" stroke-width="2" stroke-dasharray="3,3" fill="none" />
+                      <polygon points="145,530 150,540 155,530" fill="#666" />
+                      
+                      <!-- Value Creation Indicators -->
+                      <rect x="80" y="660" width="200" height="40" rx="5" fill="#e0f0e9" />
+                      <text x="180" y="680" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#2d8e74">+350% Revenus Artisan</text>
+                      <text x="180" y="695" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Accès Global Direct</text>
+                      
+                      <rect x="300" y="660" width="200" height="40" rx="5" fill="#e6d8c2" />
+                      <text x="400" y="680" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#aa8239">100% Authenticité</text>
+                      <text x="400" y="695" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Vérifié Blockchain</text>
+                      
+                      <rect x="520" y="660" width="200" height="40" rx="5" fill="#c2cfe6" />
+                      <text x="620" y="680" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#3a5da8">+75% Revenus Boutique</text>
+                      <text x="620" y="695" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Positionnement Premium</text>
+                      
+                      <rect x="740" y="660" width="200" height="40" rx="5" fill="#e6c2c2" />
+                      <text x="840" y="680" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#c1272d">Analytics Temps Réel</text>
+                      <text x="840" y="695" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Support Décision Politique</text>
+                      
+                      <rect x="960" y="660" width="200" height="40" rx="5" fill="#f0d8ff" />
+                      <text x="1060" y="680" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#7a3d8a">Reconnaissance Mondiale</text>
+                      <text x="1060" y="695" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Coupe du Monde 2030</text>
+                      
+                      <!-- Legend -->
+                      <text x="60" y="745" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">Légende des Flux:</text>
+                      <line x1="170" y1="750" x2="200" y2="750" stroke="#2d8e74" stroke-width="3" />
+                      <text x="205" y="755" font-family="Arial, sans-serif" font-size="11" fill="#333">Parcours Artisan</text>
+                      
+                      <line x1="310" y1="750" x2="340" y2="750" stroke="#aa8239" stroke-width="3" />
+                      <text x="345" y="755" font-family="Arial, sans-serif" font-size="11" fill="#333">Processus Blockchain</text>
+                      
+                      <line x1="470" y1="750" x2="500" y2="750" stroke="#3a5da8" stroke-width="3" />
+                      <text x="505" y="755" font-family="Arial, sans-serif" font-size="11" fill="#333">Intégration Tourisme</text>
+                      
+                      <line x1="630" y1="750" x2="660" y2="750" stroke="#c1272d" stroke-width="3" />
+                      <text x="665" y="755" font-family="Arial, sans-serif" font-size="11" fill="#333">Partenariat Gouvernement</text>
+                      
+                      <line x1="800" y1="750" x2="830" y2="750" stroke="#666" stroke-width="2" stroke-dasharray="3,3" />
+                      <text x="835" y="755" font-family="Arial, sans-serif" font-size="11" fill="#333">Inter-Intégration</text>
+                      
+                      <!-- Footer -->
+                      <rect x="0" y="792" width="1200" height="8" fill="#006233" />
+                    </svg>
+                </div>
+            </div>
+        </div> 
+        <!-- Slide 8: Tech Stack -->
+        <div class="slide">
+            <div class="content-fit">
+                <h1>Infrastructure Technologique : IA + Blockchain + Tradition</h1>
+                
+                <div class="strategic-grid scrollable-content">
+                    <div class="strategy-card enjeu1">
+                        <h3>🤖 "Authenticity Engine" - IA de Pointe</h3>
+                        <ul class="bullet-list">
+                            <li><strong>Vision par Ordinateur :</strong> Analyse techniques traditionnelles et matériaux.</li>
+                            <li><strong>Traitement Linguistique :</strong> Darija, Arabe, Français, Anglais, langues mondiales.</li>
+                            <li><strong>Machine Learning :</strong> Matching intelligent artisans-acheteurs.</li>
+                            <li><strong>IA Générative :</strong> Récits culturels enrichis et personnalisés.</li>
+                            <li><strong>Reconnaissance Motifs :</strong> Authentification patterns traditionnels.</li>
+                        </ul>
+                    </div>
+
+                    <div class="strategy-card enjeu2">
+                        <h3>🔗 Blockchain & Transparence Absolue</h3>
+                        <ul class="bullet-list">
+                            <li><strong>Smart Contracts Polygon :</strong> Paiements automatiques équitables.</li>
+                            <li><strong>IPFS Décentralisé :</strong> Stockage preuves authentification.</li>
+                            <li><strong>NFT Culturels :</strong> Certificats numériques patrimoine.</li>
+                            <li><strong>Traçabilité Complète :</strong> Processus création → vente finale.</li>
+                            <li><strong>Portefeuilles Sécurisés :</strong> Gestion revenus artisans.</li>
+                        </ul>
+                    </div>
+
+                    <div class="strategy-card enjeu3">
+                        <h3>📱 Interface Accessible & Gouvernance</h3>
+                        <ul class="bullet-list">
+                            <li><strong>PWA Mobile-First :</strong> Accès simplifié pour artisans.</li>
+                            <li><strong>Multilingue Adaptatif :</strong> Interface dans langue locale.</li>
+                            <li><strong>Formation Intégrée :</strong> Outils éducatifs IA.</li>
+                            <li><strong>API Gouvernementale :</strong> Intégration systèmes officiels.</li>
+                            <li><strong>Dashboard Analytics :</strong> Métriques stratégie 2030.</li>
+                        </ul>
+                    </div>
+
+                    <div class="strategy-card enjeu4">
+                        <h3>📊 Impact Mesurable & Gouvernance</h3>
+                        <ul class="bullet-list">
+                            <li><strong>KPIs Officiels :</strong> Progression objectifs 2030 en temps réel.</li>
+                            <li><strong>ROI Artisans :</strong> Multiplicateur revenus 350% documenté.</li>
+                            <li><strong>Patrimoine Sauvegardé :</strong> Techniques préservées numériquement.</li>
+                            <li><strong>Export Intelligence :</strong> Positions marchés globaux.</li>
+                            <li><strong>Conformité Totale :</strong> Standards gouvernementaux respectés.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Technical Architecture - Sovereignty & Security -->
+        <div class="slide">
+            <div class="content-fit">
+                <h1>Architecture Technique : Souveraineté & Sécurité Nationale</h1>
+                <p style="text-align: center; font-size: 1em; margin-bottom: 4px; opacity: 0.8;">
+                    Infrastructure Technologique Souveraine pour la Plateforme IA Officielle
+                </p>
+                
+                <div class="svg-container">
+                    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+                      <!-- Background -->
+                      <rect width="1200" height="800" fill="#f9f7f2" />
+                      
+                      <!-- Moroccan flag colors header -->
+                      <rect x="0" y="0" width="1200" height="8" fill="#c1272d" />
+                      <rect x="0" y="8" width="1200" height="8" fill="#006233" />
+                      
+                      <!-- Title -->
+                      <text x="600" y="45" font-family="Arial, sans-serif" font-size="28" font-weight="bold" text-anchor="middle" fill="#333333">Architecture Startup "Morocco Made Real"</text>
+                      <text x="600" y="70" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#666">Infrastructure Souveraine • Données Sécurisées • Startup Technologique</text>
+                      
+                      <!-- National Sovereignty Zone -->
+                      <rect x="50" y="90" width="1100" height="520" rx="15" fill="#e8f4f1" stroke="#006233" stroke-width="3" />
+                      <text x="70" y="115" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#006233">🏢 INFRASTRUCTURE STARTUP SOUVERAINE</text>
+                      <text x="70" y="135" font-family="Arial, sans-serif" font-size="14" fill="#333">Données Locales • Infrastructure Marocaine • Partenariat Gouvernemental</text>
+                      
+                      <!-- Partner Oversight Layer -->
+                      <rect x="80" y="150" width="500" height="180" rx="10" fill="white" stroke="#c1272d" stroke-width="2" />
+                      <text x="330" y="175" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#c1272d">🤝 SUPERVISION PARTENAIRES</text>
+                      
+                      <!-- Partner Dashboard -->
+                      <rect x="100" y="190" width="140" height="120" rx="5" fill="#f5e6e6" stroke="#c1272d" stroke-width="1" />
+                      <text x="170" y="210" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#c1272d">Dashboard Partenaires</text>
+                      <text x="110" y="230" font-family="Arial, sans-serif" font-size="10" fill="#333">• Analytics Transparents</text>
+                      <text x="110" y="245" font-family="Arial, sans-serif" font-size="10" fill="#333">• KPIs Stratégie 2030</text>
+                      <text x="110" y="260" font-family="Arial, sans-serif" font-size="10" fill="#333">• ROI Artisans</text>
+                      <text x="110" y="275" font-family="Arial, sans-serif" font-size="10" fill="#333">• Impact Mesurable</text>
+                      <text x="110" y="290" font-family="Arial, sans-serif" font-size="10" fill="#333">• Compliance Startup</text>
+                      
+                      <!-- Government Control Layer -->
+                      <rect x="260" y="190" width="140" height="120" rx="5" fill="#f5e6e6" stroke="#c1272d" stroke-width="1" />
+                      <text x="330" y="210" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#c1272d">🏛️ CONTRÔLE GOUVERNEMENTAL</text>
+                      
+                      <!-- Government Dashboard -->
+                      <rect x="100" y="190" width="140" height="120" rx="5" fill="#f5e6e6" stroke="#c1272d" stroke-width="1" />
+                      <text x="170" y="210" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#c1272d">Dashboard Officiel</text>
+                      <text x="110" y="230" font-family="Arial, sans-serif" font-size="10" fill="#333">• Analytics Temps Réel</text>
+                      <text x="110" y="245" font-family="Arial, sans-serif" font-size="10" fill="#333">• KPIs Stratégie 2030</text>
+                      <text x="110" y="260" font-family="Arial, sans-serif" font-size="10" fill="#333">• Revenus Artisans</text>
+                      <text x="110" y="275" font-family="Arial, sans-serif" font-size="10" fill="#333">• Export Données</text>
+                      <text x="110" y="290" font-family="Arial, sans-serif" font-size="10" fill="#333">• Compliance Check</text>
+                      
+                      <!-- Policy Engine -->
+                      <rect x="260" y="190" width="140" height="120" rx="5" fill="#f5e6e6" stroke="#c1272d" stroke-width="1" />
+                      <text x="330" y="210" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#c1272d">Moteur Politique</text>
+                      <text x="270" y="230" font-family="Arial, sans-serif" font-size="10" fill="#333">• Règles Nationales</text>
+                      <text x="270" y="245" font-family="Arial, sans-serif" font-size="10" fill="#333">• Conformité Auto</text>
+                      <text x="270" y="260" font-family="Arial, sans-serif" font-size="10" fill="#333">• Audit Trail</text>
+                      <text x="270" y="275" font-family="Arial, sans-serif" font-size="10" fill="#333">• Décisions IA</text>
+                      <text x="270" y="290" font-family="Arial, sans-serif" font-size="10" fill="#333">• Override Manuel</text>
+                      
+                      <!-- Access Control -->
+                      <rect x="420" y="190" width="140" height="120" rx="5" fill="#f5e6e6" stroke="#c1272d" stroke-width="1" />
+                      <text x="490" y="210" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#c1272d">Contrôle Accès</text>
+                      <text x="430" y="230" font-family="Arial, sans-serif" font-size="10" fill="#333">• Auth Nationale</text>
+                      <text x="430" y="245" font-family="Arial, sans-serif" font-size="10" fill="#333">• Rôles Définis</text>
+                      <text x="430" y="260" font-family="Arial, sans-serif" font-size="10" fill="#333">• Permissions</text>
+                      <text x="430" y="275" font-family="Arial, sans-serif" font-size="10" fill="#333">• Log Activité</text>
+                      <text x="430" y="290" font-family="Arial, sans-serif" font-size="10" fill="#333">• Sécurité Multi-Niv</text>
+                      
+                      <!-- National Data Infrastructure -->
+                      <rect x="620" y="150" width="500" height="180" rx="10" fill="white" stroke="#006233" stroke-width="2" />
+                      <text x="870" y="175" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#006233">💾 INFRASTRUCTURE DONNÉES NATIONALES</text>
+                      
+                      <!-- Primary Data Center -->
+                      <rect x="640" y="190" width="140" height="120" rx="5" fill="#e0f0e9" stroke="#006233" stroke-width="1" />
+                      <text x="710" y="210" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#006233">Data Center Principal</text>
+                      <text x="710" y="225" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Rabat/Casablanca</text>
+                      <text x="650" y="245" font-family="Arial, sans-serif" font-size="10" fill="#333">• Artisan Profiles</text>
+                      <text x="650" y="260" font-family="Arial, sans-serif" font-size="10" fill="#333">• Cultural Heritage</text>
+                      <text x="650" y="275" font-family="Arial, sans-serif" font-size="10" fill="#333">• Blockchain Nodes</text>
+                      <text x="650" y="290" font-family="Arial, sans-serif" font-size="10" fill="#333">• IA Models</text>
+                      
+                      <!-- Backup Data Center -->
+                      <rect x="800" y="190" width="140" height="120" rx="5" fill="#e0f0e9" stroke="#006233" stroke-width="1" />
+                      <text x="870" y="210" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#006233">Data Center Backup</text>
+                      <text x="870" y="225" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Marrakech/Fès</text>
+                      <text x="810" y="245" font-family="Arial, sans-serif" font-size="10" fill="#333">• Mirror Principal</text>
+                      <text x="810" y="260" font-family="Arial, sans-serif" font-size="10" fill="#333">• Disaster Recovery</text>
+                      <text x="810" y="275" font-family="Arial, sans-serif" font-size="10" fill="#333">• Load Balancing</text>
+                      <text x="810" y="290" font-family="Arial, sans-serif" font-size="10" fill="#333">• Failover Auto</text>
+                      
+                      <!-- Edge Network -->
+                      <rect x="960" y="190" width="140" height="120" rx="5" fill="#e0f0e9" stroke="#006233" stroke-width="1" />
+                      <text x="1030" y="210" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#006233">Réseau Edge</text>
+                      <text x="1030" y="225" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">12 Régions</text>
+                      <text x="970" y="245" font-family="Arial, sans-serif" font-size="10" fill="#333">• Cache Local</text>
+                      <text x="970" y="260" font-family="Arial, sans-serif" font-size="10" fill="#333">• Latence &lt;50ms</text>
+                      <text x="970" y="275" font-family="Arial, sans-serif" font-size="10" fill="#333">• CDN Marocain</text>
+                      <text x="970" y="290" font-family="Arial, sans-serif" font-size="10" fill="#333">• Offline Capable</text>
+                      
+                      <!-- AI Processing Layer -->
+                      <rect x="80" y="350" width="1040" height="120" rx="10" fill="white" stroke="#663399" stroke-width="2" />
+                      <text x="600" y="375" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#663399">🤖 COUCHE TRAITEMENT IA SOUVERAINE</text>
+                      
+                      <!-- Authenticity Engine -->
+                      <rect x="100" y="385" width="180" height="70" rx="5" fill="#f0e8ff" stroke="#663399" stroke-width="1" />
+                      <text x="190" y="405" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#663399">Authenticity Engine</text>
+                      <text x="110" y="425" font-family="Arial, sans-serif" font-size="10" fill="#333">• Vision IA Culturelle</text>
+                      <text x="110" y="440" font-family="Arial, sans-serif" font-size="10" fill="#333">• Models Marocains</text>
+                      
+                      <!-- NLP Engine -->
+                      <rect x="300" y="385" width="180" height="70" rx="5" fill="#f0e8ff" stroke="#663399" stroke-width="1" />
+                      <text x="390" y="405" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#663399">NLP Engine</text>
+                      <text x="310" y="425" font-family="Arial, sans-serif" font-size="10" fill="#333">• Darija Processing</text>
+                      <text x="310" y="440" font-family="Arial, sans-serif" font-size="10" fill="#333">• Cultural Context</text>
+                      
+                      <!-- Matching Engine -->
+                      <rect x="500" y="385" width="180" height="70" rx="5" fill="#f0e8ff" stroke="#663399" stroke-width="1" />
+                      <text x="590" y="405" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#663399">Matching Engine</text>
+                      <text x="510" y="425" font-family="Arial, sans-serif" font-size="10" fill="#333">• Artisan-Buyer ML</text>
+                      <text x="510" y="440" font-family="Arial, sans-serif" font-size="10" fill="#333">• Preference Learning</text>
+                      
+                      <!-- Analytics Engine -->
+                      <rect x="700" y="385" width="180" height="70" rx="5" fill="#f0e8ff" stroke="#663399" stroke-width="1" />
+                      <text x="790" y="405" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#663399">Analytics Engine</text>
+                      <text x="710" y="425" font-family="Arial, sans-serif" font-size="10" fill="#333">• Policy Insights</text>
+                      <text x="710" y="440" font-family="Arial, sans-serif" font-size="10" fill="#333">• Trend Analysis</text>
+                      
+                      <!-- Blockchain Layer -->
+                      <rect x="900" y="385" width="180" height="70" rx="5" fill="#f0e8ff" stroke="#663399" stroke-width="1" />
+                      <text x="990" y="405" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#663399">Blockchain Layer</text>
+                      <text x="910" y="425" font-family="Arial, sans-serif" font-size="10" fill="#333">• National Nodes</text>
+                      <text x="910" y="440" font-family="Arial, sans-serif" font-size="10" fill="#333">• Smart Contracts</text>
+                      
+                      <!-- Security Perimeter -->
+                      <rect x="80" y="490" width="1040" height="100" rx="10" fill="white" stroke="#aa8239" stroke-width="2" />
+                      <text x="600" y="515" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#aa8239">🛡️ PÉRIMÈTRE SÉCURITÉ NATIONALE</text>
+                      
+                      <!-- Security Components -->
+                      <rect x="100" y="530" width="150" height="50" rx="5" fill="#fef9e6" stroke="#aa8239" stroke-width="1" />
+                      <text x="175" y="550" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#aa8239">Firewall National</text>
+                      <text x="175" y="565" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#333">DPI • IDS • WAF</text>
+                      
+                      <rect x="270" y="530" width="150" height="50" rx="5" fill="#fef9e6" stroke="#aa8239" stroke-width="1" />
+                      <text x="345" y="550" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#aa8239">Chiffrement E2E</text>
+                      <text x="345" y="565" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#333">AES-256 • RSA-4096</text>
+                      
+                      <rect x="440" y="530" width="150" height="50" rx="5" fill="#fef9e6" stroke="#aa8239" stroke-width="1" />
+                      <text x="515" y="550" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#aa8239">Identity & Access</text>
+                      <text x="515" y="565" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#333">OAuth2 • SAML • MFA</text>
+                      
+                      <rect x="610" y="530" width="150" height="50" rx="5" fill="#fef9e6" stroke="#aa8239" stroke-width="1" />
+                      <text x="685" y="550" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#aa8239">Audit & Monitoring</text>
+                      <text x="685" y="565" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#333">SIEM • SOC • 24/7</text>
+                      
+                      <rect x="780" y="530" width="150" height="50" rx="5" fill="#fef9e6" stroke="#aa8239" stroke-width="1" />
+                      <text x="855" y="550" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#aa8239">Backup & Recovery</text>
+                      <text x="855" y="565" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#333">3-2-1 Rule • Geo-Dist</text>
+                      
+                      <rect x="950" y="530" width="150" height="50" rx="5" fill="#fef9e6" stroke="#aa8239" stroke-width="1" />
+                      <text x="1025" y="550" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#aa8239">Compliance</text>
+                      <text x="1025" y="565" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#333">GDPR • ISO27001</text>
+                      
+                      <!-- External Connections -->
+                      <rect x="50" y="630" width="1100" height="140" rx="15" fill="#f0f0f0" stroke="#666" stroke-width="2" stroke-dasharray="5,5" />
+                      <text x="70" y="655" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#666">🌍 CONNEXIONS EXTERNES CONTRÔLÉES</text>
+                      
+                      <!-- International APIs -->
+                      <rect x="100" y="670" width="200" height="80" rx="5" fill="white" stroke="#4a90e2" stroke-width="1" />
+                      <text x="200" y="690" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#4a90e2">APIs Internationales</text>
+                      <text x="110" y="710" font-family="Arial, sans-serif" font-size="10" fill="#333">• Payment Gateways</text>
+                      <text x="110" y="725" font-family="Arial, sans-serif" font-size="10" fill="#333">• Shipping Services</text>
+                      <text x="110" y="740" font-family="Arial, sans-serif" font-size="10" fill="#333">• Exchange Rates</text>
+                      
+                      <!-- CDN & Edge -->
+                      <rect x="320" y="670" width="200" height="80" rx="5" fill="white" stroke="#4a90e2" stroke-width="1" />
+                      <text x="420" y="690" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#4a90e2">CDN Global</text>
+                      <text x="330" y="710" font-family="Arial, sans-serif" font-size="10" fill="#333">• Static Assets Only</text>
+                      <text x="330" y="725" font-family="Arial, sans-serif" font-size="10" fill="#333">• No User Data</text>
+                      <text x="330" y="740" font-family="Arial, sans-serif" font-size="10" fill="#333">• Performance Boost</text>
+                      
+                      <!-- Analytics (Anonymous) -->
+                      <rect x="540" y="670" width="200" height="80" rx="5" fill="white" stroke="#4a90e2" stroke-width="1" />
+                      <text x="640" y="690" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#4a90e2">Analytics Anonymes</text>
+                      <text x="550" y="710" font-family="Arial, sans-serif" font-size="10" fill="#333">• Usage Patterns</text>
+                      <text x="550" y="725" font-family="Arial, sans-serif" font-size="10" fill="#333">• Performance Metrics</text>
+                      <text x="550" y="740" font-family="Arial, sans-serif" font-size="10" fill="#333">• No Personal Data</text>
+                      
+                      <!-- Blockchain Interop -->
+                      <rect x="760" y="670" width="200" height="80" rx="5" fill="white" stroke="#4a90e2" stroke-width="1" />
+                      <text x="860" y="690" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#4a90e2">Blockchain Interop</text>
+                      <text x="770" y="710" font-family="Arial, sans-serif" font-size="10" fill="#333">• Cross-chain Bridges</text>
+                      <text x="770" y="725" font-family="Arial, sans-serif" font-size="10" fill="#333">• International Sales</text>
+                      <text x="770" y="740" font-family="Arial, sans-serif" font-size="10" fill="#333">• Controlled Access</text>
+                      
+                      <!-- Monitoring -->
+                      <rect x="980" y="670" width="150" height="80" rx="5" fill="white" stroke="#4a90e2" stroke-width="1" />
+                      <text x="1055" y="690" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#4a90e2">Monitoring Ext</text>
+                      <text x="990" y="710" font-family="Arial, sans-serif" font-size="10" fill="#333">• Uptime Checks</text>
+                      <text x="990" y="725" font-family="Arial, sans-serif" font-size="10" fill="#333">• Security Scans</text>
+                      <text x="990" y="740" font-family="Arial, sans-serif" font-size="10" fill="#333">• Threat Intel</text>
+                      
+                      <!-- Data Flow Arrows -->
+                      <path d="M330 330 v40" stroke="#c1272d" stroke-width="3" fill="none" />
+                      <polygon points="325,370 330,380 335,370" fill="#c1272d" />
+                      
+                      <path d="M870 330 v40" stroke="#006233" stroke-width="3" fill="none" />
+                      <polygon points="865,370 870,380 875,370" fill="#006233" />
+                      
+                      <path d="M600 470 v40" stroke="#663399" stroke-width="3" fill="none" />
+                      <polygon points="595,510 600,520 605,510" fill="#663399" />
+                      
+                      <!-- Footer -->
+                      <rect x="0" y="792" width="1200" height="8" fill="#006233" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Data Flow & Sovereignty Controls -->
+        <div class="slide">
+            <div class="content-fit">
+                <h1>Flux de Données & Contrôles de Souveraineté</h1>
+                <p style="text-align: center; font-size: 1em; margin-bottom: 4px; opacity: 0.8;">
+                    Garantie Totale : Données Artisanales Restent au Maroc
+                </p>
+                
+                <div class="svg-container">
+                    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+                      <!-- Background -->
+                      <rect width="1200" height="800" fill="#f9f7f2" />
+                      
+                      <!-- Moroccan flag colors header -->
+                      <rect x="0" y="0" width="1200" height="8" fill="#c1272d" />
+                      <rect x="0" y="8" width="1200" height="8" fill="#006233" />
+                      
+                      <!-- Title -->
+                      <text x="600" y="45" font-family="Arial, sans-serif" font-size="28" font-weight="bold" text-anchor="middle" fill="#333333">Flux Données : Souveraineté Garantie</text>
+                      <text x="600" y="70" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#666">Classification des Données • Contrôles Automatiques • Conformité Continue</text>
+                      
+                      <!-- Data Classification -->
+                      <rect x="50" y="90" width="1100" height="140" rx="10" fill="#e8f4f1" stroke="#006233" stroke-width="2" />
+                      <text x="70" y="115" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#006233">📊 CLASSIFICATION AUTOMATIQUE DES DONNÉES</text>
+                      
+                      <!-- Sovereign Data -->
+                      <rect x="80" y="130" width="260" height="90" rx="5" fill="#d4edda" stroke="#28a745" stroke-width="2" />
+                      <text x="210" y="150" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#28a745">🔒 DONNÉES SOUVERAINES</text>
+                      <text x="90" y="170" font-family="Arial, sans-serif" font-size="11" fill="#333">• Profils Artisans (420K)</text>
+                      <text x="90" y="185" font-family="Arial, sans-serif" font-size="11" fill="#333">• Techniques Traditionnelles</text>
+                      <text x="90" y="200" font-family="Arial, sans-serif" font-size="11" fill="#333">• Heritage Culturel</text>
+                      <text x="210" y="215" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="#c1272d">❌ JAMAIS À L'ÉTRANGER</text>
+                      
+                      <!-- Controlled Data -->
+                      <rect x="360" y="130" width="260" height="90" rx="5" fill="#fff3cd" stroke="#ffc107" stroke-width="2" />
+                      <text x="490" y="150" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#856404">⚠️ DONNÉES CONTRÔLÉES</text>
+                      <text x="370" y="170" font-family="Arial, sans-serif" font-size="11" fill="#333">• Transactions Anonymisées</text>
+                      <text x="370" y="185" font-family="Arial, sans-serif" font-size="11" fill="#333">• Statistiques Globales</text>
+                      <text x="370" y="200" font-family="Arial, sans-serif" font-size="11" fill="#333">• Trends de Marché</text>
+                      <text x="490" y="215" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="#006233">✓ PARTAGE AUTORISÉ</text>
+                      
+                      <!-- Public Data -->
+                      <rect x="640" y="130" width="260" height="90" rx="5" fill="#d1ecf1" stroke="#17a2b8" stroke-width="2" />
+                      <text x="770" y="150" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#0c5460">🌍 DONNÉES PUBLIQUES</text>
+                      <text x="650" y="170" font-family="Arial, sans-serif" font-size="11" fill="#333">• Catalogues Produits</text>
+                      <text x="650" y="185" font-family="Arial, sans-serif" font-size="11" fill="#333">• Prix Publics</text>
+                      <text x="650" y="200" font-family="Arial, sans-serif" font-size="11" fill="#333">• Images Marketing</text>
+                      <text x="770" y="215" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="#4a90e2">→ CDN GLOBAL</text>
+                      
+                      <!-- Metadata -->
+                      <rect x="920" y="130" width="210" height="90" rx="5" fill="#f8d7da" stroke="#dc3545" stroke-width="2" />
+                      <text x="1025" y="150" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#721c24">🔍 MÉTADONNÉES</text>
+                      <text x="930" y="170" font-family="Arial, sans-serif" font-size="11" fill="#333">• Logs Système</text>
+                      <text x="930" y="185" font-family="Arial, sans-serif" font-size="11" fill="#333">• Performance</text>
+                      <text x="930" y="200" font-family="Arial, sans-serif" font-size="11" fill="#333">• Analytics</text>
+                      <text x="1025" y="215" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="#006233">✓ NATIONAL ONLY</text>
+                      
+                      <!-- Data Flow Diagram -->
+                      <rect x="50" y="250" width="1100" height="320" rx="10" fill="white" stroke="#666" stroke-width="1" />
+                      <text x="600" y="275" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#333">🔄 FLUX DE DONNÉES EN TEMPS RÉEL</text>
+                      
+                      <!-- Data Sources -->
+                      <rect x="80" y="290" width="150" height="100" rx="5" fill="#e0f0e9" stroke="#006233" stroke-width="1" />
+                      <text x="155" y="310" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#006233">Sources Données</text>
+                      <text x="90" y="330" font-family="Arial, sans-serif" font-size="10" fill="#333">• 420K Artisans</text>
+                      <text x="90" y="345" font-family="Arial, sans-serif" font-size="10" fill="#333">• Boutiques Partenaires</text>
+                      <text x="90" y="360" font-family="Arial, sans-serif" font-size="10" fill="#333">• Touristes/Acheteurs</text>
+                      <text x="90" y="375" font-family="Arial, sans-serif" font-size="10" fill="#333">• IoT Ateliers</text>
+                      
+                      <!-- Data Gateway -->
+                      <rect x="280" y="290" width="150" height="100" rx="5" fill="#f0e8ff" stroke="#663399" stroke-width="1" />
+                      <text x="355" y="310" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#663399">Gateway National</text>
+                      <text x="290" y="330" font-family="Arial, sans-serif" font-size="10" fill="#333">• Classification Auto</text>
+                      <text x="290" y="345" font-family="Arial, sans-serif" font-size="10" fill="#333">• Chiffrement E2E</text>
+                      <text x="290" y="360" font-family="Arial, sans-serif" font-size="10" fill="#333">• Audit Trail</text>
+                      <text x="290" y="375" font-family="Arial, sans-serif" font-size="10" fill="#333">• Policy Check</text>
+                      
+                      <!-- National Storage -->
+                      <rect x="480" y="290" width="150" height="100" rx="5" fill="#e8f4f1" stroke="#006233" stroke-width="1" />
+                      <text x="555" y="310" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#006233">Stockage National</text>
+                      <text x="490" y="330" font-family="Arial, sans-serif" font-size="10" fill="#333">• Data Centers MA</text>
+                      <text x="490" y="345" font-family="Arial, sans-serif" font-size="10" fill="#333">• Réplication Triple</text>
+                      <text x="490" y="360" font-family="Arial, sans-serif" font-size="10" fill="#333">• Backup Geo-Dist</text>
+                      <text x="490" y="375" font-family="Arial, sans-serif" font-size="10" fill="#333">• Encryption Rest</text>
+                      
+                      <!-- Processing Layer -->
+                      <rect x="680" y="290" width="150" height="100" rx="5" fill="#f5e6e6" stroke="#c1272d" stroke-width="1" />
+                      <text x="755" y="310" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#c1272d">Traitement IA</text>
+                      <text x="690" y="330" font-family="Arial, sans-serif" font-size="10" fill="#333">• ML Models Local</text>
+                      <text x="690" y="345" font-family="Arial, sans-serif" font-size="10" fill="#333">• Edge Computing</text>
+                      <text x="690" y="360" font-family="Arial, sans-serif" font-size="10" fill="#333">• Real-time Analytics</text>
+                      <text x="690" y="375" font-family="Arial, sans-serif" font-size="10" fill="#333">• Zero Export</text>
+                      
+                      <!-- Output Services -->
+                      <rect x="880" y="290" width="150" height="100" rx="5" fill="#c2cfe6" stroke="#3a5da8" stroke-width="1" />
+                      <text x="955" y="310" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#3a5da8">Services Sortie</text>
+                      <text x="890" y="330" font-family="Arial, sans-serif" font-size="10" fill="#333">• APIs Publiques</text>
+                      <text x="890" y="345" font-family="Arial, sans-serif" font-size="10" fill="#333">• Dashboard Gov</text>
+                      <text x="890" y="360" font-family="Arial, sans-serif" font-size="10" fill="#333">• Export Anonyme</text>
+                      <text x="890" y="375" font-family="Arial, sans-serif" font-size="10" fill="#333">• International Safe</text>
+                      
+                      <!-- Data Flow Arrows -->
+                      <path d="M230 340 L270 340" stroke="#006233" stroke-width="3" fill="none" />
+                      <polygon points="270,335 280,340 270,345" fill="#006233" />
+                      <text x="250" y="335" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#333">Raw Data</text>
+                      
+                      <path d="M430 340 L470 340" stroke="#663399" stroke-width="3" fill="none" />
+                      <polygon points="470,335 480,340 470,345" fill="#663399" />
+                      <text x="450" y="335" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#333">Classified</text>
+                      
+                      <path d="M630 340 L670 340" stroke="#006233" stroke-width="3" fill="none" />
+                      <polygon points="670,335 680,340 670,345" fill="#006233" />
+                      <text x="650" y="335" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#333">Secured</text>
+                      
+                      <path d="M830 340 L870 340" stroke="#c1272d" stroke-width="3" fill="none" />
+                      <polygon points="870,335 880,340 870,345" fill="#c1272d" />
+                      <text x="850" y="335" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#333">Processed</text>
+                      
+                      <!-- Monitoring & Controls -->
+                      <rect x="80" y="410" width="450" height="140" rx="5" fill="#fff3cd" stroke="#ffc107" stroke-width="1" />
+                      <text x="305" y="430" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#856404">⚠️ MONITORING & CONTRÔLES 24/7</text>
+                      
+                      <text x="90" y="450" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333">• Data Loss Prevention (DLP)</text>
+                      <text x="90" y="465" font-family="Arial, sans-serif" font-size="10" fill="#333">  - Scan automatique de tous les flux sortants</text>
+                      <text x="90" y="480" font-family="Arial, sans-serif" font-size="10" fill="#333">  - Détection données sensibles (ML)</text>
+                      
+                      <text x="90" y="500" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333">• Network Security Monitoring</text>
+                      <text x="90" y="515" font-family="Arial, sans-serif" font-size="10" fill="#333">  - Analyse trafic temps réel</text>
+                      <text x="90" y="530" font-family="Arial, sans-serif" font-size="10" fill="#333">  - Alertes anomalies automatiques</text>
+                      
+                      <!-- Compliance Dashboard -->
+                      <rect x="550" y="410" width="450" height="140" rx="5" fill="#d1ecf1" stroke="#17a2b8" stroke-width="1" />
+                      <text x="775" y="430" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#0c5460">📋 TABLEAU CONFORMITÉ TEMPS RÉEL</text>
+                      
+                      <text x="560" y="450" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333">• Métriques Souveraineté</text>
+                      <text x="560" y="465" font-family="Arial, sans-serif" font-size="10" fill="#333">  - 100% données souveraines au Maroc ✓</text>
+                      <text x="560" y="480" font-family="Arial, sans-serif" font-size="10" fill="#333">  - 0% fuite données sensibles ✓</text>
+                      
+                      <text x="560" y="500" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333">• Audit Trail Complet</text>
+                      <text x="560" y="515" font-family="Arial, sans-serif" font-size="10" fill="#333">  - Log toutes transactions</text>
+                      <text x="560" y="530" font-family="Arial, sans-serif" font-size="10" fill="#333">  - Traçabilité utilisateur</text>
+                      
+                      <!-- Sovereignty Guarantees -->
+                      <rect x="50" y="580" width="1100" height="140" rx="10" fill="#d4edda" stroke="#28a745" stroke-width="2" />
+                      <text x="600" y="605" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#28a745">🇲🇦 GARANTIES SOUVERAINETÉ TECHNIQUE</text>
+                      
+                      <rect x="80" y="620" width="250" height="90" rx="5" fill="white" stroke="#28a745" stroke-width="1" />
+                      <text x="205" y="640" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#28a745">Contrôles Matériels</text>
+                      <text x="90" y="660" font-family="Arial, sans-serif" font-size="10" fill="#333">• Serveurs dans datacenters MA</text>
+                      <text x="90" y="675" font-family="Arial, sans-serif" font-size="10" fill="#333">• Staff marocain uniquement</text>
+                      <text x="90" y="690" font-family="Arial, sans-serif" font-size="10" fill="#333">• Accès physique contrôlé</text>
+                      
+                      <rect x="350" y="620" width="250" height="90" rx="5" fill="white" stroke="#28a745" stroke-width="1" />
+                      <text x="475" y="640" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#28a745">Contrôles Logiciels</text>
+                      <text x="360" y="660" font-family="Arial, sans-serif" font-size="10" fill="#333">• Code source audité</text>
+                      <text x="360" y="675" font-family="Arial, sans-serif" font-size="10" fill="#333">• Pas de backdoors</text>
+                      <text x="360" y="690" font-family="Arial, sans-serif" font-size="10" fill="#333">• Chiffrement local</text>
+                      
+                      <rect x="620" y="620" width="250" height="90" rx="5" fill="white" stroke="#28a745" stroke-width="1" />
+                      <text x="745" y="640" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#28a745">Contrôles Réseau</text>
+                      <text x="630" y="660" font-family="Arial, sans-serif" font-size="10" fill="#333">• Firewall national</text>
+                      <text x="630" y="675" font-family="Arial, sans-serif" font-size="10" fill="#333">• VPN gouvernemental</text>
+                      <text x="630" y="690" font-family="Arial, sans-serif" font-size="10" fill="#333">• Monitoring 100% trafic</text>
+                      
+                      <rect x="890" y="620" width="250" height="90" rx="5" fill="white" stroke="#28a745" stroke-width="1" />
+                      <text x="1015" y="640" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#28a745">Contrôles Juridiques</text>
+                      <text x="900" y="660" font-family="Arial, sans-serif" font-size="10" fill="#333">• Conformité loi marocaine</text>
+                      <text x="900" y="675" font-family="Arial, sans-serif" font-size="10" fill="#333">• Contrats souveraineté</text>
+                      <text x="900" y="690" font-family="Arial, sans-serif" font-size="10" fill="#333">• Audit indépendant</text>
+                      
+                      <!-- Footer -->
+                      <rect x="0" y="792" width="1200" height="8" fill="#006233" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Infrastructure Deployment & Scaling -->
+        <div class="slide">
+            <div class="content-fit">
+                <h1>Déploiement Infrastructure & Montée en Charge</h1>
+                <p style="text-align: center; font-size: 1em; margin-bottom: 4px; opacity: 0.8;">
+                    Stratégie de Déploiement National : 420K Artisans → Infrastructure Évolutive
+                </p>
+                
+                <div class="scrollable-content">
+                    <div class="strategic-grid">
+                        <div class="strategy-card enjeu1">
+                            <h3 style="color: var(--moroccan-green);">🏗️ Phase 1 : Infrastructure de Base (Mois 1-6)</h3>
+                            <ul class="bullet-list">
+                                <li><strong>Datacenter Principal Rabat :</strong> Haute disponibilité, redondance N+1</li>
+                                <li><strong>500 Artisans Pilotes :</strong> Validation architecture temps réel</li>
+                                <li><strong>Réseau Privé Gouvernemental :</strong> Connexion sécurisée ministères</li>
+                                <li><strong>Monitoring SOC National :</strong> Surveillance 24/7 security operations</li>
+                                <li><strong>Backup Site Casablanca :</strong> Disaster recovery automatique</li>
+                            </ul>
+                        </div>
+
+                        <div class="strategy-card enjeu2">
+                            <h3 style="color: var(--moroccan-gold);">⚡ Phase 2 : Expansion Régionale (Mois 6-12)</h3>
+                            <ul class="bullet-list">
+                                <li><strong>Edge Nodes 12 Régions :</strong> Latence &lt;50ms garantie partout</li>
+                                <li><strong>5K Artisans Connectés :</strong> Test montée en charge réelle</li>
+                                <li><strong>IA Models Distribués :</strong> Processing local pour performance</li>
+                                <li><strong>CDN National Hybride :</strong> Content delivery optimisé</li>
+                                <li><strong>APIs Gouvernementales :</strong> Intégration systèmes existants</li>
+                            </ul>
+                        </div>
+
+                        <div class="strategy-card enjeu3">
+                            <h3 style="color: var(--accent-blue);">🚀 Phase 3 : Production Nationale (Mois 12-18)</h3>
+                            <ul class="bullet-list">
+                                <li><strong>420K Artisans Full Scale :</strong> Infrastructure complète opérationnelle</li>
+                                <li><strong>Auto-Scaling Intelligent :</strong> Adaptation charge temps réel</li>
+                                <li><strong>Multi-Region Active-Active :</strong> Haute disponibilité 99.99%</li>
+                                <li><strong>Blockchain National Network :</strong> Consensus distribué marocain</li>
+                                <li><strong>Export Data Pipeline :</strong> Analytics pour stratégie 2030</li>
+                            </ul>
+                        </div>
+
+                        <div class="strategy-card enjeu4">
+                            <h3 style="color: var(--moroccan-red);">🌍 Phase 4 : Rayonnement International (Mois 18+)</h3>
+                            <ul class="bullet-list">
+                                <li><strong>Passerelles Internationales :</strong> Commerce global sécurisé</li>
+                                <li><strong>Standards Technologiques :</strong> Modèle exportable Afrique</li>
+                                <li><strong>Coupe du Monde 2030 :</strong> Vitrine technologique mondiale</li>
+                                <li><strong>Innovation Continues :</strong> R&D IA patrimoine culturel</li>
+                                <li><strong>Leadership Africain :</strong> Hub technologique régional</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="ai-highlight">
+                        <h3>🔧 Spécifications Techniques Détaillées</h3>
+                        <div class="two-column" style="margin-top: 16px;">
+                            <div>
+                                <h4 style="color: var(--deep-purple); margin-bottom: 8px;">Infrastructure Compute</h4>
+                                <ul class="bullet-list" style="font-size: 0.8em;">
+                                    <li><strong>Kubernetes Clusters :</strong> 3 zones AZ, auto-healing</li>
+                                    <li><strong>Container Registry :</strong> Images sécurisées nationales</li>
+                                    <li><strong>Service Mesh :</strong> Istio pour micro-services</li>
+                                    <li><strong>Serverless Functions :</strong> Scale-to-zero IA processing</li>
+                                    <li><strong>GPU Clusters :</strong> NVIDIA A100 pour ML training</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--deep-purple); margin-bottom: 8px;">Données & Storage</h4>
+                                <ul class="bullet-list" style="font-size: 0.8em;">
+                                    <li><strong>Object Storage :</strong> S3-compatible, 99.999999999% durabilité</li>
+                                    <li><strong>Database Clusters :</strong> PostgreSQL HA + MongoDB</li>
+                                    <li><strong>Data Lake :</strong> Analytics big data gouvernemental</li>
+                                    <li><strong>Blockchain Storage :</strong> IPFS distribué national</li>
+                                    <li><strong>Backup 3-2-1 :</strong> Triple redondance géographique</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table class="financial-table">
+                            <thead>
+                                <tr>
+                                    <th>Métrique Performance</th>
+                                    <th>Phase 1 (500 users)</th>
+                                    <th>Phase 2 (5K users)</th>
+                                    <th>Phase 3 (420K users)</th>
+                                    <th>SLA Production</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Latence API</strong></td>
+                                    <td>&lt; 100ms</td>
+                                    <td>&lt; 75ms</td>
+                                    <td>&lt; 50ms</td>
+                                    <td>99.9% &lt; 50ms</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Disponibilité</strong></td>
+                                    <td>99.9%</td>
+                                    <td>99.95%</td>
+                                    <td>99.99%</td>
+                                    <td>99.99% (4.3min/mois)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Throughput</strong></td>
+                                    <td>1K req/sec</td>
+                                    <td>10K req/sec</td>
+                                    <td>100K req/sec</td>
+                                    <td>Burst 500K req/sec</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Storage Growth</strong></td>
+                                    <td>100GB/mois</td>
+                                    <td>1TB/mois</td>
+                                    <td>10TB/mois</td>
+                                    <td>Auto-scaling</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Coût Infrastructure</strong></td>
+                                    <td>€5K/mois</td>
+                                    <td>€25K/mois</td>
+                                    <td>€150K/mois</td>
+                                    <td>Optimisé continu</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Timeline -->
+        <div class="slide">
+            <div class="content-fit">
+                <h1>Roadmap : Lancement Plateforme IA Officielle</h1>
+                <p style="text-align: center; font-size: 1em; margin-bottom: 4px; opacity: 0.8;">
+                    Stratégie de Déploiement National : 420K Artisans → Infrastructure Évolutive
+                </p>
+                
+                <div class="scrollable-content">
+                    <div class="strategic-grid">
+                        <div class="strategy-card enjeu1">
+                            <h3 style="color: var(--moroccan-green);">🏗️ Phase 1 : Infrastructure de Base (Mois 1-6)</h3>
+                            <ul class="bullet-list">
+                                <li><strong>Datacenter Principal Rabat :</strong> Haute disponibilité, redondance N+1</li>
+                                <li><strong>500 Artisans Pilotes :</strong> Validation architecture temps réel</li>
+                                <li><strong>Réseau Privé Gouvernemental :</strong> Connexion sécurisée ministères</li>
+                                <li><strong>Monitoring SOC National :</strong> Surveillance 24/7 security operations</li>
+                                <li><strong>Backup Site Casablanca :</strong> Disaster recovery automatique</li>
+                            </ul>
+                        </div>
+
+                        <div class="strategy-card enjeu2">
+                            <h3 style="color: var(--moroccan-gold);">⚡ Phase 2 : Expansion Régionale (Mois 6-12)</h3>
+                            <ul class="bullet-list">
+                                <li><strong>Edge Nodes 12 Régions :</strong> Latence &lt;50ms garantie partout</li>
+                                <li><strong>5K Artisans Connectés :</strong> Test montée en charge réelle</li>
+                                <li><strong>IA Models Distribués :</strong> Processing local pour performance</li>
+                                <li><strong>CDN National Hybride :</strong> Content delivery optimisé</li>
+                                <li><strong>APIs Gouvernementales :</strong> Intégration systèmes existants</li>
+                            </ul>
+                        </div>
+
+                        <div class="strategy-card enjeu3">
+                            <h3 style="color: var(--accent-blue);">🚀 Phase 3 : Production Nationale (Mois 12-18)</h3>
+                            <ul class="bullet-list">
+                                <li><strong>420K Artisans Full Scale :</strong> Infrastructure complète opérationnelle</li>
+                                <li><strong>Auto-Scaling Intelligent :</strong> Adaptation charge temps réel</li>
+                                <li><strong>Multi-Region Active-Active :</strong> Haute disponibilité 99.99%</li>
+                                <li><strong>Blockchain National Network :</strong> Consensus distribué marocain</li>
+                                <li><strong>Export Data Pipeline :</strong> Analytics pour stratégie 2030</li>
+                            </ul>
+                        </div>
+
+                        <div class="strategy-card enjeu4">
+                            <h3 style="color: var(--moroccan-red);">🌍 Phase 4 : Rayonnement International (Mois 18+)</h3>
+                            <ul class="bullet-list">
+                                <li><strong>Passerelles Internationales :</strong> Commerce global sécurisé</li>
+                                <li><strong>Standards Technologiques :</strong> Modèle exportable Afrique</li>
+                                <li><strong>Coupe du Monde 2030 :</strong> Vitrine technologique mondiale</li>
+                                <li><strong>Innovation Continues :</strong> R&D IA patrimoine culturel</li>
+                                <li><strong>Leadership Africain :</strong> Hub technologique régional</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="ai-highlight">
+                        <h3>🔧 Spécifications Techniques Détaillées</h3>
+                        <div class="two-column" style="margin-top: 16px;">
+                            <div>
+                                <h4 style="color: var(--deep-purple); margin-bottom: 8px;">Infrastructure Compute</h4>
+                                <ul class="bullet-list" style="font-size: 0.8em;">
+                                    <li><strong>Kubernetes Clusters :</strong> 3 zones AZ, auto-healing</li>
+                                    <li><strong>Container Registry :</strong> Images sécurisées nationales</li>
+                                    <li><strong>Service Mesh :</strong> Istio pour micro-services</li>
+                                    <li><strong>Serverless Functions :</strong> Scale-to-zero IA processing</li>
+                                    <li><strong>GPU Clusters :</strong> NVIDIA A100 pour ML training</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--deep-purple); margin-bottom: 8px;">Données & Storage</h4>
+                                <ul class="bullet-list" style="font-size: 0.8em;">
+                                    <li><strong>Object Storage :</strong> S3-compatible, 99.999999999% durabilité</li>
+                                    <li><strong>Database Clusters :</strong> PostgreSQL HA + MongoDB</li>
+                                    <li><strong>Data Lake :</strong> Analytics big data gouvernemental</li>
+                                    <li><strong>Blockchain Storage :</strong> IPFS distribué national</li>
+                                    <li><strong>Backup 3-2-1 :</strong> Triple redondance géographique</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table class="financial-table">
+                            <thead>
+                                <tr>
+                                    <th>Métrique Performance</th>
+                                    <th>Phase 1 (500 users)</th>
+                                    <th>Phase 2 (5K users)</th>
+                                    <th>Phase 3 (420K users)</th>
+                                    <th>SLA Production</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Latence API</strong></td>
+                                    <td>&lt; 100ms</td>
+                                    <td>&lt; 75ms</td>
+                                    <td>&lt; 50ms</td>
+                                    <td>99.9% &lt; 50ms</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Disponibilité</strong></td>
+                                    <td>99.9%</td>
+                                    <td>99.95%</td>
+                                    <td>99.99%</td>
+                                    <td>99.99% (4.3min/mois)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Throughput</strong></td>
+                                    <td>1K req/sec</td>
+                                    <td>10K req/sec</td>
+                                    <td>100K req/sec</td>
+                                    <td>Burst 500K req/sec</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Storage Growth</strong></td>
+                                    <td>100GB/mois</td>
+                                    <td>1TB/mois</td>
+                                    <td>10TB/mois</td>
+                                    <td>Auto-scaling</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Coût Infrastructure</strong></td>
+                                    <td>€5K/mois</td>
+                                    <td>€25K/mois</td>
+                                    <td>€150K/mois</td>
+                                    <td>Optimisé continu</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 13: Competitive Analysis -->
+        <div class="slide">
+            <div class="content-fit">
+                <h1>Avantage Concurrentiel : Plateforme IA Officielle Unique</h1>
+                <p style="text-align: center; font-size: 1em; margin-bottom: 4px; opacity: 0.8;">
+                    Stratégie de Déploiement National : 420K Artisans → Infrastructure Évolutive
+                </p>
+                
+                <div class="scrollable-content">
+                    <div class="strategic-grid">
+                        <div class="strategy-card enjeu1">
+                            <h3 style="color: var(--moroccan-green);">🏗️ Phase 1 : Infrastructure de Base (Mois 1-6)</h3>
+                            <ul class="bullet-list">
+                                <li><strong>Datacenter Principal Rabat :</strong> Haute disponibilité, redondance N+1</li>
+                                <li><strong>500 Artisans Pilotes :</strong> Validation architecture temps réel</li>
+                                <li><strong>Réseau Privé Gouvernemental :</strong> Connexion sécurisée ministères</li>
+                                <li><strong>Monitoring SOC National :</strong> Surveillance 24/7 security operations</li>
+                                <li><strong>Backup Site Casablanca :</strong> Disaster recovery automatique</li>
+                            </ul>
+                        </div>
+
+                        <div class="strategy-card enjeu2">
+                            <h3 style="color: var(--moroccan-gold);">⚡ Phase 2 : Expansion Régionale (Mois 6-12)</h3>
+                            <ul class="bullet-list">
+                                <li><strong>Edge Nodes 12 Régions :</strong> Latence &lt;50ms garantie partout</li>
+                                <li><strong>5K Artisans Connectés :</strong> Test montée en charge réelle</li>
+                                <li><strong>IA Models Distribués :</strong> Processing local pour performance</li>
+                                <li><strong>CDN National Hybride :</strong> Content delivery optimisé</li>
+                                <li><strong>APIs Gouvernementales :</strong> Intégration systèmes existants</li>
+                            </ul>
+                        </div>
+
+                        <div class="strategy-card enjeu3">
+                            <h3 style="color: var(--accent-blue);">🚀 Phase 3 : Production Nationale (Mois 12-18)</h3>
+                            <ul class="bullet-list">
+                                <li><strong>420K Artisans Full Scale :</strong> Infrastructure complète opérationnelle</li>
+                                <li><strong>Auto-Scaling Intelligent :</strong> Adaptation charge temps réel</li>
+                                <li><strong>Multi-Region Active-Active :</strong> Haute disponibilité 99.99%</li>
+                                <li><strong>Blockchain National Network :</strong> Consensus distribué marocain</li>
+                                <li><strong>Export Data Pipeline :</strong> Analytics pour stratégie 2030</li>
+                            </ul>
+                        </div>
+
+                        <div class="strategy-card enjeu4">
+                            <h3 style="color: var(--moroccan-red);">🌍 Phase 4 : Rayonnement International (Mois 18+)</h3>
+                            <ul class="bullet-list">
+                                <li><strong>Passerelles Internationales :</strong> Commerce global sécurisé</li>
+                                <li><strong>Standards Technologiques :</strong> Modèle exportable Afrique</li>
+                                <li><strong>Coupe du Monde 2030 :</strong> Vitrine technologique mondiale</li>
+                                <li><strong>Innovation Continues :</strong> R&D IA patrimoine culturel</li>
+                                <li><strong>Leadership Africain :</strong> Hub technologique régional</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="ai-highlight">
+                        <h3>🔧 Spécifications Techniques Détaillées</h3>
+                        <div class="two-column" style="margin-top: 16px;">
+                            <div>
+                                <h4 style="color: var(--deep-purple); margin-bottom: 8px;">Infrastructure Compute</h4>
+                                <ul class="bullet-list" style="font-size: 0.8em;">
+                                    <li><strong>Kubernetes Clusters :</strong> 3 zones AZ, auto-healing</li>
+                                    <li><strong>Container Registry :</strong> Images sécurisées nationales</li>
+                                    <li><strong>Service Mesh :</strong> Istio pour micro-services</li>
+                                    <li><strong>Serverless Functions :</strong> Scale-to-zero IA processing</li>
+                                    <li><strong>GPU Clusters :</strong> NVIDIA A100 pour ML training</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--deep-purple); margin-bottom: 8px;">Données & Storage</h4>
+                                <ul class="bullet-list" style="font-size: 0.8em;">
+                                    <li><strong>Object Storage :</strong> S3-compatible, 99.999999999% durabilité</li>
+                                    <li><strong>Database Clusters :</strong> PostgreSQL HA + MongoDB</li>
+                                    <li><strong>Data Lake :</strong> Analytics big data gouvernemental</li>
+                                    <li><strong>Blockchain Storage :</strong> IPFS distribué national</li>
+                                    <li><strong>Backup 3-2-1 :</strong> Triple redondance géographique</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table class="financial-table">
+                            <thead>
+                                <tr>
+                                    <th>Métrique Performance</th>
+                                    <th>Phase 1 (500 users)</th>
+                                    <th>Phase 2 (5K users)</th>
+                                    <th>Phase 3 (420K users)</th>
+                                    <th>SLA Production</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Latence API</strong></td>
+                                    <td>&lt; 100ms</td>
+                                    <td>&lt; 75ms</td>
+                                    <td>&lt; 50ms</td>
+                                    <td>99.9% &lt; 50ms</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Disponibilité</strong></td>
+                                    <td>99.9%</td>
+                                    <td>99.95%</td>
+                                    <td>99.99%</td>
+                                    <td>99.99% (4.3min/mois)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Throughput</strong></td>
+                                    <td>1K req/sec</td>
+                                    <td>10K req/sec</td>
+                                    <td>100K req/sec</td>
+                                    <td>Burst 500K req/sec</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Storage Growth</strong></td>
+                                    <td>100GB/mois</td>
+                                    <td>1TB/mois</td>
+                                    <td>10TB/mois</td>
+                                    <td>Auto-scaling</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Coût Infrastructure</strong></td>
+                                    <td>€5K/mois</td>
+                                    <td>€25K/mois</td>
+                                    <td>€150K/mois</td>
+                                    <td>Optimisé continu</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 14: Financial Projections -->
+        <div class="slide">
+            <div class="content-fit">
+                <h1>Projections Financières 5 Ans : "Morocco Made Real"</h1>
+                <p style="text-align: center; font-size: 1em; margin-bottom: 4px; opacity: 0.8;">
+                    Stratégie de Déploiement National : 420K Artisans → Infrastructure Évolutive
+                </p>
+                
+                <div class="scrollable-content">
+                    <div class="strategic-grid">
+                        <div class="strategy-card enjeu1">
+                            <h3 style="color: var(--moroccan-green);">🏗️ Phase 1 : Infrastructure de Base (Mois 1-6)</h3>
+                            <ul class="bullet-list">
+                                <li><strong>Datacenter Principal Rabat :</strong> Haute disponibilité, redondance N+1</li>
+                                <li><strong>500 Artisans Pilotes :</strong> Validation architecture temps réel</li>
+                                <li><strong>Réseau Privé Gouvernemental :</strong> Connexion sécurisée ministères</li>
+                                <li><strong>Monitoring SOC National :</strong> Surveillance 24/7 security operations</li>
+                                <li><strong>Backup Site Casablanca :</strong> Disaster recovery automatique</li>
+                            </ul>
+                        </div>
+
+                        <div class="strategy-card enjeu2">
+                            <h3 style="color: var(--moroccan-gold);">⚡ Phase 2 : Expansion Régionale (Mois 6-12)</h3>
+                            <ul class="bullet-list">
+                                <li><strong>Edge Nodes 12 Régions :</strong> Latence &lt;50ms garantie partout</li>
+                                <li><strong>5K Artisans Connectés :</strong> Test montée en charge réelle</li>
+                                <li><strong>IA Models Distribués :</strong> Processing local pour performance</li>
+                                <li><strong>CDN National Hybride :</strong> Content delivery optimisé</li>
+                                <li><strong>APIs Gouvernementales :</strong> Intégration systèmes existants</li>
+                            </ul>
+                        </div>
+
+                        <div class="strategy-card enjeu3">
+                            <h3 style="color: var(--accent-blue);">🚀 Phase 3 : Production Nationale (Mois 12-18)</h3>
+                            <ul class="bullet-list">
+                                <li><strong>420K Artisans Full Scale :</strong> Infrastructure complète opérationnelle</li>
+                                <li><strong>Auto-Scaling Intelligent :</strong> Adaptation charge temps réel</li>
+                                <li><strong>Multi-Region Active-Active :</strong> Haute disponibilité 99.99%</li>
+                                <li><strong>Blockchain National Network :</strong> Consensus distribué marocain</li>
+                                <li><strong>Export Data Pipeline :</strong> Analytics pour stratégie 2030</li>
+                            </ul>
+                        </div>
+
+                        <div class="strategy-card enjeu4">
+                            <h3 style="color: var(--moroccan-red);">🌍 Phase 4 : Rayonnement International (Mois 18+)</h3>
+                            <ul class="bullet-list">
+                                <li><strong>Passerelles Internationales :</strong> Commerce global sécurisé</li>
+                                <li><strong>Standards Technologiques :</strong> Modèle exportable Afrique</li>
+                                <li><strong>Coupe du Monde 2030 :</strong> Vitrine technologique mondiale</li>
+                                <li><strong>Innovation Continues :</strong> R&D IA patrimoine culturel</li>
+                                <li><strong>Leadership Africain :</strong> Hub technologique régional</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="ai-highlight">
+                        <h3>🔧 Spécifications Techniques Détaillées</h3>
+                        <div class="two-column" style="margin-top: 16px;">
+                            <div>
+                                <h4 style="color: var(--deep-purple); margin-bottom: 8px;">Infrastructure Compute</h4>
+                                <ul class="bullet-list" style="font-size: 0.8em;">
+                                    <li><strong>Kubernetes Clusters :</strong> 3 zones AZ, auto-healing</li>
+                                    <li><strong>Container Registry :</strong> Images sécurisées nationales</li>
+                                    <li><strong>Service Mesh :</strong> Istio pour micro-services</li>
+                                    <li><strong>Serverless Functions :</strong> Scale-to-zero IA processing</li>
+                                    <li><strong>GPU Clusters :</strong> NVIDIA A100 pour ML training</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--deep-purple); margin-bottom: 8px;">Données & Storage</h4>
+                                <ul class="bullet-list" style="font-size: 0.8em;">
+                                    <li><strong>Object Storage :</strong> S3-compatible, 99.999999999% durabilité</li>
+                                    <li><strong>Database Clusters :</strong> PostgreSQL HA + MongoDB</li>
+                                    <li><strong>Data Lake :</strong> Analytics big data gouvernemental</li>
+                                    <li><strong>Blockchain Storage :</strong> IPFS distribué national</li>
+                                    <li><strong>Backup 3-2-1 :</strong> Triple redondance géographique</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table class="financial-table">
+                            <thead>
+                                <tr>
+                                    <th>Métrique Performance</th>
+                                    <th>Phase 1 (500 users)</th>
+                                    <th>Phase 2 (5K users)</th>
+                                    <th>Phase 3 (420K users)</th>
+                                    <th>SLA Production</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Latence API</strong></td>
+                                    <td>&lt; 100ms</td>
+                                    <td>&lt; 75ms</td>
+                                    <td>&lt; 50ms</td>
+                                    <td>99.9% &lt; 50ms</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Disponibilité</strong></td>
+                                    <td>99.9%</td>
+                                    <td>99.95%</td>
+                                    <td>99.99%</td>
+                                    <td>99.99% (4.3min/mois)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Throughput</strong></td>
+                                    <td>1K req/sec</td>
+                                    <td>10K req/sec</td>
+                                    <td>100K req/sec</td>
+                                    <td>Burst 500K req/sec</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Storage Growth</strong></td>
+                                    <td>100GB/mois</td>
+                                    <td>1TB/mois</td>
+                                    <td>10TB/mois</td>
+                                    <td>Auto-scaling</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Coût Infrastructure</strong></td>
+                                    <td>€5K/mois</td>
+                                    <td>€25K/mois</td>
+                                    <td>€150K/mois</td>
+                                    <td>Optimisé continu</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 15: Call to Action -->
+        <div class="slide">
+            <div class="content-fit">
+                <h1>Partenariat Stratégique & Collaboration</h1>
+                <p style="text-align: center; font-size: 1em; margin-bottom: 4px; opacity: 0.8;">
+                    Rejoignez Morocco Made Real dans la Transformation Digitale de l'Artisanat Marocain
+                </p>
+                
+                <div class="cta-section">
+                    <h2>🚀 Morocco Made Real Startup</h2>
+                    <p>Nous recherchons des partenaires stratégiques pour accélérer notre impact sur l'écosystème artisanal marocain.</p>
+                    <div class="grid md:grid-cols-3 gap-6 mt-8">
+                        <div class="morocco-card text-center">
+                            <div class="text-3xl mb-3">🏛️</div>
+                            <h3>Partenaires Gouvernementaux</h3>
+                            <p>Collaboration stratégique pour la réalisation des objectifs 2030</p>
+                        </div>
+                        <div class="morocco-card text-center">
+                            <div class="text-3xl mb-3">💰</div>
+                            <h3>Investisseurs</h3>
+                            <p>Opportunité d'investissement dans la transformation digitale du patrimoine</p>
+                        </div>
+                        <div class="morocco-card text-center">
+                            <div class="text-3xl mb-3">🌍</div>
+                            <h3>Partenaires Internationaux</h3>
+                            <p>Expansion des marchés et réseaux de distribution globaux</p>
+                        </div>
+                    </div>
+                    <p><strong>Contact Startup :</strong> contact@morocco-made-real.com</p>
+                    <p><strong>Partenariats :</strong> partnerships@morocco-made-real.com</p>
+                    <p><strong>Business Development :</strong> +212 6 00 00 00 00</p>
+                    <p><strong>Siège Social :</strong> Technopark Casablanca, Maroc 🇲🇦</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="navigation">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">← Précédent</button>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Suivant →</button>
+    </div>
+
+    <script>
+        // Presentation state
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        // Update UI elements
+        function updateUI() {
+            // Update slide counter
+            document.getElementById('current-slide').textContent = currentSlide + 1;
+            document.getElementById('total-slides').textContent = totalSlides;
+            
+            // Update progress bar
+            const progress = ((currentSlide + 1) / totalSlides) * 100;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+            
+            // Show/hide slides
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlide);
+            });
+        }
+        
+        // Navigation functions
+        function changeSlide(direction) {
+            const newSlide = currentSlide + direction;
+            if (newSlide >= 0 && newSlide < totalSlides) {
+                currentSlide = newSlide;
+                updateUI();
+            }
+        }
+        
+        function goToSlide(slideNumber) {
+            if (slideNumber >= 0 && slideNumber < totalSlides) {
+                currentSlide = slideNumber;
+                updateUI();
+            }
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            // Close help panel on Escape
+            if (e.key === 'Escape') {
+                document.getElementById('shortcutsHelp').classList.remove('active');
+                return;
+            }
+            
+            switch(e.key) {
+                case 'ArrowRight':
+                case 'ArrowDown':
+                case ' ':
+                    e.preventDefault();
+                    changeSlide(1);
+                    break;
+                case 'ArrowLeft':
+                case 'ArrowUp':
+                    e.preventDefault();
+                    changeSlide(-1);
+                    break;
+                case 'Home':
+                    e.preventDefault();
+                    goToSlide(0);
+                    break;
+                case 'End':
+                    e.preventDefault();
+                    goToSlide(totalSlides - 1);
+                    break;
+                case '?':
+                    e.preventDefault();
+                    toggleHelp();
+                    break;
+            }
+        });
+        
+        // Touch/swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        document.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const swipeDistance = touchEndX - touchStartX;
+            
+            if (Math.abs(swipeDistance) > swipeThreshold) {
+                if (swipeDistance > 0) {
+                    changeSlide(-1); // Swipe right = previous slide
+                } else {
+                    changeSlide(1);  // Swipe left = next slide
+                }
+            }
+        }
+        
+        // Help panel toggle
+        function toggleHelp() {
+            const helpPanel = document.getElementById('shortcutsHelp');
+            helpPanel.classList.toggle('active');
+        }
+        
+        // Initialize presentation
+        document.addEventListener('DOMContentLoaded', function() {
+            updateUI();
+            
+            // Add animation classes to elements for better UX
+            const animatedElements = document.querySelectorAll('.strategy-card, .feature-card, .impact-card, .timeline-item');
+            animatedElements.forEach((element, index) => {
+                element.style.animationDelay = `${index * 0.1}s`;
+                element.classList.add('animate-in');
+            });
+        });
+        
+        // Prevent context menu on touch devices for better UX
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.closest('.presentation-container')) {
+                e.preventDefault();
+            }
+        });
+        
+        // Add click navigation to slide areas (optional)
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.slide')) {
+                const slideRect = e.target.closest('.slide').getBoundingClientRect();
+                const clickX = e.clientX - slideRect.left;
+                const slideWidth = slideRect.width;
+                
+                // Click on left third = previous slide, right third = next slide
+                if (clickX < slideWidth * 0.33) {
+                    changeSlide(-1);
+                } else if (clickX > slideWidth * 0.67) {
+                    changeSlide(1);
+                }
+            }
+        });
+        
+        // Add mouse wheel navigation
+        document.addEventListener('wheel', function(e) {
+            if (Math.abs(e.deltaY) > 50) { // Threshold to prevent accidental navigation
+                if (e.deltaY > 0) {
+                    changeSlide(1);  // Scroll down = next slide
+                } else {
+                    changeSlide(-1); // Scroll up = previous slide
+                }
+                e.preventDefault();
+            }
+        }, { passive: false });
+    </script>
+</body>
+</html>

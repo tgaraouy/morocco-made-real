@@ -1,0 +1,57 @@
+<svg viewBox="0 0 300 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Logo Icon -->
+  <g transform="translate(50,50)">
+    <!-- Background Circle with Moroccan Red -->
+    <circle cx="0" cy="0" r="38" fill="#DC143C" stroke="#C9302C" stroke-width="2"/>
+    
+    <!-- Traditional Moroccan Star Pattern -->
+    <!-- 5-pointed star from Moroccan flag -->
+    <path d="M0,-18 L5.4,-5.6 L17.6,-5.6 L8.8,2.2 L14.2,14.6 L0,7.2 L-14.2,14.6 L-8.8,2.2 L-17.6,-5.6 L-5.4,-5.6 Z" 
+          fill="#00A86B" stroke="#008B5A" stroke-width="1"/>
+    
+    <!-- Inner geometric pattern -->
+    <circle cx="0" cy="0" r="8" fill="#FFFFFF" opacity="0.9"/>
+    
+    <!-- Technology circuit pattern overlay -->
+    <g opacity="0.6">
+      <circle cx="0" cy="0" r="6" fill="none" stroke="#4A90E2" stroke-width="1" stroke-dasharray="2,1"/>
+      <rect x="-2" y="-2" width="4" height="4" fill="#4A90E2" rx="0.5"/>
+      <circle cx="0" cy="-4" r="1" fill="#4A90E2"/>
+      <circle cx="4" cy="0" r="1" fill="#4A90E2"/>
+      <circle cx="0" cy="4" r="1" fill="#4A90E2"/>
+      <circle cx="-4" cy="0" r="1" fill="#4A90E2"/>
+    </g>
+    
+    <!-- Verification checkmark -->
+    <g transform="translate(12,12)">
+      <circle cx="0" cy="0" r="6" fill="#FFD700"/>
+      <path d="M-2,0 L-1,1 L2,-2" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    
+    <!-- Arabic calligraphy inspiration - geometric borders -->
+    <g opacity="0.3">
+      <rect x="-32" y="-32" width="64" height="64" fill="none" stroke="#FFD700" stroke-width="1" stroke-dasharray="3,2"/>
+      <rect x="-28" y="-28" width="56" height="56" fill="none" stroke="#FFD700" stroke-width="0.5" stroke-dasharray="2,1"/>
+    </g>
+  </g>
+  
+  <!-- Text Logo -->
+  <g transform="translate(120,30)">
+    <!-- Main Brand Text -->
+    <text x="0" y="20" font-family="serif" font-size="24" font-weight="bold">
+      <tspan fill="#B91C1C">Morocco</tspan>
+      <tspan fill="#374151" dx="8">Made</tspan>
+      <tspan fill="#059669" dx="8">Real</tspan>
+    </text>
+    
+    <!-- Tagline -->
+    <text x="0" y="40" font-family="sans-serif" font-size="10" font-weight="600" fill="#2563EB" letter-spacing="0.1em">
+      VERIFIED AUTHENTIC
+    </text>
+    
+    <!-- Slogan -->
+    <text x="0" y="55" font-family="serif" font-size="9" font-style="italic" fill="#6B7280">
+      Technology Meets Tradition
+    </text>
+  </g>
+</svg> 

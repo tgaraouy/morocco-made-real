@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morocco Made Real: Intelligent Cultural Ecosystem - User Journeys</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --moroccan-red: #c1272d;
+            --moroccan-green: #006233;
+            --moroccan-gold: #d4af37;
+            --earth-brown: #8b4513;
+            --terracotta: #cd853f;
+            --deep-purple: #663399;
+            --warm-white: #faf8f5;
+            --soft-gray: #f5f5f5;
+            --charcoal: #2c2c2c;
+            --accent-blue: #4a90e2;
+            
+            --gradient-primary: linear-gradient(135deg, var(--moroccan-red), #d63849);
+            --gradient-secondary: linear-gradient(135deg, var(--moroccan-green), #2d8e74);
+            --gradient-accent: linear-gradient(135deg, var(--deep-purple), #8a4db8);
+            --gradient-gold: linear-gradient(135deg, var(--moroccan-gold), #f4d03f);
+            
+            --shadow-soft: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-medium: 0 8px 32px rgba(0,0,0,0.12);
+            --shadow-strong: 0 16px 48px rgba(0,0,0,0.15);
+            
+            --border-radius: 16px;
+            --border-radius-lg: 24px;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #faf8f5 0%, #f0ede8 50%, #e8f4f1 100%);
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(193, 39, 45, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 98, 51, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(212, 175, 55, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .moroccan-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 12px;
+            background: var(--gradient-primary);
+            z-index: 1002;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .moroccan-pattern::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--gradient-secondary);
+            opacity: 0.8;
+        }
+
+        .presentation-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-top: 50px;
+            padding-bottom: 70px;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .slide {
+            display: none;
+            padding: 16px 24px;
+            height: 100%;
+            overflow-y: auto;
+            animation: slideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            flex-direction: column;
+            scrollbar-width: thin;
+            scrollbar-color: var(--moroccan-green) transparent;
+            box-sizing: border-box;
+        }
+        
+        .slide::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .slide::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        .slide::-webkit-scrollbar-thumb {
+            background: var(--moroccan-green);
+            border-radius: 3px;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes slideIn {
+            from { 
+                opacity: 0; 
+                transform: translateX(40px) scale(0.98);
+                filter: blur(2px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateX(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        .slide h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--charcoal);
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-align: center;
+            background: var(--gradient-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            line-height: 1.2;
+            padding: 0 12px;
+        }
+
+        .slide h1::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--gradient-gold);
+            border-radius: 2px;
+        }
+
+        .slide h2 {
+            color: var(--moroccan-red);
+            font-size: 1.2em;
+            font-weight: 600;
+            margin: 12px 0 8px 0;
+            position: relative;
+            padding-left: 16px;
+        }
+
+        .slide h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 80%;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        .slide h3 {
+            color: var(--earth-brown);
+            font-size: 1em;
+            font-weight: 600;
+            margin: 8px 0 6px 0;
+        }
+
+        .tagline {
+            text-align: center;
+            font-size: 1em;
+            color: var(--earth-brown);
+            font-style: italic;
+            margin-bottom: 16px;
+            opacity: 0.9;
+        }
+
+        .journey-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin: 16px 0;
+        }
+
+        .journey-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: var(--border-radius);
+            padding: 16px;
+            box-shadow: var(--shadow-soft);
+            border: 2px solid transparent;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .journey-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .journey-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--moroccan-gold);
+        }
+
+        .journey-card.tourist::before { background: var(--gradient-primary); }
+        .journey-card.artisan::before { background: var(--gradient-secondary); }
+        .journey-card.museum::before { background: var(--gradient-accent); }
+        .journey-card.guide::before { background: var(--gradient-gold); }
+
+        .journey-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: white;
+        }
+
+        .journey-icon.tourist { background: var(--gradient-primary); }
+        .journey-icon.artisan { background: var(--gradient-secondary); }
+        .journey-icon.museum { background: var(--gradient-accent); }
+        .journey-icon.guide { background: var(--gradient-gold); }
+
+        .journey-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 8px;
+        }
+
+        .journey-description {
+            font-size: 0.9em;
+            color: var(--earth-brown);
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .journey-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .journey-features li {
+            font-size: 0.85em;
+            color: var(--charcoal);
+            margin-bottom: 4px;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .journey-features li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 16px 0;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: var(--border-radius);
+            padding: 16px;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            border-left: 4px solid var(--moroccan-gold);
+        }
+
+        .metric-value {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--moroccan-red);
+            display: block;
+        }
+
+        .metric-label {
+            font-size: 0.85em;
+            color: var(--earth-brown);
+            margin-top: 4px;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 12px 0;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            position: relative;
+            padding-left: 24px;
+            font-size: 0.9em;
+            color: var(--charcoal);
+        }
+
+        .feature-list li::before {
+            content: '🎯';
+            position: absolute;
+            left: 0;
+            top: 8px;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .curation-flow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 16px 0;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .flow-step {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: var(--border-radius);
+            padding: 12px 16px;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            flex: 1;
+            min-width: 120px;
+            position: relative;
+        }
+
+        .flow-step::after {
+            content: '→';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--moroccan-gold);
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .flow-step:last-child::after {
+            display: none;
+        }
+
+        .flow-icon {
+            font-size: 1.5em;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .flow-label {
+            font-size: 0.8em;
+            color: var(--earth-brown);
+            font-weight: 500;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+            z-index: 1001;
+            border-top: 2px solid var(--moroccan-gold);
+        }
+
+        .nav-button {
+            background: var(--gradient-secondary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 0.9em;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .nav-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .slide-counter {
+            background: var(--gradient-gold);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-weight: 600;
+            font-size: 0.85em;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(193, 39, 45, 0.1));
+            border: 2px solid var(--moroccan-gold);
+            border-radius: var(--border-radius);
+            padding: 16px;
+            margin: 12px 0;
+            position: relative;
+        }
+
+        .highlight-box::before {
+            content: '💡';
+            position: absolute;
+            top: -12px;
+            left: 16px;
+            background: var(--warm-white);
+            padding: 4px 8px;
+            border-radius: 50%;
+            font-size: 1.2em;
+        }
+
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 8px;
+            margin: 12px 0;
+        }
+
+        .tech-item {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            padding: 8px 12px;
+            text-align: center;
+            font-size: 0.85em;
+            font-weight: 500;
+            color: var(--charcoal);
+            border: 1px solid var(--moroccan-gold);
+        }
+
+        .value-proposition {
+            background: var(--gradient-accent);
+            color: white;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin: 16px 0;
+            text-align: center;
+        }
+
+        .value-proposition h3 {
+            color: white;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        .value-proposition p {
+            font-size: 0.95em;
+            line-height: 1.5;
+            opacity: 0.95;
+        }
+
+        @media (max-width: 768px) {
+            .journey-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .curation-flow {
+                flex-direction: column;
+            }
+            
+            .flow-step::after {
+                content: '↓';
+                right: 50%;
+                top: 100%;
+                transform: translateX(50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="moroccan-pattern"></div>
+    
+    <div class="presentation-container">
+        <!-- Slide 1: Title & Vision -->
+        <div class="slide active">
+            <h1>Morocco Made Real</h1>
+            <p class="tagline">Intelligent Cultural Ecosystem - Authentic User Journeys</p>
+            
+            <div class="value-proposition">
+                <h3>🎯 Our Vision</h3>
+                <p>Create an intelligent cultural ecosystem that connects tourists, artisans, guides, museums, and certification authorities through personalized journeys powered by AI and validated by human experts.</p>
+            </div>
+
+            <div class="journey-grid">
+                <div class="journey-card tourist">
+                    <div class="journey-icon tourist">🧳</div>
+                    <div class="journey-title">Tourist Journey</div>
+                    <div class="journey-description">Immersive cultural discovery with AI and expert-curated content</div>
+                </div>
+                <div class="journey-card artisan">
+                    <div class="journey-icon artisan">🎨</div>
+                    <div class="journey-title">Artisan Journey</div>
+                    <div class="journey-description">Heritage preservation and international market access</div>
+                </div>
+                <div class="journey-card museum">
+                    <div class="journey-icon museum">🏛️</div>
+                    <div class="journey-title">Museum Journey</div>
+                    <div class="journey-description">Intelligent curation and measurable cultural impact</div>
+                </div>
+                <div class="journey-card guide">
+                    <div class="journey-icon guide">🗺️</div>
+                    <div class="journey-title">Guide Journey</div>
+                    <div class="journey-description">Authenticated experiences and advanced digital tools</div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <strong>Key Innovation:</strong> AI-Human collaborative curation system that guarantees cultural authenticity while personalizing the experience for each user.
+            </div>
+        </div>
+
+        <!-- Slide 2: Tourist Journey Deep Dive -->
+        <div class="slide">
+            <h1>🧳 Tourist Journey Detailed</h1>
+            <p class="tagline">From discovery to cultural ambassador</p>
+
+            <h2>🎯 Goals & Challenges</h2>
+            <div class="journey-grid">
+                <div class="journey-card">
+                    <h3>Goals</h3>
+                    <ul class="feature-list">
+                        <li>Discover authentic cultural experiences</li>
+                        <li>Avoid tourist traps</li>
+                        <li>Learn history and cultural significance</li>
+                        <li>Create lasting connections with culture</li>
+                    </ul>
+                </div>
+                <div class="journey-card">
+                    <h3>Challenges Solved</h3>
+                    <ul class="feature-list">
+                        <li>Difficulty distinguishing authentic from fake</li>
+                        <li>Language barriers</li>
+                        <li>Lack of cultural context</li>
+                        <li>Limited access to master artisans</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>🗺️ 3-Phase Journey</h2>
+            <div class="curation-flow">
+                <div class="flow-step">
+                    <span class="flow-icon">🔍</span>
+                    <div class="flow-label">Pre-Visit Discovery</div>
+                </div>
+                <div class="flow-step">
+                    <span class="flow-icon">🇲🇦</span>
+                    <div class="flow-label">On-Site Experience</div>
+                </div>
+                <div class="flow-step">
+                    <span class="flow-icon">🎓</span>
+                    <div class="flow-label">Post-Visit Engagement</div>
+                </div>
+            </div>
+
+            <h2>🆕 Curated Content Innovations</h2>
+            <div class="journey-grid">
+                <div class="journey-card">
+                    <h3>Personalized AI</h3>
+                    <ul class="journey-features">
+                        <li>Interest-based cultural recommendations</li>
+                        <li>Interactive Moroccan crafts timeline</li>
+                        <li>Cultural significance scoring</li>
+                        <li>Real-time contextual insights</li>
+                    </ul>
+                </div>
+                <div class="journey-card">
+                    <h3>Human Expertise</h3>
+                    <ul class="journey-features">
+                        <li>Expert-selected collections</li>
+                        <li>Personal artisan narratives</li>
+                        <li>Curator commentary</li>
+                        <li>Authentic cultural validation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>📊 ROI & Impact</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="metric-value">85%</span>
+                    <div class="metric-label">Cultural understanding improvement</div>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">70%</span>
+                    <div class="metric-label">Post-visit engagement increase</div>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">95%</span>
+                    <div class="metric-label">Verified authenticity rate</div>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">40%</span>
+                    <div class="metric-label">Search time reduction</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Artisan Journey Deep Dive -->
+        <div class="slide">
+            <h1>🎨 Artisan Journey Detailed</h1>
+            <p class="tagline">From tradition to global recognition</p>
+
+            <h2>🎯 Digital Transformation</h2>
+            <div class="journey-grid">
+                <div class="journey-card">
+                    <h3>Traditional Challenges</h3>
+                    <ul class="feature-list">
+                        <li>Limited access to international markets</li>
+                        <li>Difficulty proving authenticity</li>
+                        <li>Language barriers</li>
+                        <li>Undervaluation of traditional crafts</li>
+                    </ul>
+                </div>
+                <div class="journey-card">
+                    <h3>Innovative Solutions</h3>
+                    <ul class="feature-list">
+                        <li>Global platform with blockchain certification</li>
+                        <li>AI tools for cultural narrative creation</li>
+                        <li>Automatic translation and cultural adaptation</li>
+                        <li>Authenticity-based premium pricing</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>🔄 Cultural Curation Workflow</h2>
+            <div class="curation-flow">
+                <div class="flow-step">
+                    <span class="flow-icon">📝</span>
+                    <div class="flow-label">Traditional Documentation</div>
+                </div>
+                <div class="flow-step">
+                    <span class="flow-icon">🤖</span>
+                    <div class="flow-label">AI Analysis</div>
+                </div>
+                <div class="flow-step">
+                    <span class="flow-icon">👨‍🎓</span>
+                    <div class="flow-label">Expert Validation</div>
+                </div>
+                <div class="flow-step">
+                    <span class="flow-icon">🔗</span>
+                    <div class="flow-label">Blockchain Certification</div>
+                </div>
+            </div>
+
+            <h2>🆕 Content Creation Tools</h2>
+            <div class="journey-grid">
+                <div class="journey-card">
+                    <h3>Cultural AI Assistant</h3>
+                    <ul class="journey-features">
+                        <li>Help articulating cultural significance</li>
+                        <li>Automatic historical context generation</li>
+                        <li>Narrative improvement suggestions</li>
+                        <li>Traditional authenticity scoring</li>
+                    </ul>
+                </div>
+                <div class="journey-card">
+                    <h3>Expert Mentorship</h3>
+                    <ul class="journey-features">
+                        <li>Professional curator guidance</li>
+                        <li>Narrative review and enhancement</li>
+                        <li>Cultural authenticity validation</li>
+                        <li>Recognition as knowledge keeper</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>📈 Economic & Cultural Impact</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="metric-value">250%</span>
+                    <div class="metric-label">Potential revenue increase</div>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">150%</span>
+                    <div class="metric-label">Cultural premium pricing</div>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">300%</span>
+                    <div class="metric-label">Market reach expansion</div>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">200%</span>
+                    <div class="metric-label">Tourist engagement improvement</div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <strong>Cultural Legacy:</strong> Each artisan becomes a digital guardian of Moroccan heritage, with their traditional knowledge permanently preserved on the blockchain.
+            </div>
+        </div>
+
+        <!-- Slide 4: Museum Journey Deep Dive -->
+        <div class="slide">
+            <h1>🏛️ Museum Journey Detailed</h1>
+            <p class="tagline">Intelligent curation and cultural preservation</p>
+
+            <h2>🎯 Museum Revolution</h2>
+            <div class="journey-grid">
+                <div class="journey-card">
+                    <h3>Current Challenges</h3>
+                    <ul class="feature-list">
+                        <li>Limited access to authentic pieces</li>
+                        <li>Difficulty verifying provenance</li>
+                        <li>Resource constraints for curation</li>
+                        <li>Need for accessible multilingual content</li>
+                    </ul>
+                </div>
+                <div class="journey-card">
+                    <h3>Advanced Solutions</h3>
+                    <ul class="feature-list">
+                        <li>100% verified artisan network</li>
+                        <li>Immutable blockchain provenance</li>
+                        <li>AI-Expert collaborative curation</li>
+                        <li>Global multilingual platform</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>🔬 Advanced Curation System</h2>
+            <div class="curation-flow">
+                <div class="flow-step">
+                    <span class="flow-icon">🔍</span>
+                    <div class="flow-label">AI Discovery</div>
+                </div>
+                <div class="flow-step">
+                    <span class="flow-icon">🎨</span>
+                    <div class="flow-label">Expert Selection</div>
+                </div>
+                <div class="flow-step">
+                    <span class="flow-icon">🗺️</span>
+                    <div class="flow-label">Cultural Mapping</div>
+                </div>
+                <div class="flow-step">
+                    <span class="flow-icon">🌐</span>
+                    <div class="flow-label">Global Publication</div>
+                </div>
+            </div>
+
+            <h2>🆕 Intelligent Curation Tools</h2>
+            <div class="journey-grid">
+                <div class="journey-card">
+                    <h3>AI Curation Assistant</h3>
+                    <ul class="journey-features">
+                        <li>Automatic identification of significant pieces</li>
+                        <li>Cultural significance analysis</li>
+                        <li>Historical connection generation</li>
+                        <li>Visitor engagement optimization</li>
+                    </ul>
+                </div>
+                <div class="journey-card">
+                    <h3>Expert Workflow</h3>
+                    <ul class="journey-features">
+                        <li>Professional validation tools</li>
+                        <li>Immersive narrative creation</li>
+                        <li>Cultural impact measurement</li>
+                        <li>International collaboration</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>🌟 Revolutionary Visitor Experiences</h2>
+            <div class="journey-grid">
+                <div class="journey-card">
+                    <h3>AI Virtual Tours</h3>
+                    <ul class="journey-features">
+                        <li>Interest-based personalized paths</li>
+                        <li>Integrated expert commentary</li>
+                        <li>Interactive cultural timeline</li>
+                        <li>Contextual augmented reality</li>
+                    </ul>
+                </div>
+                <div class="journey-card">
+                    <h3>Global Impact</h3>
+                    <ul class="journey-features">
+                        <li>Worldwide access to Moroccan heritage</li>
+                        <li>Educational resources for schools</li>
+                        <li>International institution collaboration</li>
+                        <li>Permanent digital preservation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>📊 Impact Metrics</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="metric-value">300%</span>
+                    <div class="metric-label">Content quality improvement</div>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">180%</span>
+                    <div class="metric-label">Cultural impact increase</div>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">200%</span>
+                    <div class="metric-label">Digital audience growth</div>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">150%</span>
+                    <div class="metric-label">Visitor engagement increase</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: AI-Human Curation System -->
+        <div class="slide">
+            <h1>🤖👨‍🎓 Collaborative Curation System</h1>
+            <p class="tagline">Artificial intelligence meets human expertise</p>
+
+            <h2>🔄 Integrated Curation Workflow</h2>
+            <div class="curation-flow">
+                <div class="flow-step">
+                    <span class="flow-icon">📝</span>
+                    <div class="flow-label">Content Creation</div>
+                </div>
+                <div class="flow-step">
+                    <span class="flow-icon">🤖</span>
+                    <div class="flow-label">AI Analysis</div>
+                </div>
+                <div class="flow-step">
+                    <span class="flow-icon">👨‍🎓</span>
+                    <div class="flow-label">Human Review</div>
+                </div>
+                <div class="flow-step">
+                    <span class="flow-icon">✅</span>
+                    <div class="flow-label">Expert Validation</div>
+                </div>
+                <div class="flow-step">
+                    <span class="flow-icon">🔗</span>
+                    <div class="flow-label">Blockchain Certification</div>
+                </div>
+            </div>
+
+            <h2>🎯 Advanced AI Capabilities</h2>
+            <div class="journey-grid">
+                <div class="journey-card">
+                    <h3>GPT-4 Cultural Analysis</h3>
+                    <ul class="journey-features">
+                        <li>Traditional authenticity evaluation</li>
+                        <li>Key cultural theme identification</li>
+                        <li>Historical context generation</li>
+                        <li>Cultural significance scoring (0-100)</li>
+                    </ul>
+                </div>
+                <div class="journey-card">
+                    <h3>Intelligent Recommendations</h3>
+                    <ul class="journey-features">
+                        <li>User profile-based personalization</li>
+                        <li>Related content suggestions</li>
+                        <li>Learning path optimization</li>
+                        <li>Multilingual cultural adaptation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>👨‍🎓 Integrated Human Expertise</h2>
+            <div class="journey-grid">
+                <div class="journey-card">
+                    <h3>Expert Network</h3>
+                    <ul class="journey-features">
+                        <li>Certified master artisans</li>
+                        <li>Cultural historians</li>
+                        <li>Museum curators</li>
+                        <li>Academic researchers</li>
+                        <li>Community elders</li>
+                    </ul>
+                </div>
+                <div class="journey-card">
+                    <h3>Validation Process</h3>
+                    <ul class="journey-features">
+                        <li>Cultural authenticity verification</li>
+                        <li>Narrative enhancement</li>
+                        <li>Cultural sensitivity validation</li>
+                        <li>Publication approval</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>🔗 Blockchain Certification</h2>
+            <div class="highlight-box">
+                <strong>Triple Certification:</strong>
+                <ul class="feature-list">
+                    <li><strong>AI Curation:</strong> Confidence score ≥80%, validated cultural analysis</li>
+                    <li><strong>Human Validation:</strong> Expert-confirmed authenticity, cultural accuracy ≥90%</li>
+                    <li><strong>Quality Assurance:</strong> Factual accuracy ≥85%, verified cultural sensitivity</li>
+                </ul>
+            </div>
+
+            <h2>📊 Performance Metrics</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="metric-value">500+</span>
+                    <div class="metric-label">Cultural content created/month</div>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">80%</span>
+                    <div class="metric-label">Curation efficiency improvement</div>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">95%</span>
+                    <div class="metric-label">Cultural authenticity accuracy</div>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">99%</span>
+                    <div class="metric-label">Certification accuracy</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Technology Architecture -->
+        <div class="slide">
+            <h1>⚙️ Complete Technical Architecture</h1>
+            <p class="tagline">Robust infrastructure for the cultural ecosystem</p>
+
+            <h2>🏗️ Technology Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-item">Next.js 15</div>
+                <div class="tech-item">TypeScript</div>
+                <div class="tech-item">OpenAI GPT-4</div>
+                <div class="tech-item">Polygon Blockchain</div>
+                <div class="tech-item">Supabase</div>
+                <div class="tech-item">IPFS</div>
+                <div class="tech-item">Tailwind CSS</div>
+                <div class="tech-item">Next-intl</div>
+            </div>
+
+            <h2>🔗 Blockchain Integrations</h2>
+            <div class="journey-grid">
+                <div class="journey-card">
+                    <h3>Smart Contracts</h3>
+                    <ul class="journey-features">
+                        <li>Artisan piece registration</li>
+                        <li>Authenticity certification</li>
+                        <li>Ownership transfer</li>
+                        <li>Museum submission</li>
+                    </ul>
+                </div>
+                <div class="journey-card">
+                    <h3>Decentralized Storage</h3>
+                    <ul class="journey-features">
+                        <li>IPFS metadata</li>
+                        <li>Multimedia content</li>
+                        <li>Digital certificates</li>
+                        <li>Cultural archives</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>🤖 Advanced AI System</h2>
+            <div class="journey-grid">
+                <div class="journey-card">
+                    <h3>Cultural Analysis</h3>
+                    <ul class="journey-features">
+                        <li>GPT-4 authenticity evaluation</li>
+                        <li>Cultural theme extraction</li>
+                        <li>Historical context generation</li>
+                        <li>Significance scoring (0-100)</li>
+                    </ul>
+                </div>
+                <div class="journey-card">
+                    <h3>Personalization</h3>
+                    <ul class="journey-features">
+                        <li>Adaptive recommendations</li>
+                        <li>Optimized learning paths</li>
+                        <li>Multilingual cultural adaptation</li>
+                        <li>User engagement prediction</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>📊 Database & Analytics</h2>
+            <div class="journey-grid">
+                <div class="journey-card">
+                    <h3>Supabase PostgreSQL</h3>
+                    <ul class="journey-features">
+                        <li>Real-time data</li>
+                        <li>RLS security</li>
+                        <li>Full-text search</li>
+                        <li>Integrated analytics</li>
+                    </ul>
+                </div>
+                <div class="journey-card">
+                    <h3>Performance Metrics</h3>
+                    <ul class="journey-features">
+                        <li>User engagement</li>
+                        <li>Curation quality</li>
+                        <li>Cultural impact</li>
+                        <li>Stakeholder ROI</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>🌐 Multilingual Features</h2>
+            <div class="highlight-box">
+                <strong>Complete Support:</strong> French, English, Arabic, Spanish with automatic cultural adaptation and validation by native translators specialized in Moroccan cultural heritage.
+            </div>
+
+            <h2>🔒 Security & Compliance</h2>
+            <div class="journey-grid">
+                <div class="journey-card">
+                    <h3>Blockchain Security</h3>
+                    <ul class="journey-features">
+                        <li>Immutable certificates</li>
+                        <li>Complete audit trail</li>
+                        <li>Public verification</li>
+                        <li>Tamper resistance</li>
+                    </ul>
+                </div>
+                <div class="journey-card">
+                    <h3>Data Protection</h3>
+                    <ul class="journey-features">
+                        <li>GDPR compliance</li>
+                        <li>End-to-end encryption</li>
+                        <li>Granular access control</li>
+                        <li>Automatic backup</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Business Model & ROI -->
+        <div class="slide">
+            <h1>💰 Business Model & ROI</h1>
+            <p class="tagline">Value creation for all stakeholders</p>
+
+            <h2>💼 Diversified Revenue Streams</h2>
+            <div class="journey-grid">
+                <div class="journey-card">
+                    <h3>Transaction Commissions</h3>
+                    <ul class="journey-features">
+                        <li>5-10% on artisan sales</li>
+                        <li>Guide booking commissions</li>
+                        <li>Blockchain certification fees</li>
+                        <li>Authentication premium</li>
+                    </ul>
+                </div>
+                <div class="journey-card">
+                    <h3>Premium Subscriptions</h3>
+                    <ul class="journey-features">
+                        <li>Exclusive curated content</li>
+                        <li>Priority expert access</li>
+                        <li>Advanced analytics</li>
+                        <li>Integrator APIs</li>
+                    </ul>
+                </div>
+                <div class="journey-card">
+                    <h3>Institutional Licenses</h3>
+                    <ul class="journey-features">
+                        <li>International museums</li>
+                        <li>Educational institutions</li>
+                        <li>Tourism operators</li>
+                        <li>Regional governments</li>
+                    </ul>
+                </div>
+                <div class="journey-card">
+                    <h3>Consulting Services</h3>
+                    <ul class="journey-features">
+                        <li>Ecosystem implementation</li>
+                        <li>Stakeholder training</li>
+                        <li>Cultural authenticity audit</li>
+                        <li>Custom development</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>📈 Financial Projections (3 years)</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="metric-value">€2.5M</span>
+                    <div class="metric-label">Year 1 Revenue</div>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">€8.2M</span>
+                    <div class="metric-label">Year 2 Revenue</div>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">€18.5M</span>
+                    <div class="metric-label">Year 3 Revenue</div>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">35%</span>
+                    <div class="metric-label">Target Net Margin</div>
+                </div>
+            </div>
+
+            <h2>🎯 ROI by Stakeholder</h2>
+            <div class="journey-grid">
+                <div class="journey-card tourist">
+                    <div class="journey-icon tourist">🧳</div>
+                    <h3>Tourists</h3>
+                    <ul class="journey-features">
+                        <li>40% search time reduction</li>
+                        <li>25% savings on direct purchases</li>
+                        <li>85% cultural understanding improvement</li>
+                        <li>100% authenticity guarantee</li>
+                    </ul>
+                </div>
+                <div class="journey-card artisan">
+                    <div class="journey-icon artisan">🎨</div>
+                    <h3>Artisans</h3>
+                    <ul class="journey-features">
+                        <li>250% revenue increase</li>
+                        <li>300% market reach expansion</li>
+                        <li>80% intermediary fee reduction</li>
+                        <li>150% cultural premium pricing</li>
+                    </ul>
+                </div>
+                <div class="journey-card museum">
+                    <div class="journey-icon museum">🏛️</div>
+                    <h3>Museums</h3>
+                    <ul class="journey-features">
+                        <li>200% digital audience growth</li>
+                        <li>150% engagement increase</li>
+                        <li>300% content quality improvement</li>
+                        <li>45% educational program increase</li>
+                    </ul>
+                </div>
+                <div class="journey-card guide">
+                    <div class="journey-icon guide">🗺️</div>
+                    <h3>Guides</h3>
+                    <ul class="journey-features">
+                        <li>60% tour price increase</li>
+                        <li>200% repeat customer increase</li>
+                        <li>75% verification time reduction</li>
+                        <li>40% customer satisfaction improvement</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>🌍 Global Economic Impact</h2>
+            <div class="value-proposition">
+                <h3>Morocco Vision 2030</h3>
+                <p>Direct contribution to Morocco's Vision 2030 with creation of 50,000+ jobs in the cultural sector, 40% increase in cultural tourism revenue, and positioning Morocco as the global leader in digital cultural preservation.</p>
+            </div>
+        </div>
+
+        <!-- Slide 8: Roadmap & Next Steps -->
+        <div class="slide">
+            <h1>🗺️ Development Roadmap</h1>
+            <p class="tagline">From MVP to global ecosystem</p>
+
+            <h2>📅 Deployment Timeline (12 months)</h2>
+            <div class="curation-flow">
+                <div class="flow-step">
+                    <span class="flow-icon">🏗️</span>
+                    <div class="flow-label">Phase 1: Foundation (Months 1-3)</div>
+                </div>
+                <div class="flow-step">
+                    <span class="flow-icon">🎯</span>
+                    <div class="flow-label">Phase 2: Core Features (Months 4-6)</div>
+                </div>
+                <div class="flow-step">
+                    <span class="flow-icon">🚀</span>
+                    <div class="flow-label">Phase 3: Advanced Features (Months 7-9)</div>
+                </div>
+                <div class="flow-step">
+                    <span class="flow-icon">🌍</span>
+                    <div class="flow-label">Phase 4: Ecosystem Maturity (Months 10-12)</div>
+                </div>
+            </div>
+
+            <h2>🏗️ Phase 1: Foundation (Months 1-3)</h2>
+            <div class="journey-grid">
+                <div class="journey-card">
+                    <h3>Technical Infrastructure</h3>
+                    <ul class="journey-features">
+                        <li>Finalize blockchain data models</li>
+                        <li>Stakeholder-specific user interfaces</li>
+                        <li>Authentication and verification system</li>
+                        <li>AI-Human curation framework</li>
+                    </ul>
+                </div>
+                <div class="journey-card">
+                    <h3>Pilot Program</h3>
+                    <ul class="journey-features">
+                        <li>50 selected artisans</li>
+                        <li>10 certified guides</li>
+                        <li>2 partner museums</li>
+                        <li>100 beta tester tourists</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>🎯 Phase 2: Core Features (Months 4-6)</h2>
+            <div class="journey-grid">
+                <div class="journey-card">
+                    <h3>Advanced AI Systems</h3>
+                    <ul class="journey-features">
+                        <li>Personalized recommendation engine</li>
+                        <li>Complete certification workflows</li>
+                        <li>Digital museum platform</li>
+                        <li>Integrated payment systems</li>
+                    </ul>
+                </div>
+                <div class="journey-card">
+                    <h3>User Expansion</h3>
+                    <ul class="journey-features">
+                        <li>500 active artisans</li>
+                        <li>50 certified guides</li>
+                        <li>5 partner museums</li>
+                        <li>1,000 active tourists</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>🚀 Phase 3: Advanced Features (Months 7-9)</h2>
+            <div class="journey-grid">
+                <div class="journey-card">
+                    <h3>Immersive Technologies</h3>
+                    <ul class="journey-features">
+                        <li>AR/VR capabilities</li>
+                        <li>Advanced analytics and reporting</li>
+                        <li>International expansion features</li>
+                        <li>Native mobile applications</li>
+                    </ul>
+                </div>
+                <div class="journey-card">
+                    <h3>Regional Scale</h3>
+                    <ul class="journey-features">
+                        <li>2,000 certified artisans</li>
+                        <li>200 professional guides</li>
+                        <li>15 integrated museums</li>
+                        <li>10,000 monthly tourists</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>🌍 Phase 4: Ecosystem Maturity (Months 10-12)</h2>
+            <div class="journey-grid">
+                <div class="journey-card">
+                    <h3>Complete Integration</h3>
+                    <ul class="journey-features">
+                        <li>Full stakeholder integration</li>
+                        <li>Advanced AI and machine learning</li>
+                        <li>Impact and sustainability measurement</li>
+                        <li>Regional/international market expansion</li>
+                    </ul>
+                </div>
+                <div class="journey-card">
+                    <h3>Global Impact</h3>
+                    <ul class="journey-features">
+                        <li>5,000+ certified artisans</li>
+                        <li>500+ professional guides</li>
+                        <li>50+ cultural institutions</li>
+                        <li>100,000+ active users</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>💡 Immediate Next Steps</h2>
+            <div class="highlight-box">
+                <strong>Priority Actions:</strong>
+                <ul class="feature-list">
+                    <li>Finalize Supabase database setup</li>
+                    <li>Develop Tourist and Artisan interfaces</li>
+                    <li>Recruit cultural expert team</li>
+                    <li>Strategic partnerships with museums and institutions</li>
+                    <li>Series A funding round (€3M)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 9: Call to Action -->
+        <div class="slide">
+            <h1>🚀 Join the Cultural Revolution</h1>
+            <p class="tagline">Together, let's preserve and celebrate Moroccan heritage</p>
+
+            <div class="value-proposition">
+                <h3>🎯 Our Mission</h3>
+                <p>Create the world's first intelligent cultural ecosystem that preserves, authenticates, and shares Morocco's rich artisan heritage while creating sustainable economic value for all stakeholders.</p>
+            </div>
+
+            <h2>🤝 Partnership Opportunities</h2>
+            <div class="journey-grid">
+                <div class="journey-card">
+                    <h3>Investors</h3>
+                    <ul class="journey-features">
+                        <li>Projected 300%+ ROI over 3 years</li>
+                        <li>€50B+ TAM (cultural tourism)</li>
+                        <li>Defensible proprietary technology</li>
+                        <li>Measurable social and cultural impact</li>
+                    </ul>
+                </div>
+                <div class="journey-card">
+                    <h3>Cultural Institutions</h3>
+                    <ul class="journey-features">
+                        <li>Access to verified artisan network</li>
+                        <li>Advanced AI curation tools</li>
+                        <li>Global exhibition platform</li>
+                        <li>Preservation impact measurement</li>
+                    </ul>
+                </div>
+                <div class="journey-card">
+                    <h3>Governments</h3>
+                    <ul class="journey-features">
+                        <li>Morocco Vision 2030 contribution</li>
+                        <li>Cultural sector job creation</li>
+                        <li>International heritage promotion</li>
+                        <li>Sustainable economic development</li>
+                    </ul>
+                </div>
+                <div class="journey-card">
+                    <h3>Tech Companies</h3>
+                    <ul class="journey-features">
+                        <li>Ecosystem API integration</li>
+                        <li>White-label solutions</li>
+                        <li>Technology partnerships</li>
+                        <li>Collaborative innovation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>📊 Why Now?</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="metric-value">€50B+</span>
+                    <div class="metric-label">Global cultural tourism market</div>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">15%</span>
+                    <div class="metric-label">Annual sector growth</div>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">85%</span>
+                    <div class="metric-label">Tourists seeking authenticity</div>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">2030</span>
+                    <div class="metric-label">Morocco Vision - Unique opportunity</div>
+                </div>
+            </div>
+
+            <h2>🎯 Call to Action</h2>
+            <div class="journey-grid">
+                <div class="journey-card">
+                    <h3>Investors</h3>
+                    <p><strong>Series A: €3M</strong><br>
+                    Development funding and regional expansion</p>
+                    <div style="margin-top: 12px; padding: 8px; background: var(--gradient-primary); color: white; border-radius: 8px; text-align: center; font-weight: 600;">
+                        Contact us for complete investor deck
+                    </div>
+                </div>
+                <div class="journey-card">
+                    <h3>Strategic Partners</h3>
+                    <p><strong>Win-Win Collaboration</strong><br>
+                    Ecosystem integration and value co-creation</p>
+                    <div style="margin-top: 12px; padding: 8px; background: var(--gradient-secondary); color: white; border-radius: 8px; text-align: center; font-weight: 600;">
+                        Let's explore synergies together
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <strong>Contact:</strong><br>
+                📧 contact@moroccomadereal.com<br>
+                🌐 www.moroccomadereal.com<br>
+                📱 +212 6XX XXX XXX<br>
+                📍 Casablanca, Morocco
+            </div>
+
+            <div style="text-align: center; margin-top: 24px; font-size: 1.2em; color: var(--moroccan-red); font-weight: 600;">
+                🇲🇦 Together, let's write the future of Moroccan cultural heritage 🇲🇦
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-button" id="prevBtn" onclick="changeSlide(-1)">← Previous</button>
+        <span class="slide-counter">
+            <span id="currentSlide">1</span> / <span id="totalSlides">9</span>
+        </span>
+        <button class="nav-button" id="nextBtn" onclick="changeSlide(1)">Next →</button>
+    </div>
+
+    <script>
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        document.getElementById('totalSlides').textContent = totalSlides;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+            
+            document.getElementById('currentSlide').textContent = index + 1;
+            document.getElementById('prevBtn').disabled = index === 0;
+            document.getElementById('nextBtn').disabled = index === totalSlides - 1;
+        }
+
+        function changeSlide(direction) {
+            const newIndex = currentSlideIndex + direction;
+            if (newIndex >= 0 && newIndex < totalSlides) {
+                currentSlideIndex = newIndex;
+                showSlide(currentSlideIndex);
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowLeft') {
+                changeSlide(-1);
+            } else if (event.key === 'ArrowRight') {
+                changeSlide(1);
+            }
+        });
+
+        // Initialize
+        showSlide(0);
+
+        // Auto-advance slides (optional)
+        // setInterval(() => {
+        //     if (currentSlideIndex < totalSlides - 1) {
+        //         changeSlide(1);
+        //     }
+        // }, 30000); // 30 seconds per slide
+    </script>
+</body>
+</html> 

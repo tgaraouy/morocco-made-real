@@ -455,15 +455,15 @@ export default function MoroccoMadeRealPage() {
     }
   };
 
-  // ============ WHATSAPP VERIFICATION FUNCTIONS ============
+  // ============ WHATSAPP CLOUD API FUNCTIONS ============
   
-  const generateQRAutoValidation = async () => {
+  const sendWhatsAppCode = async () => {
     setIsLoading(true);
     setError('');
-    setVerificationStatus('generating');
+    setVerificationStatus('sending');
     
     try {
-      const response = await fetch('/api/whatsapp-qr-generate', {
+      const response = await fetch('/api/whatsapp-send-code', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phone })
@@ -473,32 +473,81 @@ export default function MoroccoMadeRealPage() {
       
       if (data.success) {
         setQrSession(data.session);
-        setVerificationStatus('pending');
-        console.log('✅ QR Session Generated:', data.session.id);
-        startStatusCheck(data.session.id);
+        setVerificationStatus('code_sent');
+        console.log('✅ WhatsApp Code Sent:', data.session.id);
+        
+        // Start checking for verification
+        startVerificationCheck(data.session.id);
       } else {
-        setError(data.error || 'Failed to generate QR code');
+        setError(data.error || 'Failed to send WhatsApp code');
         setVerificationStatus('error');
       }
     } catch (error) {
-      console.error('QR Generation Error:', error);
-      setError('Failed to generate QR code');
+      console.error('WhatsApp Send Error:', error);
+      setError('Failed to send WhatsApp code');
       setVerificationStatus('error');
     } finally {
       setIsLoading(false);
     }
   };
 
-  const startStatusCheck = (sessionId) => {
+  const startVerificationCheck = (sessionId) => {
     if (statusCheckInterval) {
       clearInterval(statusCheckInterval);
     }
     
     const interval = setInterval(() => {
       checkVerificationStatus(sessionId);
-    }, 3000);
+    }, 2000); // Check every 2 seconds
     
     setStatusCheckInterval(interval);
+  };
+
+  const verifyCodeManually = async (inputCode: string) => {
+    if (!inputCode || inputCode.length !== 6) {
+      setError('Please enter a valid 6-digit code');
+      return;
+    }
+
+    setIsLoading(true);
+    setError('');
+    
+    try {
+      const response = await fetch('/api/whatsapp-verify-code', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          sessionId: qrSession?.id,
+          phone: phone,
+          code: inputCode
+        })
+      });
+      
+      const data = await response.json();
+      
+      if (data.success) {
+        setVerificationStatus('verified');
+        if (statusCheckInterval) {
+          clearInterval(statusCheckInterval);
+          setStatusCheckInterval(null);
+        }
+        
+        await createTouristProfile();
+        console.log('✅ Phone verified manually!');
+      } else {
+        setError(data.error || 'Invalid verification code');
+      }
+    } catch (error) {
+      console.error('Manual verification error:', error);
+      setError('Failed to verify code');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const generateQRAutoValidation = async () => {
+    // Use the new WhatsApp Cloud API instead
+    await sendWhatsAppCode();
   };
 
   const checkVerificationStatus = async (sessionId) => {
@@ -630,10 +679,12 @@ export default function MoroccoMadeRealPage() {
     switch (verificationStatus) {
       case 'idle':
         return { icon: Smartphone, color: 'text-gray-500', bg: 'bg-gray-50', text: 'Ready to start' };
-      case 'generating':
-        return { icon: RefreshCw, color: 'text-blue-500', bg: 'bg-blue-50', text: 'Generating QR...' };
+      case 'sending':
+        return { icon: RefreshCw, color: 'text-blue-500', bg: 'bg-blue-50', text: 'Sending WhatsApp code...' };
+      case 'code_sent':
+        return { icon: MessageCircle, color: 'text-green-500', bg: 'bg-green-50', text: 'Code sent! Check WhatsApp' };
       case 'pending':
-        return { icon: Clock, color: 'text-orange-500', bg: 'bg-orange-50', text: 'Waiting for WhatsApp' };
+        return { icon: Clock, color: 'text-orange-500', bg: 'bg-orange-50', text: 'Waiting for verification' };
       case 'verified':
         return { icon: CheckCircle2, color: 'text-green-500', bg: 'bg-green-50', text: 'Verified!' };
       case 'expired':
@@ -744,8 +795,8 @@ export default function MoroccoMadeRealPage() {
           {/* Main Value Proposition */}
           <div className="mb-4 sm:mb-6">
             <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-slate-800 mb-3 sm:mb-4 font-serif leading-tight">
-              <span className="text-orange-600">Meet an Authentic Experience</span>{' '}
-              <span className="text-green-600">and Take Home a Certified Story</span>
+              <span className="text-orange-600">{t('morocco_made_real.hero.scan_code')}</span>{' '}
+              <span className="text-green-600">{t('morocco_made_real.hero.take_home_story')}</span>
             </h2>
             <p className="text-xs sm:text-sm md:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed font-light mb-4 sm:mb-6">
               {t('morocco_made_real.hero.description')}
@@ -819,7 +870,7 @@ export default function MoroccoMadeRealPage() {
           {/* Simplified Discovery Message */}
           <div className="pt-4 sm:pt-6 border-t border-slate-200 max-w-2xl mx-auto text-center">
             <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
-              Discover authentic artisan stories across Morocco - simply verify your phone to begin your cultural journey.
+              {t('morocco_made_real.discover.description')}
             </p>
           </div>
         </div>
@@ -924,7 +975,7 @@ export default function MoroccoMadeRealPage() {
                     const StatusIcon = statusInfo.icon;
                     return (
                       <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full ${statusInfo.bg} mb-4`}>
-                        <StatusIcon className={`w-8 h-8 ${statusInfo.color} ${verificationStatus === 'generating' ? 'animate-spin' : ''}`} />
+                        <StatusIcon className={`w-8 h-8 ${statusInfo.color} ${verificationStatus === 'sending' ? 'animate-spin' : ''}`} />
                       </div>
                     );
                   })()}
@@ -950,49 +1001,54 @@ export default function MoroccoMadeRealPage() {
             </Card>
           )}
 
-          {/* QR Code Display */}
-          {qrSession && verificationStatus === 'pending' && (
+          {/* WhatsApp Code Input */}
+          {verificationStatus === 'code_sent' && (
             <Card className="mb-6">
               <CardContent className="pt-6">
                 <div className="text-center space-y-4">
-                  <h3 className="text-lg font-semibold text-gray-800">
-                    Scan QR Code with WhatsApp
-                  </h3>
+                  <div className="bg-green-50 p-4 rounded-lg border border-green-200 mb-4">
+                    <div className="flex items-center justify-center text-green-800 mb-2">
+                      <MessageCircle className="w-5 h-5 mr-2" />
+                      <span className="font-semibold">WhatsApp Code Sent!</span>
+                    </div>
+                    <p className="text-sm text-green-700">
+                      Check your WhatsApp for a message from Morocco Made Real with your 6-digit verification code.
+                    </p>
+                  </div>
                   
-                  <div className="bg-white p-6 rounded-lg border-2 border-dashed border-gray-200">
-                    <QRCode value={qrSession.whatsappUrl} size={200} />
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Enter Verification Code</label>
+                    <Input
+                      type="text"
+                      placeholder="Enter 6-digit code"
+                      maxLength={6}
+                      className="text-center text-2xl h-14 font-mono tracking-wider"
+                      onChange={(e) => {
+                        const code = e.target.value.replace(/\D/g, '').slice(0, 6);
+                        e.target.value = code;
+                        if (code.length === 6) {
+                          verifyCodeManually(code);
+                        }
+                      }}
+                    />
+                  </div>
+                  
+                  <div className="text-sm text-gray-600 space-y-2">
+                    <p>💡 <strong>Auto-verification:</strong> Reply to the WhatsApp message with your code</p>
+                    <p>⏱️ Code expires in 10 minutes</p>
                   </div>
                   
                   <div className="space-y-3">
                     <Button
-                      onClick={() => window.open(qrSession.whatsappUrl, '_blank')}
-                      className="w-full bg-green-500 hover:bg-green-600"
+                      onClick={() => sendWhatsAppCode()}
+                      variant="outline"
+                      className="w-full"
+                      disabled={isLoading}
                     >
-                      <MessageCircle className="w-5 h-5 mr-2" />
-                      Open WhatsApp
+                      <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
+                      Resend Code
                     </Button>
-                    
-                    {process.env.NODE_ENV === 'development' && (
-                      <Button
-                        onClick={simulateWebhook}
-                        variant="outline"
-                        className="w-full border-orange-200 text-orange-600 hover:bg-orange-50"
-                      >
-                        <ExternalLink className="w-5 h-5 mr-2" />
-                        Quick Test (Dev Only)
-                      </Button>
-                    )}
                   </div>
-                  
-                  {qrSession && (
-                    <div className="p-3 bg-gray-50 rounded-lg text-left">
-                      <div className="text-xs text-gray-600 space-y-1">
-                        <div><strong>Demo Code:</strong> {qrSession.code}</div>
-                        <div><strong>Session:</strong> {qrSession.id}</div>
-                        <div><strong>Expires:</strong> {new Date(qrSession.expiresAt).toLocaleTimeString()}</div>
-                      </div>
-                    </div>
-                  )}
                 </div>
               </CardContent>
             </Card>
@@ -1005,7 +1061,7 @@ export default function MoroccoMadeRealPage() {
                 <CheckCircle2 className="w-16 h-16 text-green-500 mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-green-800 mb-2">Welcome, Cultural Explorer!</h3>
                 <p className="text-green-700 mb-4">
-                  Your journey is now tracked. Let's find your perfect cultural experiences.
+                  Your WhatsApp is verified. Let's find your perfect cultural experiences.
                 </p>
                 <Button
                   onClick={() => setCurrentStep('preferences')}

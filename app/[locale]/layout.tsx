@@ -2,7 +2,6 @@ import React from 'react'
 import '../globals.css'
 import type { Metadata, Viewport } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
-import { notFound } from 'next/navigation'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import Navigation from '@/components/Navigation'
@@ -97,14 +96,24 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
   // Validate and fallback locale
   const validLocale = locale && supportedLocales.includes(locale) ? locale : 'en';
   
-  // Get messages using next-intl's server function with explicit locale
-  const messages = await getMessages({ locale: validLocale });
+  // Get messages with error handling
+  let messages;
+  try {
+    messages = await getMessages({ locale: validLocale });
+  } catch (error) {
+    console.warn(`Failed to load messages for locale ${validLocale}, using fallback`);
+    // Provide minimal fallback messages
+    messages = {
+      homepage: { title: 'Morocco Made Real' },
+      navigation: { home: 'Home' },
+      footer: { title: 'Morocco Made Real' }
+    };
+  }
 
   return (
-    <html lang={validLocale} suppressHydrationWarning>
+    <html lang={validLocale}>
       <body 
         className={`${inter.variable} ${playfair.variable} font-sans bg-moroccan-sand min-h-screen antialiased scroll-smooth`}
-        suppressHydrationWarning
       >
         <NextIntlClientProvider locale={validLocale} messages={messages}>
           <div className="moroccan-gradient h-2 w-full"></div>

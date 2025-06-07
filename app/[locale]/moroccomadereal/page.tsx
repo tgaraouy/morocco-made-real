@@ -720,6 +720,11 @@ export default function MoroccoMadeRealPage() {
     window.open(tiktokUrl, '_blank');
   };
 
+  const handleGetStarted = () => {
+    // Redirect to new phone verification instead of QR
+    router.push('/phone-verification');
+  };
+
   if (!isClient) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-pink-50 flex items-center justify-center">

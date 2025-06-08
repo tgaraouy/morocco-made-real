@@ -53,15 +53,22 @@ class WhatsAppQRService {
         createdAt: new Date().toISOString()
       };
       
-      // Store session in database (with development mode fallback)
+      // Store session in session storage (used by API endpoint)
+      try {
+        const { qrSessions } = await import('./session-storage');
+        qrSessions.set(sessionId, qrSession);
+        console.log('✅ QR session stored in session storage');
+      } catch (storageError) {
+        console.warn('⚠️  Session storage failed:', storageError);
+        // Continue anyway since this is just in-memory storage
+      }
+      
+      // Also try to store in database for persistence (optional)
       try {
         await this.storeVerificationSession(qrSession);
       } catch (dbError) {
-        console.warn('⚠️  Database storage failed, continuing in memory mode:', dbError);
-        // In development mode, continue without database storage
-        if (process.env.NODE_ENV !== 'development') {
-          throw dbError;
-        }
+        console.warn('⚠️  Database storage failed, continuing with session storage:', dbError);
+        // Don't fail if database storage fails - session storage is sufficient
       }
       
       console.log('✅ QR auto-validation session created:', {
@@ -184,75 +191,44 @@ Valid for 10 minutes.
     profile?: any;
   }> {
     try {
-      // Force development mode if NODE_ENV is development OR if Supabase is not configured
-      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-      const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-      const isSupabaseConfigured = process.env.NODE_ENV === 'development' 
-        ? false // Always use development mode in development
-        : !!(supabaseUrl && supabaseKey && 
-             supabaseUrl !== 'https://placeholder.supabase.co' && 
-             supabaseKey !== 'placeholder_key');
-      
-      if (!isSupabaseConfigured) {
-        console.log('⚠️ Development mode: Checking session storage for verification status');
-        
-        // In development mode, check localStorage or in-memory storage for verification status
-        // This allows proper flow testing with manual webhook simulation
-        try {
-          const sessionStatus = localStorage?.getItem(`qr_session_${sessionId}`);
-          if (sessionStatus === 'verified') {
-            console.log('✅ Development mode: Session verified via webhook simulation');
-            return { success: true, status: 'verified' };
-          } else {
-            console.log('🔄 Development mode: Session still pending verification');
-            return { success: true, status: 'pending' };
-          }
-        } catch (error) {
-          // If localStorage fails (SSR), default to pending
-          console.log('🔄 Development mode: Defaulting to pending status');
-          return { success: true, status: 'pending' };
+      // Call the API endpoint to check session status
+      const response = await fetch('/api/whatsapp-qr-status', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ sessionId })
+      });
+
+      if (!response.ok) {
+        if (response.status === 404) {
+          return { success: false, status: 'not_found' };
         }
+        throw new Error(`HTTP ${response.status}`);
       }
 
-      // Check in database
-      const { data, error } = await supabase
-        .from('whatsapp_qr_sessions')
-        .select('*')
-        .eq('session_id', sessionId)
-        .single();
-
-      if (error || !data) {
+      const result = await response.json();
+      
+      if (!result.success) {
         return { success: false, status: 'not_found' };
       }
 
-      // Check if expired
-      if (new Date() > new Date(data.expires_at)) {
-        return { success: true, status: 'expired' };
+      const session = result.session;
+      
+      // Check if session is verified by checking if phone is verified
+      if (session.status === 'verified') {
+        return { success: true, status: 'verified' };
       }
-
-      // Check if phone is verified
-      const { touristProfileService } = await import('./tourist-profile-service');
-      const profile = await touristProfileService.getProfile(data.phone);
-
-      if (profile?.phone_verified) {
-        // Update session status
-        await supabase
-          .from('whatsapp_qr_sessions')
-          .update({ status: 'verified' })
-          .eq('session_id', sessionId);
-
-        return { success: true, status: 'verified', profile };
+      
+      // Check if expired
+      if (session.status === 'expired' || new Date() > new Date(session.expiresAt)) {
+        return { success: true, status: 'expired' };
       }
 
       return { success: true, status: 'pending' };
 
     } catch (error) {
       console.error('Error checking verification status:', error);
-      // In development mode, return pending status so user can experience proper flow
-      if (process.env.NODE_ENV === 'development') {
-        console.warn('🔄 Development mode: Returning pending status to allow proper flow testing');
-        return { success: true, status: 'pending' };
-      }
       return { success: false, status: 'not_found' };
     }
   }

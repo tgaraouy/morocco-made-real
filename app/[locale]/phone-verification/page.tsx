@@ -305,6 +305,55 @@ export default function PhoneVerificationPage() {
               >
                 Try Different Number
               </Button>
+
+              {/* SMS Fallback Button */}
+              <div className="border-t pt-4">
+                <p className="text-sm text-gray-600 text-center mb-3">
+                  Not receiving WhatsApp messages?
+                </p>
+                <Button 
+                  onClick={async () => {
+                    setIsLoading(true);
+                    setError('');
+                    try {
+                      const { smsService } = await import('@/lib/sms-service');
+                      // Generate a demo code for now
+                      const demoCode = Math.floor(100000 + Math.random() * 900000).toString();
+                      
+                      const result = await smsService.sendVerificationSMS(phoneNumber, demoCode, { 
+                        preferSMS: true 
+                      });
+                      
+                      if (result.success) {
+                        // Show success message and allow manual code entry
+                        setError('');
+                        console.log('📱 SMS sent successfully via fallback');
+                        alert(`SMS sent! Demo code: ${demoCode}`); // For testing
+                      } else {
+                        setError(result.error || 'Failed to send SMS');
+                      }
+                    } catch (error) {
+                      setError('SMS service unavailable. Please try manual entry.');
+                    } finally {
+                      setIsLoading(false);
+                    }
+                  }}
+                  disabled={isLoading}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                >
+                  {isLoading ? (
+                    <>
+                      <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
+                      Sending SMS...
+                    </>
+                  ) : (
+                    <>
+                      <Smartphone className="w-4 h-4 mr-2" />
+                      📱 Try SMS Instead
+                    </>
+                  )}
+                </Button>
+              </div>
             </div>
           )}
 

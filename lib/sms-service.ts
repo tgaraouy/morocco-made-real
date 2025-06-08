@@ -106,8 +106,11 @@ class SMSService {
     try {
       console.log('📱 Attempting WhatsApp verification for:', phone);
       
+      // Try Business API first, fallback to link if not configured
+      const method = options.whatsappMethod || 'business-api';
+      
       const result = await whatsappVerificationService.sendWhatsAppVerification(phone, code, {
-        method: options.whatsappMethod || 'link',
+        method: method,
         language: options.language || 'en'
       });
       

@@ -109,6 +109,18 @@ class WhatsAppVerificationService {
         console.warn('⚠️ WhatsApp Business API not configured, falling back to link method');
         return this.generateWhatsAppLink(phone, code, options);
       }
+
+      // Generate message based on language - simplified format
+      const messages = {
+        en: `Your verification code is ${code}`,
+        fr: `Votre code de vérification: ${code}`,
+        es: `Su código de verificación: ${code}`,
+        ar: `رمز التحقق: ${code}`
+      };
+
+      const message = messages[options.language || 'en'];
+      
+      console.log('📤 Sending WhatsApp Business API message to:', normalizedPhone);
       
       const response = await fetch(`https://graph.facebook.com/v18.0/${process.env.WHATSAPP_BUSINESS_PHONE_ID}/messages`, {
         method: 'POST',
@@ -119,36 +131,30 @@ class WhatsAppVerificationService {
         body: JSON.stringify({
           messaging_product: 'whatsapp',
           to: normalizedPhone,
-          type: 'template',
-          template: {
-            name: 'verification_code', // You'd need to create this template
-            language: { code: options.language === 'fr' ? 'fr' : 'en' },
-            components: [
-              {
-                type: 'body',
-                parameters: [
-                  { type: 'text', text: code }
-                ]
-              }
-            ]
+          type: 'text',
+          text: {
+            body: message
           }
         })
       });
       
       const result = await response.json();
       
-      if (response.ok) {
+      if (response.ok && result.messages && result.messages[0]) {
+        console.log('✅ WhatsApp message sent successfully:', result.messages[0].id);
         return {
           success: true,
           verificationId: result.messages[0].id
         };
       } else {
-        throw new Error(result.error?.message || 'WhatsApp Business API failed');
+        console.error('❌ WhatsApp Business API error:', result);
+        throw new Error(result.error?.message || `API Error: ${response.status}`);
       }
       
     } catch (error) {
-      console.error('WhatsApp Business API error:', error);
+      console.error('💥 WhatsApp Business API error:', error);
       // Fallback to link method
+      console.log('🔄 Falling back to WhatsApp link method');
       return this.generateWhatsAppLink(phone, code, options);
     }
   }

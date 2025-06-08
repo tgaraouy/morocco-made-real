@@ -311,6 +311,9 @@ export default function MoroccoMadeRealPage() {
   const handleBookingSubmission = async () => {
     setBookingStatus('submitting');
     
+    // Scroll to top to ensure user sees the status
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
     // Simulate API call delay
     await new Promise(resolve => setTimeout(resolve, 1500));
     
@@ -521,6 +524,9 @@ export default function MoroccoMadeRealPage() {
     setIsClient(true);
     checkExistingProfile();
     
+    // Force scroll to top when component mounts
+    window.scrollTo(0, 0);
+    
     // Force cache refresh - Updated timestamp
     const cacheVersion = Date.now();
     console.log(`🔄 Cache version: ${cacheVersion} - All changes should be visible now`);
@@ -546,6 +552,18 @@ export default function MoroccoMadeRealPage() {
       }
     };
   }, [qrSession]);
+
+  // Scroll to top whenever step changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentStep]);
+
+  // Scroll to top when booking modal opens
+  useEffect(() => {
+    if (showBookingFlow) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [showBookingFlow]);
 
   // Check for existing verified profile
   const checkExistingProfile = async () => {
@@ -639,6 +657,12 @@ export default function MoroccoMadeRealPage() {
     setError('');
     
     try {
+      console.log(`🔍 FRONTEND DEBUG: Making verification request:`, {
+        sessionId: qrSession?.id || 'NO_SESSION',
+        phone: phone || 'NO_PHONE',
+        code: inputCode || 'NO_CODE'
+      });
+      
       const response = await fetch('/api/whatsapp-verify-code', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -649,7 +673,11 @@ export default function MoroccoMadeRealPage() {
         })
       });
       
+      console.log(`🔍 FRONTEND DEBUG: Response status:`, response.status);
+      
       const data = await response.json();
+      
+      console.log(`🔍 FRONTEND DEBUG: Response data:`, data);
       
       if (data.success) {
         setVerificationStatus('verified');
@@ -661,10 +689,11 @@ export default function MoroccoMadeRealPage() {
         await createTouristProfile();
         console.log('✅ Phone verified manually!');
       } else {
+        console.error('❌ FRONTEND DEBUG: Verification failed:', data.error);
         setError(data.error || 'Invalid verification code');
       }
     } catch (error) {
-      console.error('Manual verification error:', error);
+      console.error('❌ FRONTEND DEBUG: Network/Parse error:', error);
       setError('Failed to verify code');
     } finally {
       setIsLoading(false);
@@ -3337,6 +3366,16 @@ export default function MoroccoMadeRealPage() {
         }
         .font-sans {
           font-family: 'Inter', sans-serif;
+        }
+        html {
+          scroll-behavior: smooth;
+        }
+        body {
+          overflow-x: hidden;
+        }
+        /* Prevent scroll restoration */
+        html, body {
+          scroll-behavior: auto;
         }
       `}</style>
       

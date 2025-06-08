@@ -6,7 +6,15 @@ export async function POST(request: NextRequest) {
   try {
     const { sessionId, code, phone } = await request.json();
     
+    console.log(`🔍 DEBUG: Verification request received:`, {
+      sessionId: sessionId || 'NOT_PROVIDED',
+      code: code || 'NOT_PROVIDED', 
+      phone: phone || 'NOT_PROVIDED',
+      environment: process.env.NODE_ENV || 'UNKNOWN'
+    });
+    
     if (!sessionId && !phone) {
+      console.log(`❌ DEBUG: Missing sessionId AND phone`);
       return NextResponse.json({ 
         success: false, 
         error: 'Session ID or phone number is required' 
@@ -14,6 +22,7 @@ export async function POST(request: NextRequest) {
     }
 
     if (!code) {
+      console.log(`❌ DEBUG: Missing code`);
       return NextResponse.json({ 
         success: false, 
         error: 'Verification code is required' 
@@ -49,6 +58,17 @@ export async function POST(request: NextRequest) {
       // This handles cases where session storage is completely lost
       const isDemoCodeFallback = phone && (code === '550998' || code === '123456' || code === '000000');
       
+      console.log(`🔍 DEBUG: Session not found - checking fallback:`, {
+        phone: phone || 'NOT_PROVIDED',
+        code: code || 'NOT_PROVIDED',
+        isDemoCodeFallback,
+        demoCodeCheck: {
+          is550998: code === '550998',
+          is123456: code === '123456', 
+          is000000: code === '000000'
+        }
+      });
+      
       if (isDemoCodeFallback) {
         console.log(`🔧 Vercel Fallback: Demo code ${code} accepted for phone ${phone} (session lost)`);
         
@@ -66,6 +86,7 @@ export async function POST(request: NextRequest) {
         // Continue with profile creation/update logic
         session = tempSession;
       } else {
+        console.log(`❌ DEBUG: Session not found and not a demo code fallback`);
         return NextResponse.json({ 
           success: false, 
           error: 'Session not found or expired' 

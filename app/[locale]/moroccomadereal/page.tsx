@@ -279,6 +279,9 @@ export default function MoroccoMadeRealPage() {
   
   // ============ BOOKING STATE ============
   const [bookingStep, setBookingStep] = useState('details');
+  const [bookingStatus, setBookingStatus] = useState<'selecting' | 'submitting' | 'connecting' | 'booked' | 'review-later' | 'cancelled'>('selecting');
+  const [bookedArtisans, setBookedArtisans] = useState<Set<string>>(new Set());
+  const [reviewLaterArtisans, setReviewLaterArtisans] = useState<Set<string>>(new Set());
   const [bookingData, setBookingData] = useState({
     date: '',
     time: '',
@@ -290,6 +293,7 @@ export default function MoroccoMadeRealPage() {
   // ============ BOOKING HELPER FUNCTIONS ============
   const resetBookingState = () => {
     setBookingStep('details');
+    setBookingStatus('selecting');
     setBookingData({
       date: '',
       time: '',
@@ -302,6 +306,50 @@ export default function MoroccoMadeRealPage() {
   const closeBookingModal = () => {
     setShowBookingFlow(false);
     resetBookingState();
+  };
+
+  const handleBookingSubmission = async () => {
+    setBookingStatus('submitting');
+    
+    // Simulate API call delay
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    setBookingStatus('connecting');
+    
+    // Simulate connecting with expert
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    setBookingStatus('booked');
+    
+    // Add to booked artisans
+    if (selectedArtisan) {
+      setBookedArtisans(prev => new Set([...prev, selectedArtisan.id]));
+      // Remove from review later if it was there
+      setReviewLaterArtisans(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(selectedArtisan.id);
+        return newSet;
+      });
+    }
+  };
+
+  const handleReviewLater = () => {
+    setBookingStatus('review-later');
+    
+    // Add to review later artisans
+    if (selectedArtisan) {
+      setReviewLaterArtisans(prev => new Set([...prev, selectedArtisan.id]));
+    }
+  };
+
+  const getArtisanStatus = (artisanId: string) => {
+    if (bookedArtisans.has(artisanId)) {
+      return { status: 'booked', label: 'Booked', color: 'bg-green-600', icon: '✓' };
+    }
+    if (reviewLaterArtisans.has(artisanId)) {
+      return { status: 'review-later', label: 'Saved', color: 'bg-purple-600', icon: '📝' };
+    }
+    return { status: 'available', label: 'Available Now', color: 'bg-green-600', icon: '●' };
   };
   
   // ============ PHONE FORMATTING FUNCTIONS ============
@@ -318,7 +366,7 @@ export default function MoroccoMadeRealPage() {
     { code: '+41', name: 'Switzerland', flag: '🇨🇭' },
     { code: '+32', name: 'Belgium', flag: '🇧🇪' },
   ];
-
+  
   const formatPhoneNumber = (value: string) => {
     // Remove all non-digit characters except +
     const cleaned = value.replace(/[^\d+]/g, '');
@@ -992,11 +1040,12 @@ export default function MoroccoMadeRealPage() {
               <CardTitle className="flex items-center justify-between">
                 <span>Enter Your Phone Number</span>
                 <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
-                  Step 1/2
+                  {verificationStatus === 'idle' || verificationStatus === 'sending' ? 'Step 1/2' : 'Step 2/2'}
                 </Badge>
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
+              {/* Phone Input Section - Always visible */}
               <div>
                 <label className="block text-sm font-medium mb-2">Phone Number</label>
                 <div className="flex gap-2">
@@ -1009,6 +1058,7 @@ export default function MoroccoMadeRealPage() {
                         if (country) handleCountryChange(country);
                       }}
                       className="appearance-none bg-white border border-gray-300 rounded-lg px-3 py-3 pr-8 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                      disabled={verificationStatus === 'code_sent' || verificationStatus === 'verified'}
                     >
                       {countryOptions.map((country) => (
                         <option key={country.code} value={country.code}>
@@ -1036,108 +1086,60 @@ export default function MoroccoMadeRealPage() {
                       value={phoneNumber}
                       onChange={handlePhoneNumberChange}
                       className="text-lg h-12"
+                      disabled={verificationStatus === 'code_sent' || verificationStatus === 'verified'}
                     />
                   </div>
                 </div>
                 
-                {phone && (
-                  <div className="mt-3 p-3 bg-green-50 rounded-lg border border-green-200">
-                    <div className="flex items-center text-sm">
-                      <MessageCircle className="w-4 h-4 text-green-600 mr-2" />
-                      <span className="text-green-700">
-                        {selectedCountry.flag} {selectedCountry.name}
-                      </span>
-                      <span className="text-green-600 ml-auto font-medium">
-                        WhatsApp Ready
-                      </span>
+                {/* Simplified Status Display - Only show when processing */}
+                {(verificationStatus === 'sending') && (
+                  <div className="text-center">
+                    {(() => {
+                      const statusInfo = getStatusInfo();
+                      const StatusIcon = statusInfo.icon;
+                      return (
+                        <div className={`inline-flex items-center justify-center w-12 h-12 rounded-full ${statusInfo.bg} mb-3`}>
+                          <StatusIcon className={`w-6 h-6 ${statusInfo.color} animate-spin`} />
+                        </div>
+                      );
+                    })()}
+                    
+                    <div>
+                      <h3 className="text-sm font-semibold text-gray-800">
+                        {getStatusInfo().text}
+                      </h3>
                     </div>
-                    <div className="text-xs text-gray-600 mt-1">
-                      Full number: {formattedPhone}
-                    </div>
+                  </div>
+                )}
+
+                {/* Show errors if any */}
+                {error && (
+                  <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
+                    <p className="text-red-700 text-sm text-center">{error}</p>
                   </div>
                 )}
               </div>
 
-              <div className="text-center">
-                <Button
-                  onClick={generateQRAutoValidation}
-                  disabled={!phone || phone.length < 10 || isLoading}
-                  className="w-full h-12 text-lg font-medium bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700"
-                >
-                  {isLoading ? (
-                    <>
-                      <RefreshCw className="w-5 h-5 mr-2 animate-spin" />
-                      Generating...
-                    </>
-                  ) : (
-                    <>
-                      <MessageCircle className="w-5 h-5 mr-2" />
-                      Verify via WhatsApp
-                    </>
-                  )}
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Status Card */}
-          {verificationStatus !== 'idle' && (
-            <Card className="mb-6">
-              <CardContent className="pt-6">
-                <div className="text-center space-y-4">
-                  {(() => {
-                    const statusInfo = getStatusInfo();
-                    const StatusIcon = statusInfo.icon;
-                    return (
-                      <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full ${statusInfo.bg} mb-4`}>
-                        <StatusIcon className={`w-8 h-8 ${statusInfo.color} ${verificationStatus === 'sending' ? 'animate-spin' : ''}`} />
-                      </div>
-                    );
-                  })()}
-                  
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-800">
-                      {getStatusInfo().text}
-                    </h3>
-                    {phone && (
-                      <p className="text-gray-600">
-                        {phone}
-                      </p>
-                    )}
-                  </div>
-
-                  {error && (
-                    <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
-                      <p className="text-red-700 text-sm">{error}</p>
-                    </div>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
-          )}
-
-          {/* WhatsApp Code Input */}
-          {verificationStatus === 'code_sent' && (
-            <Card className="mb-6">
-              <CardContent className="pt-6">
-                <div className="text-center space-y-4">
-                  <div className="bg-green-50 p-4 rounded-lg border border-green-200 mb-4">
+              {/* Code Entry Section - Shows when code is sent */}
+              {verificationStatus === 'code_sent' && (
+                <div className="border-t pt-4">
+                  <div className="bg-green-50 p-3 rounded-lg border border-green-200 mb-4">
                     <div className="flex items-center justify-center text-green-800 mb-2">
-                      <MessageCircle className="w-5 h-5 mr-2" />
-                      <span className="font-semibold">WhatsApp Code Sent!</span>
+                      <MessageCircle className="w-4 h-4 mr-2" />
+                      <span className="font-semibold text-sm">WhatsApp Code Sent!</span>
                     </div>
-                    <p className="text-sm text-green-700">
+                    <p className="text-xs text-green-700 text-center">
                       Check your WhatsApp for a message from Morocco Made Real with your 6-digit verification code.
                     </p>
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-medium mb-2">Enter Verification Code</label>
+                    <label className="block text-sm font-medium mb-2 text-center">Enter Verification Code</label>
                     <Input
                       type="text"
                       placeholder="Enter 6-digit code"
                       maxLength={6}
-                      className="text-center text-2xl h-14 font-mono tracking-wider"
+                      className="text-center text-xl h-12 font-mono tracking-wider"
                       onChange={(e) => {
                         const code = e.target.value.replace(/\D/g, '').slice(0, 6);
                         e.target.value = code;
@@ -1148,45 +1150,63 @@ export default function MoroccoMadeRealPage() {
                     />
                   </div>
                   
-                  <div className="text-sm text-gray-600 space-y-2">
+                  <div className="text-xs text-gray-600 text-center mt-3 space-y-1">
                     <p>💡 <strong>Auto-verification:</strong> Reply to the WhatsApp message with your code</p>
                     <p>⏱️ Code expires in 10 minutes</p>
                   </div>
-                  
+                </div>
+              )}
+
+              {/* Action Buttons */}
+              <div className="text-center">
+                {verificationStatus === 'idle' || verificationStatus === 'error' ? (
+                  <Button
+                    onClick={generateQRAutoValidation}
+                    disabled={!phone || phone.length < 10 || isLoading}
+                    className="w-full h-12 text-lg font-medium bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700"
+                  >
+                    {isLoading ? (
+                      <>
+                        <RefreshCw className="w-5 h-5 mr-2 animate-spin" />
+                        Generating...
+                      </>
+                    ) : (
+                      <>
+                        <MessageCircle className="w-5 h-5 mr-2" />
+                        Verify via WhatsApp
+                      </>
+                    )}
+                  </Button>
+                ) : verificationStatus === 'code_sent' ? (
+                  <Button
+                    onClick={() => sendWhatsAppCode()}
+                    variant="outline"
+                    className="w-full"
+                    disabled={isLoading}
+                  >
+                    <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
+                    Resend Code
+                  </Button>
+                ) : verificationStatus === 'verified' ? (
                   <div className="space-y-3">
+                    <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                      <CheckCircle2 className="w-12 h-12 text-green-500 mx-auto mb-2" />
+                      <h3 className="text-lg font-bold text-green-800 text-center">Welcome, Cultural Explorer!</h3>
+                      <p className="text-green-700 text-center text-sm">
+                        Your WhatsApp is verified. Let's find your perfect cultural experiences.
+                      </p>
+                    </div>
                     <Button
-                      onClick={() => sendWhatsAppCode()}
-                      variant="outline"
-                      className="w-full"
-                      disabled={isLoading}
+                      onClick={() => setCurrentStep('preferences')}
+                      className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600"
                     >
-                      <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
-                      Resend Code
+                      Start Cultural Matching
                     </Button>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
-          )}
-
-          {/* Success - Auto redirect to preferences */}
-          {verificationStatus === 'verified' && currentProfile && (
-            <Card className="mb-6 border-green-200 bg-green-50">
-              <CardContent className="pt-6 text-center">
-                <CheckCircle2 className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                <h3 className="text-xl font-bold text-green-800 mb-2">Welcome, Cultural Explorer!</h3>
-                <p className="text-green-700 mb-4">
-                  Your WhatsApp is verified. Let's find your perfect cultural experiences.
-                </p>
-                <Button
-                  onClick={() => setCurrentStep('preferences')}
-                  className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600"
-                >
-                  Start Cultural Matching
-                </Button>
-              </CardContent>
-            </Card>
-          )}
+                ) : null}
+              </div>
+            </CardContent>
+          </Card>
 
           <div className="text-center">
             <Button
@@ -1683,7 +1703,7 @@ export default function MoroccoMadeRealPage() {
           <div className="text-center mb-8">
             <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-full p-4 mx-auto w-20 h-20 flex items-center justify-center mb-4 animate-pulse">
               <Sparkles className="w-10 h-10 text-white" />
-            </div>
+          </div>
             <h2 className="text-4xl font-bold mb-2 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
               Unlock Your Perfect Morocco Adventure
             </h2>
@@ -1776,7 +1796,7 @@ export default function MoroccoMadeRealPage() {
                         <div className="absolute top-2 right-2">
                           <div className="bg-yellow-400 text-yellow-900 rounded-full px-2 py-1 text-xs font-bold">
                             {mood.popular}
-                          </div>
+                      </div>
                         </div>
                         
                         {/* Content */}
@@ -2020,17 +2040,17 @@ export default function MoroccoMadeRealPage() {
                           <div className="text-2xl font-bold text-purple-600">4.9★</div>
                           <div className="text-gray-600">Avg Rating</div>
                         </div>
-                      </div>
-                    </div>
-                    
-                    <Button
-                      onClick={() => setCurrentStep('matching')}
+                </div>
+              </div>
+              
+              <Button
+                onClick={() => setCurrentStep('matching')}
                       className="w-full h-16 text-xl font-bold bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 transform hover:scale-105 transition-all duration-300 shadow-2xl animate-pulse"
-                    >
+              >
                       <Sparkles className="w-6 h-6 mr-3" />
                       🚀 Discover Your Perfect Artisan Matches!
                       <ArrowRight className="w-6 h-6 ml-3" />
-                    </Button>
+              </Button>
                   </div>
                 ) : (
                   <div className="space-y-4">
@@ -2055,7 +2075,7 @@ export default function MoroccoMadeRealPage() {
             <div className="bg-white/80 backdrop-blur-sm p-4 rounded-lg shadow-lg">
               <div className="text-2xl font-bold text-blue-600">2,847</div>
               <div className="text-sm text-gray-600">Happy travelers this month</div>
-            </div>
+        </div>
             <div className="bg-white/80 backdrop-blur-sm p-4 rounded-lg shadow-lg">
               <div className="text-2xl font-bold text-green-600">4.9/5</div>
               <div className="text-sm text-gray-600">Average experience rating</div>
@@ -2102,9 +2122,9 @@ export default function MoroccoMadeRealPage() {
               {/* Enhanced Image Gallery with Video */}
               <div className="relative">
                 <div className="relative h-80 bg-gray-100">
-                  <img 
-                    src={currentExp.image} 
-                    alt={currentExp.title}
+                <img 
+                  src={currentExp.image} 
+                  alt={currentExp.title}
                     className="w-full h-full object-cover"
                   />
                   
@@ -2126,7 +2146,7 @@ export default function MoroccoMadeRealPage() {
                   
                   {/* Match Score Badge */}
                   <div className="absolute top-4 right-4 bg-gradient-to-r from-green-400 to-emerald-500 text-white px-4 py-2 rounded-full font-bold shadow-lg">
-                    {currentExp.matchScore}% Match
+                  {currentExp.matchScore}% Match
                   </div>
                   
                   {/* Authenticity Certificate Badge */}
@@ -2158,13 +2178,13 @@ export default function MoroccoMadeRealPage() {
                       <span className="text-white font-bold text-lg">
                         {currentExp.artisan.split(' ').map(n => n[0]).join('')}
                       </span>
-                    </div>
+                  </div>
                     <div>
                       <h3 className="text-xl font-bold">{currentExp.title}</h3>
                       <p className="text-orange-600 font-medium">with {currentExp.artisan}</p>
-                    </div>
                   </div>
-                  
+                </div>
+                
                   {/* Personal Welcome Message */}
                   <div className="bg-gradient-to-r from-orange-50 to-yellow-50 p-4 rounded-xl border border-orange-200 mb-4">
                     <div className="flex items-start space-x-3">
@@ -2202,7 +2222,7 @@ export default function MoroccoMadeRealPage() {
                     What's Included
                   </h4>
                   <div className="grid grid-cols-1 gap-2">
-                    {currentExp.features.map((feature, idx) => (
+                  {currentExp.features.map((feature, idx) => (
                       <div key={idx} className="flex items-center space-x-2 p-2 bg-gray-50 rounded-lg">
                         <CheckCircle2 className="w-4 h-4 text-green-500 flex-shrink-0" />
                         <span className="text-sm font-medium">{feature}</span>
@@ -2210,7 +2230,7 @@ export default function MoroccoMadeRealPage() {
                     ))}
                   </div>
                 </div>
-
+                
                 {/* Authenticity Proof Section */}
                 <div className="mb-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-200">
                   <div className="flex items-center space-x-2 mb-3">
@@ -2263,35 +2283,35 @@ export default function MoroccoMadeRealPage() {
 
                 {/* Enhanced Action Buttons */}
                 <div className="space-y-3">
-                  <div className="flex space-x-3">
-                    <Button
-                      onClick={() => {
-                        if (currentExperience < experiences.length - 1) {
-                          setCurrentExperience(currentExperience + 1);
-                        } else {
-                          setCurrentStep('results');
-                        }
-                      }}
-                      variant="outline"
+                <div className="flex space-x-3">
+                  <Button
+                    onClick={() => {
+                      if (currentExperience < experiences.length - 1) {
+                        setCurrentExperience(currentExperience + 1);
+                      } else {
+                        setCurrentStep('results');
+                      }
+                    }}
+                    variant="outline"
                       className="flex-1 h-12 border-2 hover:bg-gray-50"
-                    >
+                  >
                       <X className="w-5 h-5 mr-2" />
                       Not for me
-                    </Button>
-                    <Button
-                      onClick={() => {
-                        setMatches([...matches, currentExp.id]);
-                        if (currentExperience < experiences.length - 1) {
-                          setCurrentExperience(currentExperience + 1);
-                        } else {
-                          setCurrentStep('results');
-                        }
-                      }}
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      setMatches([...matches, currentExp.id]);
+                      if (currentExperience < experiences.length - 1) {
+                        setCurrentExperience(currentExperience + 1);
+                      } else {
+                        setCurrentStep('results');
+                      }
+                    }}
                       className="flex-1 h-12 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 transform hover:scale-105 transition-all duration-300"
-                    >
+                  >
                       <Heart className="w-5 h-5 mr-2" />
                       I love this!
-                    </Button>
+                  </Button>
                   </div>
                   
                   {/* Quick Actions */}
@@ -2380,7 +2400,10 @@ export default function MoroccoMadeRealPage() {
               </div>
               
               <div className="grid md:grid-cols-3 gap-6">
-                {topMatches.map((artisan, index) => (
+                {topMatches.map((artisan, index) => {
+                  const artisanStatusInfo = getArtisanStatus(artisan.id);
+                  
+                  return (
                   <Card key={artisan.id} className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-0">
                     <div className="relative">
                       <img 
@@ -2405,10 +2428,10 @@ export default function MoroccoMadeRealPage() {
                         <PlayCircle className="w-4 h-4" />
                       </Button>
                       
-                      {/* Availability Badge */}
-                      <div className="absolute bottom-3 left-3 bg-green-600 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center space-x-1">
-                        <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-                        <span>Available Now</span>
+                      {/* Dynamic Availability Badge */}
+                      <div className={`absolute bottom-3 left-3 ${artisanStatusInfo.color} text-white px-2 py-1 rounded-full text-xs font-bold flex items-center space-x-1`}>
+                        <span>{artisanStatusInfo.icon}</span>
+                        <span>{artisanStatusInfo.label}</span>
                       </div>
                     </div>
                     
@@ -2450,33 +2473,65 @@ export default function MoroccoMadeRealPage() {
                           </div>
                         </div>
                         
-                        {/* AI Booking Button */}
-                        <Button
-                          onClick={() => {
-                            setSelectedArtisan(artisan);
-                            setShowBookingFlow(true);
-                          }}
-                          className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 h-12 font-semibold transform hover:scale-105 transition-all duration-300"
-                        >
-                          <Zap className="w-4 h-4 mr-2" />
-                          Book with AI Assistant
-                        </Button>
+                        {/* Dynamic Booking Button Based on Status */}
+                        {artisanStatusInfo.status === 'booked' ? (
+                          <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-center">
+                            <div className="flex items-center justify-center space-x-2 text-green-700">
+                              <CheckCircle2 className="w-5 h-5" />
+                              <span className="font-semibold">Booked Successfully!</span>
+                            </div>
+                            <p className="text-green-600 text-sm mt-1">Our expert will contact you soon</p>
+                          </div>
+                        ) : artisanStatusInfo.status === 'review-later' ? (
+                          <div className="space-y-2">
+                            <div className="bg-purple-50 border border-purple-200 rounded-lg p-3 text-center">
+                              <div className="flex items-center justify-center space-x-2 text-purple-700">
+                                <Clock className="w-4 h-4" />
+                                <span className="font-medium">Saved for Review</span>
+                              </div>
+                            </div>
+                            <Button
+                              onClick={() => {
+                                setSelectedArtisan(artisan);
+                                setShowBookingFlow(true);
+                              }}
+                              className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 h-12 font-semibold"
+                            >
+                              <Zap className="w-4 h-4 mr-2" />
+                              Continue Booking
+                            </Button>
+                          </div>
+                        ) : (
+                          <Button
+                            onClick={() => {
+                              setSelectedArtisan(artisan);
+                              setShowBookingFlow(true);
+                            }}
+                            className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 h-12 font-semibold transform hover:scale-105 transition-all duration-300"
+                          >
+                            <Zap className="w-4 h-4 mr-2" />
+                            Book with AI Assistant
+                          </Button>
+                        )}
                         
-                        {/* Quick Stats */}
-                        <div className="grid grid-cols-2 gap-2 text-xs text-gray-600">
-                          <div className="flex items-center">
-                            <Clock className="w-3 h-3 mr-1" />
-                            <span>Next: {artisan.next_available}</span>
+                        {/* Quick Stats - Only show if not booked */}
+                        {artisanStatusInfo.status !== 'booked' && (
+                          <div className="grid grid-cols-2 gap-2 text-xs text-gray-600">
+                            <div className="flex items-center">
+                              <Clock className="w-3 h-3 mr-1" />
+                              <span>Next: {artisan.next_available}</span>
+                            </div>
+                            <div className="flex items-center">
+                              <Users className="w-3 h-3 mr-1" />
+                              <span>{artisan.languages.length} languages</span>
+                            </div>
                           </div>
-                          <div className="flex items-center">
-                            <Users className="w-3 h-3 mr-1" />
-                            <span>{artisan.languages.length} languages</span>
-                          </div>
-                        </div>
+                        )}
                       </div>
                     </CardContent>
                   </Card>
-                ))}
+                  );
+                })}
               </div>
             </div>
 
@@ -2489,7 +2544,10 @@ export default function MoroccoMadeRealPage() {
               </div>
               
               <div className="grid md:grid-cols-3 gap-6">
-                {relatedMatches.map((artisan) => (
+                {relatedMatches.map((artisan) => {
+                  const artisanStatusInfo = getArtisanStatus(artisan.id);
+                  
+                  return (
                   <Card key={artisan.id} className="overflow-hidden shadow-md hover:shadow-lg transition-shadow">
                     <div className="relative">
                       <img 
@@ -2499,6 +2557,12 @@ export default function MoroccoMadeRealPage() {
                       />
                       <div className="absolute top-3 right-3 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">
                         {artisan.compatibility_score}%
+                      </div>
+                      
+                      {/* Status Badge */}
+                      <div className={`absolute bottom-3 left-3 ${artisanStatusInfo.color} text-white px-2 py-1 rounded-full text-xs font-bold flex items-center space-x-1`}>
+                        <span>{artisanStatusInfo.icon}</span>
+                        <span>{artisanStatusInfo.label}</span>
                       </div>
                     </div>
                     
@@ -2521,20 +2585,50 @@ export default function MoroccoMadeRealPage() {
                           <div className="text-green-600 font-bold text-sm">{artisan.available_experiences[0].price} MAD</div>
                         </div>
                         
-                        <Button
-                          onClick={() => {
-                            setSelectedArtisan(artisan);
-                            setShowBookingFlow(true);
-                          }}
-                          className="w-full bg-blue-500 hover:bg-blue-600 h-10 font-medium"
-                        >
-                          <Zap className="w-3 h-3 mr-2" />
-                          Quick Book
-                        </Button>
+                        {/* Dynamic Booking Button */}
+                        {artisanStatusInfo.status === 'booked' ? (
+                          <div className="bg-green-50 border border-green-200 rounded-lg p-2 text-center">
+                            <div className="flex items-center justify-center space-x-1 text-green-700">
+                              <CheckCircle2 className="w-4 h-4" />
+                              <span className="font-medium text-sm">Booked!</span>
+                            </div>
+                          </div>
+                        ) : artisanStatusInfo.status === 'review-later' ? (
+                          <div className="space-y-2">
+                            <div className="bg-purple-50 border border-purple-200 rounded-lg p-2 text-center">
+                              <div className="flex items-center justify-center space-x-1 text-purple-700">
+                                <Clock className="w-3 h-3" />
+                                <span className="font-medium text-xs">Saved</span>
+                              </div>
+                            </div>
+                            <Button
+                              onClick={() => {
+                                setSelectedArtisan(artisan);
+                                setShowBookingFlow(true);
+                              }}
+                              className="w-full bg-purple-500 hover:bg-purple-600 h-10 font-medium text-sm"
+                            >
+                              <Zap className="w-3 h-3 mr-2" />
+                              Continue
+                            </Button>
+                          </div>
+                        ) : (
+                          <Button
+                            onClick={() => {
+                              setSelectedArtisan(artisan);
+                              setShowBookingFlow(true);
+                            }}
+                            className="w-full bg-blue-500 hover:bg-blue-600 h-10 font-medium"
+                          >
+                            <Zap className="w-3 h-3 mr-2" />
+                            Quick Book
+                          </Button>
+                        )}
                       </div>
                     </CardContent>
                   </Card>
-                ))}
+                  );
+                })}
               </div>
             </div>
 
@@ -2733,67 +2827,134 @@ export default function MoroccoMadeRealPage() {
   );
 
   const renderBookingModal = () => {
+    const getStatusInfo = () => {
+      switch (bookingStatus) {
+        case 'selecting':
+          return { 
+            icon: Sparkles, 
+            color: 'text-blue-500', 
+            bg: 'bg-blue-50', 
+            text: 'Choose Your Experience',
+            description: 'Select your preferred experience and details'
+          };
+        case 'submitting':
+          return { 
+            icon: RefreshCw, 
+            color: 'text-orange-500', 
+            bg: 'bg-orange-50', 
+            text: 'Submitting Request...',
+            description: 'Sending your booking request to our system'
+          };
+        case 'connecting':
+          return { 
+            icon: MessageCircle, 
+            color: 'text-green-500', 
+            bg: 'bg-green-50', 
+            text: 'Connecting with Expert...',
+            description: 'Our local expert is preparing to contact you'
+          };
+        case 'booked':
+          return { 
+            icon: CheckCircle2, 
+            color: 'text-green-600', 
+            bg: 'bg-green-50', 
+            text: 'Successfully Booked!',
+            description: 'Your cultural experience is confirmed'
+          };
+        case 'review-later':
+          return { 
+            icon: Clock, 
+            color: 'text-purple-500', 
+            bg: 'bg-purple-50', 
+            text: 'Saved for Review',
+            description: 'We\'ll keep your preferences for later'
+          };
+        default:
+          return { 
+            icon: Sparkles, 
+            color: 'text-blue-500', 
+            bg: 'bg-blue-50', 
+            text: 'Ready to Book',
+            description: 'Let\'s get started!'
+          };
+      }
+    };
+
+    const statusInfo = getStatusInfo();
+    const StatusIcon = statusInfo.icon;
+
     return showBookingFlow && selectedArtisan && (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-        <Card className="max-w-lg w-full max-h-[90vh] overflow-y-auto">
-          <CardContent className="p-6">
-            <div className="flex justify-between items-start mb-6">
-              <div>
-                <h3 className="text-2xl font-bold">Book with {selectedArtisan.name}</h3>
-                <p className="text-gray-600">{selectedArtisan.craft} • {selectedArtisan.location}</p>
-              </div>
-              <Button
-                onClick={() => closeBookingModal()}
-                variant="ghost"
-                size="sm"
-              >
-                <X className="w-4 h-4" />
-              </Button>
-            </div>
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4">
+        <Card className="w-full max-w-lg max-h-[95vh] overflow-hidden flex flex-col">
+          <CardContent className="p-4 sm:p-6 overflow-y-auto">
             
-            {bookingStep === 'details' && (
-              <div className="space-y-6">
-                {/* AI Assistant Header */}
-                <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-4 rounded-xl border border-blue-200">
-                  <div className="flex items-center space-x-3 mb-2">
-                    <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
-                      <Zap className="w-5 h-5 text-white" />
-                    </div>
+            {/* Status Header */}
+            <div className="text-center mb-4">
+              <div className={`inline-flex items-center justify-center w-12 h-12 rounded-full ${statusInfo.bg} mb-3`}>
+                <StatusIcon className={`w-6 h-6 ${statusInfo.color} ${bookingStatus === 'submitting' || bookingStatus === 'connecting' ? 'animate-spin' : ''}`} />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold">{statusInfo.text}</h3>
+              <p className="text-gray-600 text-sm">{statusInfo.description}</p>
+            </div>
+
+            {/* Artisan Info - Always show */}
+            <div className="flex items-center space-x-3 mb-4 p-3 bg-gray-50 rounded-lg">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-r from-orange-400 to-red-500 flex items-center justify-center">
+                <span className="text-white font-bold text-sm">
+                  {selectedArtisan.name.split(' ').map(n => n[0]).join('')}
+                </span>
+              </div>
+              <div>
+                <h4 className="font-semibold">{selectedArtisan.name}</h4>
+                <p className="text-gray-600 text-sm">{selectedArtisan.craft} • {selectedArtisan.location}</p>
+              </div>
+            </div>
+
+            {/* Content Based on Status */}
+            {(bookingStatus === 'selecting') && (
+              <div className="space-y-4 sm:space-y-6">
+                {/* Personal Message from Artisan */}
+                <div className="bg-gradient-to-r from-orange-50 to-yellow-50 p-3 sm:p-4 rounded-xl border border-orange-200">
+                  <div className="flex items-start space-x-3">
+                    <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 text-orange-600 mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="font-bold text-blue-800">AI Booking Assistant</h4>
-                      <p className="text-blue-600 text-sm">Checking availability and capacity in real-time</p>
+                      <p className="text-orange-800 font-medium text-xs sm:text-sm mb-1">Message from {selectedArtisan.name}:</p>
+                      <p className="text-gray-700 text-xs sm:text-sm italic">
+                        "Ahlan wa sahlan! I'm excited to share my {selectedArtisan.craft.toLowerCase()} traditions with you. 
+                        Let's create something beautiful together in my workshop!"
+                      </p>
                     </div>
                   </div>
                 </div>
 
                 {/* Experience Selection */}
                 <div>
-                  <label className="block text-sm font-medium mb-3">Choose Experience</label>
-                  <div className="space-y-3">
+                  <label className="block text-sm font-medium mb-2">Choose Your Experience</label>
+                  <div className="space-y-2">
                     {selectedArtisan.available_experiences.map((exp, idx) => (
                       <div 
                         key={idx}
                         onClick={() => setBookingData({...bookingData, experience: exp.name})}
-                        className={`p-4 border-2 rounded-xl cursor-pointer transition-all duration-300 ${
+                        className={`p-3 border-2 rounded-xl cursor-pointer transition-all duration-300 ${
                           bookingData.experience === exp.name 
                             ? 'border-orange-500 bg-orange-50' 
                             : 'border-gray-200 hover:border-orange-300'
                         }`}
                       >
-                        <div className="flex justify-between items-start">
+                        <div className="flex justify-between items-center">
                           <div>
-                            <h5 className="font-semibold">{exp.name}</h5>
-                            <p className="text-gray-600 text-sm">{exp.duration}</p>
+                            <h5 className="font-semibold text-sm">{exp.name}</h5>
+                            <p className="text-gray-600 text-xs">{exp.duration}</p>
                           </div>
                           <div className="text-right">
-                            <span className="font-bold text-green-600 text-lg">{exp.price} MAD</span>
+                            <span className="font-bold text-green-600 text-sm sm:text-lg">{exp.price} MAD</span>
                             <div className="text-xs text-gray-500">per person</div>
                           </div>
                         </div>
                         {bookingData.experience === exp.name && (
                           <div className="mt-2 flex items-center text-orange-600">
                             <CheckCircle2 className="w-4 h-4 mr-2" />
-                            <span className="text-sm font-medium">Selected</span>
+                            <span className="text-xs sm:text-sm font-medium">Selected</span>
                           </div>
                         )}
                       </div>
@@ -2801,8 +2962,8 @@ export default function MoroccoMadeRealPage() {
                   </div>
                 </div>
                 
-                {/* Date and Time Selection */}
-                <div className="grid grid-cols-2 gap-4">
+                {/* Date and Group Selection */}
+                <div className="grid grid-cols-2 gap-3">
                   <div>
                     <label className="block text-sm font-medium mb-2">Preferred Date</label>
                     <Input 
@@ -2810,294 +2971,219 @@ export default function MoroccoMadeRealPage() {
                       value={bookingData.date}
                       onChange={(e) => setBookingData({...bookingData, date: e.target.value})}
                       min={new Date().toISOString().split('T')[0]}
-                      className="h-12"
+                      className="h-10 sm:h-12 text-sm"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Preferred Time</label>
+                    <label className="block text-sm font-medium mb-2">Group Size</label>
                     <select 
-                      className="w-full p-3 border border-gray-300 rounded-lg h-12"
-                      value={bookingData.time}
-                      onChange={(e) => setBookingData({...bookingData, time: e.target.value})}
+                      className="w-full p-2 sm:p-3 border border-gray-300 rounded-lg h-10 sm:h-12 text-sm"
+                      value={bookingData.groupSize}
+                      onChange={(e) => setBookingData({...bookingData, groupSize: parseInt(e.target.value)})}
                     >
-                      <option value="">Select time</option>
-                      <option value="09:00">9:00 AM - Morning Session</option>
-                      <option value="11:00">11:00 AM - Late Morning</option>
-                      <option value="14:00">2:00 PM - Afternoon Session</option>
-                      <option value="16:00">4:00 PM - Late Afternoon</option>
+                      {[1,2,3,4,5,6].map(num => (
+                        <option key={num} value={num}>{num} {num === 1 ? 'person' : 'people'}</option>
+                      ))}
                     </select>
                   </div>
                 </div>
-                
-                {/* Group Size */}
+
+                {/* Optional Message */}
                 <div>
-                  <label className="block text-sm font-medium mb-2">Group Size</label>
-                  <div className="grid grid-cols-3 gap-2">
-                    {[1,2,3,4,5,6].map(num => (
-                      <button
-                        key={num}
-                        onClick={() => setBookingData({...bookingData, groupSize: num})}
-                        className={`p-3 border-2 rounded-lg text-center transition-all duration-300 ${
-                          bookingData.groupSize === num 
-                            ? 'border-orange-500 bg-orange-50 text-orange-700' 
-                            : 'border-gray-200 hover:border-orange-300'
-                        }`}
-                      >
-                        <div className="font-bold">{num}</div>
-                        <div className="text-xs">{num === 1 ? 'person' : 'people'}</div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                
-                {/* Special Requests */}
-                <div>
-                  <label className="block text-sm font-medium mb-2">Special Requests (Optional)</label>
+                  <label className="block text-sm font-medium mb-2">Message for {selectedArtisan.name} (Optional)</label>
                   <textarea 
-                    className="w-full p-3 border border-gray-300 rounded-lg"
-                    rows={3}
-                    placeholder="Dietary restrictions, accessibility needs, language preferences, or special interests..."
+                    className="w-full p-2 sm:p-3 border border-gray-300 rounded-lg text-sm"
+                    rows={2}
+                    placeholder={`Tell ${selectedArtisan.name} about your interests, any questions, or what you'd love to learn...`}
                     value={bookingData.specialRequests}
                     onChange={(e) => setBookingData({...bookingData, specialRequests: e.target.value})}
                   />
                 </div>
-                
-                {/* AI Validation Preview */}
-                {bookingData.experience && bookingData.date && bookingData.time && (
-                  <div className="bg-green-50 p-4 rounded-xl border border-green-200">
-                    <div className="flex items-center space-x-2 text-green-800 mb-2">
-                      <Zap className="w-5 h-5" />
-                      <span className="font-semibold">AI Pre-Validation Ready</span>
+
+                {/* What Happens Next */}
+                <div className="bg-gradient-to-r from-green-50 to-blue-50 p-3 sm:p-4 rounded-xl border border-green-200">
+                  <div className="flex items-center space-x-2 text-green-800 mb-2">
+                    <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <span className="font-bold text-sm">What happens next?</span>
+                  </div>
+                  <div className="text-xs sm:text-sm text-gray-700 space-y-1">
+                    <div className="flex items-start space-x-2">
+                      <span className="text-green-600 font-bold">1.</span>
+                      <span>Our local expert will WhatsApp you within <strong>15 minutes</strong></span>
                     </div>
-                    <div className="text-sm text-green-700 space-y-1">
-                      <div>✅ Checking {selectedArtisan.name}'s availability for {bookingData.date}</div>
-                      <div>✅ Verifying workshop capacity for {bookingData.groupSize} people</div>
-                      <div>✅ Confirming materials and setup for {bookingData.experience}</div>
+                    <div className="flex items-start space-x-2">
+                      <span className="text-green-600 font-bold">2.</span>
+                      <span>They'll connect you directly with {selectedArtisan.name}</span>
+                    </div>
+                    <div className="flex items-start space-x-2">
+                      <span className="text-green-600 font-bold">3.</span>
+                      <span>Coordinate meeting time, location, and any special requests</span>
+                    </div>
+                    <div className="flex items-start space-x-2">
+                      <span className="text-green-600 font-bold">4.</span>
+                      <span><strong>Pay {selectedArtisan.name} directly</strong> at your experience</span>
                     </div>
                   </div>
-                )}
-                
-                <div className="flex justify-center space-x-3 pt-4">
-                  <Button
-                    onClick={() => closeBookingModal()}
-                    variant="outline"
-                    className="px-8"
-                  >
-                    Cancel
-                  </Button>
-                  <Button
-                    onClick={() => setBookingStep('ai-validation')}
-                    disabled={!bookingData.experience || !bookingData.date || !bookingData.time}
-                    className="bg-gradient-to-r from-orange-500 to-red-500 px-8 h-12 font-semibold"
-                  >
-                    <Zap className="w-4 h-4 mr-2" />
-                    Start AI Validation
-                  </Button>
                 </div>
               </div>
             )}
-            
-            {bookingStep === 'ai-validation' && (
-              <div className="space-y-6 text-center">
-                <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-xl">
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Lock className="w-8 h-8 text-white animate-pulse" />
-                  </div>
-                  <h4 className="text-xl font-bold text-blue-800 mb-2">Secure Booking Verification</h4>
-                  <p className="text-blue-600">Verifying artisan credentials and booking security...</p>
-                </div>
 
-                {/* Enhanced Trust-Building Validation Steps */}
+            {/* Submitting Status */}
+            {bookingStatus === 'submitting' && (
+              <div className="text-center py-8">
                 <div className="space-y-4">
-                  {[
-                    { 
-                      step: 'Verifying artisan identity & certifications', 
-                      detail: `${selectedArtisan.name} - Master craftsman verified since 2019`,
-                      icon: Award, 
-                      complete: true,
-                      trustSignal: '✓ Government certified artisan ID #MC-2019-4782'
-                    },
-                    { 
-                      step: 'Real-time availability confirmation', 
-                      detail: `${bookingData.date} at ${bookingData.time} - Slot confirmed`,
-                      icon: Calendar, 
-                      complete: true,
-                      trustSignal: `✓ Live calendar sync - ${bookingData.groupSize} spots available`
-                    },
-                    { 
-                      step: 'Secure booking & payment hold', 
-                      detail: 'Booking secured - Payment charged at experience',
-                      icon: CheckCircle2, 
-                      complete: false,
-                      trustSignal: '🛡️ No upfront payment - Pay directly to artisan at experience'
-                    }
-                  ].map((item, idx) => (
-                    <div key={idx} className="p-4 bg-white rounded-xl border border-gray-200 shadow-sm">
-                      <div className="flex items-start space-x-4">
-                        <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${
-                          item.complete ? 'bg-green-500' : 'bg-blue-500'
-                        }`}>
-                          <item.icon className={`w-5 h-5 text-white ${!item.complete ? 'animate-spin' : ''}`} />
-                        </div>
-                        <div className="flex-grow text-left">
-                          <div className="flex items-center justify-between mb-1">
-                            <span className={`font-semibold ${item.complete ? 'text-green-700' : 'text-blue-700'}`}>
-                              {item.step}
-                            </span>
-                            {item.complete && <CheckCircle2 className="w-5 h-5 text-green-500" />}
-                          </div>
-                          <p className="text-gray-600 text-sm mb-2">{item.detail}</p>
-                          <div className="bg-gray-50 p-2 rounded text-xs text-gray-700 font-mono">
-                            {item.trustSignal}
-                          </div>
-                        </div>
+                  <div className="text-lg font-semibold text-gray-700">Processing your request...</div>
+                  <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div className="bg-orange-500 h-2 rounded-full animate-pulse" style={{width: '60%'}}></div>
+                  </div>
+                  <p className="text-gray-600 text-sm">Validating experience details and availability</p>
+                </div>
+              </div>
+            )}
+
+            {/* Connecting Status */}
+            {bookingStatus === 'connecting' && (
+              <div className="text-center py-8">
+                <div className="space-y-4">
+                  <div className="text-lg font-semibold text-gray-700">Connecting with our local expert...</div>
+                  <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div className="bg-green-500 h-2 rounded-full animate-pulse" style={{width: '90%'}}></div>
+                  </div>
+                  <p className="text-gray-600 text-sm">They'll WhatsApp you at {phone} within 15 minutes</p>
+                </div>
+              </div>
+            )}
+
+            {/* Success - Booked */}
+            {bookingStatus === 'booked' && (
+              <div className="text-center py-6">
+                <div className="space-y-4">
+                  <div className="bg-green-50 p-6 rounded-xl border border-green-200">
+                    <h4 className="text-xl font-bold text-green-800 mb-2">🎉 Booking Confirmed!</h4>
+                    <p className="text-green-700 mb-4">
+                      Your experience with {selectedArtisan.name} is confirmed. Our local expert will contact you shortly.
+                    </p>
+                    
+                    {/* Booking Summary */}
+                    <div className="bg-white p-4 rounded-lg text-left">
+                      <h5 className="font-semibold mb-2">Booking Details:</h5>
+                      <div className="space-y-1 text-sm text-gray-700">
+                        <div>📅 <strong>Experience:</strong> {bookingData.experience}</div>
+                        <div>📍 <strong>Artisan:</strong> {selectedArtisan.name}</div>
+                        <div>👥 <strong>Group Size:</strong> {bookingData.groupSize} {bookingData.groupSize === 1 ? 'person' : 'people'}</div>
+                        <div>📱 <strong>Contact:</strong> {phone}</div>
+                        {bookingData.date && <div>📆 <strong>Preferred Date:</strong> {bookingData.date}</div>}
                       </div>
                     </div>
-                  ))}
-                </div>
-
-                {/* Security & Trust Badges */}
-                <div className="bg-gradient-to-r from-green-50 to-blue-50 p-4 rounded-xl border border-green-200">
-                  <h5 className="font-bold text-green-800 mb-3 flex items-center justify-center">
-                    <Lock className="w-5 h-5 mr-2" />
-                    Your Booking is Protected
-                  </h5>
-                  <div className="grid grid-cols-2 gap-3 text-sm">
-                    <div className="flex items-center space-x-2">
-                      <Award className="w-4 h-4 text-blue-600" />
-                      <span className="text-gray-700">Verified Artisan Network</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle2 className="w-4 h-4 text-green-600" />
-                      <span className="text-gray-700">Pay At Experience Only</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <MessageCircle className="w-4 h-4 text-purple-600" />
-                      <span className="text-gray-700">24/7 Support via WhatsApp</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <RefreshCw className="w-4 h-4 text-orange-600" />
-                      <span className="text-gray-700">Free Cancellation 24h</span>
-                    </div>
                   </div>
                 </div>
-
-                {/* Real-time verification status */}
-                <div className="bg-white p-4 rounded-xl border border-gray-200">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="font-semibold text-gray-800">Verification Status</span>
-                    <span className="text-green-600 font-bold">99% Complete</span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-3 mb-3">
-                    <div className="bg-gradient-to-r from-green-400 to-blue-500 h-3 rounded-full transition-all duration-1000" style={{width: '99%'}}></div>
-                  </div>
-                  <div className="grid grid-cols-3 gap-2 text-xs text-gray-600">
-                    <div className="text-center">
-                      <div className="text-green-600 font-bold">4.9★</div>
-                      <div>Artisan Rating</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-blue-600 font-bold">127</div>
-                      <div>Happy Customers</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-purple-600 font-bold">5 Years</div>
-                      <div>Zero Incidents</div>
-                    </div>
-                  </div>
-                </div>
-
-                <Button
-                  onClick={() => setBookingStep('human-handoff')}
-                  className="bg-gradient-to-r from-green-500 to-emerald-600 px-8 h-12 font-semibold transform hover:scale-105 transition-all duration-300"
-                >
-                  <Lock className="w-5 h-5 mr-2" />
-                  Complete Secure Booking
-                </Button>
               </div>
             )}
-            
-            {bookingStep === 'human-handoff' && (
-              <div className="space-y-6 text-center">
-                <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-xl border border-green-200">
-                  <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <CheckCircle2 className="w-8 h-8 text-white" />
-                  </div>
-                  <h4 className="text-xl font-bold text-green-800 mb-2">AI Validation Complete!</h4>
-                  <p className="text-green-700">Everything looks perfect for your booking</p>
-                </div>
 
-                {/* Booking Summary */}
-                <div className="bg-white p-4 rounded-xl border border-gray-200 text-left">
-                  <h5 className="font-bold mb-3">Booking Summary</h5>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Experience:</span>
-                      <span className="font-medium">{bookingData.experience}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Date & Time:</span>
-                      <span className="font-medium">{bookingData.date} at {bookingData.time}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Group Size:</span>
-                      <span className="font-medium">{bookingData.groupSize} people</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Artisan:</span>
-                      <span className="font-medium">{selectedArtisan.name}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Your Phone:</span>
-                      <span className="font-medium">{phone}</span>
+            {/* Review Later */}
+            {bookingStatus === 'review-later' && (
+              <div className="text-center py-6">
+                <div className="space-y-4">
+                  <div className="bg-purple-50 p-6 rounded-xl border border-purple-200">
+                    <h4 className="text-xl font-bold text-purple-800 mb-2">📝 Saved for Later</h4>
+                    <p className="text-purple-700 mb-4">
+                      Your preferences have been saved. You can continue your booking anytime.
+                    </p>
+                    
+                    <div className="bg-white p-4 rounded-lg text-left">
+                      <h5 className="font-semibold mb-2">Saved Preferences:</h5>
+                      <div className="space-y-1 text-sm text-gray-700">
+                        <div>🎨 <strong>Artisan:</strong> {selectedArtisan.name}</div>
+                        {bookingData.experience && <div>✨ <strong>Experience:</strong> {bookingData.experience}</div>}
+                        {bookingData.groupSize && <div>👥 <strong>Group Size:</strong> {bookingData.groupSize} {bookingData.groupSize === 1 ? 'person' : 'people'}</div>}
+                      </div>
                     </div>
                   </div>
-                </div>
-                
-                <div className="bg-gradient-to-r from-green-50 to-blue-50 p-4 rounded-xl border border-green-200">
-                  <div className="flex items-center justify-center space-x-2 text-green-800 mb-3">
-                    <MessageCircle className="w-6 h-6" />
-                    <span className="font-bold text-lg">Human Expert Taking Over</span>
-                  </div>
-                  <p className="text-gray-700 mb-3">
-                    A Morocco Made Real booking specialist will contact you via WhatsApp within 15 minutes to:
-                  </p>
-                  <div className="text-sm text-gray-700 space-y-1 text-left">
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
-                      <span>Confirm all booking details</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
-                      <span>Answer any questions about the experience</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
-                      <span>Provide exact meeting location and directions</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
-                      <span>Share artisan's direct contact for the day</span>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="flex justify-center space-x-3 pt-4">
-                  <Button
-                    onClick={() => {
-                      closeBookingModal();
-                      // Here you would make API call to initiate human handoff
-                      alert(`Booking request sent! Expect WhatsApp contact at ${phone} within 15 minutes.`);
-                    }}
-                    className="bg-gradient-to-r from-green-500 to-emerald-600 px-8 h-12 font-semibold"
-                  >
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    Confirm & Send to WhatsApp Expert
-                  </Button>
                 </div>
               </div>
             )}
           </CardContent>
+          
+          {/* Dynamic Footer Based on Status */}
+          <div className="flex-shrink-0 p-4 sm:p-6 pt-0 border-t border-gray-100 bg-white">
+            {bookingStatus === 'selecting' && (
+              <div className="flex justify-center space-x-3">
+                <Button
+                  onClick={handleReviewLater}
+                  variant="outline"
+                  className="px-4 sm:px-6 h-10 sm:h-12 text-sm"
+                >
+                  Review Later
+                </Button>
+                <Button
+                  onClick={handleBookingSubmission}
+                  disabled={!bookingData.experience}
+                  className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 px-4 sm:px-8 h-10 sm:h-12 font-semibold transform hover:scale-105 transition-all duration-300 text-sm"
+                >
+                  <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                  <span className="hidden sm:inline">Connect with {selectedArtisan.name}</span>
+                  <span className="sm:hidden">Connect</span>
+                </Button>
+              </div>
+            )}
+
+            {(bookingStatus === 'submitting' || bookingStatus === 'connecting') && (
+              <div className="flex justify-center">
+                <Button
+                  disabled
+                  className="px-8 h-12 bg-gray-300 cursor-not-allowed"
+                >
+                  <RefreshCw className="w-5 h-5 mr-2 animate-spin" />
+                  Processing...
+                </Button>
+              </div>
+            )}
+
+            {bookingStatus === 'booked' && (
+              <div className="flex justify-center space-x-3">
+                <Button
+                  onClick={() => closeBookingModal()}
+                  className="bg-green-500 hover:bg-green-600 px-8 h-12 font-semibold"
+                >
+                  <CheckCircle2 className="w-5 h-5 mr-2" />
+                  Perfect!
+                </Button>
+              </div>
+            )}
+
+            {bookingStatus === 'review-later' && (
+              <div className="flex justify-center space-x-3">
+                <Button
+                  onClick={() => setBookingStatus('selecting')}
+                  variant="outline"
+                  className="px-6 h-10"
+                >
+                  Continue Booking
+                </Button>
+                <Button
+                  onClick={() => closeBookingModal()}
+                  className="bg-purple-500 hover:bg-purple-600 px-6 h-10"
+                >
+                  Close
+                </Button>
+              </div>
+            )}
+
+            {/* Close button for all statuses except processing */}
+            {(bookingStatus !== 'submitting' && bookingStatus !== 'connecting') && (
+              <div className="text-center mt-3">
+                <Button
+                  onClick={() => closeBookingModal()}
+                  variant="ghost"
+                  size="sm"
+                  className="text-gray-500 hover:text-gray-700"
+                >
+                  <X className="w-4 h-4 mr-1" />
+                  Close
+                </Button>
+              </div>
+            )}
+          </div>
         </Card>
       </div>
     );
